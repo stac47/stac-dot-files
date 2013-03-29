@@ -1,4 +1,12 @@
 stac-vimrc
 ==========
 
-My .vimrc which contains the procedure to configure Vim everywhere.
+My .vimrc which contains the procedure to configure Vim everywhere.  This one
+is tested under Linux and Windows. I use this one to work on following project
+types:
+
+* Python
+* Javascript
+* XML
+* CSS
+* HTML
