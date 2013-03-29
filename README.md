@@ -15,4 +15,5 @@ Installation
 ============
 
 Simply type in your terminal:
+
     wget "https://raw.github.com/stac47/stac-vimrc/master/.vimrc"
