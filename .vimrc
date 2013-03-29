@@ -231,7 +231,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 let g:pymode_folding = 0
 
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
-" Can have multiply values "pep8,pyflakes,mcccabe"
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 
 let pymode_rope_extended_complete=1
