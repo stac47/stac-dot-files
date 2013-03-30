@@ -37,6 +37,9 @@ else
   endif
 endif
 
+" Set <leader> to 'ù' for my AZERTY keyboard.
+let mapleader="ù"
+
 " Don't put the Vim SwaP files in the same place as the edited files.
 if has("win32") || has("win64")
    set directory=$TMP
