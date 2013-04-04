@@ -153,9 +153,15 @@ EOF
 endfunction
 
 "================XML==========================
+
+" Folding feature activated for XML
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
+" Do not automatically fold the XML
+au FileType xml setlocal foldlevel=999999
+
+" Python function to validate a XML file (faster than vim script)
 function! ValidateXml()
 py << EOF
 import vim
@@ -175,6 +181,7 @@ else:
 EOF
 endfunction
 
+" Python function to pretty print an XML
 function! PrettyXml()
 py << EOF
 import vim
