@@ -248,10 +248,5 @@ let pymode_rope_vim_completion=1
 let pymode_rope_guess_project=0
 " End python-mode
 
-" minibuffexpl
-" cd ~/.vim/bundle
-" git clone https://github.com/fholgado/minibufexpl.vim.git
-" End minibuffexpl
-
 " E N D   P L U G I N S 
 " ************************************************************************
