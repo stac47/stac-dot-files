@@ -34,4 +34,3 @@ Then install the plugins in the bundle folder:
     cd ~/.vim/bundle
     git clone https://github.com/scrooloose/nerdtree.git
     git clone git://github.com/klen/python-mode.git
-    git clone https://github.com/fholgado/minibufexpl.vim.git
