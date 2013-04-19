@@ -221,6 +221,10 @@ map <M-Right> :bnext!<CR>
 nnoremap <silent> <F5> :call PrettyXml()<CR>
 nnoremap <silent> <F6> :call ValidateXml()<CR>
 
+" Up and Down arrows mapping
+noremap <Up> gk
+noremap <Down> gj
+
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
 
