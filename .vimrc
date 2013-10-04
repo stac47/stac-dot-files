@@ -252,5 +252,8 @@ let pymode_rope_vim_completion=1
 let pymode_rope_guess_project=0
 " End python-mode
 
+" vim-markdown plugin
+let g:vim_markdown_folding_disabled=1
+
 " E N D   P L U G I N S 
 " ************************************************************************
