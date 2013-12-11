@@ -15,7 +15,17 @@ filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
-filetype plugin indent on
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+set autoindent        " always set autoindenting on
 
 if has("gui_running")
   " GUI is running or is about to start.
@@ -127,15 +137,6 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " ============================================================================
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
-set autoindent        " always set autoindenting on
-
 
 " A function to add my python headers
 function! AddPythonHeader()

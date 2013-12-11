@@ -6,10 +6,12 @@ is tested under Linux and Windows. I use this one to work on following project
 types:
 
 * Python
+* Ruby
 * Javascript
 * XML
 * CSS
 * HTML
+* Markdown
 
 Installation
 ============
@@ -35,3 +37,4 @@ Then install the plugins in the bundle folder:
     git clone https://github.com/scrooloose/nerdtree.git
     git clone git://github.com/klen/python-mode.git
     git clone https://github.com/plasticboy/vim-markdown.git
+    git clone https://github.com/vim-ruby/vim-ruby.git
