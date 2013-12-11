@@ -16,9 +16,13 @@ types:
 Installation
 ============
 
-Simply type in your terminal:
+Simply go to your home and type in your terminal:
 
     wget "https://raw.github.com/stac47/stac-vimrc/master/.vimrc"
+    
+or
+
+    curl -O https://raw.github.com/stac47/stac-vimrc/master/.vimrc
 
 If you start from scratch, start by creating ".vim" directory in your home then
 a "bundle" and "autoload" subfolder:
