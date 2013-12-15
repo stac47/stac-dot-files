@@ -2,7 +2,7 @@ stac-vimrc
 ==========
 
 My .vimrc which contains the procedure to configure Vim everywhere.  This one
-is tested under Linux and Windows. I use this one to work on following project
+is tested under Linux, Mac OS X and Windows. I use this one to work on following project
 types:
 
 * Python
@@ -18,6 +18,8 @@ Installation
 
 Method 1: downloading the raw main files
 ----------------------------------------
+
+This method should be prefered on Windows.
 
 The main files are of course the .vimrc file and the pathogen vim plugin (This
 one allow vim to load automatically the plugins that stand in the .vim/bundle
@@ -44,6 +46,8 @@ Then, you have to install pathogen in the autoload folder:
 
 Method 2: cloning git projects then symlinks
 --------------------------------------------
+
+This method should be prefered under Linux/MacOS X.
 
 The previous method is less convenient if you want to propose a pull request on
 the two main projects. Updating them is also a bit rude. This method simple
