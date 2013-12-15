@@ -133,6 +133,12 @@ autocmd FileType javascript set ts=4
 autocmd FileType javascript set sts=4
 autocmd FileType javascript set textwidth=79
 
+" Ruby (tab width 2 chr, wrap at 79th)
+autocmd FileType ruby set sw=2
+autocmd FileType ruby set ts=2
+autocmd FileType ruby set sts=2
+autocmd FileType ruby set textwidth=79
+
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
