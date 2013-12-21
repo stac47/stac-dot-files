@@ -150,7 +150,7 @@ python << EOF
 import vim
 from datetime import date
 header = "#!/usr/bin/python3\n"
-header += "# -*- coding: utf-8 -*-\n\n"
+header += "# vi:set fileencoding=utf-8 :\n\n"
 header += "\"\"\"\n"
 header += "Created on %s\n\n" % (date.today().isoformat())
 header += "@author : Laurent Stacul\n"
@@ -159,6 +159,19 @@ vim.current.buffer[:] = header.split("\n") + vim.current.buffer[:]
 EOF
 endfunction
 
+function! AddRubyHeader()
+python << EOF
+import vim
+from datetime import date
+header =  "#!/usr/bin/ruby -w\n"
+header += "# vi:set fileencoding=utf-8 :\n"
+header += "#\n"
+header += "# Created on %s\n" % (date.today().isoformat())
+header += "#\n"
+header += "# @author : Laurent Stacul\n\n"
+vim.current.buffer[:] = header.split("\n") + vim.current.buffer[:]
+EOF
+endfunction
 "================XML==========================
 
 " Folding feature activated for XML
