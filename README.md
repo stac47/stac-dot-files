@@ -68,8 +68,8 @@ And the last step consists in linking everything from your home folder.
 
     cd
     mkdir .vim
-    ln -s .vim_git/stac-vimrc/.vimrc .vimrc
-    ln -s .vim_git/vim-pathogen/autoload .vim/autoload
+    ln -s ~/.vim_git/stac-vimrc/.vimrc .vimrc
+    ln -s ~/.vim_git/vim-pathogen/autoload .vim/autoload
 
 Finalization: Installing the plugins
 ------------------------------------
