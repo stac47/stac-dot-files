@@ -120,28 +120,31 @@ autocmd FileType html set sw=2
 autocmd FileType html set ts=2
 autocmd FileType html set sts=2
 autocmd FileType html set textwidth=0
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 " CSS (tab width 2 chr, wrap at 79th char)
 autocmd FileType css set sw=2
 autocmd FileType css set ts=2
 autocmd FileType css set sts=2
 autocmd FileType css set textwidth=79
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 " JavaScript (tab width 4 chr, wrap at 79th)
 autocmd FileType javascript set sw=4
 autocmd FileType javascript set ts=4
 autocmd FileType javascript set sts=4
 autocmd FileType javascript set textwidth=79
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Ruby (tab width 2 chr, wrap at 79th)
-autocmd FileType ruby set sw=2
-autocmd FileType ruby set ts=2
-autocmd FileType ruby set sts=2
-autocmd FileType ruby set textwidth=79
+autocmd FileType ruby,eruby set sw=2
+autocmd FileType ruby,eruby set ts=2
+autocmd FileType ruby,eruby set sts=2
+autocmd FileType ruby,eruby set textwidth=79
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " ============================================================================
 
 " A function to add my python headers
