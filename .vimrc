@@ -278,5 +278,10 @@ let pymode_rope_guess_project=0
 " vim-markdown plugin
 let g:vim_markdown_folding_disabled=1
 
+" Using ag with ctrlp if ag is available
+if executable("ag")
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
 " E N D   P L U G I N S 
 " ************************************************************************
