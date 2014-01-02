@@ -82,20 +82,20 @@ Hereafter is the list of the plugins I use.
 
 * To see the file tree and easily open files:
 
-    git clone https://github.com/scrooloose/nerdtree.git
+        git clone https://github.com/scrooloose/nerdtree.git
 
 * To fuzzy search files and easily open them:
     
-    git clone https://github.com/kien/ctrlp.vim.git
+        git clone https://github.com/kien/ctrlp.vim.git
 
 * All needed tools for python development:
 
-    git clone https://github.com/klen/python-mode.git
+        git clone https://github.com/klen/python-mode.git
 
 * Markdown syntax highlighting:
 
-    git clone https://github.com/plasticboy/vim-markdown.git
+        git clone https://github.com/plasticboy/vim-markdown.git
 
 * Plugins to enhance pleasure with Ruby:
 
-    git clone https://github.com/vim-ruby/vim-ruby.git
+        git clone https://github.com/vim-ruby/vim-ruby.git
