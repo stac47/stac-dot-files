@@ -144,6 +144,7 @@ autocmd FileType ruby,eruby set textwidth=79
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby compiler ruby
 
 " ============================================================================
 
@@ -247,6 +248,9 @@ nnoremap <silent> <F6> :call ValidateXml()<CR>
 " Up and Down arrows mapping
 noremap <Up> gk
 noremap <Down> gj
+
+" Call make with <Ctrl> + F11
+map <C-F11> :make %<CR>
 
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
