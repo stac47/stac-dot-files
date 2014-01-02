@@ -67,7 +67,7 @@ Next, simply clone the two projects:
 And the last step consists in linking everything from your home folder.
 
     cd
-    mkdir .vim
+    mkdir .vim .vim/tmp/swap .vim/tmp/undo .vim/tmp/backup
     ln -s ~/.vim_git/stac-vimrc/.vimrc .vimrc
     ln -s ~/.vim_git/vim-pathogen/autoload .vim/autoload
 
@@ -99,3 +99,7 @@ Hereafter is the list of the plugins I use.
 * Plugins to enhance pleasure with Ruby:
 
         git clone https://github.com/vim-ruby/vim-ruby.git
+
+* Tracking undo done on a file with Gundo
+
+        git clone https://github.com/vim-scripts/Gundo.git

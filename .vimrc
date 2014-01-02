@@ -53,17 +53,22 @@ let mapleader="ù"
 " Don't put the Vim SwaP files in the same place as the edited files.
 if has("win32") || has("win64")
    set directory=$TMP
+   set undodir=$TMP
+   set backupdir=$TMP
 else
-   set directory=/tmp
+   set directory=~/.vim/tmp/swap//
+   set undodir=~/.vim/tmp/undo//
+   set backupdir=~/.vim/tmp/backup//
+   set backupskip=/tmp/*
 end 
+
+set backup
+set history=100
+set writebackup
+set swapfile
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-" do not keep a backup file, use versions instead
-set nobackup        
-set nowritebackup
-" keep 50 lines of command line history
-set history=50
 " show the cursor position all the time
 set ruler
 " display incomplete commands
@@ -286,6 +291,7 @@ let g:vim_markdown_folding_disabled=1
 if executable("ag")
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
 
 " E N D   P L U G I N S 
 " ************************************************************************
