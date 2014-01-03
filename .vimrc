@@ -247,12 +247,15 @@ map <M-Right> :bnext!<CR>
 "map <F2> :NERDTreeToggle<CR>
 
 " Xml Pretty Print
-nnoremap <silent> <F5> :call PrettyXml()<CR>
-nnoremap <silent> <F6> :call ValidateXml()<CR>
+nnoremap <F6> :call PrettyXml()<CR>
+nnoremap <F7> :call ValidateXml()<CR>
+
+" Gundo
+nmap <F5> :GundoToggle<CR>
 
 " Up and Down arrows mapping
-noremap <Up> gk
-noremap <Down> gj
+imap <Up> gk
+imap <Down> gj
 
 " Call make with <Ctrl> + F11
 map <C-F11> :make %<CR>
@@ -271,9 +274,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 " NERDTree end.
 
 " python-mode
-" cd ~/.vim/bundle
-" git clone git://github.com/klen/python-mode.git
-" Enable python folding
+" Disable python folding
 let g:pymode_folding = 0
 
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
