@@ -45,7 +45,7 @@ else
   endif
 endif
 
-" Set <leader> to 'ù' for my AZERTY keyboard.
+" Set <Leader> to 'ù' for my AZERTY keyboard.
 let mapleader="ù"
 
 " Don't put the Vim SwaP files in the same place as the edited files.
@@ -102,10 +102,6 @@ set laststatus=2
 set showmatch
 " allow tilde (~) to act as an operator -- ~w, etc.
 set notildeop
-" hint to keep lines short
-if exists('+colorcolumn')
-  set colorcolumn=80
-endif
 " File encoding set to UTF-8
 if has("multi_byte")
  set encoding=utf-8
@@ -167,6 +163,11 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby compiler ruby
 
+" hint to keep lines short
+if exists('+colorcolumn')
+  autocmd FileType ruby set colorcolumn=80
+  autocmd FileType python set colorcolumn=80
+endif
 " ============================================================================
 
 " A function to add my python headers
@@ -258,8 +259,8 @@ endfunction
 " K E Y   M A P P I N G S
 
 " Buffers
-map <M-Left> :bprevious!<CR>
-map <M-Right> :bnext!<CR>
+map <Leader><Left> :bprevious!<CR>
+map <Leader><Right> :bnext!<CR>
 "map <F2> :NERDTreeToggle<CR>
 
 " Xml Pretty Print
