@@ -87,29 +87,25 @@ set textwidth=79
 set cursorline
 " Show the mode
 set showmode
-
-" Show  tab characters. Visual Whitespace.
-"set list
-"set listchars=tab:>.
-
+" Wild menu
+set wildmenu
+set wildmode=list:longest,list
 " Set ignorecase on (set ic)
 set ignorecase
-
 " smart search (override 'ic' when pattern has uppers)
 set scs
-
 " Set status line
 set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
-
 " Always display a status line at the bottom of the window
 set laststatus=2
-
 " showmatch: Show the matching bracket for the last ')'?
 set showmatch
-
 " allow tilde (~) to act as an operator -- ~w, etc.
 set notildeop
-
+" hint to keep lines short
+if exists('+colorcolumn')
+  set colorcolumn=80
+endif
 " File encoding set to UTF-8
 if has("multi_byte")
  set encoding=utf-8
@@ -134,10 +130,9 @@ highlight LineNr ctermbg=240 ctermfg=0
 
 " highlight the status bar when in insert mode
 if version >= 700
-  au InsertEnter * hi StatusLine ctermfg=235 ctermbg=5
-  au InsertLeave * hi StatusLine ctermbg=2 ctermfg=235
+  au InsertEnter * hi StatusLine ctermbg=0 ctermfg=red
+  au InsertLeave * hi StatusLine ctermbg=black ctermfg=white
 endif
-
 
 " ============================================================================
 " OVERRIDE PER FILTE TYPE
@@ -288,8 +283,6 @@ map <C-F11> :make %<CR>
 " P L U G I N S 
 
 " NERDTree
-" cd ~/.vim/bundle
-" git clone https://github.com/scrooloose/nerdtree.git
 " To hide some files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 " NERDTree end.
@@ -300,7 +293,6 @@ let g:pymode_folding = 0
 
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
-
 let pymode_rope_extended_complete=1
 let pymode_rope_vim_completion=1
 let pymode_rope_guess_project=0
@@ -313,7 +305,6 @@ let g:vim_markdown_folding_disabled=1
 if executable("ag")
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
-
 
 " E N D   P L U G I N S 
 " ************************************************************************
