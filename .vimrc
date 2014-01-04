@@ -1,11 +1,5 @@
 set nocompatible
 
-" Automatic reload of .vimrc file on save event.
-autocmd! bufwritepost .vimrc source %
-
-" I like this colors
-colorscheme desert
-
 " Temporary for pathogen load
 filetype off
 
@@ -16,6 +10,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 filetype on           " Enable filetype detection
+
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
@@ -26,6 +21,9 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 set autoindent        " always set autoindenting on
+
+" Automatic reload of .vimrc file on save event.
+autocmd! bufwritepost .vimrc source %
 
 if has("gui_running")
   " GUI is running or is about to start.
@@ -43,7 +41,7 @@ else
     set lines=50
   endif
   if exists("+columns")
-    set columns=100
+    set columns=160
   endif
 endif
 
@@ -51,6 +49,7 @@ endif
 let mapleader="ù"
 
 " Don't put the Vim SwaP files in the same place as the edited files.
+" ... if activated of course.
 if has("win32") || has("win64")
    set directory=$TMP
    set undodir=$TMP
@@ -62,10 +61,10 @@ else
    set backupskip=/tmp/*
 end 
 
-set backup
+set nobackup
 set history=100
-set writebackup
-set swapfile
+set nowritebackup
+set noswapfile
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -84,6 +83,10 @@ set tabstop=4
 set expandtab
 set softtabstop=4
 set textwidth=79
+" Show the line where the cursor is
+set cursorline
+" Show the mode
+set showmode
 
 " Show  tab characters. Visual Whitespace.
 "set list
@@ -117,6 +120,24 @@ if has("multi_byte")
 else
  echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
 endif
+
+" I like this colors
+colorscheme desert
+
+" Small tweak for terminal mode.
+highlight Search ctermbg=8 ctermfg=11
+highlight Visual ctermbg=3 ctermfg=1
+highlight CursorLine ctermbg=236 cterm=NONE term=NONE
+highlight CursorLineNr ctermbg=236 ctermfg=240
+highlight Cursor ctermbg=11 ctermfg=11
+highlight LineNr ctermbg=240 ctermfg=0
+
+" highlight the status bar when in insert mode
+if version >= 700
+  au InsertEnter * hi StatusLine ctermfg=235 ctermbg=5
+  au InsertLeave * hi StatusLine ctermbg=2 ctermfg=235
+endif
+
 
 " ============================================================================
 " OVERRIDE PER FILTE TYPE
