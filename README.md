@@ -103,3 +103,11 @@ Hereafter is the list of the plugins I use.
 * Tracking undo done on a file with Gundo
 
         git clone https://github.com/vim-scripts/Gundo.git
+
+* Integration of the Silver Searcher:
+
+        git clone https://github.com/vim-scripts/ag.vim.git
+
+* A cool plugin to display the colors inside vim.
+
+        git clone https://github.com/chrishunt/xterm-color-table.vim.git

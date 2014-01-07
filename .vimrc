@@ -116,7 +116,7 @@ if version >= 700
 endif
 
 " ============================================================================
-" OVERRIDE PER FILTE TYPE
+" OVERRIDE PER FILE TYPE
 " HTML (tab width 2 chr, no wrapping)
 autocmd FileType html set sw=2
 autocmd FileType html set ts=2
