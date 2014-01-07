@@ -25,26 +25,6 @@ set autoindent        " always set autoindenting on
 " Automatic reload of .vimrc file on save event.
 autocmd! bufwritepost .vimrc source %
 
-if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window.
-  set lines=60 columns=160
-  set mouse=a
-  " Remove menu bar
-  set guioptions-=m
-
-  " Remove toolbar
-  set guioptions-=T
-else
-  " This is console Vim.
-  if exists("+lines")
-    set lines=50
-  endif
-  if exists("+columns")
-    set columns=160
-  endif
-endif
-
 " Set <Leader> to 'ù' for my AZERTY keyboard.
 let mapleader="ù"
 
@@ -114,15 +94,20 @@ else
 endif
 
 " I like this colors
+set background=dark
 colorscheme desert
+"colorscheme base16-railscasts
 
 " Small tweak for terminal mode.
-highlight Search ctermbg=8 ctermfg=11
-highlight Visual ctermbg=3 ctermfg=1
+highlight Search ctermbg=243 ctermfg=11
+highlight Visual ctermbg=184 ctermfg=1
 highlight CursorLine ctermbg=236 cterm=NONE term=NONE
-highlight CursorLineNr ctermbg=236 ctermfg=240
+highlight CursorLineNr ctermbg=1 ctermfg=white
 highlight Cursor ctermbg=11 ctermfg=11
-highlight LineNr ctermbg=240 ctermfg=0
+highlight LineNr ctermbg=0 ctermfg=10
+highlight Pmenu ctermbg=240
+highlight PmenuSel ctermbg=100 ctermfg=190
+highlight SpellBad ctermbg=0 ctermfg=1
 
 " highlight the status bar when in insert mode
 if version >= 700
