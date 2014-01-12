@@ -1,0 +1,18 @@
+[core]
+	excludesfile = /Users/stac/.gitignore_global
+	editor = gvim
+[user]
+	name = Laurent Stacul
+	email = laurent.stacul@gmail.com
+[merge]
+	tool = gvimdiff
+[alias]
+	st = status
+	co = checkout
+	lol = log --pretty=oneline --abbrev-commit --graph --decorate
+[credential]
+	helper = cache
+[color]
+	ui = true
+[push]
+	default = simple
