@@ -1,7 +1,7 @@
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:~/bin
-export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default
 
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
