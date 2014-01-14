@@ -72,6 +72,19 @@ bind r source-file ~/.tmux.conf \; display "Reloaded!"
 unbind &
 bind w kill-window
 
+# Copy-mode in Vim style
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
+bind -t vi-copy 'v' begin-selection
+bind -t vi-copy 'y' copy-selection
+
+# Copy in the OS clipboard.
+# For Linux, install the "xclip" package.
+bind C-c run-shell "tmux show-buffer | xclip -i -sel clipboard"\; display-message "Copied Tmux buffer in OS clipboard"
+bind C-v run-shell "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
+
 ###########################
 # Status Bar
 ###########################

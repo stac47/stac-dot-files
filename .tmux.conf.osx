@@ -1,0 +1,107 @@
+###########################
+#  Configuration
+###########################
+
+# use 256 term for pretty colors
+set -g default-terminal "screen-256color"
+
+# increase scroll-back history
+set -g history-limit 5000
+
+# use vim key bindings
+setw -g mode-keys vi
+
+# disable mouse
+setw -g mode-mouse off
+
+# decrease command delay (increases vim responsiveness)
+set -sg escape-time 1
+
+# increase repeat time for repeatable commands
+set -g repeat-time 1000
+
+# start window index at 1
+set -g base-index 1
+
+# start pane index at 1
+setw -g pane-base-index 1
+
+# highlight window when it has new activity
+setw -g monitor-activity on
+set -g visual-activity on
+
+# re-number windows when one is closed
+set -g renumber-windows on
+
+###########################
+#  Key Bindings
+###########################
+
+# tmux prefix
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+
+# Panels movements as Vim controls
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Windows movements
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+
+# resize panes
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# Splitting panes (look like Vim)
+unbind %
+unbind '"'
+bind s split-window -v
+bind v split-window -h
+
+# force a reload of the config file
+unbind r
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+# Close current window
+unbind &
+bind w kill-window
+
+# Copy-mode in Vim style
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
+bind -t vi-copy 'v' begin-selection
+bind -t vi-copy 'y' copy-selection
+
+# Copy in the OS clipboard.
+# For Linux, install the "xclip" package.
+bind C-c run-shell "tmux show-buffer | xclip -i -sel clipboard"\; display-message "Copied Tmux buffer in OS clipboard"
+bind C-v run-shell "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
+
+###########################
+# Status Bar
+###########################
+
+# enable UTF-8 support in status bar
+set -g status-utf8 on
+
+# set refresh interval for status bar
+set -g status-interval 30
+
+# center the status bar
+set -g status-justify left
+
+###########################
+# Colors
+###########################
+
+# highlight current window
+set-window-option -g window-status-current-fg black
+set-window-option -g window-status-current-bg green
