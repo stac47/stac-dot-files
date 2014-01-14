@@ -2,6 +2,10 @@
 #  Configuration
 ###########################
 
+# First thing is to install reattach-to-user-namespace
+# $ brew install reattach-to-user-namespace
+set-option -g default-command "reattach-to-user-namespace -l bash"
+
 # use 256 term for pretty colors
 set -g default-terminal "screen-256color"
 
@@ -81,9 +85,8 @@ bind -t vi-copy 'v' begin-selection
 bind -t vi-copy 'y' copy-selection
 
 # Copy in the OS clipboard.
-# For Linux, install the "xclip" package.
-bind C-c run-shell "tmux show-buffer | xclip -i -sel clipboard"\; display-message "Copied Tmux buffer in OS clipboard"
-bind C-v run-shell "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
+# No need of special keystroke to paste. On Mac OS X we can use cmd+v.
+bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 
 ###########################
 # Status Bar
