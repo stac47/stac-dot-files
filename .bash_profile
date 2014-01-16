@@ -29,4 +29,10 @@ else
     echo "This is an unknown OS."
 fi
 
+if [[ "$TERM" != "screen-256color" ]]
+then
+    tmux attach-session -t "$USER" || tmux new-session -s "$USER"
+    exit
+fi
+
 echo "Welcome my lord"

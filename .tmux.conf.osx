@@ -101,10 +101,16 @@ set -g status-interval 30
 # center the status bar
 set -g status-justify left
 
+# Adding the battery level on the right of status bar
+set -g status-right " #H | #(~/battery) | %d %b %R"
+
+# Setting the session:windows.pane on the left
+set -g status-left "[#S:#I.#P]"
+
 ###########################
 # Colors
 ###########################
 
 # highlight current window
 set-window-option -g window-status-current-fg black
-set-window-option -g window-status-current-bg green
+set-window-option -g window-status-current-bg red

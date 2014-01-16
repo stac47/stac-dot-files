@@ -34,6 +34,7 @@ Finally, simply symlink all the files you need:
     ln -s ~/.stac-dot-files/.gitignore_global ~/.gitignore_global
     ln -s ~/.stac-dot-files/.vimrc ~/.vimrc
     ln -s ~/.stac-dot-files/.vim ~/.vim
+    ln -s ~/.stac-dot-files/scripts/battery/bin/battery ~/battery
 
 Regarding tmux, as it is a bit more difficult to copy to the Mac OSX clipboard,
 we have two choices of ".tmux.conf" file:
