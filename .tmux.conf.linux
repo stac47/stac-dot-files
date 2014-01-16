@@ -82,8 +82,11 @@ bind -t vi-copy 'y' copy-selection
 
 # Copy in the OS clipboard.
 # For Linux, install the "xclip" package.
-bind C-c run-shell "tmux show-buffer | xclip -i -sel clipboard"\; display-message "Copied Tmux buffer in OS clipboard"
-bind C-v run-shell "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
+unbind C-c
+unbind C-v
+#bind C-c run "tmux show-buffer | xclip -sel clip -i" \; display "Copied Tmux buffer in OS clipboard"
+bind C-y run  "tmux save-buffer - | xclip -i" \; display "Copied Tmux buffer in OS clipboard"
+bind C-v run "tmux set-buffer \"$(xclip -o -sel clip)\"; tmux paste-buffer"
 
 ###########################
 # Status Bar
