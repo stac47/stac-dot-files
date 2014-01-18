@@ -238,8 +238,8 @@ endfunction
 " K E Y   M A P P I N G S
 
 " Buffers
-map <Leader><Left> :bprevious!<CR>
-map <Leader><Right> :bnext!<CR>
+nmap <silent> <S-Tab> :MBEbp<CR>
+nmap <silent> <Tab> :MBEbn<CR>
 "map <F2> :NERDTreeToggle<CR>
 
 " Xml Pretty Print
@@ -285,6 +285,9 @@ let g:vim_markdown_folding_disabled=1
 if executable("ag")
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
+" minibuffexpl.vim
+let g:miniBufExplCycleArround = 1
 
 " E N D   P L U G I N S 
 " ************************************************************************

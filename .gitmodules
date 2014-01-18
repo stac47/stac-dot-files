@@ -28,3 +28,6 @@
 [submodule "scripts/battery"]
 	path = scripts/battery
 	url = https://github.com/richo/battery.git
+[submodule ".vim/bundle/minibufexpl.vim"]
+	path = .vim/bundle/minibufexpl.vim
+	url = https://github.com/fholgado/minibufexpl.vim.git

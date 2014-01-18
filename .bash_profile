@@ -17,6 +17,7 @@ alias ll='ls -l'
 alias psmy='ps -fu $USER | sort | egrep -v "ps -fu|sort|grep"'
 # Always 256 colors
 alias tmux='tmux -2'
+alias grep='grep --color'
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
