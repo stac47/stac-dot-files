@@ -32,6 +32,7 @@ Finally, simply symlink all the files you need:
     ln -s ~/.stac-dot-files/.bash_logout ~/.bash_logout
     ln -s ~/.stac-dot-files/.gitconfig ~/.gitconfig
     ln -s ~/.stac-dot-files/.gitignore_global ~/.gitignore_global
+    ln -s ~/.stac-dot-files/.irbrc ~/.irbrc
     ln -s ~/.stac-dot-files/.vimrc ~/.vimrc
     ln -s ~/.stac-dot-files/.vim ~/.vim
     ln -s ~/.stac-dot-files/scripts/battery/bin/battery ~/battery
