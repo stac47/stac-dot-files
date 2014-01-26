@@ -28,7 +28,7 @@ autocmd! bufwritepost .vimrc source %
 " Set <Leader> to 'ù' for my AZERTY keyboard.
 let mapleader="ù"
 
-" Don't put the Vim SwaP files in the same place as the edited files.
+" Don't put the Vim Swap files in the same place as the edited files.
 " ... if activated of course.
 if has("win32") || has("win64")
    set directory=$TMP
@@ -42,7 +42,7 @@ else
 end 
 
 set nobackup
-set history=100
+set history=500
 set nowritebackup
 set noswapfile
 
