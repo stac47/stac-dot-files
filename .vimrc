@@ -103,7 +103,7 @@ highlight Search ctermbg=243 ctermfg=11
 highlight Visual ctermbg=184 ctermfg=1
 highlight CursorLine ctermbg=236 cterm=NONE term=NONE
 highlight CursorLineNr ctermbg=1 ctermfg=white
-highlight Cursor ctermbg=11 ctermfg=11
+highlight Cursor ctermbg=225 ctermfg=225
 highlight LineNr ctermbg=0 ctermfg=10
 highlight Pmenu ctermbg=240
 highlight PmenuSel ctermbg=100 ctermfg=190
@@ -238,8 +238,8 @@ endfunction
 " K E Y   M A P P I N G S
 
 " Buffers
-nmap <silent> <S-Tab> :MBEbp<CR>
-nmap <silent> <Tab> :MBEbn<CR>
+nmap <silent> <S-Tab> :MBEbn<CR>
+"nmap <silent> <Tab> :MBEbp<CR>
 "map <F2> :NERDTreeToggle<CR>
 
 " Xml Pretty Print
@@ -247,14 +247,14 @@ nnoremap <F6> :call PrettyXml()<CR>
 nnoremap <F7> :call ValidateXml()<CR>
 
 " Gundo
-nmap <F5> :GundoToggle<CR>
+nmap <F2> :GundoToggle<CR>
 
 " Up and Down arrows mapping
 imap <Up> gk
 imap <Down> gj
 
 " Call make with <Ctrl> + F11
-map <C-F11> :make %<CR>
+map <F3> :make %<CR>
 
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
