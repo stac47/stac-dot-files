@@ -30,21 +30,15 @@ let mapleader="ù"
 
 " Don't put the Vim Swap files in the same place as the edited files.
 " ... if activated of course.
-if has("win32") || has("win64")
-   set directory=$TMP
-   set undodir=$TMP
-   set backupdir=$TMP
-else
-   set directory=~/.vim/tmp/swap//
-   set undodir=~/.vim/tmp/undo//
-   set backupdir=~/.vim/tmp/backup//
-   set backupskip=/tmp/*
-end 
+set directory=$TMP
+set undodir=$TMP
+set backupdir=$TMP
+set backupskip=$TMP
 
-set nobackup
+" set nobackup
 set history=500
-set nowritebackup
-set noswapfile
+" set nowritebackup
+" set noswapfile
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -96,7 +90,6 @@ endif
 " I like this colors
 set background=dark
 colorscheme desert
-"colorscheme base16-railscasts
 
 " Small tweak for terminal mode.
 highlight Search ctermbg=243 ctermfg=11
@@ -168,7 +161,7 @@ function! AddRubyHeader()
 python << EOF
 import vim
 from datetime import date
-header =  "#!/usr/bin/ruby -w\n"
+header =  "#!/usr/bin/env ruby -w\n"
 header += "# vi:set fileencoding=utf-8 :\n"
 header += "#\n"
 header += "# Created on %s\n" % (date.today().isoformat())
