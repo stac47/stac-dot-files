@@ -40,10 +40,10 @@ set undodir=temp_dir
 set backupdir=temp_dir
 set backupskip=temp_dir
 
-" set nobackup
+set nobackup
 set history=500
-" set nowritebackup
-" set noswapfile
+set nowritebackup
+set noswapfile
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
