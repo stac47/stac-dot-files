@@ -30,10 +30,15 @@ let mapleader="ù"
 
 " Don't put the Vim Swap files in the same place as the edited files.
 " ... if activated of course.
-set directory=$TMP
-set undodir=$TMP
-set backupdir=$TMP
-set backupskip=$TMP
+if has("win32") || has("win64")
+    let temp_dir = $TMP
+else
+    let temp_dir = $TMPDIR
+end
+set directory=temp_dir
+set undodir=temp_dir
+set backupdir=temp_dir
+set backupskip=temp_dir
 
 " set nobackup
 set history=500
