@@ -254,6 +254,9 @@ imap <Down> gj
 " Call make with <Ctrl> + F11
 map <F3> :make %<CR>
 
+" Redraw the screen after removing the highlight search elements
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
 
