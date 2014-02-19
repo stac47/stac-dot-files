@@ -81,6 +81,12 @@ set laststatus=2
 set showmatch
 " allow tilde (~) to act as an operator -- ~w, etc.
 set notildeop
+
+" Avoid looking for some known binaries files
+set wildignore+=*.o,*.so,*.swp,*.zip,*.class,*.exe
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
+set wildignore+=*\\.git\\*,*\\.hg\\*,*\\.svn\\*  " Windows ('noshellslash')
+
 " File encoding set to UTF-8
 if has("multi_byte")
  set encoding=utf-8
@@ -235,24 +241,20 @@ endfunction
 " ************************************************************************
 " K E Y   M A P P I N G S
 
-" Buffers
-nmap <silent> <S-Tab> :MBEbn<CR>
-"nmap <silent> <Tab> :MBEbp<CR>
-"map <F2> :NERDTreeToggle<CR>
+" Gundo
+nmap <F2> :GundoToggle<CR>
+
+" Moving between buffers
+nnoremap <F3> :MBEbp<CR>
+nnoremap <F4> :MBEbn<CR>
 
 " Xml Pretty Print
 nnoremap <F6> :call PrettyXml()<CR>
 nnoremap <F7> :call ValidateXml()<CR>
 
-" Gundo
-nmap <F2> :GundoToggle<CR>
-
 " Up and Down arrows mapping
-imap <Up> gk
-imap <Down> gj
-
-" Call make with <Ctrl> + F11
-map <F3> :make %<CR>
+nnoremap <Up> gk
+nnoremap <Down> gj
 
 " Redraw the screen after removing the highlight search elements
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
@@ -269,7 +271,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 " NERDTree end.
 
 " python-mode
-" Disable python folding
+" Disable folding in python
 let g:pymode_folding = 0
 
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
@@ -277,18 +279,30 @@ let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 let pymode_rope_extended_complete=1
 let pymode_rope_vim_completion=1
 let pymode_rope_guess_project=0
-" End python-mode
+" End of python-mode
 
-" vim-markdown plugin
+" vim-markdown plugin: no folding
 let g:vim_markdown_folding_disabled=1
 
+" Ctrlp
+" Activate caching in ~/.cache/ctrlp
+let g:ctrlp_use_caching=1
+" Not removing the cache on exit
+let g:ctrlp_clear_cache_on_exit=0
+" Use the WD where vim was opened
+let g:ctrlp_working_path_mode='rw'
+" Display of propositions
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
 " Using ag with ctrlp if ag is available
 if executable("ag")
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+" End of Ctrlp
 
 " minibuffexpl.vim
+" Cycle on the buffers.
 let g:miniBufExplCycleArround = 1
+" End ofminibuffexpl.vim
 
 " E N D   P L U G I N S 
 " ************************************************************************
