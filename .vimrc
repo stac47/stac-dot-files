@@ -249,8 +249,11 @@ nnoremap <F3> :MBEbp<CR>
 nnoremap <F4> :MBEbn<CR>
 
 " Xml Pretty Print
-nnoremap <F6> :call PrettyXml()<CR>
-nnoremap <F7> :call ValidateXml()<CR>
+nnoremap <F5> :call PrettyXml()<CR>
+nnoremap <F6> :call ValidateXml()<CR>
+
+" Disable autoindent on the current file
+nnoremap <F7> :setl noai nocin nosi inde=<CR>
 
 " Up and Down arrows mapping
 nnoremap <Up> gk
@@ -303,6 +306,10 @@ endif
 " Cycle on the buffers.
 let g:miniBufExplCycleArround = 1
 " End ofminibuffexpl.vim
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+" End of YouCompleteMe
 
 " E N D   P L U G I N S 
 " ************************************************************************
