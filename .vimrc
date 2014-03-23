@@ -158,7 +158,7 @@ function! AddPythonHeader()
 python << EOF
 import vim
 from datetime import date
-header = "#!/usr/bin/python3\n"
+header = "#!/usr/bin/env python3\n"
 header += "# vi:set fileencoding=utf-8 :\n\n"
 header += "\"\"\"\n"
 header += "Created on %s\n\n" % (date.today().isoformat())
