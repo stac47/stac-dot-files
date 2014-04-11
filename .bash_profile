@@ -13,6 +13,10 @@ export PIP_REQUIRE_VIRTUALENV=true
 # cache pip-installed packages to avoid re-downloading
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
+syspip(){
+   PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
+
 alias ls='ls -GFh'
 alias ll='ls -l'
 alias psmy='ps -fu $USER | sort | egrep -v "ps -fu|sort|grep"'
