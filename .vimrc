@@ -136,9 +136,9 @@ autocmd FileType css set textwidth=79
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 " JavaScript (tab width 4 chr, wrap at 79th)
-autocmd FileType javascript set sw=4
-autocmd FileType javascript set ts=4
-autocmd FileType javascript set sts=4
+autocmd FileType javascript set sw=2
+autocmd FileType javascript set ts=2
+autocmd FileType javascript set sts=2
 autocmd FileType javascript set textwidth=79
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
@@ -261,6 +261,7 @@ nnoremap <Down> gj
 
 " Redraw the screen after removing the highlight search elements
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <F8> :%!python -m json.tool<CR>:w<CR>
 
 " E N D    K E Y  M A P P I N G
 " ************************************************************************

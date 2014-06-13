@@ -1,6 +1,7 @@
 [core]
 	excludesfile = /Users/stac/.gitignore_global
 	editor = gvim
+	autocrlf = input
 [user]
 	name = Laurent Stacul
 	email = laurent.stacul@gmail.com
