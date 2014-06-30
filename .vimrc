@@ -277,12 +277,14 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 " python-mode
 " Disable folding in python
 let g:pymode_folding = 0
+" let g:pymode_python = 'python3'
 
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
-let pymode_rope_extended_complete=1
-let pymode_rope_vim_completion=1
-let pymode_rope_guess_project=0
+let g:pymode_rope_extended_complete = 1
+let g:pymode_rope_vim_completion = 1
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_guess_project = 0
 " End of python-mode
 
 " vim-markdown plugin: no folding
@@ -307,11 +309,6 @@ endif
 " Cycle on the buffers.
 let g:miniBufExplCycleArround = 1
 " End ofminibuffexpl.vim
-
-" YouCompleteMe
-let g:ycm_auto_trigger=0
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-" End of YouCompleteMe
 
 " E N D   P L U G I N S 
 " ************************************************************************
