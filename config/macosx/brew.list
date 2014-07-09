@@ -1,6 +1,5 @@
 alpine
 ant
-apple-gcc42
 atk
 atkmm
 autoconf
@@ -15,8 +14,6 @@ brew-cask
 cairo
 cairomm
 cloog
-cloog-ppl015
-cloog018
 cmake
 cmus
 cowsay
@@ -28,8 +25,6 @@ feh
 flac
 fontconfig
 freetype
-gcc
-gcc46
 gdbm
 gdk-pixbuf
 geoip
@@ -40,8 +35,6 @@ git
 glib
 glibmm
 gmp
-gmp4
-gnu-chess
 gnutls
 gobject-introspection
 gsl
@@ -56,7 +49,6 @@ imlib2
 intltool
 irssi
 isl
-isl011
 jpeg
 lame
 libao
@@ -68,7 +60,6 @@ libgcrypt
 libgpg-error
 libksba
 libmpc
-libmpc08
 libogg
 libpng
 libsigc++
@@ -87,20 +78,16 @@ mercurial
 midnight-commander
 mp4v2
 mpfr
-mpfr2
 mplayer
 nettle
 node
-open-tyrian
 openssl
-openssl098
 pango
 pangomm
 pcre
 pixman
 pkg-config
 popt
-ppl011
 python
 python3
 ranger
