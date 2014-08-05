@@ -121,28 +121,34 @@ endif
 
 " ============================================================================
 " OVERRIDE PER FILE TYPE
-" HTML (tab width 2 chr, no wrapping)
+" HTML
 autocmd FileType html set sw=2
 autocmd FileType html set ts=2
 autocmd FileType html set sts=2
 autocmd FileType html set textwidth=0
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-" CSS (tab width 2 chr, wrap at 79th char)
+" CSS
 autocmd FileType css set sw=2
 autocmd FileType css set ts=2
 autocmd FileType css set sts=2
 autocmd FileType css set textwidth=79
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-" JavaScript (tab width 4 chr, wrap at 79th)
+" JavaScript
 autocmd FileType javascript set sw=2
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
 autocmd FileType javascript set textwidth=79
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-" Ruby (tab width 2 chr, wrap at 79th)
+" APT Maven Site format
+autocmd FileType apt set sw=2
+autocmd FileType apt set ts=2
+autocmd FileType apt set sts=2
+autocmd FileType apt set textwidth=79
+
+" Ruby
 autocmd FileType ruby,eruby set sw=2
 autocmd FileType ruby,eruby set ts=2
 autocmd FileType ruby,eruby set sts=2
