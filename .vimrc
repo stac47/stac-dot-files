@@ -128,6 +128,13 @@ autocmd FileType html set sts=2
 autocmd FileType html set textwidth=0
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
+" Django Html template
+autocmd FileType htmldjango set sw=2
+autocmd FileType htmldjango set ts=2
+autocmd FileType htmldjango set sts=2
+autocmd FileType htmldjango set textwidth=0
+autocmd FileType htmldjango set omnifunc=htmlcomplete#CompleteTags
+
 " CSS
 autocmd FileType css set sw=2
 autocmd FileType css set ts=2
