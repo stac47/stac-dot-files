@@ -6,7 +6,7 @@
 	name = Laurent Stacul
 	email = laurent.stacul@gmail.com
 [merge]
-	tool = gvimdiff
+	tool = vimdiff
 [alias]
 	st = status
 	co = checkout
