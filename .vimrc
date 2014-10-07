@@ -14,6 +14,8 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
+let mapleader="-"
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
@@ -24,9 +26,6 @@ set autoindent        " always set autoindenting on
 
 " Automatic reload of .vimrc file on save event.
 autocmd! bufwritepost .vimrc source %
-
-" Set <Leader> to 'ù' for my AZERTY keyboard.
-let mapleader="ù"
 
 " Don't put the Vim Swap files in the same place as the edited files.
 " ... if activated of course.
@@ -254,19 +253,16 @@ endfunction
 " ************************************************************************
 " K E Y   M A P P I N G S
 
-" Gundo
-nmap <F2> :GundoToggle<CR>
-
 " Moving between buffers
-nnoremap <F3> :MBEbp<CR>
-nnoremap <F4> :MBEbn<CR>
+nnoremap <F2> :MBEbp<CR>
+nnoremap <F3> :MBEbn<CR>
 
 " Xml Pretty Print
-nnoremap <F5> :call PrettyXml()<CR>
-nnoremap <F6> :call ValidateXml()<CR>
-
-" Disable autoindent on the current file
-nnoremap <F7> :setl noai nocin nosi inde=<CR>
+nnoremap <F4> :cscope find c <C-r><C-w><CR>
+nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <F6> :TagbarToggle<CR>
+nnoremap <F7> :call PrettyXml()<CR>
+nnoremap <F8> :%!python -m json.tool<CR>:w<CR>
 
 " Up and Down arrows mapping
 nnoremap <Up> gk
@@ -274,7 +270,6 @@ nnoremap <Down> gj
 
 " Redraw the screen after removing the highlight search elements
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-nnoremap <F8> :%!python -m json.tool<CR>:w<CR>
 
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
@@ -288,7 +283,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 " NERDTree end.
 
 " python-mode
-" Disable folding in python
+" Enable folding in python
 let g:pymode_folding = 0
 " let g:pymode_python = 'python3'
 
