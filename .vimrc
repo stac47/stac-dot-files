@@ -271,6 +271,9 @@ nnoremap <Down> gj
 " Redraw the screen after removing the highlight search elements
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
+" Mapping with leader
+nnoremap <leader>r :NERDTreeFind<cr>
+
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
 
