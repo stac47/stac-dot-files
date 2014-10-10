@@ -180,21 +180,7 @@ vim.current.buffer[:] = header.split("\n") + vim.current.buffer[:]
 EOF
 endfunction
 
-function! AddRubyHeader()
-python << EOF
-import vim
-from datetime import date
-header =  "#!/usr/bin/env ruby -w\n"
-header += "# vi:set fileencoding=utf-8 :\n"
-header += "#\n"
-header += "# Created on %s\n" % (date.today().isoformat())
-header += "#\n"
-header += "# @author : Laurent Stacul\n\n"
-vim.current.buffer[:] = header.split("\n") + vim.current.buffer[:]
-EOF
-endfunction
 "================XML==========================
-
 " Folding feature activated for XML
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
@@ -259,7 +245,7 @@ nnoremap <F3> :MBEbn<CR>
 
 " Xml Pretty Print
 nnoremap <F4> :cscope find c <C-r><C-w><CR>
-nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <F5> :NERDTreeCWD<CR>
 nnoremap <F6> :TagbarToggle<CR>
 nnoremap <F7> :call PrettyXml()<CR>
 nnoremap <F8> :%!python -m json.tool<CR>:w<CR>
@@ -280,6 +266,21 @@ nnoremap <leader>r :NERDTreeFind<cr>
 " ************************************************************************
 " P L U G I N S 
 
+" Cscope settings
+if has("cscope")
+    set csto=1
+    set cst
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+" End of Cscope configuration
+
 " NERDTree
 " To hide some files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
@@ -288,8 +289,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 " python-mode
 " Enable folding in python
 let g:pymode_folding = 0
-" let g:pymode_python = 'python3'
-
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 let g:pymode_rope_extended_complete = 1
@@ -309,11 +308,14 @@ let g:ctrlp_clear_cache_on_exit=0
 " Use the WD where vim was opened
 let g:ctrlp_working_path_mode='rw'
 " Display of propositions
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
+let g:ctrlp_match_window='bottom,order:btt,min:1,max:10,results:20'
 " Using ag with ctrlp if ag is available
 if executable("ag")
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command='ag %s -l --nocolor --follow -g ""'
 endif
+" Follow the symbolic links in case ag not available on this system
+let g:ctrlp_follow_symlinks=2
 " End of Ctrlp
 
 " minibuffexpl.vim
