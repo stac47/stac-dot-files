@@ -245,7 +245,7 @@ nnoremap <F3> :MBEbn<CR>
 
 " Xml Pretty Print
 nnoremap <F4> :cscope find c <C-r><C-w><CR>
-nnoremap <F5> :NERDTreeCWD<CR>
+nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :TagbarToggle<CR>
 nnoremap <F7> :call PrettyXml()<CR>
 nnoremap <F8> :%!python -m json.tool<CR>:w<CR>
@@ -311,7 +311,8 @@ let g:ctrlp_working_path_mode='rw'
 let g:ctrlp_match_window='bottom,order:btt,min:1,max:10,results:20'
 " Using ag with ctrlp if ag is available
 if executable("ag")
-  set grepprg=ag\ --nogroup\ --nocolor
+  let g:agprg="ag --follow --column"
+  set grepprg=ag\ --nogroup\ --nocolor\ --follow
   let g:ctrlp_user_command='ag %s -l --nocolor --follow -g ""'
 endif
 " Follow the symbolic links in case ag not available on this system
