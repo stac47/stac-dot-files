@@ -104,13 +104,14 @@ bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 set -g status-utf8 on
 
 # set refresh interval for status bar
-set -g status-interval 30
+set -g status-interval 2
 
 # center the status bar
 set -g status-justify centre
 
 # Adding the battery level on the right of status bar
-set -g status-right " #H | #(~/battery) | %d %b %R"
+set -g status-right-length 100
+set -g status-right " #H | #(tmux-mem-cpu-load 2) | #(~/battery) | %d %b %R"
 
 # Setting the session:windows.pane on the left
 set -g status-left "[#S:#I.#P]"
