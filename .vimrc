@@ -295,6 +295,8 @@ let g:pymode_rope_extended_complete = 1
 let g:pymode_rope_vim_completion = 1
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_guess_project = 0
+let g:pymode_virtualenv = 1
+let g:pymode_lint_on_write = 1
 " End of python-mode
 
 " vim-markdown plugin: no folding
