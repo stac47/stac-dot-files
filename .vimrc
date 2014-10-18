@@ -165,8 +165,31 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby compiler ruby
 " ============================================================================
 
-" A function to add my python headers
-function! AddPythonHeader()
+" C++ support
+function! CppInsertGates()
+  let gatename = "__" . substitute(toupper(expand("%:t")), "\\.", "_", "g") . "__"
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o#define " . gatename . " "
+  execute "normal! Go#endif /* " . gatename . " */"
+  normal! kk
+endfunction
+
+function! CppAddHeader()
+python << EOF
+import vim
+from datetime import date
+header  = "//******************************************************************************\n"
+header += "/**\n"
+header += "    \Author                    lstacul\n"
+header += "    \Creation date             %s\n\n"
+header += "*******************************************************************************/\n"
+vim.current.buffer[:] = header.split("\n") + vim.current.buffer[:]
+EOF
+endfunction
+" ============================================================================
+
+" Python support
+function! PythonAddHeader()
 python << EOF
 import vim
 from datetime import date
@@ -189,7 +212,7 @@ au FileType xml setlocal foldmethod=syntax
 au FileType xml setlocal foldlevel=999999
 
 " Python function to validate a XML file (faster than vim script)
-function! ValidateXml()
+function! XmlValidate()
 py << EOF
 import vim
 import re
@@ -209,7 +232,7 @@ EOF
 endfunction
 
 " Python function to pretty print an XML
-function! PrettyXml()
+function! s:XmlPretty()
 py << EOF
 import vim
 import re
@@ -247,7 +270,7 @@ nnoremap <F3> :MBEbn<CR>
 nnoremap <F4> :cscope find c <C-r><C-w><CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :TagbarToggle<CR>
-nnoremap <F7> :call PrettyXml()<CR>
+nnoremap <F7> :call <SID>PrettyXml()<CR>
 nnoremap <F8> :%!python -m json.tool<CR>:w<CR>
 
 " Up and Down arrows mapping
@@ -282,14 +305,11 @@ endif
 " End of Cscope configuration
 
 " NERDTree
-" To hide some files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 " NERDTree end.
 
 " python-mode
-" Enable folding in python
 let g:pymode_folding = 0
-" Switch pylint, pyflakes, pep8, mccabe code-checkers
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 let g:pymode_rope_extended_complete = 1
 let g:pymode_rope_vim_completion = 1
@@ -314,7 +334,8 @@ let g:ctrlp_match_window='bottom,order:btt,min:1,max:10,results:20'
 " Using ag with ctrlp if ag is available
 if executable("ag")
   let g:agprg="ag --follow --column"
-  set grepprg=ag\ --nogroup\ --nocolor\ --follow
+  set grepprg=ag\ --vimgrep\ --nocolor\ $*
+  set grepformat=%f:%l:%c:%m
   let g:ctrlp_user_command='ag %s -l --nocolor --follow -g ""'
 endif
 " Follow the symbolic links in case ag not available on this system
@@ -325,6 +346,10 @@ let g:ctrlp_follow_symlinks=2
 " Cycle on the buffers.
 let g:miniBufExplCycleArround = 1
 " End ofminibuffexpl.vim
+
+" Syntastic
+let g:syntastic_cpp_include_dirs = [ 'include', 'src' ]
+" End of Syntastic
 
 " E N D   P L U G I N S 
 " ************************************************************************

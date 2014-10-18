@@ -1,0 +1,10 @@
+cscope.*
+tags
+*.d
+lib
+links
+obj
+bin
+log
+logs
+bmstmp
