@@ -47,3 +47,4 @@ fi
 
 cowsay "Welcome my lord"
 alias dev='cd ~;source virtualenvs/roomies-env/bin/activate;cd development/django-myroomies'
+export PATH=/usr/local/sbin:$PATH
