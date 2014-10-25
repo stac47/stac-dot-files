@@ -154,6 +154,13 @@ autocmd FileType apt set ts=2
 autocmd FileType apt set sts=2
 autocmd FileType apt set textwidth=79
 
+" C++
+autocmd FileType cpp set sw=4
+autocmd FileType cpp set ts=4
+autocmd FileType cpp set sts=4
+autocmd FileType cpp set textwidth=79
+autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
+
 " Ruby
 autocmd FileType ruby,eruby set sw=2
 autocmd FileType ruby,eruby set ts=2
@@ -178,11 +185,13 @@ function! CppAddHeader()
 python << EOF
 import vim
 from datetime import date
-header  = "//******************************************************************************\n"
-header += "/**\n"
-header += "    \Author                    lstacul\n"
-header += "    \Creation date             %s\n\n"
-header += "*******************************************************************************/\n"
+header  = "/******************************************************************************\n"
+header += " *\n"
+header += " * @author: lstacul\n"
+header += " * @date: %s\n" % (date.today().isoformat())
+header += " * @description: \n"
+header += " *\n"
+header += " ******************************************************************************/\n"
 vim.current.buffer[:] = header.split("\n") + vim.current.buffer[:]
 EOF
 endfunction
@@ -348,7 +357,7 @@ let g:miniBufExplCycleArround = 1
 " End ofminibuffexpl.vim
 
 " Syntastic
-let g:syntastic_cpp_include_dirs = [ 'include', 'src' ]
+let g:syntastic_cpp_include_dirs = ['include', 'src']
 " End of Syntastic
 
 " E N D   P L U G I N S 

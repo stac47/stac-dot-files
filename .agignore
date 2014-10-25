@@ -1,6 +1,7 @@
 cscope.*
 tags
 *.d
+*.log
 lib
 links
 obj
