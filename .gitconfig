@@ -1,6 +1,6 @@
 [core]
 	excludesfile = /Users/stac/.gitignore_global
-	editor = gvim
+	editor = vim
 	autocrlf = input
 [user]
 	name = Laurent Stacul
