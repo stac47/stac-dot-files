@@ -2,6 +2,8 @@ cscope.*
 tags
 *.d
 *.log
+*.o
+*.mk
 lib
 links
 obj

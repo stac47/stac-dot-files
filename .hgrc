@@ -8,7 +8,9 @@ pager = LESS='FRX' less
 [extensions]
 pager =
 color =
+purge =
 
 [ui]
 username = Laurent Stacul <laurent.stacul@gmail.com>
 merge = vimdiff
+ignore = ~/.hgignore
