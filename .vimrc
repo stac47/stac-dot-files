@@ -197,21 +197,6 @@ function! CppInsertGates()
   normal! kk
 endfunction
 
-function! CppAddHeader()
-python << EOF
-import vim
-from datetime import date
-header  = "/******************************************************************************\n"
-header += " *\n"
-header += " * @author: lstacul\n"
-header += " * @date: %s\n" % (date.today().isoformat())
-header += " * @description: \n"
-header += " *\n"
-header += " ******************************************************************************/\n"
-vim.current.buffer[:] = header.split("\n") + vim.current.buffer[:]
-EOF
-endfunction
-
 function! CppIndex()
     echom "File indexing started..."
     silent !find -L . -type f -print | grep -E '\.(c(pp)?|h)$' > cscope.files
@@ -317,7 +302,7 @@ nnoremap <Down> gj
 nnoremap <silent> <c-x> :nohlsearch<CR><c-l>
 
 " Mapping with leader
-nnoremap <leader>r :NERDTreeFind<cr>
+nnoremap <leader>c :MBEbw<CR>
 
 " Easy move between each window
 nnoremap <c-j> <c-w>j
@@ -384,6 +369,14 @@ let g:syntastic_cpp_include_dirs = ['include', 'src']
 let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
 let g:syntastic_python_checkers = ['pyflakes', 'python']
 " End of Syntastic
+
+" DoxygenToolkit
+let g:DoxygenToolkit_authorName="Laurent Stacul"
+let g:doxygentoolkit_commentType = "C++"
+let g:DoxygenToolkit_blockHeader = ""
+let g:DoxygenToolkit_blockFooter = ""
+
+" End of DoxygenToolkit
 
 " E N D   P L U G I N S 
 " ************************************************************************
