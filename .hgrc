@@ -9,6 +9,7 @@ pager = LESS='FRX' less
 pager =
 color =
 purge =
+histedit =
 
 [ui]
 username = Laurent Stacul <laurent.stacul@gmail.com>
