@@ -44,6 +44,12 @@ set history=500
 set nowritebackup
 set noswapfile
 
+" Activate folding by default
+set foldmethod=indent
+set foldlevel=99
+
+" Visual wrap activated my default
+set wrap
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 " show the cursor position all the time
@@ -127,6 +133,16 @@ autocmd FileType html set sts=2
 autocmd FileType html set textwidth=0
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
+" Python
+autocmd FileType python set sw=4
+autocmd FileType python set ts=4
+autocmd FileType python set sts=4
+autocmd FileType python set textwidth=79
+autocmd FileType python set sta
+autocmd FileType python set autoindent
+autocmd BufRead python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd BufWritePre python set normal m`:%s/\s\+$//e ``
+
 " Django Html template
 autocmd FileType htmldjango set sw=2
 autocmd FileType htmldjango set ts=2
@@ -185,19 +201,13 @@ function! CppInsertGates()
   normal! kk
 endfunction
 
-function! CppAddHeader()
-python << EOF
-import vim
-from datetime import date
-header  = "/******************************************************************************\n"
-header += " *\n"
-header += " * @author: lstacul\n"
-header += " * @date: %s\n" % (date.today().isoformat())
-header += " * @description: \n"
-header += " *\n"
-header += " ******************************************************************************/\n"
-vim.current.buffer[:] = header.split("\n") + vim.current.buffer[:]
-EOF
+function! CppIndex()
+    echom "File indexing started..."
+    silent !find -L . -type f -print | grep -E '\.(c(pp)?|h)$' > cscope.files
+    silent !cscope -b -q -i cscope.files
+    silent !ctags --recurse=yes .
+    redraw!
+    echom "File indexing finished"
 endfunction
 " ============================================================================
 
@@ -291,10 +301,18 @@ nnoremap <Up> gk
 nnoremap <Down> gj
 
 " Redraw the screen after removing the highlight search elements
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+" Remap CTRL-l to CTRL-x to be reused in windows navigation.
+" nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> <c-x> :nohlsearch<CR><c-l>
 
 " Mapping with leader
-nnoremap <leader>r :NERDTreeFind<cr>
+nnoremap <leader>c :MBEbw<CR>
+
+" Easy move between each window
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
 
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
@@ -320,17 +338,6 @@ endif
 " NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 " NERDTree end.
-
-" python-mode
-let g:pymode_folding = 0
-let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
-let g:pymode_rope_extended_complete = 1
-let g:pymode_rope_vim_completion = 1
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_rope_guess_project = 0
-let g:pymode_virtualenv = 1
-let g:pymode_lint_on_write = 1
-" End of python-mode
 
 " vim-markdown plugin: no folding
 let g:vim_markdown_folding_disabled=1
@@ -361,8 +368,19 @@ let g:miniBufExplCycleArround = 1
 " End ofminibuffexpl.vim
 
 " Syntastic
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_cpp_include_dirs = ['include', 'src']
+let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
+let g:syntastic_python_checkers = ['pyflakes', 'python']
 " End of Syntastic
+
+" DoxygenToolkit
+let g:DoxygenToolkit_authorName="Laurent Stacul"
+let g:doxygentoolkit_commentType = "C++"
+let g:DoxygenToolkit_blockHeader = ""
+let g:DoxygenToolkit_blockFooter = ""
+
+" End of DoxygenToolkit
 
 " E N D   P L U G I N S 
 " ************************************************************************
