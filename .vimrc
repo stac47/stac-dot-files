@@ -148,6 +148,10 @@ autocmd FileType javascript set sts=2
 autocmd FileType javascript set textwidth=79
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
+" Markdown
+autocmd FileType mkd set textwidth=79
+
+
 " APT Maven Site format
 autocmd FileType apt set sw=2
 autocmd FileType apt set ts=2
