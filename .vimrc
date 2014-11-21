@@ -176,7 +176,7 @@ autocmd FileType cpp set sw=4
 autocmd FileType cpp set ts=4
 autocmd FileType cpp set sts=4
 autocmd FileType cpp set textwidth=79
-autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
+"autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
 autocmd FileType cpp set foldmethod=syntax
 
 " Ruby
@@ -206,7 +206,7 @@ function! BuildIndex()
     echom "File indexing started..."
     silent !find -L . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py)$' > cscope.files
     silent !cscope -b -q -i cscope.files
-    silent !ctags --recurse=yes .
+    silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
     redraw!
     echom "File indexing finished"
 endfunction
@@ -354,7 +354,7 @@ let g:ctrlp_match_window='bottom,order:btt,min:1,max:10,results:20'
 " Using ag with ctrlp if ag is available
 if executable("ag")
   let g:agprg="ag --follow --column"
-  set grepprg=ag\ --vimgrep\ --nocolor\ $*
+  set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore\ 'tags'\ --ignore\ 'cscope.*'\ $*
   set grepformat=%f:%l:%c:%m
   let g:ctrlp_user_command='ag %s -l --nocolor --follow -g ""'
 endif
