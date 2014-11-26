@@ -350,7 +350,7 @@ let g:ctrlp_match_window='bottom,order:btt,min:1,max:10,results:20'
 " Using ag with ctrlp if ag is available
 if executable("ag")
   let g:agprg="ag --follow --column"
-  set grepprg=ag\ --vimgrep\ --nocolor\ $*
+  set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore\ 'tags'\ --ignore\ 'cscope.*'\ $*
   set grepformat=%f:%l:%c:%m
   let g:ctrlp_user_command='ag %s -l --nocolor --follow -g ""'
 endif
@@ -365,8 +365,18 @@ let g:miniBufExplCycleArround = 1
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open=0
+let g:syntastic_enable_signs=1
+let g:syntastic_aggregate_errors=1
+let g:syntastic_enable_balloons = 0
+let g:syntastic_cursor_column = 0
+
 let g:syntastic_cpp_include_dirs = ['include', 'src']
 let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
+let g:syntastic_cpp_check_header = 0
+let g:syntastic_cpp_auto_refresh_includes = 1
+let g:syntastic_cpp_remove_include_errors = 1
+
 let g:syntastic_python_checkers = ['pyflakes', 'python']
 " End of Syntastic
 
