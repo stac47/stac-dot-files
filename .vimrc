@@ -45,6 +45,7 @@ set nowritebackup
 set noswapfile
 
 " Activate folding by default
+set foldenable
 set foldmethod=indent
 set foldlevel=99
 
@@ -175,7 +176,8 @@ autocmd FileType cpp set sw=4
 autocmd FileType cpp set ts=4
 autocmd FileType cpp set sts=4
 autocmd FileType cpp set textwidth=79
-autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
+"autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
+autocmd FileType cpp set foldmethod=syntax
 
 " Ruby
 autocmd FileType ruby,eruby set sw=2
@@ -197,15 +199,17 @@ function! CppInsertGates()
   normal! kk
 endfunction
 
-function! CppIndex()
+" ============================================================================
+
+" Indexing a py|cpp project
+function! BuildIndex()
     echom "File indexing started..."
-    silent !find -L . -type f -print | grep -E '\.(c(pp)?|h)$' > cscope.files
+    silent !find -L . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py)$' > cscope.files
     silent !cscope -b -q -i cscope.files
-    silent !ctags --recurse=yes .
+    silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
     redraw!
     echom "File indexing finished"
 endfunction
-" ============================================================================
 
 " Python support
 function! PythonAddHeader()
