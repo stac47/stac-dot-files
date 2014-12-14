@@ -340,7 +340,7 @@ endif
 " End of Cscope configuration
 
 " NERDTree
-let NERDTreeIgnore=['\.pyc$', '\~$']
+let NERDTreeIgnore=['\.o', '\.pyc$', '\~$']
 " NERDTree end.
 
 " vim-markdown plugin: no folding
