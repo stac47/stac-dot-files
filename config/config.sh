@@ -13,6 +13,7 @@
 #      + .gitconfig
 #      + .irbrc
 #      + .vimrc
+#      + .gdbinit
 #      + scripts/battery/bin/battery
 #   - Symlink the following folder in $HOME folder
 #      + .vim
@@ -40,6 +41,7 @@ ln -s $DIR/.irbrc $HOME/.irbrc
 ln -s $DIR/.vimrc $HOME/.vimrc
 ln -sh $DIR/.vim $HOME/.vim
 ln -s $DIR/scripts/battery/bin/battery $HOME/battery
+ln -s $DIR/.gdbinit $HOME/.gdbinit
 
 if [[ $OSTYPE == darwin* ]] ; then
     echo "Mac OSX tmux config sopecial case."
