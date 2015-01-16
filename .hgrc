@@ -6,10 +6,13 @@ vimdiff.args = -d $base $local $output $other +close +close
 pager = LESS='FRX' less
 
 [extensions]
-pager =
-color =
+hgext.graphlog =
+rebase =
 purge =
-histedit =
+mq =
+color =
+pager =
+hgext.bookmarks =
 
 [ui]
 username = Laurent Stacul <laurent.stacul@gmail.com>
