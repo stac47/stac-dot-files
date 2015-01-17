@@ -108,7 +108,7 @@ endif
 set background=dark
 colorscheme desert
 
-" Small tweak for terminal mode.
+" Colors settings for terminal mode.
 highlight Search ctermbg=243 ctermfg=11
 highlight Visual ctermbg=184 ctermfg=1
 highlight CursorLine ctermbg=236 cterm=NONE term=NONE
@@ -118,6 +118,10 @@ highlight LineNr ctermbg=0 ctermfg=10
 highlight Pmenu ctermbg=240
 highlight PmenuSel ctermbg=100 ctermfg=190
 highlight SpellBad ctermbg=0 ctermfg=1
+
+" Highlight the tabs in any file (they should be banned).
+highlight ShowTab ctermbg=red guibg=red
+autocmd BufWinEnter * match ShowTab /\t/
 
 " highlight the status bar when in insert mode
 if version >= 700
@@ -182,6 +186,7 @@ autocmd FileType cpp set sts=4
 autocmd FileType cpp set textwidth=79
 "autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
 autocmd FileType cpp set foldmethod=syntax
+let c_space_errors=1
 
 " Ruby
 autocmd FileType ruby,eruby set sw=2
