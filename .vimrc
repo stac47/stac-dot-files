@@ -121,7 +121,6 @@ highlight SpellBad ctermbg=0 ctermfg=1
 
 " Highlight the tabs in any file (they should be banned).
 highlight ShowTab ctermbg=red guibg=red
-autocmd BufWinEnter * match ShowTab /\t/
 
 " highlight the status bar when in insert mode
 if version >= 700
@@ -137,6 +136,7 @@ autocmd FileType html set ts=2
 autocmd FileType html set sts=2
 autocmd FileType html set textwidth=0
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd BufWinEnter html match ShowTab /\t/
 
 " Python
 autocmd FileType python set sw=4
@@ -154,6 +154,7 @@ autocmd FileType htmldjango set ts=2
 autocmd FileType htmldjango set sts=2
 autocmd FileType htmldjango set textwidth=0
 autocmd FileType htmldjango set omnifunc=htmlcomplete#CompleteTags
+autocmd BufWinEnter htmldjango match ShowTab /\t/
 
 " CSS
 autocmd FileType css set sw=2
@@ -161,6 +162,8 @@ autocmd FileType css set ts=2
 autocmd FileType css set sts=2
 autocmd FileType css set textwidth=79
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd BufWinEnter css match ShowTab /\t/
+
 
 " JavaScript
 autocmd FileType javascript set sw=2
@@ -168,16 +171,11 @@ autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
 autocmd FileType javascript set textwidth=79
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd BufWinEnter JavaScript match ShowTab /\t/
 
 " Markdown
 autocmd FileType mkd set textwidth=79
-
-
-" APT Maven Site format
-autocmd FileType apt set sw=2
-autocmd FileType apt set ts=2
-autocmd FileType apt set sts=2
-autocmd FileType apt set textwidth=79
+autocmd BufWinEnter mkd match ShowTab /\t/
 
 " C++
 autocmd FileType cpp set sw=4
@@ -187,6 +185,7 @@ autocmd FileType cpp set textwidth=79
 "autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
 autocmd FileType cpp set foldmethod=syntax
 let c_space_errors=1
+autocmd BufWinEnter cpp match ShowTab /\t/
 
 " Ruby
 autocmd FileType ruby,eruby set sw=2
