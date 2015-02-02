@@ -368,6 +368,10 @@ if executable("ag")
 endif
 " Follow the symbolic links in case ag not available on this system
 let g:ctrlp_follow_symlinks=2
+" <C-y> create new file to open in a new tab
+let g:ctrlp_open_new_file = 'r'
+" <C-o> or <C-z> will open multiple files in several tabs
+let g:ctrlp_open_multiple_files = 'ir'
 " End of Ctrlp
 
 " minibuffexpl.vim
