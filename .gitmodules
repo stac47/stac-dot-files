@@ -7,15 +7,6 @@
 [submodule ".vim/bundle/vim-ruby"]
 	path = .vim/bundle/vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
-[submodule ".vim/bundle/xterm-color-table.vim"]
-	path = .vim/bundle/xterm-color-table.vim
-	url = https://github.com/vim-scripts/xterm-color-table.vim.git
-[submodule ".vim/bundle/ag.vim"]
-	path = .vim/bundle/ag.vim
-	url = https://github.com/vim-scripts/ag.vim.git
-[submodule ".vim/bundle/Gundo"]
-	path = .vim/bundle/Gundo
-	url = https://github.com/vim-scripts/Gundo.git
 [submodule "scripts/battery"]
 	path = scripts/battery
 	url = https://github.com/richo/battery.git
