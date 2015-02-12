@@ -428,7 +428,6 @@ nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<CR>
 nnoremap <leader>/ :<C-u>Unite grep:.<cr>
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffers -quick-match buffer<cr>
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru -start-insert file_mru<cr>
 " End of Unite
 
 " VimFiler
