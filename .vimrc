@@ -294,12 +294,13 @@ endfunction
 " K E Y   M A P P I N G S
 
 " Moving between buffers
-nnoremap <F2> :MBEbp<CR>
-nnoremap <F3> :MBEbn<CR>
+" nnoremap <F2> :MBEbp<CR>
+" nnoremap <F3> :MBEbn<CR>
 
 " Xml Pretty Print
-nnoremap <F4> :cscope find c <C-r><C-w><CR>
-nnoremap <F5> :NERDTreeToggle<CR>
+" nnoremap <F4> :cscope find c <C-r><C-w><CR>
+" nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <F5> :VimFilerExplorer -toggle -buffer-name=Explorer -winwidth=40<CR>
 nnoremap <F6> :TagbarToggle<CR>
 nnoremap <F7> :call <SID>PrettyXml()<CR>
 nnoremap <F8> :%!python -m json.tool<CR>:w<CR>
@@ -317,10 +318,10 @@ nnoremap <silent> <c-x> :nohlsearch<CR><c-l>
 nnoremap <leader>c :MBEbw<CR>
 
 " Easy move between each window
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-nnoremap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
+nmap <c-h> <c-w>h
 
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
@@ -344,39 +345,39 @@ endif
 " End of Cscope configuration
 
 " NERDTree
-let NERDTreeIgnore=['\.o', '\.pyc$', '\~$']
+" let NERDTreeIgnore=['\.o', '\.pyc$', '\~$']
 " NERDTree end.
 
 " vim-markdown plugin: no folding
 let g:vim_markdown_folding_disabled=1
 
 " Ctrlp
-" Activate caching in ~/.cache/ctrlp
-let g:ctrlp_use_caching=1
-" Not removing the cache on exit
-let g:ctrlp_clear_cache_on_exit=0
-" Use the WD where vim was opened
-let g:ctrlp_working_path_mode='rw'
-" Display of propositions
-let g:ctrlp_match_window='bottom,order:btt,min:1,max:10,results:20'
-" Using ag with ctrlp if ag is available
-if executable("ag")
-  let g:agprg="ag --follow --column"
-  set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore\ 'tags'\ --ignore\ 'cscope.*'\ $*
-  set grepformat=%f:%l:%c:%m
-  let g:ctrlp_user_command='ag %s -l --nocolor --follow -g ""'
-endif
-" Follow the symbolic links in case ag not available on this system
-let g:ctrlp_follow_symlinks=2
-" <C-y> create new file to open in a new tab
-let g:ctrlp_open_new_file = 'r'
-" <C-o> or <C-z> will open multiple files in several tabs
-let g:ctrlp_open_multiple_files = 'ir'
-" End of Ctrlp
+" " Activate caching in ~/.cache/ctrlp
+" let g:ctrlp_use_caching=1
+" " Not removing the cache on exit
+" let g:ctrlp_clear_cache_on_exit=0
+" " Use the WD where vim was opened
+" let g:ctrlp_working_path_mode='rw'
+" " Display of propositions
+" let g:ctrlp_match_window='bottom,order:btt,min:1,max:10,results:20'
+" " Using ag with ctrlp if ag is available
+" if executable("ag")
+"   let g:agprg="ag --follow --column"
+"   set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore\ 'tags'\ --ignore\ 'cscope.*'\ $*
+"   set grepformat=%f:%l:%c:%m
+"   let g:ctrlp_user_command='ag %s -l --nocolor --follow -g ""'
+" endif
+" " Follow the symbolic links in case ag not available on this system
+" let g:ctrlp_follow_symlinks=2
+" " <C-y> create new file to open in a new tab
+" let g:ctrlp_open_new_file = 'r'
+" " <C-o> or <C-z> will open multiple files in several tabs
+" let g:ctrlp_open_multiple_files = 'ir'
+" " End of Ctrlp
 
-" minibuffexpl.vim
-" Cycle on the buffers.
-let g:miniBufExplCycleArround = 1
+" " minibuffexpl.vim
+" " Cycle on the buffers.
+" let g:miniBufExplCycleArround = 1
 " End ofminibuffexpl.vim
 
 " Syntastic
@@ -401,8 +402,46 @@ let g:DoxygenToolkit_authorName="Laurent Stacul"
 let g:doxygentoolkit_commentType = "C++"
 let g:DoxygenToolkit_blockHeader = ""
 let g:DoxygenToolkit_blockFooter = ""
-
 " End of DoxygenToolkit
+
+" The silver searcher
+if executable("ag")
+  set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore\ 'tags'\ --ignore\ 'cscope.*'\ $*
+  set grepformat=%f:%l:%c:%m
+endif
+" End of Silver searcher
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+
+if executable('ag')
+  " Use ag in unite grep source.
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+  \ '-i --nocolor --nogroup --hidden --ignore ' .
+  \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' '.
+  \ '--ignore ''cscope.*'' --ignore ''tags'''
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<CR>
+nnoremap <leader>/ :<C-u>Unite grep:.<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffers -quick-match buffer<cr>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru -start-insert file_mru<cr>
+" End of Unite
+
+" VimFiler
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_as_default_explorer = 1
+
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_readonly_file_icon = '✗'
+let g:vimfiler_marked_file_icon = '✓'
+" End of VimFiler
 
 " E N D   P L U G I N S 
 " ************************************************************************
