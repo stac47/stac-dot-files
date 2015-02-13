@@ -203,7 +203,7 @@ autocmd FileType ruby compiler ruby
 function! CppInsertGates()
   let gatename = "__" . substitute(toupper(expand("%:t")), "\\.", "_", "g") . "__"
   execute "normal! i#ifndef " . gatename
-  execute "normal! o#define " . gatename . " "
+  execute "normal! o#define " . gatename
   execute "normal! Go#endif /* " . gatename . " */"
   normal! kk
 endfunction
@@ -377,7 +377,7 @@ let g:miniBufExplCycleArround = 1
 " End ofminibuffexpl.vim
 
 " Syntastic
-let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_check_on_open=0
 let g:syntastic_enable_signs=1
 let g:syntastic_aggregate_errors=1
@@ -386,6 +386,7 @@ let g:syntastic_cursor_column = 0
 
 let g:syntastic_cpp_include_dirs = ['include', 'src']
 let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
+let g:syntastic_cpp_compiler_options = '--std=c++11'
 let g:syntastic_cpp_check_header = 0
 let g:syntastic_cpp_auto_refresh_includes = 1
 let g:syntastic_cpp_remove_include_errors = 1
