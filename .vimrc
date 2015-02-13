@@ -294,12 +294,10 @@ endfunction
 " K E Y   M A P P I N G S
 
 " Moving between buffers
-" nnoremap <F2> :MBEbp<CR>
-" nnoremap <F3> :MBEbn<CR>
+nnoremap <F2> :bp<CR>
+nnoremap <F3> :bn<CR>
 
 " Xml Pretty Print
-" nnoremap <F4> :cscope find c <C-r><C-w><CR>
-" nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F5> :VimFilerExplorer -toggle -buffer-name=Explorer -winwidth=40<CR>
 nnoremap <F6> :TagbarToggle<CR>
 nnoremap <F7> :call <SID>PrettyXml()<CR>
@@ -312,10 +310,10 @@ nnoremap <Down> gj
 " Redraw the screen after removing the highlight search elements
 " Remap CTRL-l to CTRL-x to be reused in windows navigation.
 " nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-nnoremap <silent> <c-x> :nohlsearch<CR><c-l>
+nnoremap <silent> <c-x> :<C-u>nohlsearch<CR><C-l>
 
 " Mapping with leader
-nnoremap <leader>c :MBEbw<CR>
+nnoremap <leader>c :Bdelete<CR>
 
 " Easy move between each window
 nmap <c-j> <c-w>j
@@ -344,41 +342,8 @@ if has("cscope")
 endif
 " End of Cscope configuration
 
-" NERDTree
-" let NERDTreeIgnore=['\.o', '\.pyc$', '\~$']
-" NERDTree end.
-
 " vim-markdown plugin: no folding
 let g:vim_markdown_folding_disabled=1
-
-" Ctrlp
-" " Activate caching in ~/.cache/ctrlp
-" let g:ctrlp_use_caching=1
-" " Not removing the cache on exit
-" let g:ctrlp_clear_cache_on_exit=0
-" " Use the WD where vim was opened
-" let g:ctrlp_working_path_mode='rw'
-" " Display of propositions
-" let g:ctrlp_match_window='bottom,order:btt,min:1,max:10,results:20'
-" " Using ag with ctrlp if ag is available
-" if executable("ag")
-"   let g:agprg="ag --follow --column"
-"   set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore\ 'tags'\ --ignore\ 'cscope.*'\ $*
-"   set grepformat=%f:%l:%c:%m
-"   let g:ctrlp_user_command='ag %s -l --nocolor --follow -g ""'
-" endif
-" " Follow the symbolic links in case ag not available on this system
-" let g:ctrlp_follow_symlinks=2
-" " <C-y> create new file to open in a new tab
-" let g:ctrlp_open_new_file = 'r'
-" " <C-o> or <C-z> will open multiple files in several tabs
-" let g:ctrlp_open_multiple_files = 'ir'
-" " End of Ctrlp
-
-" " minibuffexpl.vim
-" " Cycle on the buffers.
-" let g:miniBufExplCycleArround = 1
-" End ofminibuffexpl.vim
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -408,6 +373,7 @@ let g:DoxygenToolkit_blockFooter = ""
 if executable("ag")
   set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore\ 'tags'\ --ignore\ 'cscope.*'\ $*
   set grepformat=%f:%l:%c:%m
+  let g:agprg="ag --follow --column"
 endif
 " End of Silver searcher
 
@@ -432,6 +398,7 @@ nnoremap <leader>b :<C-u>Unite -buffer-name=buffers -quick-match buffer<cr>
 
 " VimFiler
 let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_force_overwrite_statusline = 0
 let g:vimfiler_as_default_explorer = 1
 
 let g:vimfiler_tree_leaf_icon = ' '
