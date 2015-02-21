@@ -297,7 +297,6 @@ endfunction
 nnoremap <F2> :bp<CR>
 nnoremap <F3> :bn<CR>
 
-" Xml Pretty Print
 nnoremap <F5> :VimFilerExplorer -toggle -buffer-name=Explorer -winwidth=40<CR>
 nnoremap <F6> :TagbarToggle<CR>
 nnoremap <F7> :call <SID>PrettyXml()<CR>
@@ -380,6 +379,7 @@ endif
 
 " Unite
 let g:unite_source_history_yank_enable = 1
+let g:unite_source_rec_max_cache_files = 0
 
 if executable('ag')
   " Use ag in unite grep source.
