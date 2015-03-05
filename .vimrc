@@ -208,6 +208,15 @@ function! CppInsertGates()
 endfunction
 
 " ============================================================================
+"  EDIFACT to Ascii
+function! s:EdiToAscii()
+    silent! exec '%s/\%x1d/+/ge'
+    silent! exec '%s/\%x19/*/ge'
+    silent! exec '%s/\%x1f/:/ge'
+    silent! exec '%s/\%x1c/''\r/ge'
+    normal gg
+    set ft=tracer
+endfunction
 
 " Indexing a py|cpp project
 function! BuildIndex()
@@ -243,7 +252,7 @@ au FileType xml setlocal foldmethod=syntax
 au FileType xml setlocal foldlevel=999999
 
 " Python function to validate a XML file (faster than vim script)
-function! XmlValidate()
+function! s:XmlValidate()
 py << EOF
 import vim
 import re
@@ -302,6 +311,7 @@ nnoremap <F5> :VimFilerExplorer -toggle -buffer-name=Explorer -winwidth=40<CR>
 nnoremap <F6> :TagbarToggle<CR>
 nnoremap <F7> :call <SID>PrettyXml()<CR>
 nnoremap <F8> :%!python -m json.tool<CR>:w<CR>
+nnoremap <F9> :call <SID>EdiToAscii()<CR>
 
 " Up and Down arrows mapping
 nnoremap <Up> gk
@@ -314,6 +324,7 @@ nnoremap <silent> <c-x> :<C-u>nohlsearch<CR><C-l>
 
 " Mapping with leader
 nnoremap <leader>c :Bdelete<CR>
+nnoremap <leader>C :Bdelete!<CR>
 
 " Easy move between each window
 nmap <c-j> <c-w>j
