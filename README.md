@@ -60,3 +60,13 @@ following command:
 
     brew update
     cat <project_folder>/config/macosx/brew.list | xargs brew install
+
+Maintainance
+------------
+
+### Vim plugins
+
+To upgrade all the plugins to there latest version:
+
+    git submodule update --remote --merge
+    git commit ...
