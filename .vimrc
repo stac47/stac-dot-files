@@ -317,20 +317,9 @@ nnoremap <F9> :call <SID>EdiToAscii()<CR>
 nnoremap <Up> gk
 nnoremap <Down> gj
 
-" Redraw the screen after removing the highlight search elements
-" Remap CTRL-l to CTRL-x to be reused in windows navigation.
-" nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-nnoremap <silent> <c-x> :<C-u>nohlsearch<CR><C-l>
-
 " Mapping with leader
 nnoremap <leader>c :Bdelete<CR>
 nnoremap <leader>C :Bdelete!<CR>
-
-" Easy move between each window
-nmap <c-j> <c-w>j
-nmap <c-k> <c-w>k
-nmap <c-l> <c-w>l
-nmap <c-h> <c-w>h
 
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
