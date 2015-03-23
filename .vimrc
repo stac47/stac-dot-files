@@ -392,10 +392,11 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
-nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<CR>
+nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
+" nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<CR>
 nnoremap <leader>/ :<C-u>Unite grep:.<cr>
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -buffer-name=buffers -quick-match buffer<cr>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffers buffer<cr>
 " End of Unite
 
 " VimFiler
