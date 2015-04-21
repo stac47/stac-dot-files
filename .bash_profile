@@ -1,7 +1,4 @@
 export TMP=$HOME/tmp/
-export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH=$PATH:~/bin
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default
 
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
@@ -40,13 +37,3 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 else
     echo "This is an unknown OS."
 fi
-
-if [[ "$TERM" != "screen-256color" ]]
-then
-    tmux attach-session -t "$USER" || tmux new-session -s "$USER"
-    exit
-fi
-
-cowsay "Welcome my lord"
-alias dev='cd ~;source virtualenvs/roomies-env/bin/activate;cd development/django-myroomies'
-export PATH=/usr/local/sbin:$PATH
