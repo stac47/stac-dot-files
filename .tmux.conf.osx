@@ -6,11 +6,13 @@
 # $ brew install reattach-to-user-namespace
 set-option -g default-command "reattach-to-user-namespace -l bash"
 
+new-session
+
 # use 256 term for pretty colors
 set -g default-terminal "screen-256color"
 
 # increase scroll-back history
-set -g history-limit 5000
+set -g history-limit 30000
 
 # use vim key bindings
 setw -g mode-keys vi
