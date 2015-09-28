@@ -372,7 +372,7 @@ let g:DoxygenToolkit_blockFooter = ""
 
 " The silver searcher
 if executable("ag")
-  set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore\ 'tags'\ --ignore\ 'cscope.*'\ $*
+  set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore='tags'\ --ignore='cscope.*'\ --ignore='*.rex'\ --ignore='*.res'\ $*
   set grepformat=%f:%l:%c:%m
   let g:agprg="ag --follow --column"
 endif
@@ -386,9 +386,10 @@ if executable('ag')
   " Use ag in unite grep source.
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts =
-  \ '-i --nocolor --nogroup --hidden --ignore ' .
-  \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' '.
-  \ '--ignore ''cscope.*'' --ignore ''tags'''
+  \ '-i --nocolor --nogroup --hidden --ignore ''.hg'' ' .
+  \ '--ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' ' .
+  \ '--ignore ''cscope.*'' --ignore ''tags'' --ignore ''*.log'' ' .
+  \ '--ignore-dir="*.res" --ignore-dir="*.rex" '
   let g:unite_source_grep_recursive_opt = ''
 endif
 
