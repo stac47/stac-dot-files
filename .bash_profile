@@ -32,8 +32,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     if [ -f $(brew --prefix)/etc/bash_completion ]; then
       . $(brew --prefix)/etc/bash_completion
     fi
-    alias mount_inspiron="sudo mount_nfs -o resvport 192.168.1.100:/mnt/mybookhd ~/mnt/mybookhd"
-    alias umount_inspiron="sudo umount ~/mnt/mybookhd"
 else
     echo "This is an unknown OS."
 fi
+export PATH="/usr/local/sbin:$PATH"

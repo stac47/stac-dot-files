@@ -3,8 +3,9 @@
 ###########################
 
 # First thing is to install reattach-to-user-namespace
+# Not needed from Yosemite
 # $ brew install reattach-to-user-namespace
-set-option -g default-command "reattach-to-user-namespace -l bash"
+# set-option -g default-command "reattach-to-user-namespace -l zsh"
 
 new-session
 
@@ -16,9 +17,6 @@ set -g history-limit 30000
 
 # use vim key bindings
 setw -g mode-keys vi
-
-# disable mouse
-setw -g mode-mouse off
 
 # decrease command delay (increases vim responsiveness)
 set -sg escape-time 1
