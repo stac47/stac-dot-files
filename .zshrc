@@ -1,11 +1,28 @@
-autoload -U compinit promptinit
-compinit
-promptinit
+# vim: set ts=2 sw=2 et:
+
+#------------------------------
+# Autocompletion
+#------------------------------
+autoload -U compinit
+compinit -u
+
+# completion with hidden files
+setopt glob_dots
 
 zstyle ':completion:*' menu select
 
+# Colors in ls autocompletion
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# List of pid for kill
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'   force-list always
+
+# Use cache
+zstyle ':completion::complete:*' use-cache 1
+
 #------------------------------
-# History stuff
+# History
 #------------------------------
 HISTFILE=$HOME/.zsh_histfile
 HISTSIZE=5000
@@ -26,16 +43,51 @@ export LS_COLORS
 #------------------------------
 # Alias stuff
 #------------------------------
-alias ls="ls -GF"
+alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
 alias ll="ls -lh"
+alias la='ls -a'
+alias lla='ls -la'
+alias less='less --quiet -R'
+alias df='df --human-readable'
+alias du='du --human-readable'
+alias grep='grep --color'
+alias psall='ps -ef'
+alias psmy='ps uxf --columns 1000'
+# To speed up man
+alias man='PATH=/bin:/usr/bin MANPATH= man'
 
-setopt autopushd pushdsilent pushdtohome
+#------------------------------
+# zsh options
+#------------------------------
 
-## Remove duplicate entries
-setopt pushdignoredups
+# Activate ^D to logout
+unsetopt ignoreeof
+#
+# Print exit code if different from 0
+setopt print_exit_value
 
-## This reverts the +/- operators.
-setopt pushdminus
+# cd to directory without cd command
+setopt auto_cd
+
+# NEVER beep
+unsetopt beep
+unsetopt hist_beep
+unsetopt list_beep
+
+# use >| to overwrite existing file with output
+unsetopt clobber
+
+# ask confirm for rm *
+unsetopt rm_star_silent
+
+# 'cd' pushes home dir to dir stack
+setopt auto_pushd
+# ignore dupes in dir stack
+setopt pushd_ignore_dups
+# do not print stack after pushd or popd
+setopt pushd_silent
+# pushd without argument == pushd $HOME
+setopt pushd_to_home
 
 #------------------------------
 # Prompt
@@ -43,15 +95,16 @@ setopt pushdminus
 autoload -U colors
 colors
 
-PROMPT="$fg_bold[blue][%*]$fg_bold[white][%n@%M]$fg_bold[red][%~]$fg_bold[white]>$fg_no_bold[white] "
+PROMPT="[$(print '%{\e[1;33m%}%T%{\e[0m%}')]""$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}:%~>')"
 RPROMPT=
 
-# OS specific stuff
+#------------------------------
+# Java
+#------------------------------
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+  export JAVA_HOME=$(readlink -f $(which java) | sed "s:bin/java::")
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+  export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 else
-    echo "This is an unknown OS."
+  echo "This is an unknown OS."
 fi
-# vim: set ts=2 sw=2 et:
