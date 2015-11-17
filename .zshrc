@@ -28,6 +28,12 @@ HISTFILE=$HOME/.zsh_histfile
 HISTSIZE=5000
 SAVEHIST=5000
 
+setopt share_history
+setopt hist_ignore_all_dups
+setopt hist_allow_clobber
+setopt hist_reduce_blanks
+setopt no_hist_beep
+
 #------------------------------
 # Variables
 #------------------------------
@@ -71,11 +77,10 @@ setopt auto_cd
 
 # NEVER beep
 unsetopt beep
-unsetopt hist_beep
 unsetopt list_beep
 
 # use >| to overwrite existing file with output
-unsetopt clobber
+setopt no_clobber
 
 # ask confirm for rm *
 unsetopt rm_star_silent
@@ -108,3 +113,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 else
   echo "This is an unknown OS."
 fi
+
+#------------------------------
+# GDB
+#------------------------------
+GDBHISTFILE=$HOME/.gdb_history

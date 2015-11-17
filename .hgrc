@@ -9,10 +9,11 @@ pager = LESS='FRX' less
 hgext.graphlog =
 rebase =
 purge =
-mq =
 color =
 pager =
 hgext.bookmarks =
+histedit =
+strip =
 
 [ui]
 username = Laurent Stacul <laurent.stacul@gmail.com>
