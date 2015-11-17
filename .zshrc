@@ -1,6 +1,12 @@
 # vim: set ts=2 sw=2 et:
 
 #------------------------------
+# Key binding
+#------------------------------
+bindkey -v
+bindkey "^R" history-incremental-search-backward
+
+#------------------------------
 # Autocompletion
 #------------------------------
 autoload -U compinit
