@@ -18,7 +18,7 @@ Simply execute the shell script in <project_folder>/config/config.sh.
 
 #### Getting the config files and plugins
 
-Go to this folder and download all the git submodules:
+Go to the project's folder and download all the git submodules:
 
     cd <project_folder>
     git submodule update --recursive --init
@@ -65,6 +65,10 @@ Maintainance
 ------------
 
 ### Vim plugins
+
+To add a new plugin:
+
+    git submodule add <address of the modules's repo>
 
 To upgrade all the plugins to there latest version:
 
