@@ -208,7 +208,7 @@ function! CppInsertGates()
   normal! kk
 endfunction
 
-set tags+=~/vim/tags/tags_std_c++
+set tags+=~/.vim/tags/tags_std_c++
 
 " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
