@@ -370,7 +370,7 @@ let g:syntastic_cursor_column = 0
 
 let g:syntastic_cpp_include_dirs = ['include', 'src']
 let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
-let g:syntastic_cpp_compiler_options = '--std=c++11'
+let g:syntastic_cpp_compiler_options = '--std=c++14'
 let g:syntastic_cpp_check_header = 0
 let g:syntastic_cpp_auto_refresh_includes = 1
 let g:syntastic_cpp_remove_include_errors = 1

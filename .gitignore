@@ -4,3 +4,4 @@ doc/tags
 .DS_Store
 tmux-client-*.log
 tmux-server-*.log
+.cgdb/readline_history.txt
