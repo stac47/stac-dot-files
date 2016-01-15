@@ -74,3 +74,9 @@ To upgrade all the plugins to there latest version:
 
     git submodule update --remote --merge
     git commit ...
+
+To remove a plugin (from git 1.8.5)
+
+    git submodule deinit <module>
+    git rm <module>
+    git commit ...
