@@ -188,26 +188,7 @@ autocmd FileType cpp set foldmethod=syntax
 let c_space_errors=1
 autocmd BufWinEnter cpp match ShowTab /\t/
 
-" Ruby
-autocmd FileType ruby,eruby set sw=2
-autocmd FileType ruby,eruby set ts=2
-autocmd FileType ruby,eruby set sts=2
-autocmd FileType ruby,eruby set textwidth=79
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby compiler ruby
 " ============================================================================
-
-" C++ support
-function! CppInsertGates()
-  let gatename = "__" . substitute(toupper(expand("%:t")), "\\.", "_", "g") . "__"
-  execute "normal! i#ifndef " . gatename
-  execute "normal! o#define " . gatename
-  execute "normal! Go#endif /* " . gatename . " */"
-  normal! kk
-endfunction
-
 set tags+=~/.vim/tags/tags_std_c++
 
 " OmniCppComplete
@@ -241,21 +222,6 @@ function! BuildIndex()
     silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
     redraw!
     echom "File indexing finished"
-endfunction
-
-" Python support
-function! PythonAddHeader()
-python << EOF
-import vim
-from datetime import date
-header = "#!/usr/bin/env python3\n"
-header += "# vi:set fileencoding=utf-8 :\n\n"
-header += "\"\"\"\n"
-header += "Created on %s\n\n" % (date.today().isoformat())
-header += "@author : Laurent Stacul\n"
-header += "\"\"\""
-vim.current.buffer[:] = header.split("\n") + vim.current.buffer[:]
-EOF
 endfunction
 
 "================XML==========================
@@ -322,11 +288,12 @@ nnoremap <F2> :bp<CR>
 nnoremap <F3> :bn<CR>
 
 nnoremap <F4> :cs find 0 <C-R><C-W><CR>
-nnoremap <F5> :VimFilerExplorer -toggle -buffer-name=Explorer -winwidth=40<CR>
-nnoremap <F6> :TagbarToggle<CR>
-nnoremap <F7> :call <SID>PrettyXml()<CR>
-nnoremap <F8> :%!python -m json.tool<CR>:w<CR>
-nnoremap <F9> :call <SID>EdiToAscii()<CR>
+nnoremap <F5> :grep! --cpp '[:,]\s*(public\\|protected\\|private)\s*\S*<C-R><C-W>'<CR>:copen<CR>
+nnoremap <F6> :VimFilerExplorer -toggle -buffer-name=Explorer -winwidth=40<CR>
+nnoremap <F7> :TagbarToggle<CR>
+nnoremap <F8> :call <SID>PrettyXml()<CR>
+nnoremap <F9> :%!python -m json.tool<CR>
+nnoremap <F10> :call <SID>EdiToAscii()<CR>
 
 " Up and Down arrows mapping
 nnoremap <Up> gk
