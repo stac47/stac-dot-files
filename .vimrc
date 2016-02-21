@@ -85,6 +85,7 @@ set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
 set laststatus=2
 " showmatch: Show the matching bracket for the last ')'?
 set showmatch
+set mps+=<:>
 " allow tilde (~) to act as an operator -- ~w, etc.
 set notildeop
 
