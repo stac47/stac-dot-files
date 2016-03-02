@@ -110,8 +110,7 @@ set -g status-justify centre
 
 # Adding the battery level on the right of status bar
 set -g status-right-length 100
-set -g status-right " #H | #(tmux-mem-cpu-load -i 2) | #(~/battery) | %d %b %R"
-#set -g status-right " #H | #(~/battery) | %d %b %R"
+set -g status-right " #H | #(tmux-mem-cpu-load -i 2) | #($HOME/local/bin/battery) | %d %b %R"
 
 # Setting the session:windows.pane on the left
 set -g status-left "[#S:#I.#P]"
