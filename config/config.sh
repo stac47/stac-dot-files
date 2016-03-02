@@ -40,7 +40,7 @@ ln -s $DIR/.gitignore_global $HOME/.gitignore_global
 ln -s $DIR/.irbrc $HOME/.irbrc
 ln -s $DIR/.vimrc $HOME/.vimrc
 ln -sh $DIR/.vim $HOME/.vim
-ln -s $DIR/scripts/battery/bin/battery $HOME/battery
+ln -s $DIR/scripts/battery/bin/battery $HOME/local/bin/battery
 ln -s $DIR/.gdbinit $HOME/.gdbinit
 
 if [[ $OSTYPE == darwin* ]] ; then
