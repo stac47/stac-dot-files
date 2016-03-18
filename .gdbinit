@@ -695,3 +695,12 @@ set print demangle on
 set print asm-demangle on
 set print symbol on
 set print symbol-filename on
+
+python
+import sys
+from os.path import expanduser, join
+home = expanduser("~")
+sys.path.insert(0, join(home, '.Boost-Pretty-Printer'))
+import boost.latest
+boost.register_printers()
+end

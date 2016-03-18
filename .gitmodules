@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/vim-snippets"]
 	path = .vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule "scripts/Boost-Pretty-Printer"]
+	path = scripts/Boost-Pretty-Printer
+	url = https://github.com/mateidavid/Boost-Pretty-Printer.git
