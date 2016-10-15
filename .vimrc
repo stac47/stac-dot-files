@@ -1,16 +1,5 @@
 set nocompatible
 
-" Temporary for pathogen load
-filetype off
-
-" pathogen plugin allows to have a plugin inside a single folder.
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
-
-filetype on           " Enable filetype detection
-
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 

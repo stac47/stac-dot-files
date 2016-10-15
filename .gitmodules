@@ -1,60 +1,51 @@
-[submodule ".vim/vim-pathogen"]
-	path = .vim/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen.git
-[submodule ".vim/bundle/vim-markdown"]
-	path = .vim/bundle/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "scripts/battery"]
 	path = scripts/battery
 	url = https://github.com/richo/battery.git
-[submodule ".vim/bundle/vim-commentary"]
-	path = .vim/bundle/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
-[submodule ".vim/bundle/tagbar"]
-	path = .vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/DoxygenToolkit.vim"]
-	path = .vim/bundle/DoxygenToolkit.vim
-	url = https://github.com/vim-scripts/DoxygenToolkit.vim.git
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/vim-characterize"]
-	path = .vim/bundle/vim-characterize
-	url = https://github.com/tpope/vim-characterize.git
-[submodule ".vim/bundle/rename.vim"]
-	path = .vim/bundle/rename.vim
-	url = https://github.com/danro/rename.vim.git
-[submodule ".vim/bundle/unite.vim"]
-	path = .vim/bundle/unite.vim
-	url = https://github.com/Shougo/unite.vim.git
-[submodule ".vim/bundle/vimfiler.vim"]
-	path = .vim/bundle/vimfiler.vim
-	url = https://github.com/Shougo/vimfiler.vim.git
-[submodule ".vim/bundle/vimproc.vim"]
-	path = .vim/bundle/vimproc.vim
-	url = https://github.com/Shougo/vimproc.vim.git
-[submodule ".vim/bundle/vim-bbye"]
-	path = .vim/bundle/vim-bbye
-	url = https://github.com/moll/vim-bbye.git
-[submodule ".vim/bundle/OmniCppComplete"]
-	path = .vim/bundle/OmniCppComplete
-	url = https://github.com/vim-scripts/OmniCppComplete.git
-[submodule ".vim/bundle/tlib_vim"]
-	path = .vim/bundle/tlib_vim
-	url = https://github.com/tomtom/tlib_vim.git
-[submodule ".vim/bundle/vim-addon-mw-utils"]
-	path = .vim/bundle/vim-addon-mw-utils
-	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule ".vim/bundle/vim-snipmate"]
-	path = .vim/bundle/vim-snipmate
-	url = https://github.com/garbas/vim-snipmate.git
-[submodule ".vim/bundle/vim-snippets"]
-	path = .vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
 [submodule "scripts/Boost-Pretty-Printer"]
 	path = scripts/Boost-Pretty-Printer
 	url = https://github.com/mateidavid/Boost-Pretty-Printer.git
+[submodule ".vim/pack/stac/start/vim-markdown"]
+	path = .vim/pack/stac/start/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule ".vim/pack/stac/start/vim-commentary"]
+	path = .vim/pack/stac/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule ".vim/pack/stac/start/tagbar"]
+	path = .vim/pack/stac/start/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule ".vim/pack/stac/start/syntastic"]
+	path = .vim/pack/stac/start/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/pack/stac/start/DoxygenToolkit.vim"]
+	path = .vim/pack/stac/start/DoxygenToolkit.vim
+	url = https://github.com/vim-scripts/DoxygenToolkit.vim.git
+[submodule ".vim/pack/stac/start/vim-surround"]
+	path = .vim/pack/stac/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/pack/stac/start/vim-characterize"]
+	path = .vim/pack/stac/start/vim-characterize
+	url = https://github.com/tpope/vim-characterize.git
+[submodule ".vim/pack/stac/start/unite.vim"]
+	path = .vim/pack/stac/start/unite.vim
+	url = https://github.com/Shougo/unite.vim.git
+[submodule ".vim/pack/stac/start/vimfiler.vim"]
+	path = .vim/pack/stac/start/vimfiler.vim
+	url = https://github.com/Shougo/vimfiler.vim.git
+[submodule ".vim/pack/stac/start/vim-bbye"]
+	path = .vim/pack/stac/start/vim-bbye
+	url = https://github.com/moll/vim-bbye.git
+[submodule ".vim/pack/stac/start/tlib_vim"]
+	path = .vim/pack/stac/start/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule ".vim/pack/stac/start/vim-addon-mw-utils"]
+	path = .vim/pack/stac/start/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule ".vim/pack/stac/start/vim-snipmate"]
+	path = .vim/pack/stac/start/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule ".vim/pack/stac/start/vim-snippets"]
+	path = .vim/pack/stac/start/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule ".vim/pack/stac/start/completor.vim"]
+	path = .vim/pack/stac/start/completor.vim
+	url = https://github.com/maralla/completor.vim.git
