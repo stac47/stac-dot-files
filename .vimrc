@@ -178,19 +178,6 @@ autocmd FileType cpp set foldmethod=syntax
 let c_space_errors=1
 autocmd BufWinEnter cpp match ShowTab /\t/
 
-" ============================================================================
-set tags+=~/.vim/tags/tags_std_c++
-
-" OmniCppComplete
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_ShowScopeInAbbr = 1
-let OmniCpp_LocalSearchDecl = 1
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-set completeopt=menuone,menu,longest
-" ============================================================================
 "  EDIFACT to Ascii
 function! s:EdiToAscii()
     silent! exec '%s/\%x1d/+/ge'
@@ -344,14 +331,7 @@ if executable("ag")
   set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore='tags'\ --ignore='cscope.*'\ --ignore='*.rex'\ --ignore='*.res'\ $*
   set grepformat=%f:%l:%c:%m
   let g:agprg="ag --follow --column"
-endif
-" End of Silver searcher
-
-" Unite
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_rec_max_cache_files = 0
-
-if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   " Use ag in unite grep source.
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts =
@@ -361,11 +341,13 @@ if executable('ag')
   \ '--ignore-dir="*.res" --ignore-dir="*.rex" '
   let g:unite_source_grep_recursive_opt = ''
 endif
+" End of Silver searcher
 
-nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
-" nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<CR>
-nnoremap <leader>/ :<C-u>Unite grep:.<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
+" Unite
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_rec_max_cache_files = 0
+
+" Unite
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffers buffer<cr>
 " End of Unite
 
