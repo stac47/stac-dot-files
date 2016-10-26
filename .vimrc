@@ -172,8 +172,6 @@ autocmd FileType cpp set sw=4
 autocmd FileType cpp set ts=4
 autocmd FileType cpp set sts=4
 autocmd FileType cpp set textwidth=79
-" autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
-au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 autocmd FileType cpp set foldmethod=syntax
 let c_space_errors=1
 autocmd BufWinEnter cpp match ShowTab /\t/
