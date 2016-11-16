@@ -362,5 +362,11 @@ let g:vimfiler_readonly_file_icon = '✗'
 let g:vimfiler_marked_file_icon = '✓'
 " End of VimFiler
 
+" Snippets
+let g:snips_author = 'Laurent Stacul'
+let g:snips_email = 'laurent.stacul@gmail.com'
+let g:snips_github = 'https://github.com/stac47'
+" End of Snippets
+
 " E N D   P L U G I N S 
 " ************************************************************************
