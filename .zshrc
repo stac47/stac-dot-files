@@ -66,7 +66,7 @@ alias grep='grep --color'
 alias psall='ps -ef'
 alias psmy='ps uxf --columns 1000'
 # To speed up man
-alias man='PATH=/bin:/usr/bin MANPATH= man'
+# alias man='PATH=/bin:/usr/bin MANPATH= man'
 
 #------------------------------
 # zsh options
