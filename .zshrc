@@ -124,3 +124,6 @@ fi
 # GDB
 #------------------------------
 GDBHISTFILE=$HOME/.gdb_history
+
+export PAGER=less
+export MANPAGER=most
