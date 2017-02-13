@@ -270,6 +270,7 @@ nnoremap <Down> gj
 " Mapping with leader
 nnoremap <leader>c :Bdelete<CR>
 nnoremap <leader>C :Bdelete!<CR>
+nnoremap <leader>b :ls<CR>
 
 " E N D    K E Y  M A P P I N G
 " ************************************************************************
