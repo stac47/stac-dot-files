@@ -313,50 +313,14 @@ let g:syntastic_cpp_remove_include_errors = 1
 let g:syntastic_python_checkers = ['pyflakes', 'python']
 " End of Syntastic
 
-" DoxygenToolkit
-let g:DoxygenToolkit_authorName="Laurent Stacul"
-let g:doxygentoolkit_commentType = "C++"
-let g:DoxygenToolkit_blockHeader = ""
-let g:DoxygenToolkit_blockFooter = ""
-" End of DoxygenToolkit
-
 " The silver searcher
 if executable("ag")
   set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore='tags'\ --ignore='cscope.*'\ --ignore='*.rex'\ --ignore='*.res'\ $*
   set grepformat=%f:%l:%c:%m
   let g:agprg="ag --follow --column"
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " Use ag in unite grep source.
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-  \ '-i --nocolor --nogroup --hidden --ignore ''.hg'' ' .
-  \ '--ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' ' .
-  \ '--ignore ''cscope.*'' --ignore ''tags'' --ignore ''*.log'' ' .
-  \ '--ignore-dir="*.res" --ignore-dir="*.rex" '
-  let g:unite_source_grep_recursive_opt = ''
 endif
 " End of Silver searcher
-
-" Unite
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_rec_max_cache_files = 0
-
-" Unite
-nnoremap <leader>b :<C-u>Unite -buffer-name=buffers buffer<cr>
-" End of Unite
-
-" VimFiler
-let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimfiler_as_default_explorer = 1
-
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_readonly_file_icon = '✗'
-let g:vimfiler_marked_file_icon = '✓'
-" End of VimFiler
 
 " Snippets
 let g:snips_author = 'Laurent Stacul'
