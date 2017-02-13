@@ -10,9 +10,6 @@
 [submodule ".vim/pack/stac/start/vim-commentary"]
 	path = .vim/pack/stac/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule ".vim/pack/stac/start/tagbar"]
-	path = .vim/pack/stac/start/tagbar
-	url = https://github.com/majutsushi/tagbar.git
 [submodule ".vim/pack/stac/start/syntastic"]
 	path = .vim/pack/stac/start/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -22,9 +19,6 @@
 [submodule ".vim/pack/stac/start/vim-characterize"]
 	path = .vim/pack/stac/start/vim-characterize
 	url = https://github.com/tpope/vim-characterize.git
-[submodule ".vim/pack/stac/start/unite.vim"]
-	path = .vim/pack/stac/start/unite.vim
-	url = https://github.com/Shougo/unite.vim.git
 [submodule ".vim/pack/stac/start/vim-bbye"]
 	path = .vim/pack/stac/start/vim-bbye
 	url = https://github.com/moll/vim-bbye.git
