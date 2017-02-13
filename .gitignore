@@ -5,3 +5,4 @@ doc/tags
 tmux-client-*.log
 tmux-server-*.log
 .cgdb/readline_history.txt
+.vim/.netrwhist

@@ -16,9 +16,6 @@
 [submodule ".vim/pack/stac/start/syntastic"]
 	path = .vim/pack/stac/start/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule ".vim/pack/stac/start/DoxygenToolkit.vim"]
-	path = .vim/pack/stac/start/DoxygenToolkit.vim
-	url = https://github.com/vim-scripts/DoxygenToolkit.vim.git
 [submodule ".vim/pack/stac/start/vim-surround"]
 	path = .vim/pack/stac/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
@@ -28,9 +25,6 @@
 [submodule ".vim/pack/stac/start/unite.vim"]
 	path = .vim/pack/stac/start/unite.vim
 	url = https://github.com/Shougo/unite.vim.git
-[submodule ".vim/pack/stac/start/vimfiler.vim"]
-	path = .vim/pack/stac/start/vimfiler.vim
-	url = https://github.com/Shougo/vimfiler.vim.git
 [submodule ".vim/pack/stac/start/vim-bbye"]
 	path = .vim/pack/stac/start/vim-bbye
 	url = https://github.com/moll/vim-bbye.git

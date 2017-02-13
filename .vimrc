@@ -3,8 +3,6 @@ set nocompatible
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
-let mapleader="-"
-
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
@@ -260,8 +258,6 @@ nnoremap <F2> :bp<CR>
 nnoremap <F3> :bn<CR>
 
 nnoremap <F4> :cs find 0 <C-R><C-W><CR>
-nnoremap <F5> :grep! --cpp '[:,]\s*(public\\|protected\\|private)\s*\S*<C-R><C-W>'<CR>:copen<CR>
-nnoremap <F6> :VimFilerExplorer -toggle -buffer-name=Explorer -winwidth=40<CR>
 nnoremap <F7> :TagbarToggle<CR>
 nnoremap <F8> :call <SID>PrettyXml()<CR>
 nnoremap <F9> :%!python -m json.tool<CR>
