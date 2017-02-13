@@ -37,3 +37,6 @@
 [submodule ".vim/pack/stac/start/ctrlp.vim"]
 	path = .vim/pack/stac/start/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule ".vim/pack/stac/start/vim-unimpaired"]
+	path = .vim/pack/stac/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
