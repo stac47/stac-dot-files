@@ -258,7 +258,7 @@ nnoremap <F2> :bp<CR>
 nnoremap <F3> :bn<CR>
 
 nnoremap <F4> :cs find 0 <C-R><C-W><CR>
-nnoremap <F7> :TagbarToggle<CR>
+nnoremap <F6> :Explore<CR>
 nnoremap <F8> :call <SID>PrettyXml()<CR>
 nnoremap <F9> :%!python -m json.tool<CR>
 nnoremap <F10> :call <SID>EdiToAscii()<CR>
