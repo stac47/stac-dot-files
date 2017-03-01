@@ -133,6 +133,7 @@ autocmd FileType python set sts=4
 autocmd FileType python set textwidth=79
 autocmd FileType python set sta
 autocmd FileType python set autoindent
+autocmd FileType cpp set foldmethod=indent
 autocmd BufRead python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd BufWritePre python set normal m`:%s/\s\+$//e ``
 
