@@ -133,6 +133,7 @@ autocmd FileType python set sts=4
 autocmd FileType python set textwidth=79
 autocmd FileType python set sta
 autocmd FileType python set autoindent
+autocmd FileType cpp set foldmethod=indent
 autocmd BufRead python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd BufWritePre python set normal m`:%s/\s\+$//e ``
 
@@ -258,7 +259,7 @@ nnoremap <F2> :bp<CR>
 nnoremap <F3> :bn<CR>
 
 nnoremap <F4> :cs find 0 <C-R><C-W><CR>
-nnoremap <F7> :TagbarToggle<CR>
+nnoremap <F6> :Explore<CR>
 nnoremap <F8> :call <SID>PrettyXml()<CR>
 nnoremap <F9> :%!python -m json.tool<CR>
 nnoremap <F10> :call <SID>EdiToAscii()<CR>
