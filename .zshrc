@@ -106,7 +106,8 @@ setopt pushd_to_home
 autoload -U colors
 colors
 
-PROMPT="[$(print '%{\e[1;33m%}%T%{\e[0m%}')]""$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}:%~>')"
+source $(dirname `readlink -fn .zshrc`)/scripts/zsh-git-prompt/zshrc.sh
+PROMPT="[$(print '%{\e[1;33m%}%T%{\e[0m%}')]$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}')"'$(git_super_status)'":%~>"
 RPROMPT=
 
 #------------------------------

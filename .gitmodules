@@ -40,3 +40,6 @@
 [submodule ".vim/pack/stac/start/vim-unimpaired"]
 	path = .vim/pack/stac/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "scripts/zsh-git-prompt"]
+	path = scripts/zsh-git-prompt
+	url = https://github.com/olivierverdier/zsh-git-prompt.git

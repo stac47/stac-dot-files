@@ -23,11 +23,6 @@ Go to the project's folder and download all the git submodules:
     cd <project_folder>
     git submodule update --recursive --init
 
-**vimproc** plugin needs a special compilation. Go to
-<project_folder>/.vim/bundle/vimproc.vim and type:
-
-    make
-
 #### Creating symbolic links to the config files
 
 Finally, simply symlink all the files you need:
