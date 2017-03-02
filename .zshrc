@@ -1,5 +1,14 @@
 # vim: set ts=2 sw=2 et:
 
+# Find the dot file dir when .zshrc is symlinked in the $HOME folder
+SOURCE=${(%):-%N}
+while [ -h "$SOURCE" ]; do
+    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DOTFILES_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
 #------------------------------
 # Key binding
 #------------------------------
@@ -65,8 +74,6 @@ alias du='du --human-readable'
 alias grep='grep --color'
 alias psall='ps -ef'
 alias psmy='ps uxf --columns 1000'
-# To speed up man
-# alias man='PATH=/bin:/usr/bin MANPATH= man'
 
 #------------------------------
 # zsh options
@@ -106,7 +113,7 @@ setopt pushd_to_home
 autoload -U colors
 colors
 
-source $(dirname `readlink -fn .zshrc`)/scripts/zsh-git-prompt/zshrc.sh
+source $DOTFILES_DIR/scripts/zsh-git-prompt/zshrc.sh
 PROMPT="[$(print '%{\e[1;33m%}%T%{\e[0m%}')]$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}')"'$(git_super_status)'":%~>"
 RPROMPT=
 
