@@ -79,21 +79,21 @@ unbind &
 bind w kill-window
 
 # Copy-mode in Vim style
-unbind [
-bind Escape copy-mode
-unbind p
-bind p paste-buffer
-bind -t vi-copy 'v' begin-selection
-bind -t vi-copy 'C-v' rectangle-toggle
-bind -t vi-copy 'y' copy-selection
+run-shell "tmux setenv -g TMUX_VERSION $(tmux -V | cut -c 6-)"
+if-shell -b '[ "$(echo "$TMUX_VERSION < 2.4" | bc)" = 1 ]' \
+  "bind-key Escape copy-mode; \
+  bind-key -t vi-copy Escape cancel; \
+  bind-key p paste-buffer; \
+  bind-key -t vi-copy v begin-selection; \
+  bind-key -t vi-copy V select-line; \
+  bind-key -t vi-copy C-v rectangle-toggle; \
+  bind -t vi-copy y copy-selection"
 
-# Copy in the OS clipboard.
-# For Linux, install the "xclip" package.
-unbind C-c
-unbind C-v
-#bind C-c run "tmux show-buffer | xclip -sel clip -i" \; display "Copied Tmux buffer in OS clipboard"
-bind C-y run  "tmux save-buffer - | xclip -i" \; display "Copied Tmux buffer in OS clipboard"
-bind C-v run "tmux set-buffer \"$(xclip -o -sel clip)\"; tmux paste-buffer"
+if-shell -b '[ "$(echo "$TMUX_VERSION >= 2.4" | bc)" = 1 ]' \
+  "bind-key -T copy-mode-vi 'v' send -X begin-selection; \
+  bind-key -T copy-mode-vi 'V' send -X select-line; \
+  bind-key -T copy-mode-vi 'C-v' send -X rectangle-toggle; \
+  bind-key -T copy-mode-vi 'y' send -X copy-selection"
 
 ###########################
 # Status Bar
@@ -106,8 +106,7 @@ set -g status-interval 30
 set -g status-justify centre
 
 # Adding the battery level on the right of status bar
-set -g status-right-length 100
-set -g status-right " #H | #(tmux-mem-cpu-load -i 2) | #($HOME/local/bin/battery) | %d %b %R"
+set -g status-right '#{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} | #{battery_graph} #{battery_percentage} | %a %h-%d %H:%M'
 
 # Setting the session:windows.pane on the left
 set -g status-left "[#S:#I.#P]"
@@ -119,3 +118,12 @@ set -g status-left "[#S:#I.#P]"
 # highlight current window
 set-window-option -g window-status-current-fg black
 set-window-option -g window-status-current-bg red
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-battery'
+set -g @plugin 'tmux-plugins/tmux-cpu'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
