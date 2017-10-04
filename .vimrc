@@ -67,7 +67,7 @@ set ignorecase
 " smart search (override 'ic' when pattern has uppers)
 set scs
 " Set status line
-set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
+set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ [\\x%04B\ (%05b)]\ %P%*
 " Always display a status line at the bottom of the window
 set laststatus=2
 " showmatch: Show the matching bracket for the last ')'?
@@ -187,12 +187,10 @@ endfunction
 
 " Indexing a py|cpp project
 function! BuildIndex()
-    echom "File indexing started..."
-    silent !find -L . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py)$' > cscope.files
+    silent !find . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py)$' > cscope.files
     silent !cscope -b -q -i cscope.files
     silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
     redraw!
-    echom "File indexing finished"
 endfunction
 
 "================XML==========================
