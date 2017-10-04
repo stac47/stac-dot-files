@@ -6,3 +6,6 @@ tmux-client-*.log
 tmux-server-*.log
 .cgdb/readline_history.txt
 .vim/.netrwhist
+.tmux/plugins/tmux-battery/
+.tmux/plugins/tmux-cpu/
+.tmux/plugins/tmux-sensible/
