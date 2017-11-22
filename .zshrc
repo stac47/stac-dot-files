@@ -1,14 +1,5 @@
 # vim: set ts=2 sw=2 et:
 
-# Find the dot file dir when .zshrc is symlinked in the $HOME folder
-SOURCE=${(%):-%N}
-while [ -h "$SOURCE" ]; do
-    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-    SOURCE="$(readlink "$SOURCE")"
-    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
-done
-DOTFILES_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-
 #------------------------------
 # Key binding
 #------------------------------
@@ -113,18 +104,13 @@ setopt pushd_to_home
 autoload -U colors
 colors
 
-if [[ $ZSH_VERSION > "5.0.0" ]]; then
-  source $DOTFILES_DIR/scripts/zsh-git-prompt/zshrc.sh
-  PROMPT="[$(print '%{\e[1;33m%}%*%{\e[0m%}')]$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}')"'$(git_super_status)'":%~>"
-else
-  PROMPT="[$(print '%{\e[1;33m%}%*%{\e[0m%}')]$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}'):%~>"
-fi
+PROMPT="[$(print '%{\e[1;33m%}%*%{\e[0m%}')]$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}'):%~>"
 RPROMPT=
 
 #------------------------------
 # Java
 #------------------------------
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux" || "$OSTYPE" == "linux-gnu" ]]; then
   export JAVA_HOME=$(readlink -f $(which java) | sed "s:bin/java::")
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   export JAVA_HOME=`/usr/libexec/java_home -v 1.8`

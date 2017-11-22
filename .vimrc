@@ -187,7 +187,7 @@ endfunction
 
 " Indexing a py|cpp project
 function! BuildIndex()
-    silent !find . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py)$' > cscope.files
+    silent !find . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py|java)$' > cscope.files
     silent !cscope -b -q -i cscope.files
     silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
     redraw!
