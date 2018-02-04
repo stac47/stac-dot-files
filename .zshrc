@@ -113,7 +113,7 @@ RPROMPT=
 if [[ "$OSTYPE" == "linux" || "$OSTYPE" == "linux-gnu" ]]; then
   export JAVA_HOME=$(readlink -f $(which java) | sed "s:bin/java::")
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+  export JAVA_HOME=`/usr/libexec/java_home`
 else
   echo "This is an unknown OS."
 fi
