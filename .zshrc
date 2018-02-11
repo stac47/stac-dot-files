@@ -110,7 +110,7 @@ RPROMPT=
 #------------------------------
 # Java
 #------------------------------
-if [[ "$OSTYPE" == "linux" || "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" =~ "^linux.*" ]]; then
   export JAVA_HOME=$(readlink -f $(which java) | sed "s:bin/java::")
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   export JAVA_HOME=`/usr/libexec/java_home`
