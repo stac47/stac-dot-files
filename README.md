@@ -43,7 +43,7 @@ To add a new plugin:
 
 To upgrade all the plugins to there latest version:
 
-    git submodule update --remote --merge
+    git submodule update --remote --rebase
     git commit ...
 
 To remove a plugin (from git 1.8.5)
