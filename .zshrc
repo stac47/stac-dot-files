@@ -65,6 +65,7 @@ alias du='du --human-readable'
 alias grep='grep --color'
 alias psall='ps -ef'
 alias psmy='ps uxf --columns 1000'
+alias todo='todolist'
 
 #------------------------------
 # zsh options
