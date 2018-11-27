@@ -80,7 +80,7 @@ bind w kill-window
 
 # Copy-mode in Vim style
 run-shell "tmux setenv -g TMUX_VERSION $(tmux -V | cut -c 6-)"
-if-shell -b '[ "$(echo "$TMUX_VERSION < 2.4" | bc)" = 1 ]' \
+if-shell -b '[ "$(echo -e "2.4\n$TMUX_VERSION | sort -V | head -n 1)" = "$TMUX_VERSION" ]' \
   "bind-key Escape copy-mode; \
   bind-key -t vi-copy Escape cancel; \
   bind-key p paste-buffer; \
@@ -89,7 +89,7 @@ if-shell -b '[ "$(echo "$TMUX_VERSION < 2.4" | bc)" = 1 ]' \
   bind-key -t vi-copy C-v rectangle-toggle; \
   bind -t vi-copy y copy-selection"
 
-if-shell -b '[ "$(echo "$TMUX_VERSION >= 2.4" | bc)" = 1 ]' \
+if-shell -b '[ "$(echo -e "2.4\n$TMUX_VERSION | sort -V | head -n 1)" = "2.4" ]' \
   "bind-key -T copy-mode-vi 'v' send -X begin-selection; \
   bind-key -T copy-mode-vi 'V' send -X select-line; \
   bind-key -T copy-mode-vi 'C-v' send -X rectangle-toggle; \
