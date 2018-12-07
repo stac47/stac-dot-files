@@ -105,8 +105,8 @@ setopt pushd_to_home
 autoload -U colors
 colors
 
-PROMPT="[$(print '%{\e[1;33m%}%*%{\e[0m%}')]$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}'):%~>"
-RPROMPT=
+PROMPT='%B[%F{yellow}%*%f]%F{red}%n%f@%F{green}%M:%y%f:%~>%b'
+RPROMPT='%B%F{cyan}[jobs: %j][history: %h]%f%b'
 
 #------------------------------
 # Java
