@@ -105,8 +105,16 @@ setopt pushd_to_home
 autoload -U colors
 colors
 
-PROMPT='%B[%F{yellow}%*%f]%F{red}%n%f@%F{green}%M:%y%f:%~>%b'
-RPROMPT='%B%F{cyan}[jobs: %j][history: %h]%f%b'
+zsh_system_version=$($SHELL --version | cut --delimiter ' ' -f 2)
+
+if [[ "$(echo -e "$zsh_system_version\n5.0" | sort --version-sort | head -n 1)" = "$zsh_system_version" ]]
+then
+  PROMPT="[$(print '%{\e[1;33m%}%*%{\e[0m%}')]$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}'):%~>"
+  RPROMPT=
+else
+  PROMPT='%B[%F{yellow}%*%f]%F{red}%n%f@%F{green}%M:%y%f:%~>%b'
+  RPROMPT='%B%F{cyan}[jobs: %j][history: %h]%f%b'
+fi
 
 #------------------------------
 # Java
