@@ -105,7 +105,7 @@ setopt pushd_to_home
 autoload -U colors
 colors
 
-zsh_system_version=$($SHELL --version | cut --delimiter ' ' -f 2)
+zsh_system_version=$($SHELL --version | cut -d ' ' -f 2)
 
 if [[ "$(echo -e "$zsh_system_version\n5.0" | sort --version-sort | head -n 1)" = "$zsh_system_version" ]]
 then
