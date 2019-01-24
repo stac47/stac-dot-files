@@ -10,9 +10,9 @@
 [alias]
 	st = status
 	co = checkout
-	lol = log --pretty=oneline --abbrev-commit --graph --decorate
+	lol = log --pretty=oneline --graph --decorate --branches --remotes --tags
 [credential]
-	helper = cache
+	helper = cache --timeout=3600
 [color]
 	ui = true
 [push]
