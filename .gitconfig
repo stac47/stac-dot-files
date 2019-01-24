@@ -1,25 +1,27 @@
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = vim
-	autocrlf = input
+    excludesfile = ~/.gitignore_global
+    editor = vim
+    autocrlf = input
 [user]
-	name = Laurent Stacul
-	email = laurent.stacul@gmail.com
+    name = Laurent Stacul
+    email = laurent.stacul@gmail.com
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [alias]
-	st = status
-	co = checkout
-	lol = log --pretty=oneline --graph --decorate --branches --remotes --tags
+    st = status
+    stn = status --ignore-submodules
+    co = checkout
+    lol = log --pretty=oneline --graph --decorate --branches --remotes --tags --abbrev-commit
+    diffn = diff --ignore-submodules
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
 [color]
-	ui = true
+    ui = true
 [push]
-	default = simple
+    default = simple
 [pull]
-	rebase = preserve
+    rebase = preserve
 [status]
-	submoduleSummary = true
+    submoduleSummary = true
 [diff]
-	submodule = log
+    submodule = log
