@@ -78,9 +78,6 @@ bind r source-file ~/.tmux.conf \; display "Reloaded!"
 unbind &
 bind w kill-window
 
-# Clear the tmux buffer history (useful when sensitive data are displayed)
-bind -n C-k clear-history
-
 ###########################
 # Status Bar
 ###########################
