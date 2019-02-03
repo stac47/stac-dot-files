@@ -36,6 +36,10 @@ set foldenable
 set foldmethod=indent
 set foldlevel=99
 
+" The following will enable digraphs with the backspaces.
+" eg. The sequence C-K e' will be equivalent to e <BS> '.
+set digraph
+
 " Visual wrap activated my default
 set wrap
 " allow backspacing over everything in insert mode
