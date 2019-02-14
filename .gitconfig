@@ -25,3 +25,6 @@
     submoduleSummary = true
 [diff]
     submodule = log
+    tool = vimdiff
+[difftool]
+    prompt = false
