@@ -107,8 +107,11 @@ highlight Pmenu ctermbg=240
 highlight PmenuSel ctermbg=100 ctermfg=190
 highlight SpellBad ctermbg=0 ctermfg=1
 
-" Highlight the tabs in any file (they should be banned).
-highlight ShowTab ctermbg=red guibg=red
+" Highlight bad spaces that should be removed from a code file
+"   - the tabs (they should be banned)
+"   - the trailing spaces
+highlight BadSpaces ctermbg=red guibg=red
+autocmd FileType * match BadSpaces /\s\+$/
 
 " highlight the status bar when in insert mode
 if version >= 700
@@ -119,61 +122,34 @@ endif
 " ============================================================================
 " OVERRIDE PER FILE TYPE
 " HTML
-autocmd FileType html set sw=2
-autocmd FileType html set ts=2
-autocmd FileType html set sts=2
-autocmd FileType html set textwidth=0
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd BufWinEnter html match ShowTab /\t/
+autocmd FileType html setlocal sw=2 ts=2 sts=2 textwidth=0 omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html match BadSpaces /\t/
 
 " Python
-autocmd FileType python set sw=4
-autocmd FileType python set ts=4
-autocmd FileType python set sts=4
-autocmd FileType python set textwidth=79
-autocmd FileType python set sta
-autocmd FileType python set autoindent
-autocmd FileType cpp set foldmethod=indent
-autocmd BufRead python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd BufWritePre python set normal m`:%s/\s\+$//e ``
-
-" Django Html template
-autocmd FileType htmldjango set sw=2
-autocmd FileType htmldjango set ts=2
-autocmd FileType htmldjango set sts=2
-autocmd FileType htmldjango set textwidth=0
-autocmd FileType htmldjango set omnifunc=htmlcomplete#CompleteTags
-autocmd BufWinEnter htmldjango match ShowTab /\t/
+autocmd FileType python setlocal sw=4 ts=4 sts=4 textwidth=79 sta autoindent
+autocmd FileType python match BadSpaces /\t/
 
 " CSS
-autocmd FileType css set sw=2
-autocmd FileType css set ts=2
-autocmd FileType css set sts=2
-autocmd FileType css set textwidth=79
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd BufWinEnter css match ShowTab /\t/
-
+autocmd FileType css setlocal sw=2 ts=2 sts=2 textwidth=79 omnifunc=csscomplete#CompleteCSS
+autocmd FileType css match BadSpaces /\t/
 
 " JavaScript
-autocmd FileType javascript set sw=2
-autocmd FileType javascript set ts=2
-autocmd FileType javascript set sts=2
-autocmd FileType javascript set textwidth=79
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd BufWinEnter JavaScript match ShowTab /\t/
+autocmd FileType javascript setlocal sw=2 ts=2 sts=2 textwidth=79 omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript match BadSpaces /\t/
 
 " Markdown
-autocmd FileType mkd set textwidth=79
-autocmd BufWinEnter mkd match ShowTab /\t/
+autocmd FileType mkd setlocal textwidth=79
+autocmd FileType mkd match BadSpaces /\t/
 
 " C++
-autocmd FileType cpp set sw=4
-autocmd FileType cpp set ts=4
-autocmd FileType cpp set sts=4
-autocmd FileType cpp set textwidth=79
-autocmd FileType cpp set foldmethod=syntax
+autocmd FileType cpp setlocal sw=4 ts=4 sts=4 textwidth=79 foldmethod=syntax
+autocmd FileType cpp match BadSpaces /\t/
 let c_space_errors=1
-autocmd BufWinEnter cpp match ShowTab /\t/
+
+" YAML
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yaml match BadSpaces /\t/
 
 "  EDIFACT to Ascii
 function! s:EdiToAscii()
