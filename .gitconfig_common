@@ -1,0 +1,28 @@
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+    autocrlf = input
+[merge]
+    tool = vimdiff
+[alias]
+    st = status
+    stn = status --ignore-submodules
+    co = checkout
+    lol = log --pretty=oneline --graph --decorate --branches --remotes --tags --abbrev-commit
+    diffn = diff --ignore-submodules
+[credential]
+    helper = cache --timeout=3600
+[color]
+    ui = true
+[push]
+    default = simple
+[pull]
+    rebase = preserve
+[status]
+    submoduleSummary = true
+[diff]
+    submodule = log
+    tool = vimdiff
+[difftool]
+    prompt = false
+
