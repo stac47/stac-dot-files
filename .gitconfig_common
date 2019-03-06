@@ -5,11 +5,12 @@
 [merge]
     tool = vimdiff
 [alias]
-    st = status
-    stn = status --ignore-submodules
+    st = status --ignore-submodules
+    sst = status --ignore-submodules=none
     co = checkout
     lol = log --pretty=oneline --graph --decorate --branches --remotes --tags --abbrev-commit
-    diffn = diff --ignore-submodules
+    dif = diff --ignore-submodules=all
+    sdiff = diff --ignore-submodules=none --submodule=log
 [credential]
     helper = cache --timeout=3600
 [color]
@@ -18,10 +19,7 @@
     default = simple
 [pull]
     rebase = preserve
-[status]
-    submoduleSummary = true
 [diff]
-    submodule = log
     tool = vimdiff
 [difftool]
     prompt = false
