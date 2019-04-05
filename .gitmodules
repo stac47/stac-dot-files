@@ -49,3 +49,6 @@
 [submodule ".vim/pack/stac/start/rust.vim"]
 	path = .vim/pack/stac/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
+[submodule ".vim/pack/stac/start/vim-fugitive"]
+	path = .vim/pack/stac/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git

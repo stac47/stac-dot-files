@@ -67,7 +67,9 @@ set ignorecase
 " smart search (override 'ic' when pattern has uppers)
 set scs
 " Set status line
-set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ [\\x%04B\ (%05b)]\ %P%*
+set statusline=[%02n]\ %f\ %(\[%M%R%H]%)
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+set statusline+=%=\ %4l,%02c%2V\ [\\x%04B\ (%05b)]\ %P%*
 " Always display a status line at the bottom of the window
 set laststatus=2
 " showmatch: Show the matching bracket for the last ')'?
