@@ -43,13 +43,13 @@ set backspace=indent,eol,start
 " show the cursor position all the time
 set ruler
 " display incomplete commands
-set showcmd  
-" do incremental searching      
+set showcmd
+" do incremental searching
 set incsearch
 " display line numbers on the left
-set number           
+set number
 " displayed tab width = 4 caracters
-set sw=4        
+set sw=4
 set tabstop=4
 " Spaces instead of tabs
 set expandtab
@@ -68,7 +68,6 @@ set ignorecase
 set scs
 " Set status line
 set statusline=[%02n]\ %f\ %(\[%M%R%H]%)
-set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 set statusline+=%=\ %4l,%02c%2V\ [\\x%04B\ (%05b)]\ %P%*
 " Always display a status line at the bottom of the window
 set laststatus=2
@@ -253,7 +252,7 @@ nnoremap <leader>b :ls<CR>
 " ************************************************************************
 
 " ************************************************************************
-" P L U G I N S 
+" P L U G I N S
 
 " Cscope settings
 if has("cscope")
@@ -306,5 +305,5 @@ let g:snips_email = 'laurent.stacul@gmail.com'
 let g:snips_github = 'https://github.com/stac47'
 " End of Snippets
 
-" E N D   P L U G I N S 
+" E N D   P L U G I N S
 " ************************************************************************
