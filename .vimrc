@@ -103,20 +103,18 @@ if executable("git")
 endif
 
 set background=dark
-colorscheme murphy
+colorscheme desert
 
 " Colors settings for terminal mode.
-" highlight Search ctermbg=243 ctermfg=11
-" highlight Visual ctermbg=184 ctermfg=1
+highlight Search ctermbg=243 ctermfg=11
+highlight Visual ctermbg=184 ctermfg=1
 " highlight CursorLine ctermbg=236 cterm=NONE term=NONE
 highlight CursorLineNr ctermbg=1 ctermfg=white
-" highlight LineNr ctermbg=0 ctermfg=10
-" highlight Pmenu ctermbg=240
-" highlight PmenuSel ctermbg=100 ctermfg=190
-" highlight SpellBad ctermbg=0 ctermfg=1
+highlight LineNr ctermbg=0 ctermfg=10
+highlight Pmenu ctermbg=240
+highlight PmenuSel ctermbg=100 ctermfg=190
+highlight SpellBad ctermbg=0 ctermfg=1
 highlight StatusLineNC ctermbg=0 ctermfg=243
-" highlight Folded ctermbg=0 ctermfg=5
-" highlight FoldColumn ctermbg=0 ctermfg=5
 
 " Highlight bad spaces that should be removed from a code file
 "   - the tabs (they should be banned)
