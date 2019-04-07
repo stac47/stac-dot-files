@@ -115,6 +115,8 @@ highlight Pmenu ctermbg=240
 highlight PmenuSel ctermbg=100 ctermfg=190
 highlight SpellBad ctermbg=0 ctermfg=1
 highlight StatusLineNC ctermbg=0 ctermfg=243
+highlight DiffChange term=bold ctermbg=7 ctermfg=0
+highlight DiffText term=reverse cterm=bold ctermbg=1 ctermfg=15
 
 " Highlight bad spaces that should be removed from a code file
 "   - the tabs (they should be banned)
