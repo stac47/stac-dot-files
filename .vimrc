@@ -93,7 +93,15 @@ else
  echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
 endif
 
-" I like this colors
+set grepformat=%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f\ \ %l%m
+if executable("git")
+  let git_result = system('git rev-parse')
+  if !v:shell_error
+    set grepprg=git\ --no-pager\ grep\ -n\ --no-color\ --column
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+  endif
+endif
+
 set background=dark
 colorscheme murphy
 
@@ -291,15 +299,6 @@ let g:syntastic_cpp_remove_include_errors = 1
 
 let g:syntastic_python_checkers = ['pyflakes', 'python']
 " End of Syntastic
-
-" The silver searcher
-if executable("ag")
-  set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore='tags'\ --ignore='cscope.*'\ --ignore='*.rex'\ --ignore='*.res'\ $*
-  set grepformat=%f:%l:%c:%m
-  let g:agprg="ag --follow --column"
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-" End of Silver searcher
 
 " Snippets
 let g:snips_author = 'Laurent Stacul'
