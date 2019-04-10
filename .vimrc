@@ -1,5 +1,29 @@
 set nocompatible
 
+" ************************************************************************
+" Utilitity functions
+
+function! s:version_lower_than(v1, v2) abort
+    let l:splitted_version_1 = split(a:v1, '\D\+')
+    let l:splitted_version_2 = split(a:v2, '\D\+')
+    let l:max_length = max([len(l:splitted_version_1), len(l:splitted_version_2)])
+    for i in range(l:max_length)
+        if +get(l:splitted_version_1, i, 0) == +get(l:splitted_version_2, i, 0)
+            continue
+        elseif +get(l:splitted_version_1, i, 0) < +get(l:splitted_version_2, i, 0)
+            return 1
+        else
+            return 0
+        endif
+    endfor
+endfunction
+
+" End of Utility functions
+" ************************************************************************
+
+" ************************************************************************
+" General configuration
+
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
@@ -93,14 +117,34 @@ else
  echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
 endif
 
+" grep settings
 set grepformat=%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f\ \ %l%m
-if executable("git")
-  let git_result = system('git rev-parse')
-  if !v:shell_error
-    set grepprg=git\ --no-pager\ grep\ -n\ --no-color\ --column
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-  endif
+if executable("ag")
+  set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore='tags'\ --ignore='cscope.*'\ --ignore='*.rex'\ --ignore='*.res'\ $*
+  set grepformat=%f:%l:%c:%m
+  let g:agprg="ag --follow --column"
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
+" Cscope settings
+if has("cscope")
+    set csto=1
+    set cst
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+
+" End of general configuration
+" ************************************************************************
+
+" ************************************************************************
+" Colors settings
 
 set background=dark
 colorscheme desert
@@ -130,8 +174,12 @@ if version >= 700
   au InsertLeave * hi StatusLine ctermbg=black ctermfg=white
 endif
 
-" ============================================================================
-" OVERRIDE PER FILE TYPE
+" End of colors settings
+" ************************************************************************
+
+" ************************************************************************
+" Per filetype configuration
+
 " HTML
 autocmd FileType html setlocal sw=2 ts=2 sts=2 textwidth=0 omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html match BadSpaces /\t/
@@ -172,15 +220,7 @@ function! s:EdiToAscii()
     set ft=tracer
 endfunction
 
-" Indexing a py|cpp project
-function! BuildIndex()
-    silent !find . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py|java)$' > cscope.files
-    silent !cscope -b -q -i cscope.files
-    silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-    redraw!
-endfunction
-
-"================XML==========================
+" XML
 " Folding feature activated for XML
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
@@ -233,11 +273,14 @@ except Exception as e:
     print(e)
 EOF
 endfunction
-"===========End of XML==========================
+" End of XML
+
+" End of per filetype configuration
+" ************************************************************************
 
 
 " ************************************************************************
-" K E Y   M A P P I N G S
+" Key mappings
 
 " Moving between buffers
 nnoremap <F2> :bp<CR>
@@ -258,26 +301,11 @@ nnoremap <leader>c :Bdelete<CR>
 nnoremap <leader>C :Bdelete!<CR>
 nnoremap <leader>b :ls<CR>
 
-" E N D    K E Y  M A P P I N G
+" End of key mappings
 " ************************************************************************
 
 " ************************************************************************
-" P L U G I N S
-
-" Cscope settings
-if has("cscope")
-    set csto=1
-    set cst
-    " add any database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    " else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-    set csverb
-endif
-" End of Cscope configuration
+" Plugins configuration
 
 " vim-markdown plugin: no folding
 let g:vim_markdown_folding_disabled=1
@@ -306,5 +334,54 @@ let g:snips_email = 'laurent.stacul@gmail.com'
 let g:snips_github = 'https://github.com/stac47'
 " End of Snippets
 
-" E N D   P L U G I N S
+" End of plugins configuration
+" ************************************************************************
+
+" ************************************************************************
+" User defined functions
+
+function! BuildIndex()
+    silent !find . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py|java)$' > cscope.files
+    silent !cscope -b -q -i cscope.files
+    silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+    cs add cscope.out
+    redraw!
+endfunction
+
+function! GitGrep(arg) abort
+	if !executable("git")
+        echom 'Git is not available on your system'
+        return
+    endif
+    let l:git_version = split(system('git --version'))[2]
+    let l:git_result = system('git rev-parse')
+    if v:shell_error
+        echom 'The current working directory is not a Git repository'
+        return
+    endif
+    try
+        let l:grepprg = &grepprg
+        let l:grepformat = &grepformat
+        let &grepformat = '%f:%l:%c:%m,%f:%l:%m,%m %f match%ts,%f'
+        let &grepprg='git --no-pager grep -n --no-color'
+        if s:version_lower_than('2.19', l:git_version)
+            let &grepprg .= ' --column'
+        endif
+        exe 'grep! '.escape(a:arg, '|#%')
+    finally
+        let &grepprg = l:grepprg
+        let &grepformat = l:grepformat
+    endtry
+endfunc
+
+" End of user defined functions
+" ************************************************************************
+
+" ************************************************************************
+" User defined commands
+
+command! -narg=+ Grep :call GitGrep('<args>')
+command! -narg=0 Index :call BuildIndex()
+
+" End of user defined commands
 " ************************************************************************
