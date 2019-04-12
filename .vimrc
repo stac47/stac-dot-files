@@ -367,7 +367,8 @@ function! GitGrep(arg) abort
         if s:version_lower_than('2.19', l:git_version)
             let &grepprg .= ' --column'
         endif
-        exe 'grep! '.escape(a:arg, '|#%')
+        " exe 'grep! '.escape(a:arg, '|#%')
+        exe 'grep! '.a:arg
     finally
         let &grepprg = l:grepprg
         let &grepformat = l:grepformat
@@ -380,7 +381,7 @@ endfunc
 " ************************************************************************
 " User defined commands
 
-command! -narg=+ Grep :call GitGrep('<args>')
+command! -narg=1 Grep :call GitGrep(<q-args>)
 command! -narg=0 Index :call BuildIndex()
 
 " End of user defined commands
