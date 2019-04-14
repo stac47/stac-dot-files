@@ -1,8 +1,12 @@
+" Author: Laurent Stacul
+" URL: http://stac47.github.io
+
 set nocompatible
 
 " ************************************************************************
 " Utilitity functions
 
+" Returns true if v1 is lower than v2
 function! s:version_lower_than(v1, v2) abort
     let l:splitted_version_1 = split(a:v1, '\D\+')
     let l:splitted_version_2 = split(a:v2, '\D\+')
@@ -16,6 +20,16 @@ function! s:version_lower_than(v1, v2) abort
             return 0
         endif
     endfor
+endfunction
+
+"  EDIFACT to Ascii
+function! s:edifact_to_ascii()
+    silent! exec '%s/\%x1d/+/ge'
+    silent! exec '%s/\%x19/*/ge'
+    silent! exec '%s/\%x1f/:/ge'
+    silent! exec '%s/\%x1c/''\r/ge'
+    normal gg
+    set ft=tracer
 endfunction
 
 " End of Utility functions
@@ -210,16 +224,6 @@ au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType yaml match BadSpaces /\t/
 
-"  EDIFACT to Ascii
-function! s:EdiToAscii()
-    silent! exec '%s/\%x1d/+/ge'
-    silent! exec '%s/\%x19/*/ge'
-    silent! exec '%s/\%x1f/:/ge'
-    silent! exec '%s/\%x1c/''\r/ge'
-    normal gg
-    set ft=tracer
-endfunction
-
 " XML
 " Folding feature activated for XML
 let g:xml_syntax_folding=1
@@ -228,80 +232,7 @@ au FileType xml setlocal foldmethod=syntax
 " Do not automatically fold the XML
 au FileType xml setlocal foldlevel=999999
 
-" Python function to validate a XML file (faster than vim script)
-function! s:XmlValidate()
-py << EOF
-import vim
-import re
-from xml.dom.minidom import parseString
-from xml.parsers.expat import ExpatError
-from xml.parsers.expat import ErrorString
-sXml = "\n".join(vim.current.buffer)
-try:
-    xml = parseString(sXml)
-except ExpatError as e:
-    # Jump to the invalid line
-    vim.command(str(e.lineno))
-    print(e)
-else:
-    print("Valid XML")
-EOF
-endfunction
-
-" Python function to pretty print an XML
-function! s:XmlPretty()
-py << EOF
-import vim
-import re
-from xml.dom.minidom import parseString
-
-def removeSpace(s):
-    xmlLine = s.strip()
-    if not xmlLine.startswith("<"):
-        xmlLine = " " + xmlLine
-    return xmlLine
-
-sXml = "".join(map(removeSpace,vim.current.buffer))
-try:
-    xml = parseString(sXml)
-    s = xml.toprettyxml(indent = "  ", encoding = "UTF-8")
-    RE_PATTERN = re.compile('>\n\s+([^<>\s].*?)\n\s+</', re.DOTALL)
-    prettyXml = RE_PATTERN.sub(">\g<1></", s)
-    #prettyXml = s
-    vim.current.buffer[:] = prettyXml.split("\n")
-except Exception as e:
-    print(e)
-EOF
-endfunction
-" End of XML
-
 " End of per filetype configuration
-" ************************************************************************
-
-
-" ************************************************************************
-" Key mappings
-
-" Moving between buffers
-nnoremap <F2> :bp<CR>
-nnoremap <F3> :bn<CR>
-
-nnoremap <F4> :cs find 0 <C-R><C-W><CR>
-nnoremap <F6> :Explore<CR>
-nnoremap <F8> :call <SID>PrettyXml()<CR>
-nnoremap <F9> :%!python -m json.tool<CR>
-nnoremap <F10> :call <SID>EdiToAscii()<CR>
-
-" Up and Down arrows mapping
-nnoremap <Up> gk
-nnoremap <Down> gj
-
-" Mapping with leader
-nnoremap <leader>c :Bdelete<CR>
-nnoremap <leader>C :Bdelete!<CR>
-nnoremap <leader>b :ls<CR>
-
-" End of key mappings
 " ************************************************************************
 
 " ************************************************************************
@@ -386,3 +317,27 @@ command! -narg=0 Index :call BuildIndex()
 
 " End of user defined commands
 " ************************************************************************
+
+" ************************************************************************
+" Key mappings
+
+" Explorer
+nnoremap <leader>e :Explore<CR>
+
+" Pretty print
+nnoremap <leader>pj :%!python -m json.tool<CR>
+nnoremap <leader>px :%!xmllint % --format<CR>
+nnoremap <leader>pe :call <SID>edifact_to_ascii()<CR>
+
+" Up and Down arrows mapping
+nnoremap <Up> gk
+nnoremap <Down> gj
+
+" Mapping with leader
+nnoremap <leader>c :Bdelete<CR>
+nnoremap <leader>C :Bdelete!<CR>
+nnoremap <leader>b :ls<CR>
+
+" End of key mappings
+" ************************************************************************
+
