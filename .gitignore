@@ -1,6 +1,5 @@
 *.orig
 doc/tags
-.vim/spell/
 .DS_Store
 tmux-client-*.log
 tmux-server-*.log
