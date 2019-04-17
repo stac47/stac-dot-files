@@ -3,4 +3,3 @@
     email = laurent.stacul@amadeus.com
 [include]
     path = .gitconfig_common
-

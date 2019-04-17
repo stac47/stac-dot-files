@@ -23,4 +23,5 @@
     tool = vimdiff
 [difftool]
     prompt = false
-
+[difftool "vimdiff"]
+    cmd = vim -d -f -c \"3wincmd w | wincmd J\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
