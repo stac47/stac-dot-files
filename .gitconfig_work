@@ -3,3 +3,5 @@
     email = laurent.stacul@amadeus.com
 [include]
     path = .gitconfig_common
+[http]
+	proxy = http://10.64.178.198:3128
