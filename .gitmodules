@@ -46,6 +46,3 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule ".vim/pack/stac/start/-f"]
-	path = .vim/pack/stac/start/-f
-	url = https://github.com/rust-lang/rust.vim.git
