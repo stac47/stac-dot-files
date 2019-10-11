@@ -49,3 +49,6 @@
 [submodule ".vim/pack/stac/start/rust.vim"]
 	path = .vim/pack/stac/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule ".vim/pack/stac/start/vim-go"]
+	path = .vim/pack/stac/start/vim-go
+	url = https://github.com/fatih/vim-go.git
