@@ -18,7 +18,7 @@
 [push]
     default = simple
 [pull]
-    rebase = preserve
+    rebase = merges
 [diff]
     tool = vimdiff
 [difftool]
