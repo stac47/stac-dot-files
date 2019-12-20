@@ -74,6 +74,9 @@ set foldenable
 set foldmethod=indent
 set foldlevel=99
 
+" Write automatically in case of :make
+set autowrite
+
 " Visual wrap activated my default
 set wrap
 " allow backspacing over everything in insert mode
@@ -219,6 +222,11 @@ autocmd FileType cpp setlocal sw=4 ts=4 sts=4 textwidth=79 foldmethod=syntax
 autocmd FileType cpp match BadSpaces /\t/
 let c_space_errors=1
 
+"Go
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+
 " YAML
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -333,10 +341,15 @@ nnoremap <leader>pe :call <SID>edifact_to_ascii()<CR>
 nnoremap <Up> gk
 nnoremap <Down> gj
 
-" Mapping with leader
+" Buffer control shortcuts
 nnoremap <leader>c :Bdelete<CR>
 nnoremap <leader>C :Bdelete!<CR>
-nnoremap <leader>b :ls<CR>
+nnoremap <leader>l :ls<CR>
+
+" Quicklist shortcuts
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 " End of key mappings
 " ************************************************************************
