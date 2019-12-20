@@ -347,8 +347,9 @@ nnoremap <leader>C :Bdelete!<CR>
 nnoremap <leader>l :ls<CR>
 
 " Quicklist shortcuts
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
+map <leader>n :cnext<CR>
+map <leader>m :cprevious<CR>
+nnoremap <leader>q :copen<CR>
 nnoremap <leader>a :cclose<CR>
 
 " End of key mappings
