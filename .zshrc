@@ -55,18 +55,10 @@ export LS_COLORS
 #------------------------------
 # Alias stuff
 #------------------------------
-alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
 alias ll="ls -lh"
 alias la='ls -a'
 alias lla='ls -la'
 alias less='less --quiet -R'
-alias df='df --human-readable'
-alias du='du --human-readable'
-alias grep='grep --color'
-alias mount='mount |column -t'
-alias psall='ps -ef'
-alias psmy='ps uxf --columns 1000'
-alias todo='todolist'
 
 #------------------------------
 # zsh options
