@@ -179,12 +179,6 @@ highlight StatusLineNC ctermbg=0 ctermfg=243
 highlight DiffChange term=bold ctermbg=7 ctermfg=0
 highlight DiffText term=reverse cterm=bold ctermbg=1 ctermfg=15
 
-" Highlight bad spaces that should be removed from a code file
-"   - the tabs (they should be banned)
-"   - the trailing spaces
-highlight BadSpaces ctermbg=red guibg=red
-autocmd FileType * match BadSpaces /\s\+$/
-
 " highlight the status bar when in insert mode
 if version >= 700
   au InsertEnter * hi StatusLine ctermbg=0 ctermfg=red
@@ -199,27 +193,21 @@ endif
 
 " HTML
 autocmd FileType html setlocal sw=2 ts=2 sts=2 textwidth=0 omnifunc=htmlcomplete#CompleteTags
-autocmd FileType html match BadSpaces /\t/
 
 " Python
 autocmd FileType python setlocal sw=4 ts=4 sts=4 textwidth=79 sta autoindent
-autocmd FileType python match BadSpaces /\t/
 
 " CSS
 autocmd FileType css setlocal sw=2 ts=2 sts=2 textwidth=79 omnifunc=csscomplete#CompleteCSS
-autocmd FileType css match BadSpaces /\t/
 
 " JavaScript
 autocmd FileType javascript setlocal sw=2 ts=2 sts=2 textwidth=79 omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript match BadSpaces /\t/
 
 " Markdown
 autocmd FileType mkd setlocal textwidth=79
-autocmd FileType mkd match BadSpaces /\t/
 
 " C++
 autocmd FileType cpp setlocal sw=4 ts=4 sts=4 textwidth=79 foldmethod=syntax
-autocmd FileType cpp match BadSpaces /\t/
 let c_space_errors=1
 
 "Go
@@ -230,7 +218,6 @@ autocmd FileType go nmap <leader>t  <Plug>(go-test)
 " YAML
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType yaml match BadSpaces /\t/
 
 " XML
 " Folding feature activated for XML
