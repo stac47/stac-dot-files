@@ -106,7 +106,7 @@ set wildmode=list:full
 " Set ignorecase on (set ic)
 set ignorecase
 " smart search (override 'ic' when pattern has uppers)
-set scs
+set smartcase
 " Set status line
 set statusline=[%02n]\ %f\ %(\[%M%R%H]%)
 set statusline+=%=\ %4l,%02c%2V\ [\\x%04B\ (%05b)]\ %P%*
