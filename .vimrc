@@ -260,6 +260,11 @@ let g:snips_email = 'laurent.stacul@gmail.com'
 let g:snips_github = 'https://github.com/stac47'
 " End of Snippets
 
+" VimWiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+" End of VimWiki
+
 " End of plugins configuration
 " ************************************************************************
 

@@ -56,3 +56,7 @@
 	path = .vim/pack/stac/start/vim-clang-format
 	url = https://github.com/rhysd/vim-clang-format.git
 	branch = master
+[submodule ".vim/pack/stac/start/vimwiki"]
+	path = .vim/pack/stac/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
+	branch = master
