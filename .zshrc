@@ -46,18 +46,24 @@ setopt no_hist_beep
 export BROWSER="firefox"
 export EDITOR="vim"
 
-#-----------------------------
-# Dircolors
-#-----------------------------
-LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
-export LS_COLORS
 
 #------------------------------
 # Alias stuff
 #------------------------------
+if [[ "$OSTYPE" =~ "^linux.*" ]]; then
+  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+  alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
+  alias grep='grep --color'
+  alias psall='ps -ef'
+  alias psmy='ps uxf --columns 1000'
+elif [[ "$OSTYPE" =~ "^darwin.*" ]]; then
+  export LSCOLORS='exfxcxdxbxegedabagacad'
+  alias ls='ls -G'
+fi
 alias ll="ls -lh"
 alias la='ls -a'
 alias lla='ls -la'
+alias mount='mount |column -t'
 alias less='less --quiet -R'
 
 #------------------------------

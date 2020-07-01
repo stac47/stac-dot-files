@@ -5,6 +5,9 @@ export LANGUAGE=en_US.UTF-8
 
 [[ -z "$SHELL" ]] && export SHELL="/bin/zsh"
 
+# Add a path in the *PATH environment variable only if the value does not have
+# it. This is useful to avoid reseting all the path when running another shell
+# via tmux or screen.
 function stac_add_path() {
     local var_name=${1:?"Missing variable name"}
     local value=${2:?"Missing value"}
