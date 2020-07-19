@@ -25,3 +25,9 @@
     prompt = false
 [difftool "vimdiff"]
     cmd = vim -d -f -c \"3wincmd w | wincmd J\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[sendemail]
+    chainreplyto = false
+    smtpEncryption = tls
+    smtpServer = smtp.gmail.com
+    smtpUser = laurent.stacul
+    smtpServerPort = 587
