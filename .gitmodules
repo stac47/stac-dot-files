@@ -60,3 +60,9 @@
 	path = .vim/pack/stac/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
 	branch = master
+[submodule ".vim/pack/stac/start/bats.vim"]
+	path = .vim/pack/stac/start/bats.vim
+	url = https://github.com/aliou/bats.vim.git
+[submodule ".vim/pack/stac/start/vim-toml"]
+	path = .vim/pack/stac/start/vim-toml
+	url = https://github.com/cespare/vim-toml.git
