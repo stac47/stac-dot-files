@@ -325,9 +325,12 @@ command! -narg=0 Index :call BuildIndex()
 nnoremap <leader>e :Explore<CR>
 
 " Pretty print
-nnoremap <leader>pj :%!python -m json.tool<CR>
-nnoremap <leader>px :%!xmllint % --format<CR>
-nnoremap <leader>pe :call <SID>edifact_to_ascii()<CR>
+nnoremap <leader>Pj :%!python -m json.tool<CR>
+nnoremap <leader>Px :%!xmllint % --format<CR>
+nnoremap <leader>Pe :call <SID>edifact_to_ascii()<CR>
+
+" Set paste/nopaste
+nnoremap <leader>p :set paste!<CR>:set paste?<CR>
 
 " Up and Down arrows mapping
 nnoremap <Up> gk
