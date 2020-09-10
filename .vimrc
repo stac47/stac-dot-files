@@ -118,6 +118,10 @@ set mps+=<:>
 " allow tilde (~) to act as an operator -- ~w, etc.
 set notildeop
 
+" From Vim 8.1.360, more powerful options were added
+" https://vimways.org/2018/the-power-of-diff/
+set diffopt+=algorithm:patience,indent-heuristic
+
 " Avoid looking for some known binaries files
 set wildignore+=*.o,*.so,*.swp,*.zip,*.class,*.exe
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
