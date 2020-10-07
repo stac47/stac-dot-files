@@ -36,6 +36,7 @@ function _install_tools_linux() {
                 bzip2 \
                 ca-certificates \
                 chrpath \
+                cmake \
                 cscope \
                 curl \
                 dos2unix \
@@ -49,6 +50,8 @@ function _install_tools_linux() {
                 jq \
                 libtool \
                 make-doc \
+                mosh \
+                pkg-config \
                 python3 \
                 python3-venv \
                 software-properties-common \
