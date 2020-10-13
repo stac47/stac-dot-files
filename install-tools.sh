@@ -48,12 +48,14 @@ function _install_tools_linux() {
                 gnupg-agent \
                 htop \
                 jq \
+                libncurses-dev \
                 libtool \
                 make-doc \
                 mosh \
                 pkg-config \
                 python3 \
                 python3-venv \
+                python-dev-is-python3 \
                 software-properties-common \
                 valgrind \
                 vim \
