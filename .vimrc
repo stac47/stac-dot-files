@@ -127,6 +127,9 @@ set wildignore+=*.o,*.so,*.swp,*.zip,*.class,*.exe
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
 set wildignore+=*\\.git\\*,*\\.hg\\*,*\\.svn\\*  " Windows ('noshellslash')
 
+" By default spell checking language is french
+set spelllang=fr
+
 " File encoding set to UTF-8
 if has("multi_byte")
  set encoding=utf-8
