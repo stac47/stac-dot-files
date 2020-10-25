@@ -1,28 +1,37 @@
-export TMP=$HOME/tmp/
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default
+#------------------------------
+# Variables
+#------------------------------
+export TERM="xterm-256color"
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
+export BROWSER="firefox"
+export EDITOR="vim"
+export PAGER=less
+export MANPAGER=less
 
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
 
-# pip should only run if there is a virtualenv currently activated
-export PIP_REQUIRE_VIRTUALENV=true
-# cache pip-installed packages to avoid re-downloading
-export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-
-syspip(){
-   PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
-}
-
-alias ls='ls -GFh'
-alias ll='ls -l'
-alias psmy='ps -fu $USER | sort | egrep -v "ps -fu|sort|grep"'
-# Always 256 colors
-alias tmux='tmux -2'
-alias grep='grep --color'
-
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+#------------------------------
+# Alias stuff
+#------------------------------
+if [[ "$OSTYPE" =~ "^linux.*" ]]; then
+  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+  alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
+  alias grep='grep --color'
+  alias psall='ps -ef'
+  alias psmy='ps uxf --columns 1000'
+elif [[ "$OSTYPE" =~ "^darwin.*" ]]; then
+  export LSCOLORS='exfxcxdxbxegedabagacad'
+  alias ls='ls -G'
+fi
+alias ll="ls -lh"
+alias la='ls -a'
+alias lla='ls -la'
+alias mount='mount |column -t'
+alias less='less --quiet -R'
 
 # OS specific stuff
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -35,4 +44,3 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 else
     echo "This is an unknown OS."
 fi
-export PATH="/usr/local/sbin:$PATH"
