@@ -18,7 +18,7 @@ export CLICOLOR=1
 # Alias stuff
 #------------------------------
 case ${OSTYPE} in
-    linux.* | cygwin)
+    linux-gnu | cygwin)
         export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
         alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
         alias grep='grep --color'
@@ -26,7 +26,7 @@ case ${OSTYPE} in
         alias psmy='ps uxf --columns 1000'
         export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
         ;;
-    ^darwin.* )
+    darwin )
         export LSCOLORS='exfxcxdxbxegedabagacad'
         alias ls='ls -G'
         export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
@@ -43,3 +43,23 @@ alias la='ls -a'
 alias lla='ls -la'
 alias mount='mount |column -t'
 alias less='less --quiet -R'
+
+#------------------------------
+# Path configuration
+#------------------------------
+# Add a path in the *PATH environment variable only if the value does not have
+# it. This is useful to avoid reseting all the path when running another shell
+# via tmux or screen.
+function stac_add_path() {
+    local var_name=${1:?"Missing variable name"}
+    local value=${2:?"Missing value"}
+    if [[ ! ${!var_name} =~ ${value} ]]; then
+        export ${var_name}=${value}:${!var_name}
+    fi
+}
+
+stac_add_path 'LD_LIBRARY_PATH' "$HOME/.local/lib"
+stac_add_path 'LIBRARY_PATH' "$HOME/.local/include"
+stac_add_path 'CPATH' "$HOME/.local/include"
+stac_add_path 'PATH' "$HOME/.local/bin"
+stac_add_path 'PATH' "$HOME/.local/go/bin"
