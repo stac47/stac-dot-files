@@ -28,6 +28,15 @@ zstyle ':completion:*:kill:*'   force-list always
 zstyle ':completion::complete:*' use-cache 1
 
 #------------------------------
+# Git info
+#------------------------------
+setopt prompt_subst
+autoload -Uz vcs_info
+zstyle ':vcs_info:git*' formats '%F{magenta}(%s:%b)%f'
+zstyle ':vcs_info:git*' actionformats '%F{magenta}(%s:%b|%a)%f'
+precmd () { vcs_info }
+
+#------------------------------
 # History
 #------------------------------
 HISTFILE=$HOME/.zsh_histfile
@@ -111,8 +120,8 @@ then
   PROMPT="[$(print '%{\e[1;33m%}%*%{\e[0m%}')]$(print '%{\e[1;31m%}%n%{\e[0m%}@%{\e[30;32m%}%m%{\e[0m%}'):%~>"
   RPROMPT=
 else
-  PROMPT='%B[%F{yellow}%*%f]%F{red}%n%f@%F{green}%M:%y%f:%~>%b'
-  RPROMPT='%B%F{cyan}[jobs: %j][history: %h]%f%b'
+  PROMPT='%B[%F{yellow}%*%f]%F{red}%n%f@%F{green}%M:%y%f(%F{cyan}%j%f):%~${vcs_info_msg_0_}>%b'
+  RPROMPT=''
 fi
 
 #------------------------------
