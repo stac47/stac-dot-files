@@ -59,7 +59,7 @@ export EDITOR="vim"
 #------------------------------
 # Alias stuff
 #------------------------------
-if [[ "$OSTYPE" =~ "^linux.*" ]]; then
+if [[ "$OSTYPE" =~ "^linux.*" ]] || [[ "$OSTYPE" == 'cygwin' ]]; then
   export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
   alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
   alias grep='grep --color'
