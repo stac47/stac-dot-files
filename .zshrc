@@ -3,7 +3,8 @@
 #------------------------------
 # Key binding
 #------------------------------
-bindkey -v
+# Emacs binding
+bindkey -e
 bindkey "^R" history-incremental-search-backward
 
 #------------------------------
