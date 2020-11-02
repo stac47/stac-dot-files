@@ -8,6 +8,13 @@ bindkey -e
 bindkey "^R" history-incremental-search-backward
 
 #------------------------------
+# Word definition for CTRL-W
+#------------------------------
+autoload -U select-word-style
+select-word-style bash
+export WORDCHARS='.-'
+
+#------------------------------
 # Autocompletion
 #------------------------------
 autoload -U compinit
