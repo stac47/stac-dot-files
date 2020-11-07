@@ -66,3 +66,6 @@
 [submodule ".vim/pack/stac/start/vim-toml"]
 	path = .vim/pack/stac/start/vim-toml
 	url = https://github.com/cespare/vim-toml.git
+[submodule ".vim/pack/stac/start/vinfo"]
+	path = .vim/pack/stac/start/vinfo
+	url = https://github.com/alx741/vinfo.git
