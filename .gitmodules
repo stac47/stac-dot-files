@@ -1,9 +1,3 @@
-[submodule "scripts/battery"]
-	path = scripts/battery
-	url = https://github.com/richo/battery.git
-[submodule "scripts/Boost-Pretty-Printer"]
-	path = scripts/Boost-Pretty-Printer
-	url = https://github.com/mateidavid/Boost-Pretty-Printer.git
 [submodule ".vim/pack/stac/start/vim-markdown"]
 	path = .vim/pack/stac/start/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
@@ -40,9 +34,6 @@
 [submodule ".vim/pack/stac/start/vim-unimpaired"]
 	path = .vim/pack/stac/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "scripts/zsh-git-prompt"]
-	path = scripts/zsh-git-prompt
-	url = https://github.com/olivierverdier/zsh-git-prompt.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
