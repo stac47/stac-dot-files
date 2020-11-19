@@ -90,7 +90,7 @@ set incsearch
 " display line numbers on the left
 set number
 " displayed tab width = 4 caracters
-set sw=4
+set shiftwidth=4
 set tabstop=4
 " Spaces instead of tabs
 set expandtab
@@ -102,7 +102,7 @@ set cursorline
 set showmode
 " Wild menu
 set wildmenu
-set wildmode=list:full
+set wildmode=list:longest
 " Set ignorecase on (set ic)
 set ignorecase
 " smart search (override 'ic' when pattern has uppers)
