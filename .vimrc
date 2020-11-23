@@ -272,6 +272,11 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 " End of VimWiki
 
+" Rust plugin
+let g:rustfmt_autosave = 1
+" End of Rust plugin
+
+
 " End of plugins configuration
 " ************************************************************************
 
