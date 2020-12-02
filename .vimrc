@@ -234,6 +234,9 @@ au FileType xml setlocal foldmethod=syntax
 " Do not automatically fold the XML
 au FileType xml setlocal foldlevel=999999
 
+" Groovy
+autocmd FileType groovy setlocal sw=4 ts=4 sts=4 textwidth=119 sta autoindent
+
 " End of per filetype configuration
 " ************************************************************************
 
