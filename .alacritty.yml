@@ -38,6 +38,10 @@ colors:
      cyan:    '#00ffff'
      white:   '#ffffff'
 
+key_bindings:
+  - { key: F,        mods: Alt,     chars: "\x1bf"                       }
+  - { key: B,        mods: Alt,     chars: "\x1bb"                       }
+
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
