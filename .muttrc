@@ -1,0 +1,24 @@
+# General configuration
+set meta_key = yes          # Allow to use alt or ESC
+set nobeep                  # We don't need no beeping software.
+set editor = "vim"          # Use vim
+set charset = "utf-8"
+
+# Folder hooks
+folder-hook 'account.com.gmail.laurent.stacul' 'source ~/.mutt/account.com.gmail.laurent.stacul'
+folder-hook 'account.net.laposte.laurent.stacul' 'source ~/.mutt/account.net.laposte.laurent.stacul'
+
+# Default account
+source ~/.mutt/account.com.gmail.laurent.stacul
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.laurent.stacul<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.net.laposte.laurent.stacul<enter><change-folder>!<enter>'
+
+# Key bindings
+bind index G imap-fetch-mail # Fetch mail shortcut
+
+# Other configuration files
+source ~/.mutt/colours
+
+push <show-version>

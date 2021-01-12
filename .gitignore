@@ -8,3 +8,4 @@ tmux-server-*.log
 .tmux/plugins/tmux-battery/
 .tmux/plugins/tmux-cpu/
 .tmux/plugins/tmux-sensible/
+.mutt/*/cache

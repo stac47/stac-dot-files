@@ -1,0 +1,8 @@
+# Images
+image/*; open %s; copiousoutput
+
+# PDF
+application/pdf; open %s; copiousoutput
+
+# Text
+text/html; lynx -dump %s
