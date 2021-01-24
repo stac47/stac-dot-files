@@ -1,14 +1,6 @@
-set imap_user = "laurent.stacul@laposte.net"
-set imap_pass = "`pass Email/laurent.stacul@laposte.net | head -n 1`"
 set smtp_url = "smtp://laurent.stacul@smtp.laposte.net:587/"
-set smtp_pass = "$imap_pass"
 set from = "laurent.stacul@laposte.net"
 set realname = "Laurent Stacul"
-set folder = "imaps://imap.laposte.net:993"
-set spoolfile = "+INBOX"
-set postponed = "+INBOX/DRAFT"
-set record = "+INBOX/OUTBOX"
-set header_cache = ~/.mutt/net.laposte.laurent.stacul/cache/headers
-set message_cachedir = ~/.mutt/net.laposte.laurent.stacul/cache/bodies
-set certificate_file = ~/.mutt/net.laposte.laurent.stacul/certificates
-
+unmy_hdr From:
+my_hdr From: $realname <$from>
+fcc-hook .*                         =Inbox-laposte

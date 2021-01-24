@@ -1,14 +1,8 @@
-set imap_user = "laurent.stacul@gmail.com"
-set imap_pass = "`pass Email/laurent.stacul@gmail.com | head -n 1`"
 set smtp_url = "smtp://laurent.stacul@gmail.com@smtp.gmail.com:587/"
-set smtp_pass = "$imap_pass"
 set smtp_authenticators = 'gssapi:login'
 set from = "laurent.stacul@gmail.com"
 set realname = "Laurent Stacul"
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
-set record = "+Sent"
-set header_cache = ~/.mutt/com.gmail.laurent.stacul/cache/headers
-set message_cachedir = ~/.mutt/com.gmail.laurent.stacul/cache/bodies
-set certificate_file = ~/.mutt/com.gmail.laurent.stacul/certificates
+unmy_hdr From:
+my_hdr From: $realname <$from>
+fcc-hook .*                         =Inbox-gmail
+

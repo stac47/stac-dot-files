@@ -1,0 +1,69 @@
+# .procmailrc
+
+#DATE=`date +%Y-%m`
+SHELL=/bin/sh
+VERBOSE=off
+PMDIR=/Users/stac/.procmail
+LOGFILE=$PMDIR/procmail.log
+# inserts a blank line between log entries
+LOG="
+"
+MAIL=/Users/stac/Mail
+MLIST=$MAIL
+
+#
+# delete duplicate messages first
+#
+#:0 Wh: msgid.lock
+#| formail -D 8192 $PMDIR/msgid.cache
+
+#
+# keep our archive in dated mboxes
+#
+#:0 c
+#$MAIL/Archives/incoming-$DATE
+
+#
+# delete stuff the server marks as spam outright
+#
+:0
+* ^Subject:.*\[--SPAM--\]
+/dev/null
+
+#
+# mailing lists
+#
+# GCC Bugs
+:0:
+* ^Return-Path:.*gcc-bugs-bounces@gcc.gnu.org
+$MAIL/gcc-bugs
+#
+# GCC Help
+:0:
+* ^Return-Path:.*gcc-help-bounces@gcc.gnu.org
+$MAIL/gcc-help
+#
+# Mutt Users
+:0:
+* ^Return-Path:.*mutt-users@mutt.org
+$MAIL/mutt-users
+
+
+#
+# [--SPAM--] check messages with spamassassin
+#
+#INCLUDERC=$PMDIR/spam.rc
+
+#
+#
+# final delivery to inbox
+:0:
+* ^TO_.*laurent.stacul@laposte.net
+$MAIL/Inbox-laposte
+#
+:0:
+* ^TO_.*laurent.stacul@gmail.com
+$MAIL/Inbox-gmail
+#
+:0
+$MAIL/Inbox

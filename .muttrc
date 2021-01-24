@@ -1,24 +1,88 @@
 # General configuration
+set realname = "Laurent Stacul"
 set meta_key = yes          # Allow to use alt or ESC
 set nobeep                  # We don't need no beeping software.
 set editor = "vim"          # Use vim
 set charset = "utf-8"
+set sort = threads
+set sort_aux = last-date-received
+set record = "+Sent"
+set postponed = "+Drafts"
+set hidden_host
+set ascii_chars = yes
+set nomark_old
+set mime_forward
+set pager_context=3
+set nostrict_threads
+set pager_stop
+set text_flowed
+set spoolfile = "~/Mail/Incoming"
+
+set index_format="%4C %Z %{%a %F %T} %-40.40F (%?l?%5l&%5c?) %s"
+# set index_format="%4C %Z %{%a %F %T} %-40.40L (%?l?%4l&%4c?) %s"
+
+# Mailboxes
+mailboxes =Inbox-gmail
+mailboxes =Inbox-laposte
+mailboxes =gcc-bugs
+mailboxes =gcc-help
+mailboxes =mutt-users
+mailboxes =Inbox
+mailboxes =Sent
+mailboxes =Drafts
+
+# Show the sidebar
+set sidebar_visible = yes
+set sidebar_format = "%B (%N/%S)"
+
+bind index \ep  sidebar-prev
+bind index \en  sidebar-next
+bind index \eo  sidebar-open
+bind pager \ep  sidebar-prev
+bind pager \en  sidebar-next
+bind pager \eo  sidebar-open
+
+# b toggles sidebar visibility
+macro index b '<enter-command>toggle sidebar_visible<enter>'
+macro pager b '<enter-command>toggle sidebar_visible<enter>'
+
+# Remap bounce-message function to "B"
+bind index B bounce-message
+
+# Mailing lists
+subscribe gcc-bugs@gcc.gnu.org gcc-help@gcc.gnu.org 
 
 # Folder hooks
-folder-hook 'account.com.gmail.laurent.stacul' 'source ~/.mutt/account.com.gmail.laurent.stacul'
-folder-hook 'account.net.laposte.laurent.stacul' 'source ~/.mutt/account.net.laposte.laurent.stacul'
+folder-hook =Inbox 'source ~/.mutt/account.com.gmail.laurent.stacul'
+folder-hook =Inbox-gmail 'source ~/.mutt/account.com.gmail.laurent.stacul'
+folder-hook =gcc-bugs 'source ~/.mutt/account.com.gmail.laurent.stacul'
+folder-hook =gcc-help 'source ~/.mutt/account.com.gmail.laurent.stacul'
+folder-hook =mutt-users 'source ~/.mutt/account.com.gmail.laurent.stacul'
 
-# Default account
-source ~/.mutt/account.com.gmail.laurent.stacul
+folder-hook =Inbox-laposte 'source ~/.mutt/account.net.laposte.laurent.stacul'
 
-# Macros for switching accounts
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.laurent.stacul<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.net.laposte.laurent.stacul<enter><change-folder>!<enter>'
+# Ignore all headers
+ignore *
 
-# Key bindings
-bind index G imap-fetch-mail # Fetch mail shortcut
+# Then un-ignore the ones I want to see
+unignore From:
+unignore To:
+unignore Reply-To:
+unignore Mail-Followup-To:
+unignore Subject:
+unignore Date:
+unignore Organization:
+unignore Newsgroups:
+unignore CC:
+unignore BCC:
+unignore Message-ID:
+unignore X-Mailer:
+unignore User-Agent:
+unignore X-Spam-Status::
 
+# Now order the visable header lines
+hdr_order Date: From: To: CC: BCC: Reply-To: Mail-Followup-To: Subject: Organization: User-Agent: X-Mailer:
 # Other configuration files
-source ~/.mutt/colours
+source ~/.mutt/dracula.muttrc
 
 push <show-version>
