@@ -340,7 +340,8 @@ command! -narg=0 Index :call BuildIndex()
 nnoremap <leader>e :Explore<CR>
 
 " Pretty print
-nnoremap <leader>Pj :%!python -m json.tool<CR>
+nnoremap <leader>Pj :%!jq '.'<CR>
+"nnoremap <leader>Pj :%!python -m json.tool<CR>
 nnoremap <leader>Px :%!xmllint % --format<CR>
 nnoremap <leader>Pe :call <SID>edifact_to_ascii()<CR>
 
