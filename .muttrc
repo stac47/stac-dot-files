@@ -96,7 +96,10 @@ unignore X-Spam-Status::
 
 # Now order the visable header lines
 hdr_order Date: From: To: CC: BCC: Reply-To: Mail-Followup-To: Subject: Organization: User-Agent: X-Mailer:
+
 # Other configuration files
+set alias_file = "~/.muttaliases"
+source $alias_file
 source ~/.mutt/dracula.muttrc
 
 push <show-version>
