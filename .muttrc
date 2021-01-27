@@ -16,17 +16,20 @@ set pager_context=3
 set nostrict_threads
 set pager_stop
 set text_flowed
-set spoolfile = "~/Mail/Incoming"
+set spoolfile = "~/Mail/Inbox-protonmail"
+set mail_check_stats
 
 set index_format="%4C %Z %{%a %F %T} %-40.40F (%?l?%5l&%5c?) %s"
 # set index_format="%4C %Z %{%a %F %T} %-40.40L (%?l?%4l&%4c?) %s"
 
 # Mailboxes
+mailboxes =Inbox-protonmail
 mailboxes =Inbox-gmail
-mailboxes =Inbox-laposte
 mailboxes =gcc-bugs
 mailboxes =gcc-help
+mailboxes =github
 mailboxes =mutt-users
+mailboxes =Inbox-laposte
 mailboxes =Inbox
 mailboxes =Sent
 mailboxes =Drafts
@@ -34,6 +37,7 @@ mailboxes =Drafts
 # Show the sidebar
 set sidebar_visible = yes
 set sidebar_format = "%B (%N/%S)"
+color sidebar_new yellow default
 
 bind index \ep  sidebar-prev
 bind index \en  sidebar-next
@@ -58,8 +62,18 @@ folder-hook =Inbox-gmail 'source ~/.mutt/account.com.gmail.laurent.stacul'
 folder-hook =gcc-bugs 'source ~/.mutt/account.com.gmail.laurent.stacul'
 folder-hook =gcc-help 'source ~/.mutt/account.com.gmail.laurent.stacul'
 folder-hook =mutt-users 'source ~/.mutt/account.com.gmail.laurent.stacul'
+folder-hook =github 'source ~/.mutt/account.com.gmail.laurent.stacul'
 
 folder-hook =Inbox-laposte 'source ~/.mutt/account.net.laposte.laurent.stacul'
+
+folder-hook =Inbox-protonmail 'source ~/.mutt/account.com.protonmail.laurent.stacul'
+
+# Macros
+# Untag all "New" email. Same as: T ~N ; W N ^T .
+macro index A \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all new as read"
+
 
 # Ignore all headers
 ignore *

@@ -1,0 +1,9 @@
+set smtp_url = "smtp://laurent.stacul@protonmail.com@localhost:1025/"
+set from = "laurent.stacul@protonmail.com"
+set realname = "Laurent Stacul"
+set ssl_verify_host = no
+set ssl_verify_dates = no
+unmy_hdr From:
+my_hdr From: $realname <$from>
+fcc-hook .*                         =Inbox-protonmail
+

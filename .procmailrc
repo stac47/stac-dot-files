@@ -47,7 +47,11 @@ $MAIL/gcc-help
 :0:
 * ^Return-Path:.*mutt-users@mutt.org
 $MAIL/mutt-users
-
+#
+# Github notifications
+:0:
+* ^From:.*@github.com
+$MAIL/github
 
 #
 # [--SPAM--] check messages with spamassassin
@@ -64,6 +68,10 @@ $MAIL/Inbox-laposte
 :0:
 * ^TO_.*laurent.stacul@gmail.com
 $MAIL/Inbox-gmail
+#
+:0:
+* ^TO_.*laurent.stacul@protonmail.com
+$MAIL/Inbox-protonmail
 #
 :0
 $MAIL/Inbox
