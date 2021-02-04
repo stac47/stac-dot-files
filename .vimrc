@@ -102,7 +102,7 @@ set cursorline
 set showmode
 " Wild menu
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,list:full
 " Set ignorecase on (set ic)
 set ignorecase
 " smart search (override 'ic' when pattern has uppers)
