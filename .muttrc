@@ -2,7 +2,7 @@
 set realname = "Laurent Stacul"
 set meta_key = yes          # Allow to use alt or ESC
 set nobeep                  # We don't need no beeping software.
-set editor = "vim"          # Use vim
+set editor = "vim -c 'set ft=mail'"          # Use vim
 set charset = "utf-8"
 set sort = threads
 set sort_aux = last-date-received

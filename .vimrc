@@ -198,6 +198,9 @@ endif
 " ************************************************************************
 " Per filetype configuration
 
+" Mail
+autocmd FileType mail setlocal tw=72 noautoindent
+
 " HTML
 autocmd FileType html setlocal sw=2 ts=2 sts=2 textwidth=0 omnifunc=htmlcomplete#CompleteTags
 
