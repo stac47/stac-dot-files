@@ -28,6 +28,7 @@ mailboxes =Inbox-gmail
 mailboxes =gcc-bugs
 mailboxes =gcc-help
 mailboxes =github
+mailboxes =libabigail
 mailboxes =mutt-users
 mailboxes =Inbox-laposte
 mailboxes =Inbox
@@ -63,6 +64,7 @@ folder-hook =gcc-bugs 'source ~/.mutt/account.com.gmail.laurent.stacul'
 folder-hook =gcc-help 'source ~/.mutt/account.com.gmail.laurent.stacul'
 folder-hook =mutt-users 'source ~/.mutt/account.com.gmail.laurent.stacul'
 folder-hook =github 'source ~/.mutt/account.com.gmail.laurent.stacul'
+folder-hook =libabigail 'source ~/.mutt/account.com.gmail.laurent.stacul'
 
 folder-hook =Inbox-laposte 'source ~/.mutt/account.net.laposte.laurent.stacul'
 

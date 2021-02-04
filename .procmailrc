@@ -52,6 +52,11 @@ $MAIL/mutt-users
 :0:
 * ^From:.*@github.com
 $MAIL/github
+#
+# Libabigail
+:0:
+* ^Return-Path:.*libabigail-bounces@sourceware.org
+$MAIL/libabigail
 
 #
 # [--SPAM--] check messages with spamassassin
