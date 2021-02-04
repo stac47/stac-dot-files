@@ -3,6 +3,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export GPG_TTY=$(tty)
+export MANPATH="$HOME/.local/share/man:/usr/local/man:/usr/local/share/man:/usr/share/man:/usr/man"
 
 [[ -z "$SHELL" ]] && export SHELL="/bin/zsh"
 
