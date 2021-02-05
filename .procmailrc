@@ -78,5 +78,9 @@ $MAIL/Inbox-gmail
 * ^TO_.*laurent.stacul@protonmail.com
 $MAIL/Inbox-protonmail
 #
+:0:
+* ^TO_.*laurent.stacul@pm.me
+$MAIL/Inbox-protonmail
+#
 :0
 $MAIL/Inbox
