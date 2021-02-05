@@ -18,9 +18,9 @@ set pager_stop
 set text_flowed
 set spoolfile = "~/Mail/Inbox-protonmail"
 set mail_check_stats
-
 set index_format="%4C %Z %{%a %F %T} %-40.40F (%?l?%5l&%5c?) %s"
-# set index_format="%4C %Z %{%a %F %T} %-40.40L (%?l?%4l&%4c?) %s"
+
+auto_view text/html
 
 # Mailboxes
 mailboxes =Inbox-protonmail

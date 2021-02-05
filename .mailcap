@@ -5,4 +5,4 @@ image/*; open %s; copiousoutput
 application/pdf; open %s; copiousoutput
 
 # Text
-text/html; lynx -dump %s
+text/html; lynx -display_charset='utf-8' -assume_charset='utf-8' -dump %s; copiousoutput; nametemplate=%s.html
