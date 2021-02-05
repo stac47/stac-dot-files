@@ -1,2 +1,0 @@
-set arrowstyle=long
-highlight SelectedLineNr cterm=reverse ctermfg=White ctermbg=Black
