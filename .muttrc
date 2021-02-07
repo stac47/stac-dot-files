@@ -103,5 +103,6 @@ hdr_order Date: From: To: CC: BCC: Reply-To: Mail-Followup-To: Subject: Organiza
 set alias_file = "~/.muttaliases"
 source $alias_file
 source ~/.mutt/dracula.muttrc
+source ~/.gpg.rc
 
 push <show-version>
