@@ -19,6 +19,7 @@ set text_flowed
 set spoolfile = "~/Mail/Inbox-protonmail"
 set mail_check_stats
 set index_format="%4C %Z %{%a %F %T} %-40.40F (%?l?%5l&%5c?) %s"
+set markers = no
 
 auto_view text/html
 
