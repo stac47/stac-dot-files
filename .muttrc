@@ -35,6 +35,7 @@ mailboxes =Inbox-laposte
 mailboxes =Inbox
 mailboxes =Sent
 mailboxes =Drafts
+mailboxes /var/mail/stac
 
 # Show the sidebar
 set sidebar_visible = yes
