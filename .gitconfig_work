@@ -1,5 +1,0 @@
-[user]
-    name = Laurent Stacul
-    email = laurent.stacul@amadeus.com
-[include]
-    path = .gitconfig_common
