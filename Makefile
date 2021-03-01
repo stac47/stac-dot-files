@@ -13,7 +13,7 @@ endif
 
 DOT_ZSH := $(HOME)/.zshrc $(HOME)/.zshenv
 DOT_VIM := $(HOME)/.vimrc $(HOME)/.vim
-DOT_GIT := $(HOME)/.gitconfig $(HOME)/.gitconfig_common $(HOME)/.gitignore_global
+DOT_GIT := $(HOME)/.gitconfig $(HOME)/.gitignore_global
 DOT_TMUX := $(HOME)/.tmux $(HOME)/.tmux.conf
 DOT_MAIL := $(HOME)/.procmailrc $(HOME)/.muttrc $(HOME)/.mutt $(HOME)/.mailcap
 DOT_MISC := $(HOME)/.alacritty.yml $(HOME)/.gdbinit $(HOME)/.clang-format
