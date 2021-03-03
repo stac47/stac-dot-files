@@ -43,11 +43,17 @@ set sidebar_format = "%B (%N/%S)"
 color sidebar_new yellow default
 
 bind index \ep  sidebar-prev
-bind index \en  sidebar-next
-bind index \eo  sidebar-open
 bind pager \ep  sidebar-prev
+bind index <up>  sidebar-prev
+bind pager <up>  sidebar-prev
+bind index \en  sidebar-next
 bind pager \en  sidebar-next
+bind index <down>  sidebar-next
+bind pager <down>  sidebar-next
+bind index \eo  sidebar-open
 bind pager \eo  sidebar-open
+bind index <right>  sidebar-open
+bind pager <right>  sidebar-open
 
 # b toggles sidebar visibility
 macro index b '<enter-command>toggle sidebar_visible<enter>'
