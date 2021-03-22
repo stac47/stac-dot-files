@@ -57,6 +57,21 @@ $MAIL/github
 :0:
 * ^Return-Path:.*libabigail-bounces@sourceware.org
 $MAIL/libabigail
+#
+# libssh2
+:0:
+* ^Return-Path:.*libssh2-devel-bounces@cool.haxx.se
+$MAIL/libssh2
+#
+# openssl
+:0:
+* ^Return-Path:.*openssl-announce-bounces@openssl.org
+$MAIL/openssl
+#
+# vim
+:0:
+* ^Return-Path:.*vim_.*@googlegroups.com
+$MAIL/vim
 
 #
 # [--SPAM--] check messages with spamassassin
