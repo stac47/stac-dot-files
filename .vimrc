@@ -366,6 +366,9 @@ map <leader>m :cprevious<CR>
 nnoremap <leader>q :copen<CR>
 nnoremap <leader>a :cclose<CR>
 
+" Selected test search
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 " End of key mappings
 " ************************************************************************
 
