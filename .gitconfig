@@ -9,8 +9,8 @@
 [merge]
     tool = vimdiff
 [alias]
-    st = status --ignore-submodules
-    sst = status --ignore-submodules=none
+    st = status
+    s = status --ignore-submodules
     co = checkout
     lol = log --pretty=oneline --graph --decorate --branches --remotes --tags --abbrev-commit
     dif = diff --ignore-submodules=all
