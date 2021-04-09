@@ -1,4 +1,4 @@
-set smtp_url = "smtp://laurent.stacul@gmail.com@smtp.gmail.com:587/"
+set smtp_url = "smtp://captain.stac@gmail.com@smtp.gmail.com:587/"
 set smtp_authenticators = 'gssapi:login'
 set from = "laurent.stacul@gmail.com"
 set realname = "Laurent Stacul"
