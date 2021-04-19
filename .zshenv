@@ -25,3 +25,8 @@ stac_add_path 'PATH' "$HOME/.local/bin"
 stac_add_path 'PATH' "$HOME/.local/go/bin"
 stac_add_path 'PATH' "$HOME/.cargo/bin"
 stac_add_path 'PATH' "/usr/local/opt/ruby/bin"
+if [[ -n "${GOPATH}" ]]; then
+    stac_add_path 'PATH' "${GOPATH}/bin"
+else
+    stac_add_path 'PATH' "${HOME}/go/bin"
+fi
