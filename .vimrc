@@ -271,6 +271,7 @@ let g:syntastic_python_checkers = ['pyflakes', 'python']
 let g:snips_author = 'Laurent Stacul'
 let g:snips_email = 'laurent.stacul@gmail.com'
 let g:snips_github = 'https://github.com/stac47'
+let g:snipMate = { 'snippet_version' : 1 }
 " End of Snippets
 
 " VimWiki
