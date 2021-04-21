@@ -361,6 +361,9 @@ nnoremap <leader>c :Bdelete<CR>
 nnoremap <leader>C :Bdelete!<CR>
 nnoremap <leader>l :ls<CR>
 
+" Clear the current search pattern to disable the current highlight
+nnoremap <leader>h :let @/=""<CR>
+
 " Quicklist shortcuts
 map <leader>n :cnext<CR>
 map <leader>m :cprevious<CR>
