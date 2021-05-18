@@ -20,6 +20,8 @@ set spoolfile = "~/Mail/Inbox-protonmail"
 set mail_check_stats
 set index_format="%4C %Z %{%a %F %T} %-40.40F (%?l?%5l&%5c?) %s"
 set markers = no
+set mime_forward
+set mime_forward_rest=yes
 
 auto_view text/html
 
@@ -67,7 +69,12 @@ macro pager b '<enter-command>toggle sidebar_visible<enter>'
 bind index B bounce-message
 
 # Mailing lists
-subscribe gcc-bugs@gcc.gnu.org gcc-help@gcc.gnu.org 
+subscribe gcc-bugs@gcc.gnu.org
+subscribe gcc-help@gcc.gnu.org 
+subscribe libssh2-devel@cool.haxx.se
+subscribe openssl@openssl.org
+subscribe elfutils-devel@sourceware.org
+subscribe libabigail@sourceware.org
 
 # Folder hooks
 folder-hook =Inbox 'source ~/.mutt/account.net.laposte.laurent.stacul'
