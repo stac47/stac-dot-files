@@ -118,6 +118,9 @@ set mps+=<:>
 " allow tilde (~) to act as an operator -- ~w, etc.
 set notildeop
 
+" Complete options
+set completeopt=menuone,longest,popup
+
 " From Vim 8.1.360, more powerful options were added
 " https://vimways.org/2018/the-power-of-diff/
 set diffopt+=algorithm:patience,indent-heuristic
@@ -221,9 +224,8 @@ autocmd FileType cpp setlocal sw=4 ts=4 sts=4 textwidth=79 foldmethod=syntax
 let c_space_errors=1
 
 "Go
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go setlocal omnifunc=go#complete#Complete
+autocmd FileType go inoremap <buffer> . .<C-x><C-o>
 
 " YAML
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
