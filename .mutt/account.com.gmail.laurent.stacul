@@ -2,7 +2,4 @@ set smtp_url = "smtp://captain.stac@gmail.com@smtp.gmail.com:587/"
 set smtp_authenticators = 'gssapi:login'
 set from = "laurent.stacul@gmail.com"
 set realname = "Laurent Stacul"
-unmy_hdr From:
-my_hdr From: $realname <$from>
-fcc-hook .*                         =Inbox-gmail
-
+source ~/.mutt/account.common

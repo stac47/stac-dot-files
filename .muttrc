@@ -16,7 +16,7 @@ set pager_context=3
 set nostrict_threads
 set pager_stop
 set text_flowed
-set spoolfile = "~/Mail/Inbox-protonmail"
+set spoolfile = "=Inbox-protonmail"
 set mail_check_stats
 set index_format="%4C %Z %{%a %F %T} %-40.40F (%?l?%5l&%5c?) %s"
 set markers = no
@@ -28,6 +28,8 @@ auto_view text/html
 # Mailboxes
 mailboxes =Inbox-protonmail
 mailboxes =Inbox-gmail
+mailboxes =Inbox-laposte
+mailboxes =Inbox-default
 mailboxes =gcc-bugs
 mailboxes =gcc-help
 mailboxes =github
@@ -37,8 +39,6 @@ mailboxes =libssh2
 mailboxes =openssl
 mailboxes =vim
 mailboxes =mutt-users
-mailboxes =Inbox-laposte
-mailboxes =Inbox
 mailboxes =Sent
 mailboxes =Drafts
 mailboxes /var/mail/stac
@@ -77,20 +77,22 @@ subscribe elfutils-devel@sourceware.org
 subscribe libabigail@sourceware.org
 
 # Folder hooks
-folder-hook =Inbox 'source ~/.mutt/account.net.laposte.laurent.stacul'
+folder-hook =Inbox-default 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =Inbox-gmail 'source ~/.mutt/account.com.gmail.laurent.stacul'
+folder-hook =Inbox-laposte 'source ~/.mutt/account.net.laposte.laurent.stacul'
+folder-hook =Inbox-protonmail 'source ~/.mutt/account.com.protonmail.laurent.stacul'
+
 folder-hook =gcc-bugs 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =gcc-help 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =libabigail 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =libssh2 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =openssl 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =vim 'source ~/.mutt/account.net.laposte.laurent.stacul'
+
 folder-hook =mutt-users 'source ~/.mutt/account.com.gmail.laurent.stacul'
 folder-hook =github 'source ~/.mutt/account.com.gmail.laurent.stacul'
 
-folder-hook =Inbox-laposte 'source ~/.mutt/account.net.laposte.laurent.stacul'
 
-folder-hook =Inbox-protonmail 'source ~/.mutt/account.com.protonmail.laurent.stacul'
 
 # Macros
 # Untag all "New" email. Same as: T ~N ; W N ^T .
@@ -126,5 +128,3 @@ set alias_file = "~/.muttaliases"
 source $alias_file
 source ~/.mutt/dracula.muttrc
 source ~/.gpg.rc
-
-push <show-version>

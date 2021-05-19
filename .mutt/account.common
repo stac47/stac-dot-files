@@ -1,0 +1,4 @@
+unmy_hdr From:
+my_hdr From: $realname <$from>
+set record=^
+echo "account=$from"

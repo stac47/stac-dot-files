@@ -1,6 +1,4 @@
 set smtp_url = "smtp://laurent.stacul@smtp.laposte.net:587/"
 set from = "laurent.stacul@laposte.net"
 set realname = "Laurent Stacul"
-unmy_hdr From:
-my_hdr From: $realname <$from>
-fcc-hook .*                         =Inbox-laposte
+source ~/.mutt/account.common
