@@ -276,11 +276,6 @@ let g:snips_github = 'https://github.com/stac47'
 let g:snipMate = { 'snippet_version' : 0 }
 " End of Snippets
 
-" VimWiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-" End of VimWiki
-
 " Rust plugin
 let g:rustfmt_autosave = 1
 " End of Rust plugin
