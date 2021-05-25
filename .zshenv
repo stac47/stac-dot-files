@@ -13,8 +13,13 @@ export MANPATH="$HOME/.local/share/man:/usr/local/man:/usr/local/share/man:/usr/
 function stac_add_path() {
     local var_name=${1:?"Missing variable name"}
     local value=${2:?"Missing value"}
+    if [[ -z "${(P)var_name}" ]]; then
+        export ${var_name}=${value}
+        return
+    fi
     if [[ ! ${(P)var_name} =~ ${value} ]]; then
         export ${var_name}=${value}:${(P)var_name}
+        return
     fi
 }
 
