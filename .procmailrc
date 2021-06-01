@@ -35,12 +35,12 @@ MLIST=$MAIL
 #
 # GCC Bugs
 :0:
-* ^Return-Path:.*gcc-bugs-bounces@gcc.gnu.org
+* ^Return-Path:.*gcc-bugs-bounces.*@gcc.gnu.org
 $MAIL/gcc-bugs
 #
 # GCC Help
 :0:
-* ^Return-Path:.*gcc-help-bounces@gcc.gnu.org
+* ^Return-Path:.*gcc-help-bounces.*@gcc.gnu.org
 $MAIL/gcc-help
 #
 # Mutt Users
