@@ -133,7 +133,7 @@ then # the current shell version is below 5.0
 %# "
   RPROMPT=
 else
-  PROMPT='%B[%F{yellow}%*%f]%F{red}%n%f@%F{green}%M|%l%f%F{cyan}(%j)%f:${vcs_info_msg_0_}%~%b
+  PROMPT='%B[%F{yellow}%*%f]%F{red}%n%f@%F{green}%M|%y%f%F{cyan}(%j)%f:${vcs_info_msg_0_}%~%b
 %# '
   RPROMPT=
 fi
