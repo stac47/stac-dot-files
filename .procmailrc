@@ -55,12 +55,12 @@ $MAIL/github
 #
 # Libabigail
 :0:
-* ^Return-Path:.*libabigail-bounces@sourceware.org
+* ^Return-Path:.*libabigail-bounces*@sourceware.org
 $MAIL/libabigail
 #
 # elfutils
 :0:
-* ^Return-Path:.*elfutils-devel-bounces@sourceware.org
+* ^Return-Path:.*elfutils-devel-bounces.*@sourceware.org
 $MAIL/elfutils
 #
 # libssh2
