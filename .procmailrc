@@ -55,7 +55,7 @@ $MAIL/github
 #
 # Libabigail
 :0:
-* ^Return-Path:.*libabigail-bounces*@sourceware.org
+* ^Return-Path:.*libabigail-bounces.*@sourceware.org
 $MAIL/libabigail
 #
 # elfutils
@@ -65,12 +65,12 @@ $MAIL/elfutils
 #
 # libssh2
 :0:
-* ^Return-Path:.*libssh2-devel-bounces@cool.haxx.se
+* ^Return-Path:.*libssh2-devel-bounces.*@cool.haxx.se
 $MAIL/libssh2
 #
 # openssl
 :0:
-* ^Return-Path:.*openssl-announce-bounces@openssl.org
+* ^Return-Path:.*openssl-announce-bounces.*@openssl.org
 $MAIL/openssl
 #
 # vim
