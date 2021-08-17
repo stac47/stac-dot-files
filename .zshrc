@@ -79,7 +79,7 @@ alias la='ls -a'
 alias lla='ls -la'
 if [[ "$OSTYPE" =~ "^linux.*" ]] || [[ "$OSTYPE" == 'cygwin' ]]; then
   alias psall='ps -ef'
-  alias psmy='ps uxf --columns 1000'
+  alias psmy='ps wwuxf'
 fi
 if [[ "$(grep --version)" =~ .*GNU.* ]]; then
   alias grep='grep --color'
