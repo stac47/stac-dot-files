@@ -29,6 +29,7 @@ auto_view text/html
 mailboxes =Inbox-protonmail
 mailboxes =Inbox-gmail
 mailboxes =Inbox-laposte
+mailboxes =Inbox-outlook
 mailboxes =Inbox-default
 mailboxes =gcc-bugs
 mailboxes =gcc-help
@@ -81,6 +82,7 @@ folder-hook =Inbox-default 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =Inbox-gmail 'source ~/.mutt/account.com.gmail.laurent.stacul'
 folder-hook =Inbox-laposte 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =Inbox-protonmail 'source ~/.mutt/account.com.protonmail.laurent.stacul'
+folder-hook =Inbox-outlook 'source ~/.mutt/account.com.outlook.gros_con'
 
 folder-hook =gcc-bugs 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =gcc-help 'source ~/.mutt/account.net.laposte.laurent.stacul'

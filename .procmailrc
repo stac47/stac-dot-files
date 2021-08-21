@@ -102,5 +102,9 @@ $MAIL/Inbox-protonmail
 * ^TO_.*laurent.stacul@pm.me
 $MAIL/Inbox-protonmail
 #
+:0:
+* ^TO_.*@outlook.com
+$MAIL/Inbox-outlook
+#
 :0
 $MAIL/Inbox-default

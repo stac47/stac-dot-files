@@ -1,0 +1,4 @@
+set smtp_url = "smtp://gros_con@outlook.com@smtp-mail.outlook.com:587/"
+set from = "gros_con@outlook.com"
+set realname = "Gros con"
+source ~/.mutt/account.common
