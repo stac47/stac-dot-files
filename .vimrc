@@ -109,6 +109,7 @@ set ignorecase
 set smartcase
 " Set status line
 set statusline=[%02n]\ %f\ %(\[%M%R%H]%)
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%=\ %4l,%02c%2V\ [\\x%04B\ (%05b)]\ %P%*
 " Always display a status line at the bottom of the window
 set laststatus=2
@@ -252,8 +253,8 @@ autocmd FileType groovy setlocal sw=4 ts=4 sts=4 textwidth=119 sta autoindent
 let g:vim_markdown_folding_disabled=1
 
 " Syntastic
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_check_on_open=0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_enable_balloons = 0
@@ -267,6 +268,8 @@ let g:syntastic_cpp_auto_refresh_includes = 1
 let g:syntastic_cpp_remove_include_errors = 1
 
 let g:syntastic_python_checkers = ['pyflakes', 'python']
+
+let g:syntastic_sh_checkers = ['shellcheck']
 " End of Syntastic
 
 " Snippets
