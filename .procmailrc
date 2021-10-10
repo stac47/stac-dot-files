@@ -65,7 +65,7 @@ $MAIL/elfutils
 #
 # libssh2
 :0:
-* ^Return-Path:.*libssh2-devel-bounces.*@cool.haxx.se
+* ^Return-Path:.*libssh2-devel-bounces.*@.*.haxx.se
 $MAIL/libssh2
 #
 # openssl
