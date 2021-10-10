@@ -210,6 +210,7 @@ autocmd FileType html setlocal sw=2 ts=2 sts=2 textwidth=0 omnifunc=htmlcomplete
 
 " Python
 autocmd FileType python setlocal sw=4 ts=4 sts=4 textwidth=79 sta autoindent
+autocmd BufWritePre *.py execute ':Black'
 
 " CSS
 autocmd FileType css setlocal sw=2 ts=2 sts=2 textwidth=79 omnifunc=csscomplete#CompleteCSS
