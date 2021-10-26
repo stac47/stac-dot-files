@@ -209,7 +209,7 @@ autocmd FileType mail setlocal tw=72 noautoindent
 autocmd FileType html setlocal sw=2 ts=2 sts=2 textwidth=0 omnifunc=htmlcomplete#CompleteTags
 
 " Python
-autocmd FileType python setlocal sw=4 ts=4 sts=4 textwidth=79 sta autoindent
+autocmd FileType python setlocal sw=4 ts=4 sts=4 textwidth=88 sta autoindent
 autocmd BufWritePre *.py execute ':Black'
 
 " CSS
@@ -255,7 +255,7 @@ let g:vim_markdown_folding_disabled=1
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open=0
 let g:syntastic_enable_signs=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_enable_balloons = 0
@@ -268,7 +268,7 @@ let g:syntastic_cpp_check_header = 0
 let g:syntastic_cpp_auto_refresh_includes = 1
 let g:syntastic_cpp_remove_include_errors = 1
 
-let g:syntastic_python_checkers = ['pyflakes', 'python']
+let g:syntastic_python_checkers = ['pylint']
 
 let g:syntastic_sh_checkers = ['shellcheck']
 " End of Syntastic
