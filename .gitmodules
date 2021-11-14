@@ -60,3 +60,6 @@
 	path = .vim/pack/stac/start/black
 	url = https://github.com/psf/black.git
 	branch = main
+[submodule ".vim/pack/stac/start/vim-lilypond"]
+	path = .vim/pack/stac/start/vim-lilypond
+	url = https://github.com/sersorrel/vim-lilypond.git
