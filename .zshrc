@@ -56,6 +56,7 @@ setopt hist_ignore_all_dups
 setopt hist_allow_clobber
 setopt hist_reduce_blanks
 setopt no_hist_beep
+setopt hist_ignore_space
 
 #------------------------------
 # Variables
