@@ -95,11 +95,11 @@ $MAIL/Inbox-laposte
 $MAIL/Inbox-gmail
 #
 :0:
-* ^TO_.*laurent.stacul@protonmail.com
+* ^TO_.*laurent.stacul@(protonmail.com|pm.me)
 $MAIL/Inbox-protonmail
 #
 :0:
-* ^TO_.*laurent.stacul@pm.me
+* ^Delivered-To:.*laurent.stacul@(protonmail.com|pm.me)
 $MAIL/Inbox-protonmail
 #
 :0:
