@@ -217,6 +217,9 @@ autocmd FileType css setlocal sw=2 ts=2 sts=2 textwidth=79 omnifunc=csscomplete#
 " JavaScript
 autocmd FileType javascript setlocal sw=2 ts=2 sts=2 textwidth=79 omnifunc=javascriptcomplete#CompleteJS
 
+" TypeScript
+autocmd FileType typescript setlocal sw=2 ts=2 sts=2 textwidth=79
+
 " Markdown
 autocmd FileType mkd setlocal textwidth=79
 
@@ -278,6 +281,32 @@ let g:snips_email = 'laurent.stacul@gmail.com'
 let g:snips_github = 'https://github.com/stac47'
 let g:snipMate = { 'snippet_version' : 0 }
 " End of Snippets
+
+" go-vim
+let g:go_metalinter_command="golangci-lint"
+let g:go_metalinter_enabled = [
+    \'deadcode',
+    \'errcheck',
+    \'errname',
+    \'gocritic',
+    \'gosimple',
+    \'gofmt',
+    \'govet',
+    \'ifshort',
+    \'importas',
+    \'ineffassign',
+    \'staticcheck',
+    \'structcheck',
+    \'thelper',
+    \'typecheck',
+    \'unconvert',
+    \'unparam',
+    \'unused',
+    \'varcheck',
+    \'wastedassign',
+    \'whitespace',
+    \'wsl']
+" End of go-vim
 
 " Rust plugin
 let g:rustfmt_autosave = 1
