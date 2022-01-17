@@ -43,6 +43,11 @@ $MAIL/gcc-bugs
 * ^Return-Path:.*gcc-help-bounces.*@gcc.gnu.org
 $MAIL/gcc-help
 #
+# GDB
+:0:
+* ^Return-Path:.*gdb-announce-bounces.*@sourceware.org
+$MAIL/gdb
+#
 # Mutt Users
 :0:
 * ^Return-Path:.*mutt-users@mutt.org

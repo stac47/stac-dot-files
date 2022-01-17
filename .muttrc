@@ -33,6 +33,7 @@ mailboxes =Inbox-outlook
 mailboxes =Inbox-default
 mailboxes =gcc-bugs
 mailboxes =gcc-help
+mailboxes =gdb
 mailboxes =github
 mailboxes =libabigail
 mailboxes =elfutils
@@ -86,6 +87,7 @@ folder-hook =Inbox-outlook 'source ~/.mutt/account.com.outlook.gros_con'
 
 folder-hook =gcc-bugs 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =gcc-help 'source ~/.mutt/account.net.laposte.laurent.stacul'
+folder-hook =gdb 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =libabigail 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =libssh2 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =openssl 'source ~/.mutt/account.net.laposte.laurent.stacul'
