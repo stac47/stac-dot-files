@@ -1,5 +1,6 @@
 alacritty
 bash
+coreutils
 dtach
 dust
 emacs
