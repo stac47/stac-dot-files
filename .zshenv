@@ -2,9 +2,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export GPG_TTY=$(tty)
-if [[ $(uname) == 'Darwin' ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
 
 [[ -z "$SHELL" ]] && export SHELL="/bin/zsh"
 
