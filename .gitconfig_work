@@ -3,8 +3,5 @@
 [user]
     name = Laurent Stacul
     email = laurent.stacul@amadeus.com
-    signingkey =
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[commit]
-    gpgsign = false
