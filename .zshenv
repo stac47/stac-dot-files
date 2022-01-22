@@ -2,7 +2,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export GPG_TTY=$(tty)
-export MANPATH="$HOME/.local/share/man:/usr/local/man:/usr/local/share/man:/usr/share/man:/usr/man"
+if [[ $(uname) == 'Darwin' ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 [[ -z "$SHELL" ]] && export SHELL="/bin/zsh"
 
@@ -32,6 +34,7 @@ function stac_add_to_string() {
     fi
 }
 
+stac_add_to_string 'prepend' 'MANPATH' "$HOME/.local/share/man"
 stac_add_to_string 'prepend' 'LD_LIBRARY_PATH' "$HOME/.local/lib"
 stac_add_to_string 'prepend' 'LIBRARY_PATH' "$HOME/.local/include"
 stac_add_to_string 'prepend' 'CPATH' "$HOME/.local/include"
