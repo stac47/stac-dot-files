@@ -1,0 +1,4 @@
+if [[ $(uname) == 'Darwin' ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+source STAC_DOT_FILES_DIR/.zshenv

@@ -7,9 +7,11 @@ SHELL := bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 
+STAC_DOT_FILES_DIR := $(shell pwd)
+
 DOT_ZSH := $(HOME)/.zshrc $(HOME)/.zshenv
 DOT_VIM := $(HOME)/.vimrc $(HOME)/.vim
-DOT_GIT := $(HOME)/.gitconfig $(HOME)/.gitconfig_common $(HOME)/.gitignore_global
+DOT_GIT := $(HOME)/.gitconfig $(HOME)/.gitignore_global
 DOT_TMUX := $(HOME)/.tmux $(HOME)/.tmux.conf
 DOT_MAIL := $(HOME)/.procmailrc $(HOME)/.muttrc $(HOME)/.mutt $(HOME)/.mailcap
 DOT_ALACRITTY := $(HOME)/.alacritty.yml 
@@ -43,6 +45,9 @@ misc: $(DOT_MISC) ## Configure other tools (gdb, clang-format...)
 .PHONY: all
 all: zsh vim git tmux mail alacritty misc ## Configure all
 
+$(HOME)/%: %.template
+	m4 -D STAC_DOT_FILES_DIR=$(STAC_DOT_FILES_DIR) $(shell realpath $<) > $@
+
 $(HOME)/%: %
 	ln -sf $(shell realpath $<) $@
 
@@ -59,5 +64,6 @@ clean:
 	done
 
 help: ## Prints help for targets with comments
-	@cat $(MAKEFILE_LIST) | grep -E '^[a-zA-Z_-]+:.*?## .*$$' | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@cat $(MAKEFILE_LIST) | grep -E '^[a-zA-Z_-]+:.*?## .*$$' | \
+		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
