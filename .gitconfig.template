@@ -1,5 +1,5 @@
 [include]
-    path = .gitconfig_common
+    path = STAC_DOT_FILES_DIR/.gitconfig_common
 [user]
     name = Laurent Stacul
     email = laurent.stacul@gmail.com

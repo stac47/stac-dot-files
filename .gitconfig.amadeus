@@ -1,7 +1,0 @@
-[include]
-    path = .gitconfig_common
-[user]
-    name = Laurent Stacul
-    email = laurent.stacul@amadeus.com
-[url "git@github.com:"]
-	insteadOf = https://github.com/
