@@ -41,6 +41,7 @@ colors:
 key_bindings:
   - { key: F,        mods: Alt,     chars: "\x1bf"                       }
   - { key: B,        mods: Alt,     chars: "\x1bb"                       }
+  - { key: Key3,        mods: Alt,     chars: "#"                           }
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
