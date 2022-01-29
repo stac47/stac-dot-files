@@ -41,7 +41,7 @@ colors:
 key_bindings:
   - { key: F,        mods: Alt,     chars: "\x1bf"                       }
   - { key: B,        mods: Alt,     chars: "\x1bb"                       }
-  - { key: Key3,        mods: Alt,     chars: "#"                           }
+  - { key: Key3,        mods: Alt,     chars: "#"                        }
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -133,7 +133,7 @@ key_bindings:
   #multiplier: 3
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
   #normal:
     # Font family
@@ -181,7 +181,7 @@ key_bindings:
     #style: Bold Italic
 
   # Point size
-  #size: 11.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
