@@ -33,55 +33,23 @@ MLIST=$MAIL
 #
 # mailing lists
 #
-# GCC Bugs
-:0:
-* ^Return-Path:.*gcc-bugs-bounces.*@gcc.gnu.org
-$MAIL/gcc-bugs
-#
-# GCC Help
-:0:
-* ^Return-Path:.*gcc-help-bounces.*@gcc.gnu.org
-$MAIL/gcc-help
-#
-# GDB
-:0:
-* ^Return-Path:.*gdb-announce-bounces.*@sourceware.org
-$MAIL/gdb
-#
-# Mutt Users
-:0:
-* ^Return-Path:.*mutt-users@mutt.org
-$MAIL/mutt-users
+
 #
 # Github notifications
 :0:
 * ^From:.*@github.com
 $MAIL/github
 #
-# Libabigail
-:0:
-* ^Return-Path:.*libabigail-bounces.*@sourceware.org
-$MAIL/libabigail
-#
-# elfutils
-:0:
-* ^Return-Path:.*elfutils-devel-bounces.*@sourceware.org
-$MAIL/elfutils
-#
-# libssh2
-:0:
-* ^Return-Path:.*libssh2-devel-bounces.*@.*.haxx.se
-$MAIL/libssh2
-#
 # openssl
 :0:
 * ^Return-Path:.*openssl-announce-bounces.*@openssl.org
 $MAIL/openssl
+
 #
-# vim
+# Cameras
 :0:
-* ^Return-Path:.*vim_.*@googlegroups.com
-$MAIL/vim
+* ^Subject:.*COUCAM.*
+$MAIL/cameras
 
 #
 # [--SPAM--] check messages with spamassassin

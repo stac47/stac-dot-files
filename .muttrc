@@ -31,16 +31,9 @@ mailboxes =Inbox-gmail
 mailboxes =Inbox-laposte
 mailboxes =Inbox-outlook
 mailboxes =Inbox-default
-mailboxes =gcc-bugs
-mailboxes =gcc-help
-mailboxes =gdb
+mailboxes =cameras
 mailboxes =github
-mailboxes =libabigail
-mailboxes =elfutils
-mailboxes =libssh2
 mailboxes =openssl
-mailboxes =vim
-mailboxes =mutt-users
 mailboxes =Sent
 mailboxes =Drafts
 mailboxes /var/mail/stac
@@ -71,12 +64,7 @@ macro pager b '<enter-command>toggle sidebar_visible<enter>'
 bind index B bounce-message
 
 # Mailing lists
-subscribe gcc-bugs@gcc.gnu.org
-subscribe gcc-help@gcc.gnu.org 
-subscribe libssh2-devel@cool.haxx.se
 subscribe openssl@openssl.org
-subscribe elfutils-devel@sourceware.org
-subscribe libabigail@sourceware.org
 
 # Folder hooks
 folder-hook =Inbox-default 'source ~/.mutt/account.net.laposte.laurent.stacul'
@@ -85,17 +73,9 @@ folder-hook =Inbox-laposte 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =Inbox-protonmail 'source ~/.mutt/account.com.protonmail.laurent.stacul'
 folder-hook =Inbox-outlook 'source ~/.mutt/account.com.outlook.gros_con'
 
-folder-hook =gcc-bugs 'source ~/.mutt/account.net.laposte.laurent.stacul'
-folder-hook =gcc-help 'source ~/.mutt/account.net.laposte.laurent.stacul'
-folder-hook =gdb 'source ~/.mutt/account.net.laposte.laurent.stacul'
-folder-hook =libabigail 'source ~/.mutt/account.net.laposte.laurent.stacul'
-folder-hook =libssh2 'source ~/.mutt/account.net.laposte.laurent.stacul'
 folder-hook =openssl 'source ~/.mutt/account.net.laposte.laurent.stacul'
-folder-hook =vim 'source ~/.mutt/account.net.laposte.laurent.stacul'
 
-folder-hook =mutt-users 'source ~/.mutt/account.com.gmail.laurent.stacul'
 folder-hook =github 'source ~/.mutt/account.com.gmail.laurent.stacul'
-
 
 
 # Macros
