@@ -5,6 +5,8 @@ window:
 
 shell:
   program: /usr/local/bin/zsh
+  args:
+    - --login
 
 alt_send_esc: true
 option_as_alt: true
