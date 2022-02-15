@@ -33,15 +33,4 @@ function stac_add_to_string() {
 
 stac_add_to_string 'prepend' 'MANPATH' "$HOME/.local/share/man"
 stac_add_to_string 'prepend' 'LD_LIBRARY_PATH' "$HOME/.local/lib"
-stac_add_to_string 'prepend' 'LIBRARY_PATH' "$HOME/.local/include"
-stac_add_to_string 'prepend' 'CPATH' "$HOME/.local/include"
 stac_add_to_string 'prepend' 'PATH' "$HOME/.local/bin"
-stac_add_to_string 'prepend' 'PATH' "$HOME/.local/go/bin"
-stac_add_to_string 'prepend' 'PATH' "$HOME/.cargo/bin"
-stac_add_to_string 'prepend' 'PATH' "/usr/local/opt/ruby/bin"
-
-if [[ -n "${GOPATH}" ]]; then
-    stac_add_to_string 'prepend' 'PATH' "${GOPATH}/bin"
-else
-    stac_add_to_string 'prepend' 'PATH' "${HOME}/go/bin"
-fi
