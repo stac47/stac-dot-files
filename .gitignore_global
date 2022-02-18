@@ -2,3 +2,4 @@
 cscope.*
 tags
 *.orig
+.starscope.db
