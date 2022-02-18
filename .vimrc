@@ -1,5 +1,5 @@
 " Author: Laurent Stacul
-" URL: http://stac47.github.io
+" URL: https://stac47.github.io
 
 set nocompatible
 
@@ -76,6 +76,9 @@ set foldlevel=99
 
 " Write automatically in case of :make
 set autowrite
+
+" Automatically read a modified file
+set autoread
 
 " Visual wrap activated my default
 set wrap
@@ -273,6 +276,8 @@ let g:syntastic_cpp_remove_include_errors = 1
 let g:syntastic_python_checkers = ['pylint']
 
 let g:syntastic_sh_checkers = ['shellcheck']
+
+let g:syntastic_ruby_checkers = ['rubocop']
 " End of Syntastic
 
 " Snippets
@@ -319,11 +324,18 @@ let g:rustfmt_autosave = 1
 " ************************************************************************
 " User defined functions
 
-function! BuildIndex()
+function! BuildIndexC()
     silent !find . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py|java)$' > cscope.files
     silent !cscope -b -q -i cscope.files
     silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
     cs add cscope.out
+    redraw!
+endfunction
+
+function! BuildIndexRuby()
+    silent !starscope
+    silent !starscope -e ctags
+    silent !starscope -e cscope
     redraw!
 endfunction
 
@@ -361,7 +373,8 @@ endfunc
 " User defined commands
 
 command! -narg=1 Grep :call GitGrep(<q-args>)
-command! -narg=0 Index :call BuildIndex()
+command! -narg=0 Index :call BuildIndexC()
+command! -narg=0 IndexRuby :call BuildIndexRuby()
 
 " End of user defined commands
 " ************************************************************************
