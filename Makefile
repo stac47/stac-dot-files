@@ -7,6 +7,8 @@ SHELL := bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 
+GIT := git
+
 STAC_DOT_FILES_DIR := $(shell pwd)
 
 DOT_ZSH := $(HOME)/.zshrc $(HOME)/.zshenv
@@ -19,6 +21,7 @@ DOT_MISC := $(HOME)/.gdbinit $(HOME)/.clang-format
 
 BREW_LIST := brew.list
 
+# Quick all setup
 ALL_DOT_FILES := $(DOT_ZSH) $(DOT_VIM) $(DOT_GIT) $(DOT_TMUX) $(DOT_MAIL) $(DOT_MISC)
 
 .PHONY: zsh
@@ -50,6 +53,32 @@ $(HOME)/%: %.template
 
 $(HOME)/%: %
 	ln -sf $(shell realpath $<) $@
+
+# Vim plugin management
+VIM_PLUGINS_TARGET_PREFIX := vim-plugins-
+VIM_PLUGINS_DIR := $(STAC_DOT_FILES_DIR)/.vim/pack/stac/start
+VIM_PLUGINS_GIT_REPO_PREFIX := VIM_PLUGINS_GIT_REPO_
+$(VIM_PLUGINS_GIT_REPO_PREFIX)vim_ruby := git://github.com/vim-ruby/vim-ruby.git
+$(VIM_PLUGINS_GIT_REPO_PREFIX)vim_go := https://github.com/fatih/vim-go.git
+$(VIM_PLUGINS_GIT_REPO_PREFIX)vim_lilypond := https://github.com/sersorrel/vim-lilypond.git
+$(VIM_PLUGINS_GIT_REPO_PREFIX)black := https://github.com/psf/black.git
+$(VIM_PLUGINS_GIT_REPO_PREFIX)jedi_vim := https://github.com/davidhalter/jedi-vim.git
+
+.PHONY: $(VIM_PLUGINS_TARGET_PREFIX)ruby
+$(VIM_PLUGINS_TARGET_PREFIX)ruby: $(VIM_PLUGINS_DIR)/vim-ruby ## Install vim plugins for ruby
+
+.PHONY: $(VIM_PLUGINS_TARGET_PREFIX)python
+$(VIM_PLUGINS_TARGET_PREFIX)python: $(VIM_PLUGINS_DIR)/black $(VIM_PLUGINS_DIR)/jedi-vim ## Install vim plugins for python
+
+.PHONY: $(VIM_PLUGINS_TARGET_PREFIX)go
+$(VIM_PLUGINS_TARGET_PREFIX)go: $(VIM_PLUGINS_DIR)/vim-go ## Install vim plugins for go
+
+.PHONY: $(VIM_PLUGINS_TARGET_PREFIX)lilypond
+$(VIM_PLUGINS_TARGET_PREFIX)lilypond: $(VIM_PLUGINS_DIR)/vim-lilypond ## Install vim plugins for lilypond
+
+$(VIM_PLUGINS_DIR)/%:
+	$(GIT) clone --recursive \
+		$($(VIM_PLUGINS_GIT_REPO_PREFIX)$(shell basename "$@" | sed 's/-/_/g')) "$@"
 
 .PHONY: update-brew-list
 update-brew-list: ## Update the list of packages installed by homebrew
