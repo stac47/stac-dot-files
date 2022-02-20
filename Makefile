@@ -57,12 +57,29 @@ $(HOME)/%: %
 # Vim plugin management
 VIM_PLUGINS_TARGET_PREFIX := vim-plugins-
 VIM_PLUGINS_DIR := $(STAC_DOT_FILES_DIR)/.vim/pack/stac/start
-VIM_PLUGINS_GIT_REPO_PREFIX := VIM_PLUGINS_GIT_REPO_
-$(VIM_PLUGINS_GIT_REPO_PREFIX)vim_ruby := git://github.com/vim-ruby/vim-ruby.git
-$(VIM_PLUGINS_GIT_REPO_PREFIX)vim_go := https://github.com/fatih/vim-go.git
-$(VIM_PLUGINS_GIT_REPO_PREFIX)vim_lilypond := https://github.com/sersorrel/vim-lilypond.git
-$(VIM_PLUGINS_GIT_REPO_PREFIX)black := https://github.com/psf/black.git
-$(VIM_PLUGINS_GIT_REPO_PREFIX)jedi_vim := https://github.com/davidhalter/jedi-vim.git
+
+VIM_PLUGINS_INSTALL_CMD_PREFIX = VIM_PLUGINS_INSTALL_CMD_
+
+define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)vim_ruby
+$(GIT) clone git://github.com/vim-ruby/vim-ruby.git
+endef
+
+define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)jedi_vim
+$(GIT) clone --recursive \
+	https://github.com/davidhalter/jedi-vim.git
+endef
+
+define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)black
+$(GIT) clone https://github.com/psf/black.git
+endef
+
+define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)vim_go
+$(GIT) clone https://github.com/fatih/vim-go.git
+endef
+
+define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)vim_lilypond
+git clone https://github.com/sersorrel/vim-lilypond.git
+endef
 
 .PHONY: $(VIM_PLUGINS_TARGET_PREFIX)ruby
 $(VIM_PLUGINS_TARGET_PREFIX)ruby: $(VIM_PLUGINS_DIR)/vim-ruby ## Install vim plugins for ruby
@@ -77,8 +94,7 @@ $(VIM_PLUGINS_TARGET_PREFIX)go: $(VIM_PLUGINS_DIR)/vim-go ## Install vim plugins
 $(VIM_PLUGINS_TARGET_PREFIX)lilypond: $(VIM_PLUGINS_DIR)/vim-lilypond ## Install vim plugins for lilypond
 
 $(VIM_PLUGINS_DIR)/%:
-	$(GIT) clone --recursive \
-		$($(VIM_PLUGINS_GIT_REPO_PREFIX)$(shell basename "$@" | sed 's/-/_/g')) "$@"
+	$($(VIM_PLUGINS_INSTALL_CMD_PREFIX)$(shell basename "$@" | sed 's/-/_/g')) "$@"
 
 .PHONY: update-brew-list
 update-brew-list: ## Update the list of packages installed by homebrew
