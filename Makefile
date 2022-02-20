@@ -57,11 +57,23 @@ $(HOME)/%: %
 # Vim plugin management
 VIM_PLUGINS_TARGET_PREFIX := vim-plugins-
 VIM_PLUGINS_DIR := $(STAC_DOT_FILES_DIR)/.vim/pack/stac/start
-
 VIM_PLUGINS_INSTALL_CMD_PREFIX = VIM_PLUGINS_INSTALL_CMD_
+
+VIM_PLUGINS_FOR_PREFIX := VIM_PLUGINS_FOR_
+$(VIM_PLUGINS_FOR_PREFIX)ruby := vim-ruby
+$(VIM_PLUGINS_FOR_PREFIX)python := black jedi-vim
+$(VIM_PLUGINS_FOR_PREFIX)bats := bats
+$(VIM_PLUGINS_FOR_PREFIX)go := vim-go
+$(VIM_PLUGINS_FOR_PREFIX)lilypond := vim-lilypond
+
+VIM_PLUGINS_TARGETS := ruby python bats go lilypond
 
 define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)vim_ruby
 $(GIT) clone git://github.com/vim-ruby/vim-ruby.git
+endef
+
+define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)bats
+$(GIT) clone https://github.com/aliou/bats.vim.git
 endef
 
 define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)jedi_vim
@@ -81,17 +93,13 @@ define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)vim_lilypond
 git clone https://github.com/sersorrel/vim-lilypond.git
 endef
 
-.PHONY: $(VIM_PLUGINS_TARGET_PREFIX)ruby
-$(VIM_PLUGINS_TARGET_PREFIX)ruby: $(VIM_PLUGINS_DIR)/vim-ruby ## Install vim plugins for ruby
+define vim_plugins_template
+.PHONY: $(VIM_PLUGINS_TARGET_PREFIX)$(1)
+$(VIM_PLUGINS_TARGET_PREFIX)$(1): $(foreach plugin,$($(VIM_PLUGINS_FOR_PREFIX)$(1)),$(VIM_PLUGINS_DIR)/$(plugin))
 
-.PHONY: $(VIM_PLUGINS_TARGET_PREFIX)python
-$(VIM_PLUGINS_TARGET_PREFIX)python: $(VIM_PLUGINS_DIR)/black $(VIM_PLUGINS_DIR)/jedi-vim ## Install vim plugins for python
+endef
 
-.PHONY: $(VIM_PLUGINS_TARGET_PREFIX)go
-$(VIM_PLUGINS_TARGET_PREFIX)go: $(VIM_PLUGINS_DIR)/vim-go ## Install vim plugins for go
-
-.PHONY: $(VIM_PLUGINS_TARGET_PREFIX)lilypond
-$(VIM_PLUGINS_TARGET_PREFIX)lilypond: $(VIM_PLUGINS_DIR)/vim-lilypond ## Install vim plugins for lilypond
+$(foreach target,$(VIM_PLUGINS_TARGETS),$(eval $(call vim_plugins_template,$(target))))
 
 $(VIM_PLUGINS_DIR)/%:
 	$($(VIM_PLUGINS_INSTALL_CMD_PREFIX)$(shell basename "$@" | sed 's/-/_/g')) "$@"
