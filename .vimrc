@@ -113,6 +113,7 @@ set smartcase
 " Set status line
 set statusline=[%02n]\ %f\ %(\[%M%R%H]%)
 set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{FugitiveStatusline()}
 set statusline+=%=\ %4l,%02c%2V\ [\\x%04B\ (%05b)]\ %P%*
 " Always display a status line at the bottom of the window
 set laststatus=2
@@ -324,7 +325,7 @@ let g:rustfmt_autosave = 1
 " ************************************************************************
 " User defined functions
 
-function! BuildIndexC()
+function! BuildIndex()
     silent !find . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py|java)$' > cscope.files
     silent !cscope -b -q -i cscope.files
     silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
@@ -338,33 +339,6 @@ function! BuildIndexRuby()
     silent !starscope -e cscope
     redraw!
 endfunction
-
-function! GitGrep(arg) abort
-	if !executable("git")
-        echom 'Git is not available on your system'
-        return
-    endif
-    let l:git_version = split(system('git --version'))[2]
-    let l:git_result = system('git rev-parse')
-    if v:shell_error
-        echom 'The current working directory is not a Git repository'
-        return
-    endif
-    try
-        let l:grepprg = &grepprg
-        let l:grepformat = &grepformat
-        let &grepformat = '%f:%l:%c:%m,%f:%l:%m,%m %f match%ts,%f'
-        let &grepprg='git --no-pager grep -n --no-color'
-        if s:version_lower_than('2.19', l:git_version)
-            let &grepprg .= ' --column'
-        endif
-        " exe 'grep! '.escape(a:arg, '|#%')
-        exe 'grep! '.a:arg
-    finally
-        let &grepprg = l:grepprg
-        let &grepformat = l:grepformat
-    endtry
-endfunc
 
 " End of user defined functions
 " ************************************************************************
