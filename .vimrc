@@ -346,7 +346,6 @@ endfunction
 " ************************************************************************
 " User defined commands
 
-command! -narg=1 Grep :call GitGrep(<q-args>)
 command! -narg=0 Index :call BuildIndexC()
 command! -narg=0 IndexRuby :call BuildIndexRuby()
 
