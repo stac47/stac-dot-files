@@ -346,7 +346,7 @@ endfunction
 " ************************************************************************
 " User defined commands
 
-command! -narg=0 Index :call BuildIndexC()
+command! -narg=0 Index :call BuildIndex()
 command! -narg=0 IndexRuby :call BuildIndexRuby()
 
 " End of user defined commands
