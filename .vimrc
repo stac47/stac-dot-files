@@ -179,7 +179,6 @@ endif
 " Colors settings
 
 set background=dark
-colorscheme desert
 
 " Colors settings for terminal mode.
 highlight Search ctermbg=243 ctermfg=11
