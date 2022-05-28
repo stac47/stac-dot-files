@@ -23,6 +23,9 @@ set markers = no
 set mime_forward
 set mime_forward_rest=yes
 
+set header_cache     = "$HOME/Mail"
+set message_cachedir = "$HOME/Mail"
+
 auto_view text/html
 
 # Mailboxes
