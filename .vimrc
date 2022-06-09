@@ -172,6 +172,10 @@ if has("cscope")
     set csverb
 endif
 
+" netrw settings
+" To fix copy/move issue on MacOS
+let g:netrw_keepdir=0
+
 " End of general configuration
 " ************************************************************************
 
