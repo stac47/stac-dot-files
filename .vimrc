@@ -263,6 +263,11 @@ autocmd FileType groovy setlocal sw=4 ts=4 sts=4 textwidth=119 sta autoindent
 let g:vim_markdown_folding_disabled=1
 
 " Syntastic
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": [] }
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open=0
 let g:syntastic_enable_signs=1
