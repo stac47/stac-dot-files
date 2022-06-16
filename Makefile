@@ -17,7 +17,7 @@ DOT_GIT := $(HOME)/.gitconfig $(HOME)/.gitignore_global
 DOT_TMUX := $(HOME)/.tmux $(HOME)/.tmux.conf
 DOT_MAIL := $(HOME)/.procmailrc $(HOME)/.muttrc $(HOME)/.mutt $(HOME)/.mailcap
 DOT_ALACRITTY := $(HOME)/.alacritty.yml
-DOT_MISC := $(HOME)/.gdbinit $(HOME)/.clang-format
+DOT_MISC := $(HOME)/.gdbinit $(HOME)/.clang-format $(HOME)/.mdlrc
 
 BREW_LIST := brew.list
 
