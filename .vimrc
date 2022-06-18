@@ -224,7 +224,7 @@ autocmd FileType javascript setlocal sw=2 ts=2 sts=2 textwidth=79 omnifunc=javas
 autocmd FileType typescript setlocal sw=2 ts=2 sts=2 textwidth=79
 
 " Markdown
-autocmd FileType mkd setlocal textwidth=79
+autocmd FileType markdown setlocal sw=2 ts=2 sts=2 textwidth=79
 
 " C++
 autocmd FileType cpp setlocal sw=4 ts=4 sts=4 textwidth=79 foldmethod=syntax
@@ -254,9 +254,6 @@ autocmd FileType groovy setlocal sw=4 ts=4 sts=4 textwidth=119 sta autoindent
 
 " ************************************************************************
 " Plugins configuration
-
-" vim-markdown plugin: no folding
-let g:vim_markdown_folding_disabled=1
 
 " Syntastic
 let g:syntastic_mode_map = {
