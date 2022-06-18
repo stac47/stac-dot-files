@@ -256,6 +256,7 @@ autocmd FileType groovy setlocal sw=4 ts=4 sts=4 textwidth=119 sta autoindent
 " Plugins configuration
 
 " Syntastic
+" Toggle off SyntasticCheck on save
 let g:syntastic_mode_map = {
     \ "mode": "passive",
     \ "active_filetypes": [],
@@ -361,12 +362,8 @@ nnoremap <leader>e :Explore<CR>
 
 " Pretty print
 nnoremap <leader>Pj :%!jq '.'<CR>
-"nnoremap <leader>Pj :%!python -m json.tool<CR>
 nnoremap <leader>Px :%!XMLLINT_INDENT='    ' xmllint % --format<CR>
 nnoremap <leader>Pe :call <SID>edifact_to_ascii()<CR>
-
-" Set paste/nopaste
-nnoremap <leader>p :set paste!<CR>:set paste?<CR>
 
 " Up and Down arrows mapping
 nnoremap <Up> gk
@@ -375,19 +372,9 @@ nnoremap <Down> gj
 " Buffer control shortcuts
 nnoremap <leader>c :Bdelete<CR>
 nnoremap <leader>C :Bdelete!<CR>
-nnoremap <leader>l :ls<CR>
 
 " Clear the current search pattern to disable the current highlight
 nnoremap <leader>h :let @/=""<CR>
-
-" Quicklist shortcuts
-map <leader>n :cnext<CR>
-map <leader>m :cprevious<CR>
-nnoremap <leader>q :copen<CR>
-nnoremap <leader>a :cclose<CR>
-
-" Selected test search
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " End of key mappings
 " ************************************************************************
