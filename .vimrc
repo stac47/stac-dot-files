@@ -282,6 +282,8 @@ let g:syntastic_sh_checkers = ['shellcheck']
 
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_ruby_rubocop_exe = 'bundle exec rubocop'
+
+let g:syntastic_yaml_checkers = ['yamllint']
 " End of Syntastic
 
 " Snippets
