@@ -323,6 +323,9 @@ let g:go_metalinter_enabled = [
 let g:rustfmt_autosave = 1
 " End of Rust plugin
 
+" CtrlP plugin
+let g:ctrlp_arg_map = 1
+" End of CtrlP plugin
 
 " End of plugins configuration
 " ************************************************************************
