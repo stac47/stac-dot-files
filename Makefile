@@ -55,6 +55,12 @@ $(HOME)/%: %
 	ln -sf $(shell realpath $<) $@
 
 # Vim plugin management
+# To install the set of plugins related to one of the topics listed in the
+# variable VIM_PLUGINS_TARGETS, simply issue a command like:
+#   make vim-plugins-<plugins set name>
+#
+# For example: make vim-plugins-ruby
+#
 VIM_PLUGINS_TARGET_PREFIX := vim-plugins-
 VIM_PLUGINS_DIR := $(STAC_DOT_FILES_DIR)/.vim/pack/stac/start
 VIM_PLUGINS_INSTALL_CMD_PREFIX = VIM_PLUGINS_INSTALL_CMD_
@@ -69,7 +75,7 @@ $(VIM_PLUGINS_FOR_PREFIX)lilypond := vim-lilypond
 VIM_PLUGINS_TARGETS := ruby python bats go lilypond
 
 define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)vim_ruby
-$(GIT) clone git://github.com/vim-ruby/vim-ruby.git
+$(GIT) clone https://github.com/vim-ruby/vim-ruby.git
 endef
 
 define $(VIM_PLUGINS_INSTALL_CMD_PREFIX)bats
