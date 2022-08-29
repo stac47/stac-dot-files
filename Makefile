@@ -55,13 +55,13 @@ $(HOME)/%: %
 	ln -sf $(shell realpath $<) $@
 
 # Vim plugin management
-# To install the set of plugins related to one of the topics listed in the
-# variable VIM_PLUGINS_TARGETS, simply issue a command like:
-#   make vim-plugins-<plugins set name>
+# To install or update the set of plugins related to one of the topics listed
+# in the variable VIM_PLUGINS_TARGETS, simply issue a command like:
+#   make vim-plugins-for-<plugins set name>
 #
-# For example: make vim-plugins-ruby
+# For example: make vim-plugins-for-ruby
 #
-VIM_PLUGINS_TARGET_PREFIX := vim-plugins-
+VIM_PLUGINS_TARGET_PREFIX := vim-plugins-for-
 VIM_PLUGINS_DIR := $(STAC_DOT_FILES_DIR)/.vim/pack/stac/start
 VIM_PLUGINS_INSTALL_CMD_PREFIX = VIM_PLUGINS_INSTALL_CMD_
 
@@ -102,13 +102,17 @@ endef
 define vim_plugins_template
 .PHONY: $(VIM_PLUGINS_TARGET_PREFIX)$(1)
 $(VIM_PLUGINS_TARGET_PREFIX)$(1): $(foreach plugin,$($(VIM_PLUGINS_FOR_PREFIX)$(1)),$(VIM_PLUGINS_DIR)/$(plugin))
-
+	for plugin in $$^; do
+		$(GIT) -C "$$$${plugin}" pull
+	done
 endef
 
 $(foreach target,$(VIM_PLUGINS_TARGETS),$(eval $(call vim_plugins_template,$(target))))
 
 $(VIM_PLUGINS_DIR)/%:
-	$($(VIM_PLUGINS_INSTALL_CMD_PREFIX)$(shell basename "$@" | sed 's/-/_/g')) "$@"
+	pushd "$(VIM_PLUGINS_DIR)"
+	$($(VIM_PLUGINS_INSTALL_CMD_PREFIX)$(shell basename "$@" | sed 's/-/_/g'))
+	popd
 
 .PHONY: update-brew-list
 update-brew-list: ## Update the list of packages installed by homebrew
