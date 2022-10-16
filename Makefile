@@ -102,8 +102,8 @@ endef
 define vim_plugins_template
 .PHONY: $(VIM_PLUGINS_TARGET_PREFIX)$(1)
 $(VIM_PLUGINS_TARGET_PREFIX)$(1): $(foreach plugin,$($(VIM_PLUGINS_FOR_PREFIX)$(1)),$(VIM_PLUGINS_DIR)/$(plugin))
-	for plugin in $$^; do
-		$(GIT) -C "$$$${plugin}" pull
+	for plugin in $$^; do \
+		$(GIT) -C "$$$${plugin}" pull; \
 	done
 endef
 
