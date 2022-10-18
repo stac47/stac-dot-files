@@ -268,6 +268,8 @@ let g:syntastic_enable_signs=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_enable_balloons = 0
 let g:syntastic_cursor_column = 0
+let g:syntastic_debug = 0
+let g:syntastic_debug_file = "~/syntastic.log"
 
 let g:syntastic_cpp_include_dirs = ['include', 'src']
 let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
