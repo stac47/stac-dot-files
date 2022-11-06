@@ -283,7 +283,9 @@ let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_sh_checkers = ['shellcheck']
 
 let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_ruby_rubocop_exe = 'bundle exec rubocop'
+if filereadable('Gemgile.lock')
+    let g:syntastic_ruby_rubocop_exe = 'bundle exec rubocop'
+endif
 
 let g:syntastic_yaml_checkers = ['yamllint']
 " End of Syntastic
@@ -367,6 +369,7 @@ command! -narg=0 IndexRuby :call BuildIndexRuby()
 
 " Explorer
 nnoremap <leader>e :Explore<CR>
+nnoremap <leader>q :copen<CR>
 
 " Pretty print
 nnoremap <leader>Pj :%!jq '.'<CR>
