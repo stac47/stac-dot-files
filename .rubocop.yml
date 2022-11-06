@@ -15,3 +15,6 @@ Metrics/MethodLength:
 
 Metrics/PerceivedComplexity:
   Max: 20
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
