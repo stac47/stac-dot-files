@@ -18,6 +18,7 @@ DOT_TMUX := $(HOME)/.tmux $(HOME)/.tmux.conf
 DOT_MAIL := $(HOME)/.procmailrc $(HOME)/.muttrc $(HOME)/.mutt $(HOME)/.mailcap
 DOT_ALACRITTY := $(HOME)/.alacritty.yml
 DOT_MISC := $(HOME)/.gdbinit $(HOME)/.clang-format $(HOME)/.mdlrc
+DOT_RUBY := $(HOME)/.rubocop.yml $(HOME)/.irbrc
 
 BREW_LIST := brew.list
 
@@ -45,8 +46,11 @@ alacritty: $(DOT_ALACRITTY) ## Configure alacrity terminal
 .PHONY: misc
 misc: $(DOT_MISC) ## Configure other tools (gdb, clang-format...)
 
+.PHONY: ruby
+ruby: $(DOT_RUBY) ## Configure Ruby specific tools
+
 .PHONY: all
-all: zsh vim git tmux mail alacritty misc ## Configure all
+all: zsh vim git tmux mail alacritty misc ruby ## Configure all
 
 $(HOME)/%: %.template
 	m4 -D STAC_DOT_FILES_DIR=$(STAC_DOT_FILES_DIR) $(shell realpath $<) > $@
