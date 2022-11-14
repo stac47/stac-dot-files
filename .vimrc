@@ -284,7 +284,9 @@ let g:syntastic_sh_checkers = ['shellcheck']
 
 let g:syntastic_ruby_checkers = ['rubocop']
 if filereadable('Gemgile.lock')
-    let g:syntastic_ruby_rubocop_exe = 'bundle exec rubocop'
+    let g:syntastic_ruby_rubocop_exe = 'bundle exec rubocop --server'
+else
+    let g:syntastic_ruby_rubocop_exe = 'rubocop --server'
 endif
 
 let g:syntastic_yaml_checkers = ['yamllint']
