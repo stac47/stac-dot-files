@@ -337,27 +337,6 @@ let g:ctrlp_arg_map = 1
 " ************************************************************************
 
 " ************************************************************************
-" User defined functions
-
-function! BuildIndex()
-    silent !find . -type f -print | grep -E '\.(c(pp)?|h(pp)?|py|java)$' > cscope.files
-    silent !cscope -b -q -i cscope.files
-    silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-    cs add cscope.out
-    redraw!
-endfunction
-
-function! BuildIndexRuby()
-    silent !starscope
-    silent !starscope -e ctags
-    silent !starscope -e cscope
-    redraw!
-endfunction
-
-" End of user defined functions
-" ************************************************************************
-
-" ************************************************************************
 " User defined commands
 
 command! -narg=0 Index :call BuildIndex()
