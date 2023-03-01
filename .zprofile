@@ -1,7 +1,3 @@
-if [[ $(uname) == 'Darwin' ]]; then
-    eval "$(PATH='/usr/local/bin:/opt/homebrew/bin' brew shellenv)"
-fi
-
 GDBHISTFILE=$HOME/.gdb_history
 
 MANPATH="$HOME/.local/share/man:$MANPATH"
