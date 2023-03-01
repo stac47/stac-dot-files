@@ -12,7 +12,7 @@ bindkey "^R" history-incremental-search-backward
 #------------------------------
 autoload -U select-word-style
 select-word-style bash
-export WORDCHARS='.-'
+WORDCHARS='.-'
 
 #------------------------------
 # Autocompletion
@@ -63,16 +63,18 @@ setopt hist_ignore_space
 #------------------------------
 export BROWSER="firefox"
 export EDITOR="vim"
+export PAGER=less
+export MANPAGER=less
 
 
 #------------------------------
 # Alias stuff
 #------------------------------
 if ls --version 1>/dev/null 2>&1; then
-  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+  LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
   alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
 else
-  export LSCOLORS='exfxcxdxbxegedabagacad'
+  LSCOLORS='exfxcxdxbxegedabagacad'
   alias ls='ls -G'
 fi
 alias ll="ls -lh"
@@ -152,10 +154,9 @@ if [[ -z $(which java) ]]; then
   fi
 fi
 
-#------------------------------
-# GDB
-#------------------------------
-GDBHISTFILE=$HOME/.gdb_history
+[[ -x $(command -v direnv) ]] && eval "$(direnv hook zsh)"
+[[ -x $(command -v rbenv) ]] && eval "$(rbenv init - zsh)"
 
-export PAGER=less
-export MANPAGER=less
+if [[ -e "$HOME/.zshrc.local" ]]; then
+    source "$HOME/.zshrc.local"
+fi
