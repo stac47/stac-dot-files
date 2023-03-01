@@ -1,5 +1,5 @@
 if [[ $(uname) == 'Darwin' ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    eval "$(PATH='/usr/local/bin:/opt/homebrew/bin' brew shellenv)"
 fi
 
 GDBHISTFILE=$HOME/.gdb_history
