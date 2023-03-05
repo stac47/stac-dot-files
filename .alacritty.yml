@@ -51,6 +51,9 @@ key_bindings:
   - { key: B,        mods: Alt,     chars: "\x1bb"                       }
   - { key: Key3,        mods: Alt,     chars: "#"                        }
 
+import:
+  - ~/.alacritty.yml.local
+
 # Import additional configuration files
 #
 # Imports are loaded in order, skipping all missing files, with the importing
