@@ -1,3 +1,7 @@
+[user]
+    name = Laurent Stacul
+    email = laurent.stacul@gmail.com
+    signingkey = 6A8B84A864DECF73
 [core]
     excludesfile = ~/.gitignore_global
     editor = vim
@@ -27,3 +31,5 @@
     cmd = vim -d -f -c \"3wincmd w | wincmd J\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [init]
 	defaultBranch = main
+[include]
+    path = ~/.gitconfig.local

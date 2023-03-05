@@ -1,6 +1,0 @@
-[include]
-    path = STAC_DOT_FILES_DIR/.gitconfig_common
-[user]
-    name = Laurent Stacul
-    email = laurent.stacul@gmail.com
-    signingkey = 6A8B84A864DECF73
