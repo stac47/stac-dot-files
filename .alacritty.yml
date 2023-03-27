@@ -2,15 +2,13 @@
 
 window:
   startup_mode: Fullscreen
+  option_as_alt: Both
 
 shell:
   program: /usr/local/bin/zsh
   args:
     - --login
 
-alt_send_esc: true
-option_as_alt: true
- 
 # XTerm's default colors
 colors:
    # Default colors
