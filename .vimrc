@@ -199,6 +199,14 @@ if version >= 700
   au InsertLeave * hi StatusLine ctermbg=black ctermfg=white
 endif
 
+" highlight the spaces at end of lines
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 " End of colors settings
 " ************************************************************************
 
