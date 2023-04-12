@@ -157,6 +157,10 @@ fi
 [[ -x $(command -v direnv) ]] && eval "$(direnv hook zsh)"
 [[ -x $(command -v rbenv) ]] && eval "$(rbenv init - zsh)"
 
+if [[ -e "$HOME/.zshrc.hidden" ]]; then
+    source "$HOME/.zshrc.hidden"
+fi
+
 if [[ -e "$HOME/.zshrc.local" ]]; then
     source "$HOME/.zshrc.local"
 fi

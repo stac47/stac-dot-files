@@ -9,3 +9,6 @@ tmux-server-*.log
 .tmux/plugins/tmux-cpu/
 .tmux/plugins/tmux-sensible/
 .vim/black
+.gitsecret/keys/random_seed
+!*.secret
+.zshrc.hidden
