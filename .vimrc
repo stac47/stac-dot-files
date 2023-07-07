@@ -157,20 +157,6 @@ if executable("ag")
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-" Cscope settings
-if has("cscope")
-    set csto=1
-    set cst
-    " add any database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    " else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-    set csverb
-endif
-
 " End of general configuration
 " ************************************************************************
 
