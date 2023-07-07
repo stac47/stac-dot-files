@@ -113,7 +113,6 @@ set smartcase
 " Set status line
 set statusline=[%02n]\ %f\ %(\[%M%R%H]%)
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%{FugitiveStatusline()}
 set statusline+=%=\ %4l,%02c%2V\ [\\x%04B\ (%05b)]\ %P%*
 " Always display a status line at the bottom of the window
 set laststatus=2
