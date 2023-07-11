@@ -149,11 +149,12 @@ else
 endif
 
 " grep settings
-set grepformat=%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f\ \ %l%m
-if executable("ag")
-  set grepprg=ag\ --nogroup\ --column\ --nocolor\ --ignore='tags'\ --ignore='cscope.*'\ --ignore='*.rex'\ --ignore='*.res'\ $*
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ $*
+  let g:ctrlp_user_command = 'rg --files --color=never --glob "" %s'
+elseif executable("ag")
+  set grepprg=ag\ --nogroup\ --column\ --nocolor\ $*
   set grepformat=%f:%l:%c:%m
-  let g:agprg="ag --follow --column"
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
