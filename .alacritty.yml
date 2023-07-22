@@ -50,7 +50,7 @@ key_bindings:
   - { key: Key3,        mods: Alt,     chars: "#"                        }
 
 import:
-  - ~/.alacritty.yml.local
+  - $HOME/.alacritty.yml.local
 
 # Import additional configuration files
 #
