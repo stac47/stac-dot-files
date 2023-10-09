@@ -55,6 +55,9 @@ all: zsh vim git tmux mail alacritty misc ruby ## Configure all
 $(HOME)/%: %.template
 	m4 -D STAC_DOT_FILES_DIR=$(STAC_DOT_FILES_DIR) $(shell realpath $<) > $@
 
+$(HOME)/%: %.$(shell uname | tr '[:upper:]' '[:lower:]')
+	ln -sf $(shell realpath $<) $@
+
 $(HOME)/%: %
 	ln -sf $(shell realpath $<) $@
 
