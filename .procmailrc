@@ -3,25 +3,11 @@
 #DATE=`date +%Y-%m`
 SHELL=/bin/sh
 VERBOSE=off
-PMDIR=/Users/stac/.procmail
-LOGFILE=$PMDIR/procmail.log
+LOGFILE=$HOME/.procmail/procmail.log
 # inserts a blank line between log entries
 LOG="
 "
-MAIL=/Users/stac/Mail
-MLIST=$MAIL
-
-#
-# delete duplicate messages first
-#
-#:0 Wh: msgid.lock
-#| formail -D 8192 $PMDIR/msgid.cache
-
-#
-# keep our archive in dated mboxes
-#
-#:0 c
-#$MAIL/Archives/incoming-$DATE
+MAIL=$HOME/Mail
 
 #
 # delete stuff the server marks as spam outright
@@ -51,12 +37,6 @@ $MAIL/openssl
 * ^Subject:.*COUCAM.*
 $MAIL/cameras
 
-#
-# [--SPAM--] check messages with spamassassin
-#
-#INCLUDERC=$PMDIR/spam.rc
-
-#
 #
 # final delivery to inbox
 :0:
