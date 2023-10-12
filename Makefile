@@ -20,8 +20,6 @@ DOT_ALACRITTY := $(HOME)/.alacritty.yml
 DOT_MISC := $(HOME)/.gdbinit $(HOME)/.clang-format $(HOME)/.mdlrc
 DOT_RUBY := $(HOME)/.irbrc
 
-BREW_LIST := brew.list
-
 # Quick all setup
 ALL_DOT_FILES := $(DOT_ZSH) $(DOT_VIM) $(DOT_GIT) $(DOT_TMUX) $(DOT_MAIL) $(DOT_MISC)
 
@@ -60,10 +58,6 @@ $(HOME)/%: %.$(shell uname | tr '[:upper:]' '[:lower:]')
 
 $(HOME)/%: %
 	ln -sf $(shell realpath $<) $@
-
-.PHONY: update-brew-list
-update-brew-list: ## Update the list of packages installed by homebrew
-	brew list | sort > "$(BREW_LIST)"
 
 .PHONY: clean
 clean:
