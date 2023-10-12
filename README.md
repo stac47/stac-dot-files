@@ -23,6 +23,9 @@ Go to the project's folder and download all the git submodules:
 > git submodule update --recursive --init
 ```
 
+The first time you run **tmux**, press <prefix> + I (capital i) to have the
+plugins installed. With the current configuration, tmux's prefix is `CTRL+A`.
+
 #### Creating symbolic links to the config files
 
 Simple solution:
