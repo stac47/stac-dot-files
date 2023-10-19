@@ -150,8 +150,11 @@ endif
 
 " grep settings
 if executable("rg")
-  set grepprg=rg\ --vimgrep\ $*
-  let g:ctrlp_user_command = 'rg --files --color=never --glob "" %s'
+  " Eventhough rg uses the ignore rules from `.gitignore` found in the cwd, we
+  " need to ignore tags files (originated from ctags) in case the cwd is
+  " actually not a git repository.
+  set grepprg=rg\ --glob\ !tags\ --vimgrep\ $*
+  let g:ctrlp_user_command = 'rg  --files --color=never --glob "" %s'
 elseif executable("ag")
   set grepprg=ag\ --nogroup\ --column\ --nocolor\ $*
   set grepformat=%f:%l:%c:%m
