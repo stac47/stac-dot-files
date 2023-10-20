@@ -47,6 +47,11 @@ $(VIM_PLUGINS_DIR)/vim-lilypond:
 
 $(VIM_PLUGINS_TARGET_PREFIX)lilypond: $(VIM_PLUGINS_DIR)/vim-lilypond
 
+$(VIM_PLUGINS_DIR)/terraform:
+	$(GIT) clone https://github.com/hashivim/vim-terraform.git "$@"
+
+$(VIM_PLUGINS_TARGET_PREFIX)terraform: $(VIM_PLUGINS_DIR)/terraform
+
 .PHONY: $(VIM_PLUGINS_UPDATE_TARGET)
 $(VIM_PLUGINS_UPDATE_TARGET):
 	@for plugin in $$($(GIT) ls-files --others --exclude-standard "$(VIM_PLUGINS_DIR)"); do \
