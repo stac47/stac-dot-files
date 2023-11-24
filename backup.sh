@@ -2,6 +2,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+DESTINATION=${1:?'Missing destination'}
+GIT_DESTINATION="${DESTINATION}/git"
+mkdir -p "${GIT_DESTINATION}"
 BACKUP_DATE=$(date +'%Y_%m_%d_%H_%M_%S_%N')
 BACKUP_FILENAME="/tmp/backup_$BACKUP_DATE.tar.gz"
 
@@ -59,16 +62,42 @@ function backup_tar() {
     cmd+=('.')
     set -x
     "${cmd[@]}"
+    cp -v "${BACKUP_FILENAME}" "${DESTINATION}"
     set +x
 }
 
 function backup_git_bundle() {
-    local path="${1}"
-    local project_name=$(basename $path)
-    local bundle_name="$project_name.bundle"
-    git -C "$path" bundle create "$project_name.bundle" --all
-    tar --append --file="${BACKUP_FILENAME} "$path/
+    local path="${1:?'Missing path'}"
+    echo "Bundling git repository: ${path}"
+    if [[ -d "$path/.git" ]] then
+        local project_name=$(basename $path)
+        local bundle_name="$project_name.bundle"
+        git -C "$path" bundle create "${GIT_DESTINATION}/$project_name.bundle" --all
+    else
+        find "$path" -mindepth 1 -maxdepth 1 -type d | while IFS= read -r d; do
+            backup_git_bundle "$d"
+        done
+    fi
 }
 
-# backup_git_bundle "/home/stac/development/advent_of_code"
+function backup_git() {
+    for git_dir in "${GIT_REPOSITORIES[@]}"; do
+        backup_git_bundle "$HOME/$git_dir"
+    done
+}
+
+function backup_sync() {
+    local cmd
+    cmd=("rsync" "-avz")
+    for directory in "${SYNC_DIRECTORIES[@]}"; do
+        cmd+=("$HOME/$directory")
+    done
+    cmd+=($DESTINATION)
+    set -x
+    "${cmd[@]}"
+    set +x
+}
+
+backup_sync
 backup_tar
+backup_git
