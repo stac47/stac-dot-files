@@ -1,8 +1,8 @@
 # Images
-image/*; open %s; copiousoutput
+image/*; xv %s > /dev/null
 
 # PDF
-application/pdf; open %s; copiousoutput
+application/pdf; evince %s > /dev/null
 
 # Text
 text/html; lynx -display_charset='utf-8' -assume_charset=%{charset} -dump %s; copiousoutput; nametemplate=%s.html
