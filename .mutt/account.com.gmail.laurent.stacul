@@ -1,5 +1,5 @@
-set smtp_url = "smtp://captain.stac@gmail.com@smtp.gmail.com:587/"
-set smtp_authenticators = 'gssapi:login'
+set smtp_url = "smtps://laurent.stacul@gmail.com@smtp.gmail.com:465/"
+set smtp_pass = "`pass Email/mutt_laurent.stacul@gmail.com | head -1`"
 set from = "laurent.stacul@gmail.com"
 set realname = "Laurent Stacul"
 source ~/.mutt/account.common

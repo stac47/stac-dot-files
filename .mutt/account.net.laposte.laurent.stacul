@@ -1,4 +1,5 @@
 set smtp_url = "smtp://laurent.stacul@smtp.laposte.net:587/"
+set smtp_pass = "`pass Email/laurent.stacul@laposte.net | head -1`"
 set from = "laurent.stacul@laposte.net"
 set realname = "Laurent Stacul"
 source ~/.mutt/account.common

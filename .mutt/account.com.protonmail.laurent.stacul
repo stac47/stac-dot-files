@@ -1,4 +1,5 @@
 set smtp_url = "smtp://laurent.stacul@protonmail.com@localhost:1025/"
+set smtp_pass = "`pass Email/protonmail-bridge | head -1`"
 set from = "laurent.stacul@protonmail.com"
 set realname = "Laurent Stacul"
 set ssl_verify_host = no
