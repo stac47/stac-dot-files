@@ -7,6 +7,7 @@ GIT_DESTINATION="${DESTINATION}/git"
 mkdir -p "${GIT_DESTINATION}"
 BACKUP_DATE=$(date +'%Y_%m_%d_%H_%M_%S_%N')
 BACKUP_FILENAME="/tmp/backup_$BACKUP_DATE.tar.gz"
+GPG_BACKUP_FILENAME="${BACKUP_FILENAME}.gpg"
 
 SYNC_DIRECTORIES=(
     'Documents'
@@ -38,6 +39,7 @@ EXCLUSIONS=(
     '.mozilla'
     '.mutt'
     '.muttrc'
+    '.npm'
     '.procmailrc'
     '.rbenv'
     '.stac-dot-files'
@@ -49,6 +51,7 @@ EXCLUSIONS=(
     '.zprofile'
     '.zshenv'
     '.zshrc'
+    'fsgtfiles'
     'opensource'
 )
 
@@ -62,7 +65,11 @@ function backup_tar() {
     cmd+=('.')
     set -x
     "${cmd[@]}"
-    cp -v "${BACKUP_FILENAME}" "${DESTINATION}"
+    gpg --output "${GPG_BACKUP_FILENAME}" \
+        --recipient "laurent.stacul@gmail.com" \
+        --encrypt "${BACKUP_FILENAME}"
+    mv -v "${GPG_BACKUP_FILENAME}" "${DESTINATION}"
+    rm "${BACKUP_FILENAME}"
     set +x
 }
 
@@ -88,7 +95,7 @@ function backup_git() {
 
 function backup_sync() {
     local cmd
-    cmd=("rsync" "-avz")
+    cmd=("rsync" "-avz" "--delete" "--safe-links")
     for directory in "${SYNC_DIRECTORIES[@]}"; do
         cmd+=("$HOME/$directory")
     done
@@ -98,6 +105,6 @@ function backup_sync() {
     set +x
 }
 
-backup_sync
 backup_tar
+backup_sync
 backup_git
