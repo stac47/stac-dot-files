@@ -30,5 +30,5 @@
     cmd = vim -d -f -c \"3wincmd w | wincmd J\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [init]
 	defaultBranch = main
-[include]
-    path = ~/.gitconfig.local
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig.work
