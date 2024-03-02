@@ -157,6 +157,23 @@ fi
 [[ -x $(command -v direnv) ]] && eval "$(direnv hook zsh)"
 [[ -x $(command -v rbenv) ]] && eval "$(rbenv init - zsh)"
 
+alias vim_configure=./configure \
+  --prefix="$HOME/.local" \
+  --enable-multibyte \
+  --with-tlib=ncurses \
+  --with-compiledby=stac47 \
+  --enable-cscope \
+  --enable-terminal \
+  --disable-perlinterp \
+  --disable-rubyinterp \
+  --disable-python3interp \
+  --disable-gui \
+  --without-x \
+  --disable-luainterp \
+  --disable-gtktest \
+  --disable-netbeans \
+  --enable-fail-if-missing
+
 if [[ -e "$HOME/.zshrc.local" ]]; then
     source "$HOME/.zshrc.local"
 fi
