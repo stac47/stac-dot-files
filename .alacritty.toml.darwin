@@ -49,10 +49,6 @@ chars = "#"
 key = "Key3"
 mods = "Alt"
 
-[shell]
-args = ["--login"]
-program = "/usr/local/bin/zsh"
-
 [window]
 option_as_alt = "Both"
 startup_mode = "Fullscreen"
