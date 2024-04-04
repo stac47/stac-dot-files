@@ -12,7 +12,7 @@ GIT := git
 STAC_DOT_FILES_DIR := $(shell pwd)
 
 DOT_ZSH := $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zprofile $(HOME)/.zlogin
-DOT_BASH := $(HOME)/.bashrc $(HOME)/.bash_profile
+DOT_BASH := $(HOME)/.bashrc $(HOME)/.bash_profile $(HOME)/.inputrc
 DOT_VIM := $(HOME)/.vimrc $(HOME)/.vim
 DOT_GIT := $(HOME)/.gitconfig $(HOME)/.gitignore_global
 DOT_TMUX := $(HOME)/.tmux $(HOME)/.tmux.conf

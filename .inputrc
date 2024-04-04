@@ -1,0 +1,18 @@
+# This file controls the behaviour of line input editing for
+# programs that use the GNU Readline library.  Existing
+# programs include FTP, Bash, and GDB.
+#
+# You can re-read the inputrc file with C-x C-r.
+# Lines beginning with '#' are comments.
+
+TAB: menu-complete
+
+$if Bash
+# edit the path
+"\C-xp": "PATH=${PATH}\e\C-e\C-a\ef\C-f"
+$endif
+
+set completion-query-items 150
+set colored-stats on
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
