@@ -13,6 +13,7 @@ STAC_DOT_FILES_DIR := $(shell pwd)
 
 DOT_ZSH := $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zprofile $(HOME)/.zlogin
 DOT_BASH := $(HOME)/.bashrc $(HOME)/.bash_profile $(HOME)/.inputrc
+DOT_EMACS := $(HOME)/.emacs.d
 DOT_VIM := $(HOME)/.vimrc $(HOME)/.vim
 DOT_GIT := $(HOME)/.gitconfig $(HOME)/.gitignore_global
 DOT_TMUX := $(HOME)/.tmux $(HOME)/.tmux.conf
@@ -26,6 +27,9 @@ ALL_DOT_FILES := $(DOT_ZSH) $(DOT_VIM) $(DOT_GIT) $(DOT_TMUX) $(DOT_MAIL) $(DOT_
 
 .PHONY: zsh
 zsh: $(DOT_ZSH) ## Configure zsh
+
+.PHONY: emacs
+emacs: $(DOT_EMACS) ## Configure emacs
 
 .PHONY: bash
 bash: $(DOT_BASH) ## Configure bash

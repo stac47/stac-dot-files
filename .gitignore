@@ -9,3 +9,7 @@ tmux-server-*.log
 .tmux/plugins/tmux-cpu/
 .tmux/plugins/tmux-sensible/
 .vim/black
+.emacs.d/auto-save-list/
+.emacs.d/elpa/
+.emacs.d/eshell/
+.emacs.d/projects
