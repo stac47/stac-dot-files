@@ -11,17 +11,6 @@ if [[ -e "$HOME/.bashrc.local" ]]; then
     source "$HOME/.bashrc.local"
 fi
 
-BASH_COMPLETION_DIR='/etc/bash_completion.d'
-if type brew &>/dev/null
-then
-  BASH_COMPLETION_DIR="$(brew --prefix)$BASH_COMPLETION_DIR"
-fi
-
-for COMPLETION in "${BASH_COMPLETION_DIR}/"*
-do
-  [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
-done
-
 if ls --version 1>/dev/null 2>&1; then
   LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
   alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
