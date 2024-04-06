@@ -33,6 +33,3 @@ size = 10.0
 
 [font.bold]
 style = "SemiBold"
-
-[window]
-startup_mode = "Fullscreen"
