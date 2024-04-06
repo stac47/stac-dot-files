@@ -18,7 +18,7 @@ DOT_VIM := $(HOME)/.vimrc $(HOME)/.vim
 DOT_GIT := $(HOME)/.gitconfig $(HOME)/.gitignore_global
 DOT_TMUX := $(HOME)/.tmux $(HOME)/.tmux.conf
 DOT_MAIL := $(HOME)/.procmailrc $(HOME)/.muttrc $(HOME)/.mutt $(HOME)/.mailcap
-DOT_ALACRITTY := $(HOME)/.alacritty.toml
+DOT_ALACRITTY := $(HOME)/.alacritty.toml $(HOME)/.alacritty_common.toml
 DOT_MISC := $(HOME)/.gdbinit $(HOME)/.clang-format $(HOME)/.mdlrc
 DOT_RUBY := $(HOME)/.irbrc
 
