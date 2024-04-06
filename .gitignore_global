@@ -1,6 +1,10 @@
 .DS_Store
-cscope.*
+
+TAGS
 tags
 *.orig
-.starscope.db
+
+# Emacs
 *~
+\#*\#
+.\#*
