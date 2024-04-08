@@ -3,7 +3,7 @@ import = [
 ]
 
 [font]
-size = 13.0
+size = 16.0
 
 [[keyboard.bindings]]
 chars = "\u001Bf"

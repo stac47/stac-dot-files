@@ -13,4 +13,5 @@ tmux-server-*.log
 .emacs.d/elpa/
 .emacs.d/eshell/
 .emacs.d/eln-cache/
+.emacs.d/transient/
 .emacs.d/projects
