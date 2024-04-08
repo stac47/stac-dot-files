@@ -18,7 +18,8 @@
 
 ;; In programming language mode, display the line number
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(add-hook 'LilyPond-mode-hook #'display-line-numbers-mode)
+
+(setq show-trailing-whitespace t)
 
 ;; Configure yasnippet
 (require 'yasnippet)
@@ -26,6 +27,9 @@
       '("~/.emacs.d/snippets"))
 (yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+;; LilyPond Configuration
+(add-hook 'LilyPond-mode-hook #'display-line-numbers-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
