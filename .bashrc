@@ -7,6 +7,13 @@ export EDITOR="vim"
 export PAGER=less
 export MANPAGER=less
 
+# -F: automatically exits if the entire file can be displayed on one screen
+# -I: causes search to ignore case
+# -R: display ANSI colors
+# -S: do not wrap long lines
+# -X: do not set termcap init to the terminal
+export LESS="-FSRXI"
+
 if [[ -e "$HOME/.bashrc.local" ]]; then
     source "$HOME/.bashrc.local"
 fi
