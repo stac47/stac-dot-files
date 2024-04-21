@@ -34,6 +34,7 @@
   :init (global-flycheck-mode))
 
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
