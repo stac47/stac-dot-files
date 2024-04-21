@@ -28,6 +28,13 @@
 ;; LilyPond Configuration
 (add-hook 'LilyPond-mode-hook #'display-line-numbers-mode)
 
+;; Configure flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
