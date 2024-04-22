@@ -4,6 +4,9 @@
              '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
+;; Display the point column in the Mode line
+(setq column-number-mode t)
+
 ;; Always add a newline character at the end of the file
 (setq require-final-newline t)
 
