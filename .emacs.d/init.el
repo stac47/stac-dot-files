@@ -13,8 +13,9 @@
 ;; Do not display the menu bar
 (menu-bar-mode -1)
 
-;; Automatically refresh file on change
-(global-auto-revert-mode t)
+;; Automatically highlight the current line
+(add-hook 'text-mode-hook 'hl-line-mode)
+(add-hook 'prog-mode-hook 'hl-line-mode)
 
 ;; In programming language mode, display the line number
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
