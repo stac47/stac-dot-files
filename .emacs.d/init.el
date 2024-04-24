@@ -22,11 +22,11 @@
 (setq require-final-newline t)
 
 ;; Automatically highlight the current line
-(add-hook 'text-mode-hook 'hl-line-mode)
-(add-hook 'prog-mode-hook 'hl-line-mode)
+(add-hook 'text-mode-hook #'hl-line-mode)
+(add-hook 'prog-mode-hook #'hl-line-mode)
 
 ;; In programming language mode, display the line number
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'LilyPond-mode-hook #'display-line-numbers-mode)
 
 ;; Show trailing whitespaces
