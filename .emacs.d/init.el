@@ -1,17 +1,25 @@
+;; Minimalist emacs
+(setq inhibit-splash-screen t)
+(menu-bar-mode -1) ;; Do not display the menu bar
+(tool-bar-mode -1) ;; No scrollbar
+(tooltip-mode -1) ;; No tooltips
+
+;; Package system initializations
 (require 'package)
 
 (add-to-list 'package-archives
              '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+(require 'use-package)
+(setq use-package-always-ensure t)
 
 ;; Display the point column in the Mode line
 (setq column-number-mode t)
 
 ;; Always add a newline character at the end of the file
 (setq require-final-newline t)
-
-;; Do not display the menu bar
-(menu-bar-mode -1)
 
 ;; Automatically highlight the current line
 (add-hook 'text-mode-hook 'hl-line-mode)
@@ -21,38 +29,28 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (setq-default show-trailing-whitespace t)
+(use-package magit)
+(use-package yaml-mode)
 
 ;; Configure yasnippet
-(require 'yasnippet)
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"))
-(yas-reload-all)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
+(use-package yasnippet
+  :config
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (yas-reload-all)
+  :hook (prog-mode . yas-minor-mode))
 
 ;; LilyPond Configuration
 (add-hook 'LilyPond-mode-hook #'display-line-numbers-mode)
 
 ;; Configure flycheck
 (use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
-
-(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-(setq flycheck-check-syntax-automatically '(mode-enabled save))
+  :init (global-flycheck-mode)
+  :config
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  (setq flycheck-check-syntax-automatically '(mode-enabled save)))
 
 ;; Configure Markdown mode
-(add-hook 'markdown-mode-hook 'auto-fill-mode)
-(add-hook 'markdown-mode-hook (lambda() (set-fill-column 80)))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(magit flycheck yasnippet yaml-mode markdown-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(use-package markdown-mode
+  :config
+  (add-hook 'markdown-mode-hook 'auto-fill-mode)
+  (add-hook 'markdown-mode-hook (lambda() (set-fill-column 80))))
