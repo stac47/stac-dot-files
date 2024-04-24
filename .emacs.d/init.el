@@ -27,29 +27,27 @@
 
 ;; In programming language mode, display the line number
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'LilyPond-mode-hook #'display-line-numbers-mode)
 
+;; Show trailing whitespaces
 (setq-default show-trailing-whitespace t)
+
+;; Packages
 (use-package magit)
 (use-package yaml-mode)
 
-;; Configure yasnippet
 (use-package yasnippet
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-reload-all)
   :hook (prog-mode . yas-minor-mode))
 
-;; LilyPond Configuration
-(add-hook 'LilyPond-mode-hook #'display-line-numbers-mode)
-
-;; Configure flycheck
 (use-package flycheck
   :init (global-flycheck-mode)
   :config
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   (setq flycheck-check-syntax-automatically '(mode-enabled save)))
 
-;; Configure Markdown mode
 (use-package markdown-mode
   :config
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
