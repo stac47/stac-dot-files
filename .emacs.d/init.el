@@ -20,7 +20,7 @@
 ;; In programming language mode, display the line number
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-(setq show-trailing-whitespace t)
+(setq-default show-trailing-whitespace t)
 
 ;; Configure yasnippet
 (require 'yasnippet)
