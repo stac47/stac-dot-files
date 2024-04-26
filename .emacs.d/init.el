@@ -3,6 +3,7 @@
 (menu-bar-mode -1) ;; Do not display the menu bar
 (tool-bar-mode -1) ;; No scrollbar
 (tooltip-mode -1) ;; No tooltips
+(scroll-bar-mode -1) ;; No scroll bar in GUI mode
 
 ;; Package system initializations
 (require 'package)
@@ -25,12 +26,9 @@
 (add-hook 'text-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hl-line-mode)
 
-;; In programming language mode, display the line number
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(add-hook 'LilyPond-mode-hook #'display-line-numbers-mode)
-
 ;; Show trailing whitespaces
-(setq-default show-trailing-whitespace t)
+;; (setq-default show-trailing-whitespace t)
+(add-hook 'prog-mode-hook (lambda() (show-trailing-whitespece t)))
 
 ;; Packages
 (use-package magit)
