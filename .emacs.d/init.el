@@ -3,7 +3,11 @@
 (menu-bar-mode -1) ;; Do not display the menu bar
 (tool-bar-mode -1) ;; No scrollbar
 (tooltip-mode -1) ;; No tooltips
-(scroll-bar-mode -1) ;; No scroll bar in GUI mode
+(if (display-graphic-p) ;; No scroll bar in GUI mode
+    (scroll-bar-mode -1))
+
+(when (eq system-type 'darwin)
+  (set-face-attribute 'default nil :height 165))
 
 ;; Package system initializations
 (require 'package)
@@ -28,7 +32,7 @@
 
 ;; Show trailing whitespaces
 ;; (setq-default show-trailing-whitespace t)
-(add-hook 'prog-mode-hook (lambda() (show-trailing-whitespece t)))
+(add-hook 'prog-mode-hook (lambda() (setq show-trailing-whitespace t)))
 
 ;; Packages
 (use-package magit)
