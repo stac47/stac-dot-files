@@ -3,7 +3,6 @@
     email = laurent.stacul@gmail.com
 [core]
     excludesfile = ~/.gitignore_global
-    editor = vim
     autocrlf = input
 [merge]
     tool = vimdiff
@@ -23,12 +22,6 @@
     default = simple
 [pull]
     rebase = merges
-[diff]
-    tool = vimdiff
-[difftool]
-    prompt = false
-[difftool "vimdiff"]
-    cmd = vim -d -f -c \"3wincmd w | wincmd J\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [init]
 	defaultBranch = main
 [includeIf "gitdir:~/work/"]
