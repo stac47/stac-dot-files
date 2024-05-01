@@ -31,8 +31,10 @@
 (add-hook 'prog-mode-hook #'hl-line-mode)
 
 ;; Show trailing whitespaces
-;; (setq-default show-trailing-whitespace t)
 (add-hook 'prog-mode-hook (lambda() (setq show-trailing-whitespace t)))
+
+;; Display line number in any prod mode
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; Packages
 (use-package magit)
