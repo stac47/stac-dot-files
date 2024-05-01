@@ -3,7 +3,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export GPG_TTY=$(tty)
 export BROWSER="firefox"
-export EDITOR="vim"
+export EDITOR="emacsclient"
 export PAGER=less
 export MANPAGER=less
 
@@ -45,23 +45,3 @@ PS1='[\[\033[1;33m\]\D{%F} \t\[\033[0m\]]\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32
 
 [[ -x $(command -v direnv) ]] && eval "$(direnv hook bash)"
 [[ -x ~/.rbenv/bin/rbenv ]] && eval "$(~/.rbenv/bin/rbenv init - bash)"
-
-function vim_configure() {
-  make distclean
-  ./configure \
-    --prefix="$HOME/.local" \
-    --enable-multibyte \
-    --with-tlib=ncurses \
-    --with-compiledby=stac47 \
-    --enable-cscope \
-    --enable-terminal \
-    --disable-perlinterp \
-    --disable-rubyinterp \
-    --disable-python3interp \
-    --disable-gui \
-    --without-x \
-    --disable-luainterp \
-    --disable-gtktest \
-    --disable-netbeans \
-    --enable-fail-if-missing
-}
