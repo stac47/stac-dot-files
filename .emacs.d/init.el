@@ -1,4 +1,13 @@
-;; Minimalist emacs
+;;; init.el ---  My minimalist emacs configuration
+
+;;; Commentary:
+
+;; I am trying to stick to the default Emacs bindings and to use a
+;; minimal number of packages.
+;; Supports MacOS and GNU
+
+;;; Code:
+
 (setq inhibit-splash-screen t)
 (menu-bar-mode -1) ;; Do not display the menu bar
 (tool-bar-mode -1) ;; No scrollbar
@@ -74,3 +83,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+;;; init.el ends here
