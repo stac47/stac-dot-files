@@ -60,10 +60,6 @@
   (setq rbenv-show-active-ruby-in-modeline nil)
   (global-rbenv-mode))
 
-(use-package direnv
-  :config
-  (direnv-mode))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
