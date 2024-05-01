@@ -1,7 +1,3 @@
-[merge-tools]
-vimdiff.executable = vim
-vimdiff.args = -d $base $local $output $other +close +close
-
 [pager]
 pager = LESS='FRX' less
 
@@ -17,5 +13,4 @@ strip =
 
 [ui]
 username = Laurent Stacul <laurent.stacul@gmail.com>
-merge = vimdiff
 ignore = ~/.hgignore
