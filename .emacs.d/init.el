@@ -32,6 +32,9 @@
 ;; Use extended dabbrev completion (hippie)
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 
+;; Use FIDO mode (better to navigate across buffers and files)
+(fido-mode)
+
 ;; Display the point column in the Mode line
 (setq column-number-mode t)
 
