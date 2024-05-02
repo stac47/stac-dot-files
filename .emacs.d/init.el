@@ -29,6 +29,9 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+;; Use extended dabbrev completion (hippie)
+(global-set-key [remap dabbrev-expand] 'hippie-expand)
+
 ;; Display the point column in the Mode line
 (setq column-number-mode t)
 
