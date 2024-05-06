@@ -8,6 +8,10 @@
 
 ;;; Code:
 
+;; No bell sound
+(setq ring-bell-function 'ignore)
+(setq visible-bell t)
+
 (setq inhibit-splash-screen t)
 (menu-bar-mode -1) ;; Do not display the menu bar
 (tool-bar-mode -1) ;; No scrollbar
