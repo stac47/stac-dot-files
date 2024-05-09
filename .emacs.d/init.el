@@ -55,6 +55,9 @@
 ;; Display line number in any prod mode
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
+;; Forbid tabs for indentation
+(setq-default indent-tabs-mode nil)
+
 ;; Packages
 (use-package magit)
 (use-package yaml-mode)
