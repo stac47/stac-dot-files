@@ -58,6 +58,10 @@
 ;; Forbid tabs for indentation
 (setq-default indent-tabs-mode nil)
 
+;; Save history
+(setq history-length 25)
+(savehist-mode 1)
+
 ;; Packages
 (use-package magit)
 (use-package yaml-mode)
