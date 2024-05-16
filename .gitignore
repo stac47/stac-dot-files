@@ -16,3 +16,4 @@ tmux-server-*.log
 .emacs.d/transient/
 .emacs.d/projects
 /.emacs.d/history
+/.emacs.d/bookmarks
