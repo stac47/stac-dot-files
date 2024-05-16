@@ -71,6 +71,12 @@
 (setq  custom-file (locate-user-emacs-file "custom-vars.el"))
 (load custom-file)
 
+;; Refresh buffer when underlying file has changed
+(global-auto-revert-mode 1)
+
+;; Refresh other buffer if needed (for instance Dired buffers)
+(setq global-auto-revert-non-file-buffers t)
+
 ;; Packages
 (use-package magit)
 (use-package yaml-mode)
