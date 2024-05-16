@@ -18,7 +18,9 @@
 (tooltip-mode -1) ;; No tooltips
 (if (display-graphic-p) ;; No scroll bar in GUI mode
     (scroll-bar-mode -1))
+(setq use-dialog-box nil)
 
+;; Readable definition on Apple Retina screen
 (when (eq system-type 'darwin)
   (set-face-attribute 'default nil :height 165))
 
