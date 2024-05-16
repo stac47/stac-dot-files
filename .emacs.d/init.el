@@ -62,6 +62,9 @@
 (setq history-length 25)
 (savehist-mode 1)
 
+;; Remember the last place in a visited file
+(save-place-mode 1)
+
 ;; Packages
 (use-package magit)
 (use-package yaml-mode)
