@@ -4,6 +4,7 @@ export LANGUAGE=en_US.UTF-8
 export GPG_TTY=$(tty)
 export BROWSER="firefox"
 export EDITOR="emacsclient"
+export BUNDLER_EDITOR="emacsclient -n"
 export PAGER=less
 export MANPAGER=less
 
