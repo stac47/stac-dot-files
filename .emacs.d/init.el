@@ -65,6 +65,10 @@
 ;; Remember the last place in a visited file
 (save-place-mode 1)
 
+;; Do not mix customize with my config
+(setq  custom-file (locate-user-emacs-file "custom-vars.el"))
+(load custom-file)
+
 ;; Packages
 (use-package magit)
 (use-package yaml-mode)
@@ -93,17 +97,4 @@
 
 (use-package ruby-end)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(ruby-end yasnippet yaml-mode markdown-mode magit flycheck)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 ;;; init.el ends here
