@@ -101,8 +101,7 @@
 (use-package flycheck
   :init (global-flycheck-mode)
   :config
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  (setq flycheck-check-syntax-automatically '(mode-enabled save)))
+  (setq flycheck-check-syntax-automatically '(save)))
 
 (use-package markdown-mode
   :config
