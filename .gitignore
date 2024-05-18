@@ -18,3 +18,4 @@ tmux-server-*.log
 /.emacs.d/history
 /.emacs.d/bookmarks
 /.emacs.d/places
+/.emacs.d/games/
