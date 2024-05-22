@@ -79,6 +79,15 @@
 ;; Refresh other buffer if needed (for instance Dired buffers)
 (setq global-auto-revert-non-file-buffers t)
 
+;; I-search config
+;; Display the number of matches
+(setq isearch-lazy-count t)
+(setq lazy-count-prefix-format "(%s/%s) ")
+(setq lazy-count-suffix-format nil)
+
+;; Allow simple search like 'a b' to match 'a.c b'
+(setq search-whitespace-regexp ".*?")
+
 ;; Packages
 (use-package magit)
 (use-package yaml-mode)
