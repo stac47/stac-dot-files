@@ -124,4 +124,6 @@
 
 (use-package ruby-end)
 
+(use-package dockerfile-mode)
+
 ;;; init.el ends here
