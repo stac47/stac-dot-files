@@ -9,7 +9,7 @@
 ;;; Code:
 
 ;; Default modus-themes theme
-(load-theme 'modus-vivendi t)
+(load-theme 'modus-operandi t)
 
 ;; No bell sound
 (setq ring-bell-function 'ignore)
