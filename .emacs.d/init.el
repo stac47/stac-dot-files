@@ -88,6 +88,21 @@
 ;; Allow simple search like 'a b' to match 'a.c b'
 (setq search-whitespace-regexp ".*?")
 
+(use-package project
+  :init
+  (defun stac/project-tags ()
+    "When in a project, visit the tags file at the root of the project."
+    (interactive)
+    (if (project-current)
+        (let* ((proj-root (expand-file-name (project-root (project-current))))
+               (old-tags-file tags-file-name)
+               (new-tags-file (concat proj-root "TAGS")))
+          (if (equal old-tags-file new-tags-file)
+              (message "Tags file not changed: %s" old-tags-file)
+            (visit-tags-table new-tags-file)
+            (message "Tags %s -> %s" old-tags-file new-tags-file)))
+      (message "No current project"))))
+
 ;; Packages
 (use-package magit)
 (use-package yaml-mode)
