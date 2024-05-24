@@ -1,0 +1,100 @@
+#+title: GNU Bash Configuration
+#+author: Laurent Stacul
+#+email: laurent.stacul@gmail.com
+#+language: en
+
+* Bash Configuration
+
+** Login and Non-Interactive Shells
+
+#+begin_src shell :tangle .bash_profile
+  GDBHISTFILE=$HOME/.gdb_history
+
+  MANPATH="$HOME/.local/share/man:$MANPATH"
+  LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+  PATH="$HOME/.local/bin:$PATH"
+
+  if [[ -e "$HOME/.bash_profile.local" ]]; then
+      source "$HOME/.bash_profile.local"
+  fi
+
+  if [ -f "${HOME}/.bashrc" ] ; then
+    source "${HOME}/.bashrc"
+  fi
+#+end_src
+
+** Interactive Shells
+
+#+begin_src shell :tangle .bashrc
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+  export LANGUAGE=en_US.UTF-8
+  export GPG_TTY=$(tty)
+  export BROWSER="firefox"
+  export EDITOR="emacsclient"
+  export BUNDLER_EDITOR="emacsclient -n"
+  export PAGER=less
+  export MANPAGER=less
+
+  # -F: automatically exits if the entire file can be displayed on one screen
+  # -I: causes search to ignore case
+  # -R: display ANSI colors
+  # -S: do not wrap long lines
+  # -X: do not set termcap init to the terminal
+  export LESS="-FSRXI"
+
+  if [[ -e "$HOME/.bashrc.local" ]]; then
+      source "$HOME/.bashrc.local"
+  fi
+
+  if ls --version 1>/dev/null 2>&1; then
+    LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+    alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
+  else
+    LSCOLORS='exfxcxdxbxegedabagacad'
+    alias ls='ls -G'
+  fi
+
+  alias ll="ls -lh"
+  alias la='ls -a'
+  alias lla='ls -la'
+
+  if [[ "$OSTYPE" =~ "^linux.*" ]] || [[ "$OSTYPE" == 'cygwin' ]]; then
+    alias psall='ps -ef'
+    alias psmy='ps wwuxf'
+  fi
+
+  if [[ "$(grep --version)" =~ .*GNU.* ]]; then
+    alias grep='grep --color'
+  fi
+  alias mount='mount |column -t'
+  alias less='less --quiet -R'
+
+  PS1='[\[\033[1;33m\]\D{%F} \t\[\033[0m\]]\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h|\l\[\033[1;36m\](\j)\[\033[0m\]\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[0m\]:\w\n% '
+
+  [[ -x $(command -v direnv) ]] && eval "$(direnv hook bash)"
+  [[ -x ~/.rbenv/bin/rbenv ]] && eval "$(~/.rbenv/bin/rbenv init - bash)"
+#+end_src
+
+** GNU Readline Configuration
+
+#+begin_src shell :tangle .inputrc
+  # This file controls the behaviour of line input editing for
+  # programs that use the GNU Readline library.  Existing
+  # programs include FTP, Bash, and GDB.
+  #
+  # You can re-read the inputrc file with C-x C-r.
+  # Lines beginning with '#' are comments.
+
+  TAB: menu-complete
+
+  $if Bash
+  # edit the path
+  "\C-xp": "PATH=${PATH}\e\C-e\C-a\ef\C-f"
+  $endif
+
+  set completion-query-items 150
+  set colored-stats on
+  set show-all-if-ambiguous on
+  set menu-complete-display-prefix on
+#+end_src
