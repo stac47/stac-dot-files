@@ -17,11 +17,10 @@ DOT_GIT := $(HOME)/.gitconfig $(HOME)/.gitignore_global
 DOT_TMUX := $(HOME)/.tmux $(HOME)/.tmux.conf
 DOT_MAIL := $(HOME)/.procmailrc $(HOME)/.muttrc $(HOME)/.mutt $(HOME)/.mailcap
 DOT_ALACRITTY := $(HOME)/.alacritty.toml $(HOME)/.alacritty_common.toml
-DOT_MISC := $(HOME)/.gdbinit $(HOME)/.clang-format $(HOME)/.mdlrc
 DOT_RUBY := $(HOME)/.irbrc
 
 # Quick all setup
-ALL_DOT_FILES := $(DOT_ZSH) $(DOT_VIM) $(DOT_GIT) $(DOT_TMUX) $(DOT_MAIL) $(DOT_MISC)
+ALL_DOT_FILES := $(DOT_ZSH) $(DOT_VIM) $(DOT_GIT) $(DOT_TMUX) $(DOT_MAIL)
 
 .PHONY: zsh
 zsh: $(DOT_ZSH) ## Configure zsh
@@ -41,14 +40,11 @@ mail: $(DOT_MAIL) ## Configure main (procmail, mutt...)
 .PHONY: alacritty
 alacritty: $(DOT_ALACRITTY) ## Configure alacrity terminal
 
-.PHONY: misc
-misc: $(DOT_MISC) ## Configure other tools (gdb, clang-format...)
-
 .PHONY: ruby
 ruby: $(DOT_RUBY) ## Configure Ruby specific tools
 
 .PHONY: all
-all: zsh vim git tmux mail alacritty misc ruby ## Configure all
+all: zsh vim git tmux mail alacritty ruby ## Configure all
 
 $(HOME)/%: %.template
 	m4 -D STAC_DOT_FILES_DIR=$(STAC_DOT_FILES_DIR) $(shell realpath $<) > $@
