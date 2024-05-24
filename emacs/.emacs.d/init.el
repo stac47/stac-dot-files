@@ -1,33 +1,18 @@
-;;; init.el ---  My minimalist emacs configuration
-
-;;; Commentary:
-
-;; I am trying to stick to the default Emacs bindings and to use a
-;; minimal number of packages.
-;; Supports MacOS and GNU
-
-;;; Code:
-
-;; Default modus-themes theme
 (load-theme 'modus-operandi t)
 
-;; No bell sound
 (setq ring-bell-function 'ignore)
 (setq visible-bell t)
 
 (setq inhibit-splash-screen t)
-(menu-bar-mode -1) ;; Do not display the menu bar
-(tool-bar-mode -1) ;; No scrollbar
-(tooltip-mode -1) ;; No tooltips
-(if (display-graphic-p) ;; No scroll bar in GUI mode
-    (scroll-bar-mode -1))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+(if (display-graphic-p) (scroll-bar-mode -1))
 (setq use-dialog-box nil)
 
-;; Readable definition on Apple Retina screen
 (when (eq system-type 'darwin)
   (set-face-attribute 'default nil :height 165))
 
-;; Package system initializations
 (require 'package)
 
 (add-to-list 'package-archives
@@ -35,32 +20,28 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
+
+(unless package-archive-contents (package-refresh-contents))
+
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Use extended dabbrev completion (hippie)
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 
-;; Display the point column in the Mode line
 (setq column-number-mode t)
 
-;; Always add a newline character at the end of the file
 (setq require-final-newline t)
 
-;; Automatically highlight the current line
+(add-hook 'prog-mode-hook (lambda() (setq show-trailing-whitespace t)))
+
 (add-hook 'text-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hl-line-mode)
 
-;; Show trailing whitespaces
-(add-hook 'prog-mode-hook (lambda() (setq show-trailing-whitespace t)))
-
-;; Display line number in any prod mode
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-;; Forbid tabs for indentation
 (setq-default indent-tabs-mode nil)
+
+(setq custom-file (make-temp-file "emacs-custom-"))
 
 ;; Save history
 (setq history-length 25)
@@ -69,24 +50,11 @@
 ;; Remember the last place in a visited file
 (save-place-mode 1)
 
-;; Do not mix customize with my config
-(setq  custom-file (locate-user-emacs-file "custom-vars.el"))
-(load custom-file)
-
 ;; Refresh buffer when underlying file has changed
 (global-auto-revert-mode 1)
 
 ;; Refresh other buffer if needed (for instance Dired buffers)
 (setq global-auto-revert-non-file-buffers t)
-
-;; I-search config
-;; Display the number of matches
-(setq isearch-lazy-count t)
-(setq lazy-count-prefix-format "(%s/%s) ")
-(setq lazy-count-suffix-format nil)
-
-;; Allow simple search like 'a b' to match 'a.c b'
-(setq search-whitespace-regexp ".*?")
 
 (use-package project
   :init
@@ -103,9 +71,16 @@
             (message "Tags %s -> %s" old-tags-file new-tags-file)))
       (message "No current project"))))
 
-;; Packages
+(use-package isearch
+  :ensure nil
+  :demand t
+  :config
+  (setq search-whitespace-regexp ".*?"
+        isearch-lazy-count t
+        lazy-count-prefix-format "(%s/%s) "
+        lazy-count-suffix-format nil))
+
 (use-package magit)
-(use-package yaml-mode)
 
 (use-package vertico
   :init
@@ -141,4 +116,4 @@
 
 (use-package dockerfile-mode)
 
-;;; init.el ends here
+(use-package yaml-mode)

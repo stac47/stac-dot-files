@@ -1,0 +1,312 @@
+#+title: GNU Emacs configuration
+#+author: Laurent Stacul
+#+email: laurent.stacul@gmail.com
+#+language: en
+
+* My Emacs Configuration
+** Default Theme
+
+I like the modus theme that comes with GNU emacs. I start with the
+light theme knowing I can easily change the the dark theme with the
+command modus-themes-toggle.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (load-theme 'modus-operandi t)
+#+end_src
+
+** Turn Off The Bell
+
+I need silence when I work and the bell sound makes me nervous.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq ring-bell-function 'ignore)
+  (setq visible-bell t)
+#+end_src
+
+** Remove All GUI Widgets
+
+When I start emacs, I want it with the minimal view (no buttons, no
+scroll bars, no tooltips) and I want the first show the Lisp scratch
+buffer.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq inhibit-splash-screen t)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (tooltip-mode -1)
+  (if (display-graphic-p) (scroll-bar-mode -1))
+  (setq use-dialog-box nil)
+#+end_src
+
+** Display Configuration For MacBook
+
+With high definition screens (work computer), the letters are too
+small so I increase the size when on MacOS computer.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (when (eq system-type 'darwin)
+    (set-face-attribute 'default nil :height 165))
+#+end_src
+
+** Package System Configuration
+
+I add melpa and melpa-stable to the package repositories.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (require 'package)
+
+  (add-to-list 'package-archives
+               '("melpa" . "https://melpa.org/packages/") t)
+  (add-to-list 'package-archives
+               '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (package-initialize)
+#+end_src
+
+In case, I install my configuration on a new machine, I update the
+package index.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (unless package-archive-contents (package-refresh-contents))
+#+end_src
+
+In case a package is missing, Emacs will propose me to install it.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (require 'use-package)
+  (setq use-package-always-ensure t)
+#+end_src
+
+** Improve Dabbrev Experience
+
+By default, Dabbrev will only complete a started word with what is
+already written in the current buffer. With Hippie, the feature is
+extended to completion with file path, other buffers.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (global-set-key [remap dabbrev-expand] 'hippie-expand)
+#+end_src
+
+** Display Cursor Column Number
+
+The minor mode column-number-mode will display the current column of
+the cursor next to the line number in the mode line.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq column-number-mode t)
+#+end_src
+
+** Add Newline Character At End Of File
+
+To avoid the terminal prompt to be move right after the output a cat
+file where file does not end with a newline character, it is a good
+practice to impose your editor to always add that character on save
+when needed.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq require-final-newline t)
+#+end_src
+
+** Show Trailing Whitespace
+
+It is generally prettier to not have trailing whitespace in source
+code. With the following setting, such trailing whitespaces will be
+visible. A simple way to remove them is to run the
+delete-trailing-whitespace command.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (add-hook 'prog-mode-hook (lambda() (setq show-trailing-whitespace t)))
+#+end_src
+
+** Current Line Highlighting
+
+When edition text or source code, we can have the current line
+highlighted. But this is not useful in other buffers like the shell or
+dired.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (add-hook 'text-mode-hook #'hl-line-mode)
+  (add-hook 'prog-mode-hook #'hl-line-mode)
+#+end_src
+
+** Line Number
+
+When programming, I need the line number to be displayed so that I
+immediately see which line fails when something crash.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+#+end_src
+
+** Never Indent With Tabs
+
+I really dislike indentation with tabs.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq-default indent-tabs-mode nil)
+#+end_src
+
+** Stop using ~custom-file~
+
+When we install a package via the package manager or we use ~M-x
+customize~, emacs writes things at the end of the emacs
+configuration. We move such things in a temporary file.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq custom-file (make-temp-file "emacs-custom-"))
+#+end_src
+
+** History
+
+To have the most recent file visited first, we can activate the
+=savehist-mode=. We can even keep track of the position of the cursor
+in each visited files.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  ;; Save history
+  (setq history-length 25)
+  (savehist-mode 1)
+
+  ;; Remember the last place in a visited file
+  (save-place-mode 1)
+#+end_src
+
+** Automatic Buffer Update
+
+By default, when a file is changed from outside of emacs, it is not
+reflected inside the buffer: we need to manually use ~M-x
+visit-tags-table~. But, this can be automated with the following.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  ;; Refresh buffer when underlying file has changed
+  (global-auto-revert-mode 1)
+#+end_src
+
+The same behaviour can be enabled for non-file buffers. For instance,
+when we have a =Dired= buffer and we created a new file from outside,
+the buffer does not display the created file. To automatically update
+the buffer, we can set the following:
+
+#+begin_src emacs-lisp :tangle "init.el"
+  ;; Refresh other buffer if needed (for instance Dired buffers)
+  (setq global-auto-revert-non-file-buffers t)
+#+end_src
+
+** Project Tags Visiting
+
+When a move from one project to another, I don't want to manually call
+~M-x visit-tags-table~. The following snippet will do the job for me:
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package project
+    :init
+    (defun stac/project-tags ()
+      "When in a project, visit the tags file at the root of the project."
+      (interactive)
+      (if (project-current)
+          (let* ((proj-root (expand-file-name (project-root (project-current))))
+                 (old-tags-file tags-file-name)
+                 (new-tags-file (concat proj-root "TAGS")))
+            (if (equal old-tags-file new-tags-file)
+                (message "Tags file not changed: %s" old-tags-file)
+              (visit-tags-table new-tags-file)
+              (message "Tags %s -> %s" old-tags-file new-tags-file)))
+        (message "No current project"))))
+#+end_src
+
+** Isearch Configuration
+
+We display the number of matches and current match the cursor is on:
+this will be displayed on the left of the =I-search= prompt.
+
+When we search for a string, spaces are interpreted was catch-all so
+that we have some kinf od fuzzy search.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package isearch
+    :ensure nil
+    :demand t
+    :config
+    (setq search-whitespace-regexp ".*?"
+          isearch-lazy-count t
+          lazy-count-prefix-format "(%s/%s) "
+          lazy-count-suffix-format nil))
+#+end_src
+
+** Packages
+
+*** Magit
+
+This is a very good interface to git.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package magit)
+#+end_src
+
+*** Minibuffer Improvments: Vertico & Marginalia
+
+=Vertico= takes care of displaying choices in the minibuffer as a
+vertical list.
+=Marginalia= will append any lines dislayed in =Vertico= with some
+documentation.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package vertico
+    :init
+    (vertico-mode)
+    (setq vertico-cycle t))
+
+  (use-package marginalia
+    :init
+    (marginalia-mode))
+#+end_src
+
+*** Yasnippet
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package yasnippet
+    :config
+    (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+    (yas-reload-all)
+    :hook (prog-mode . yas-minor-mode))
+#+end_src
+
+*** Flycheck
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package flycheck
+    :init (global-flycheck-mode)
+    :config
+    (setq flycheck-check-syntax-automatically '(save)))
+#+end_src
+
+*** Markdown
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package markdown-mode
+    :config
+    (add-hook 'markdown-mode-hook 'auto-fill-mode)
+    (add-hook 'markdown-mode-hook (lambda() (set-fill-column 80))))
+#+end_src
+
+*** Ruby
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package rbenv
+    :config
+    (setq rbenv-show-active-ruby-in-modeline nil)
+    (global-rbenv-mode))
+
+  (use-package ruby-end)
+#+end_src
+
+*** Dockerfile
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package dockerfile-mode)
+#+end_src
+
+*** YAML
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package yaml-mode)
+#+end_src
