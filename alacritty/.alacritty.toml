@@ -31,6 +31,29 @@ TERM = "xterm-256color"
 [font.bold]
 style = "SemiBold"
 
+[font]
+size = 10.0
+# On MacBook
+# size = 16.0
+
 [[keyboard.bindings]]
 key = "F11"
 action = "ToggleFullScreen"
+
+# [[keyboard.bindings]]
+# chars = "\u001Bf"
+# key = "F"
+# mods = "Alt"
+
+# [[keyboard.bindings]]
+# chars = "\u001Bb"
+# key = "B"
+# mods = "Alt"
+
+# [[keyboard.bindings]]
+# chars = "#"
+# key = "Key3"
+# mods = "Alt"
+
+[window]
+option_as_alt = "Both"
