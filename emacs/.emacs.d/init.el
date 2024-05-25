@@ -10,6 +10,10 @@
 (if (display-graphic-p) (scroll-bar-mode -1))
 (setq use-dialog-box nil)
 
+(setq make-backup-files nil)
+(setq backup-inhibited nil)
+(setq create-lockfiles nil)
+
 (when (eq system-type 'darwin)
   (set-face-attribute 'default nil :height 165))
 

@@ -38,6 +38,18 @@ buffer.
   (setq use-dialog-box nil)
 #+end_src
 
+** Do not create lock and backup files
+
+Most of the time, my files are in project managed with git. So, backup
+files are generally useless. And regarding lock files, I generally
+know what I did when using external programs.
+
+#+begin_src emacs-lisp :tangle "init.el"
+(setq make-backup-files nil)
+(setq backup-inhibited nil)
+(setq create-lockfiles nil)
+#+end_src
+
 ** Display Configuration For MacBook
 
 With high definition screens (work computer), the letters are too
