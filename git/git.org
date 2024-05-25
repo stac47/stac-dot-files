@@ -1,0 +1,52 @@
+#+title: Git Configuration
+#+author: Laurent Stacul
+#+email: laurent.stacul@gmail.com
+#+language: en
+
+* Configuration
+
+#+begin_src shell :tangle .gitconfig
+[user]
+    name = Laurent Stacul
+    email = laurent.stacul@gmail.com
+[core]
+    excludesfile = ~/.gitignore_global
+    autocrlf = input
+[merge]
+    tool = vimdiff
+[alias]
+    st = status
+    s = status --ignore-submodules
+    co = checkout
+    lol = log --pretty=oneline --graph --decorate --branches --remotes --tags --abbrev-commit
+    dif = diff --ignore-submodules=all
+    sdiff = diff --ignore-submodules=none --submodule=log
+    pushf = push --force-with-lease
+[credential]
+    helper = cache --timeout=3600
+[color]
+    ui = true
+[push]
+    default = simple
+[pull]
+    rebase = merges
+[init]
+	defaultBranch = main
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig.work
+#+end_src
+
+* Global Ignore
+
+#+begin_src shell :tangle .gitignore_global
+.DS_Store
+
+TAGS
+tags
+*.orig
+
+# Emacs
+*~
+\#*\#
+.\#*
+#+end_src
