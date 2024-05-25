@@ -11,7 +11,6 @@ GIT := git
 
 STAC_DOT_FILES_DIR := $(shell pwd)
 
-DOT_ZSH := $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zprofile $(HOME)/.zlogin
 DOT_VIM := $(HOME)/.vimrc $(HOME)/.vim
 DOT_TMUX := $(HOME)/.tmux $(HOME)/.tmux.conf
 DOT_MAIL := $(HOME)/.procmailrc $(HOME)/.muttrc $(HOME)/.mutt $(HOME)/.mailcap
@@ -19,10 +18,7 @@ DOT_ALACRITTY := $(HOME)/.alacritty.toml $(HOME)/.alacritty_common.toml
 DOT_RUBY := $(HOME)/.irbrc
 
 # Quick all setup
-ALL_DOT_FILES := $(DOT_ZSH) $(DOT_VIM) $(DOT_TMUX) $(DOT_MAIL)
-
-.PHONY: zsh
-zsh: $(DOT_ZSH) ## Configure zsh
+ALL_DOT_FILES := $(DOT_VIM) $(DOT_TMUX) $(DOT_MAIL)
 
 .PHONY: vim
 vim: $(DOT_VIM) ## Configure vim
@@ -40,7 +36,7 @@ alacritty: $(DOT_ALACRITTY) ## Configure alacrity terminal
 ruby: $(DOT_RUBY) ## Configure Ruby specific tools
 
 .PHONY: all
-all: zsh vim tmux mail alacritty ruby ## Configure all
+all: vim tmux mail alacritty ruby ## Configure all
 
 $(HOME)/%: %.template
 	m4 -D STAC_DOT_FILES_DIR=$(STAC_DOT_FILES_DIR) $(shell realpath $<) > $@
