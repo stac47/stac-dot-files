@@ -84,6 +84,12 @@
         lazy-count-prefix-format "(%s/%s) "
         lazy-count-suffix-format nil))
 
+(use-package dired
+  :ensure nil
+  :commands (dired)
+  :config
+  (setq delete-by-moving-to-trash t))
+
 (use-package magit)
 
 (use-package vertico

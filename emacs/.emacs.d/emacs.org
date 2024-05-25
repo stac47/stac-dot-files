@@ -244,6 +244,21 @@ that we have some kinf od fuzzy search.
           lazy-count-suffix-format nil))
 #+end_src
 
+**Dired Configuration
+
+*** Move to Trash insteand of Removing a File
+
+It is safer that removed files end up into the Trash bin than being
+removed forever from the disk.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package dired
+    :ensure nil
+    :commands (dired)
+    :config
+    (setq delete-by-moving-to-trash t))
+#+end_src
+
 ** Packages
 
 *** Magit
