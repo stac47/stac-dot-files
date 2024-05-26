@@ -8,7 +8,7 @@
 
 I like the modus theme that comes with GNU emacs. I start with the
 light theme knowing I can easily change the the dark theme with the
-command modus-themes-toggle.
+command =M-x modus-themes-toggle=.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (load-theme 'modus-operandi t)
@@ -42,7 +42,7 @@ buffer.
 
 Most of the time, my files are in project managed with git. So, backup
 files are generally useless. And regarding lock files, I generally
-know what I did when using external programs.
+know what I do when using external programs.
 
 #+begin_src emacs-lisp :tangle "init.el"
 (setq make-backup-files nil)
@@ -81,7 +81,8 @@ package index.
   (unless package-archive-contents (package-refresh-contents))
 #+end_src
 
-In case a package is missing, Emacs will propose me to install it.
+In case some packages are missing, Emacs will propose me to install
+them. On a new installation, all the packages will hence be installed.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (require 'use-package)
@@ -92,7 +93,7 @@ In case a package is missing, Emacs will propose me to install it.
 
 By default, Dabbrev will only complete a started word with what is
 already written in the current buffer. With Hippie, the feature is
-extended to completion with file path, other buffers.
+extended to complete with file path, other buffers.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (global-set-key [remap dabbrev-expand] 'hippie-expand)
@@ -100,7 +101,7 @@ extended to completion with file path, other buffers.
 
 ** Display Cursor Column Number
 
-The minor mode column-number-mode will display the current column of
+The minor mode =column-number-mode= will display the current column of
 the cursor next to the line number in the mode line.
 
 #+begin_src emacs-lisp :tangle "init.el"
@@ -109,8 +110,8 @@ the cursor next to the line number in the mode line.
 
 ** Add Newline Character At End Of File
 
-To avoid the terminal prompt to be move right after the output a cat
-file where file does not end with a newline character, it is a good
+To avoid the terminal prompt to be moved right after the output a ~cat
+file~ where =file= does not end with a newline character, it is a good
 practice to impose your editor to always add that character on save
 when needed.
 
@@ -120,10 +121,10 @@ when needed.
 
 ** Show Trailing Whitespace
 
-It is generally prettier to not have trailing whitespace in source
-code. With the following setting, such trailing whitespaces will be
+It is generally prettier to not have trailing white space in source
+code. With the following setting, such trailing white spaces will be
 visible. A simple way to remove them is to run the
-delete-trailing-whitespace command.
+=M-x delete-trailing-whitespace= command.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (add-hook 'prog-mode-hook (lambda() (setq show-trailing-whitespace t)))
@@ -131,9 +132,10 @@ delete-trailing-whitespace command.
 
 ** Current Line Highlighting
 
-When edition text or source code, we can have the current line
+When editing text or source code, we can have the current line
 highlighted. But this is not useful in other buffers like the shell or
-dired.
+dired. The following only enable this mode when editing text and
+source code.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (add-hook 'text-mode-hook #'hl-line-mode)
@@ -151,7 +153,9 @@ immediately see which line fails when something crash.
 
 ** Never Indent With Tabs
 
-I really dislike indentation with tabs.
+I really dislike indentation with tabs. This will not change the
+behavior when editing file that require indentation to be a TAB (like
+=Makefile= by default).
 
 #+begin_src emacs-lisp :tangle "init.el"
   (setq-default indent-tabs-mode nil)
@@ -159,9 +163,10 @@ I really dislike indentation with tabs.
 
 ** Stop using ~custom-file~
 
-When we install a package via the package manager or we use ~M-x
-customize~, emacs writes things at the end of the emacs
-configuration. We move such things in a temporary file.
+When we install a package via the package manager or we use =M-x
+customize=, emacs writes things at the end of the emacs
+configuration. We move such things in a temporary file because I don't
+want to commit generated code.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (setq custom-file (make-temp-file "emacs-custom-"))
@@ -171,7 +176,7 @@ configuration. We move such things in a temporary file.
 
 To have the most recent file visited first, we can activate the
 =savehist-mode=. We can even keep track of the position of the cursor
-in each visited files.
+in each visited files with =save-place-mode=.
 
 #+begin_src emacs-lisp :tangle "init.el"
   ;; Save history
@@ -185,8 +190,8 @@ in each visited files.
 ** Automatic Buffer Update
 
 By default, when a file is changed from outside of emacs, it is not
-reflected inside the buffer: we need to manually use ~M-x
-visit-tags-table~. But, this can be automated with the following.
+reflected inside the buffer: we need to manually use =M-x
+revert-buffer=. But, this can be automated with the following.
 
 #+begin_src emacs-lisp :tangle "init.el"
   ;; Refresh buffer when underlying file has changed
@@ -206,7 +211,7 @@ the buffer, we can set the following:
 ** Project Tags Visiting
 
 When a move from one project to another, I don't want to manually call
-~M-x visit-tags-table~. The following snippet will do the job for me:
+=M-x visit-tags-table=. The following snippet will do the job for me:
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package project
@@ -221,7 +226,7 @@ When a move from one project to another, I don't want to manually call
             (if (equal old-tags-file new-tags-file)
                 (message "Tags file not changed: %s" old-tags-file)
               (visit-tags-table new-tags-file)
-              (message "Tags %s -> %s" old-tags-file new-tags-file)))
+              (message "Tags file changed: %s -> %s" old-tags-file new-tags-file)))
         (message "No current project"))))
 #+end_src
 
@@ -231,7 +236,7 @@ We display the number of matches and current match the cursor is on:
 this will be displayed on the left of the =I-search= prompt.
 
 When we search for a string, spaces are interpreted was catch-all so
-that we have some kinf od fuzzy search.
+that we have some kind of fuzzy search.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package isearch
@@ -244,9 +249,9 @@ that we have some kinf od fuzzy search.
           lazy-count-suffix-format nil))
 #+end_src
 
-**Dired Configuration
+** Dired Configuration
 
-*** Move to Trash insteand of Removing a File
+*** Move to Trash Instead of Removing a File
 
 It is safer that removed files end up into the Trash bin than being
 removed forever from the disk.
@@ -269,11 +274,11 @@ This is a very good interface to git.
   (use-package magit)
 #+end_src
 
-*** Minibuffer Improvments: Vertico & Marginalia
+*** Minibuffer Improvements: Vertico & Marginalia
 
 =Vertico= takes care of displaying choices in the minibuffer as a
 vertical list.
-=Marginalia= will append any lines dislayed in =Vertico= with some
+=Marginalia= will append any lines displayed in =Vertico= with some
 documentation.
 
 #+begin_src emacs-lisp :tangle "init.el"
@@ -288,6 +293,9 @@ documentation.
 #+end_src
 
 *** Yasnippet
+
+This package allows to insert some common snippets. For me, this is
+only useful in programming modes.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package yasnippet
@@ -308,6 +316,10 @@ documentation.
 
 *** Markdown
 
+Nice display of Markdown files. When editing, as these files are
+supposed to be readable from a basic editor, it is more readable to
+make the line not too long: 80 characters is perfect.
+
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package markdown-mode
     :config
@@ -317,22 +329,43 @@ documentation.
 
 *** Ruby
 
+**** =rbenv=
+
+This package ensures we run the right ruby interpreter depending on
+the project I am working on. For instance, if my project is defined to
+work with =2.7.8=, I don't want =Flycheck= to try to run =rubocop=
+which my not be installed with the system-wide ruby interpreter.
+
+I don't need to see the current version in my modeline so I set
+=rbenv-show-active-ruby-in-modeline= to =nil=.
+
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package rbenv
     :config
     (setq rbenv-show-active-ruby-in-modeline nil)
     (global-rbenv-mode))
+#+end_src
 
+**** Automatic generation of the ~end~ keyword
+
+It is quite convenient that emacs generate the ~end~ keyword on new
+class, function or block.
+
+#+begin_src emacs-lisp :tangle "init.el"
   (use-package ruby-end)
 #+end_src
 
 *** Dockerfile
+
+I only installed this package to have the syntax highlighting.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package dockerfile-mode)
 #+end_src
 
 *** YAML
+
+Facilities to edit YAML files.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package yaml-mode)

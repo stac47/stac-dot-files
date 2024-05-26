@@ -72,7 +72,7 @@
           (if (equal old-tags-file new-tags-file)
               (message "Tags file not changed: %s" old-tags-file)
             (visit-tags-table new-tags-file)
-            (message "Tags %s -> %s" old-tags-file new-tags-file)))
+            (message "Tags file changed: %s -> %s" old-tags-file new-tags-file)))
       (message "No current project"))))
 
 (use-package isearch
