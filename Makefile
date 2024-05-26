@@ -7,25 +7,16 @@ SHELL := bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 
-GIT := git
-
-DOT_VIM := $(HOME)/.vimrc $(HOME)/.vim
 DOT_MAIL := $(HOME)/.procmailrc $(HOME)/.muttrc $(HOME)/.mutt $(HOME)/.mailcap
 
 # Quick all setup
-ALL_DOT_FILES := $(DOT_VIM) $(DOT_MAIL)
-
-.PHONY: vim
-vim: $(DOT_VIM) ## Configure vim
+ALL_DOT_FILES := $(DOT_MAIL)
 
 .PHONY: mail
 mail: $(DOT_MAIL) ## Configure main (procmail, mutt...)
 
 .PHONY: all
-all: vim mail ## Configure all
-
-$(HOME)/%: %.$(shell uname | tr '[:upper:]' '[:lower:]')
-	ln -sf $(shell realpath $<) $@
+all: mail ## Configure all
 
 $(HOME)/%: %
 	ln -sf $(shell realpath $<) $@

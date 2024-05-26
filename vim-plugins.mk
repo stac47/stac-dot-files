@@ -9,9 +9,11 @@
 #
 #   make vim-plugins-update
 
+GIT := git
+
 VIM_PLUGINS_TARGET_PREFIX := vim-plugins-for-
 VIM_PLUGINS_UPDATE_TARGET := vim-plugins-update
-VIM_PLUGINS_DIR := $(STAC_DOT_FILES_DIR)/.vim/pack/stac/start
+VIM_PLUGINS_DIR := $(HOME)/.vim/pack/stac/start
 
 $(VIM_PLUGINS_DIR)/rust.vim:
 	$(GIT) clone https://github.com/rust-lang/rust.vim.git "$@"
@@ -51,6 +53,61 @@ $(VIM_PLUGINS_DIR)/terraform:
 	$(GIT) clone https://github.com/hashivim/vim-terraform.git "$@"
 
 $(VIM_PLUGINS_TARGET_PREFIX)terraform: $(VIM_PLUGINS_DIR)/terraform
+
+$(VIM_PLUGINS_DIR)/vim-commentary:
+	$(GIT) clone https://github.com/tpope/vim-commentary.git "$@"
+
+$(VIM_PLUGINS_DIR)/syntastic:
+	$(GIT) clone https://github.com/scrooloose/syntastic.git "$@"
+
+$(VIM_PLUGINS_DIR)/vim-surround:
+	$(GIT) clone https://github.com/tpope/vim-surround.git "$@"
+
+$(VIM_PLUGINS_DIR)/vim-characterize:
+	$(GIT) clone https://github.com/tpope/vim-characterize.git "$@"
+
+$(VIM_PLUGINS_DIR)/vim-bbye:
+	$(GIT) clone https://github.com/moll/vim-bbye.git "$@"
+
+$(VIM_PLUGINS_DIR)/tlib_vim:
+	$(GIT) clone https://github.com/tomtom/tlib_vim.git "$@"
+
+$(VIM_PLUGINS_DIR)/vim-addon-mw-utils:
+	$(GIT) clone https://github.com/MarcWeber/vim-addon-mw-utils.git "$@"
+
+$(VIM_PLUGINS_DIR)/vim-snipmate:
+	$(GIT) clone https://github.com/garbas/vim-snipmate.git "$@"
+
+$(VIM_PLUGINS_DIR)/vim-snippets:
+	$(GIT) clone https://github.com/honza/vim-snippets.git "$@"
+
+$(VIM_PLUGINS_DIR)/ctrlp.vim:
+	$(GIT) clone https://github.com/ctrlpvim/ctrlp.vim.git "$@"
+
+$(VIM_PLUGINS_DIR)/vim-unimpaired:
+	$(GIT) clone https://github.com/tpope/vim-unimpaired.git "$@"
+
+$(VIM_PLUGINS_DIR)/tabular:
+	$(GIT) clone https://github.com/godlygeek/tabular.git "$@"
+
+$(VIM_PLUGINS_DIR)/vim-fugitive:
+	$(GIT) clone https://github.com/tpope/vim-fugitive.git "$@"
+
+.PHONY: vim-essential-plugins
+vim-essential-plugins: $(VIM_PLUGINS_DIR)/vim-commentary \
+$(VIM_PLUGINS_DIR)/syntastic \
+$(VIM_PLUGINS_DIR)/vim-surround \
+$(VIM_PLUGINS_DIR)/vim-characterize \
+$(VIM_PLUGINS_DIR)/vim-bbye \
+$(VIM_PLUGINS_DIR)/tlib_vim \
+$(VIM_PLUGINS_DIR)/vim-addon-mw-utils \
+$(VIM_PLUGINS_DIR)/vim-snipmate \
+$(VIM_PLUGINS_DIR)/vim-snippets \
+$(VIM_PLUGINS_DIR)/ctrlp.vim \
+$(VIM_PLUGINS_DIR)/vim-unimpaired \
+$(VIM_PLUGINS_DIR)/tabular \
+$(VIM_PLUGINS_DIR)/vim-fugitive
+	echo "Vim essential plugins installed"
 
 .PHONY: $(VIM_PLUGINS_UPDATE_TARGET)
 $(VIM_PLUGINS_UPDATE_TARGET):
