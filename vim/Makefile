@@ -1,3 +1,12 @@
+# Technical prelude
+# See: https://tech.davis-hansson.com/p/make/
+SHELL := bash
+.ONESHELL:
+.SHELLFLAGS := -eu -o pipefail -c
+.DELETE_ON_ERROR:
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+
 # Vim plugins management (except plugins that are submodules)
 # To install the set of plugins related to programming languages I use.
 #
@@ -114,5 +123,3 @@ $(VIM_PLUGINS_UPDATE_TARGET):
 	@for plugin in $$($(GIT) ls-files --others --exclude-standard "$(VIM_PLUGINS_DIR)"); do \
 		$(GIT) -C "$${plugin}" pull; \
 	done
-
-
