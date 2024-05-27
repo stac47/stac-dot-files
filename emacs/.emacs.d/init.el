@@ -99,10 +99,7 @@
   :config
   (setq delete-by-moving-to-trash t))
 
-(use-package magit
-  :init
-  (when (eq system-type 'darwin)
-    (setq magit-git-executable "/usr/bin/git")))
+(use-package magit)
 
 (use-package vertico
   :init

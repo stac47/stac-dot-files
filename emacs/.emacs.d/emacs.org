@@ -299,11 +299,10 @@ Hence, there are two solutions:
 - Or, set the path to the =git= binary with =magit-git-executable= to
   =/usr/bin/git=
 
+In any case, =Magit= is running faster with the default =git=.
+
 #+begin_src emacs-lisp :tangle "init.el"
-  (use-package magit
-    :init
-    (when (eq system-type 'darwin)
-      (setq magit-git-executable "/usr/bin/git")))
+  (use-package magit)
 #+end_src
 
 *** Minibuffer Improvements: Vertico & Marginalia
