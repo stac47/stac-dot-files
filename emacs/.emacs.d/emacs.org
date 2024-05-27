@@ -286,8 +286,24 @@ removed forever from the disk.
 
 This is a very good interface to git.
 
+On MacOS, the git version provided by =Homebrew= seems slower
+compared with the stock binary and, from time to times, some operation
+are temporarily failing with messages like:
+
+#+begin_quote
+apply: Doing vfork: Permission denied
+#+end_quote
+
+Hence, there are two solutions:
+- Use =git= provided by Xcode (uninstall with ~brew uninstall git~)
+- Or, set the path to the =git= binary with =magit-git-executable= to
+  =/usr/bin/git=
+
 #+begin_src emacs-lisp :tangle "init.el"
-  (use-package magit)
+  (use-package magit
+    :init
+    (when (eq system-type 'darwin)
+      (setq magit-git-executable "/usr/bin/git")))
 #+end_src
 
 *** Minibuffer Improvements: Vertico & Marginalia
