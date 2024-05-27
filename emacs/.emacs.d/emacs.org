@@ -138,9 +138,13 @@ highlighted. But this is not useful in other buffers like the shell or
 dired. The following only enable this mode when editing text and
 source code.
 
+There is a special =conf-mode= that is neither text or programming
+mode. I enable this in all those derived modes.
+
 #+begin_src emacs-lisp :tangle "init.el"
   (add-hook 'text-mode-hook #'hl-line-mode)
   (add-hook 'prog-mode-hook #'hl-line-mode)
+  (add-hook 'conf-mode-hook #'hl-line-mode)
 #+end_src
 
 ** Line Number

@@ -41,6 +41,7 @@
 
 (add-hook 'text-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hl-line-mode)
+(add-hook 'conf-mode-hook #'hl-line-mode)
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
