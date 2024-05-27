@@ -61,6 +61,13 @@
 ;; Refresh other buffer if needed (for instance Dired buffers)
 (setq global-auto-revert-non-file-buffers t)
 
+(use-package time
+  :ensure nil
+  :hook (after-init . display-time-mode)
+  :config
+  (setq display-time-interval 60)
+  (setq display-time-default-load-average nil))
+
 (use-package project
   :init
   (defun stac/project-tags ()

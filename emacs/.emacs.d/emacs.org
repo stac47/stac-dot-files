@@ -209,6 +209,17 @@ the buffer, we can set the following:
   (setq global-auto-revert-non-file-buffers t)
 #+end_src
 
+** Display The Current Time In The Mode Line
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package time
+    :ensure nil
+    :hook (after-init . display-time-mode)
+    :config
+    (setq display-time-interval 60)
+    (setq display-time-default-load-average nil))
+#+end_src
+
 ** Project Tags Visiting
 
 When a move from one project to another, I don't want to manually call
