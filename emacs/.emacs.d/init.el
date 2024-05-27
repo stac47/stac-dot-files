@@ -37,6 +37,7 @@
 (setq require-final-newline t)
 
 (add-hook 'prog-mode-hook (lambda() (setq show-trailing-whitespace t)))
+(add-hook 'text-mode-hook (lambda() (setq show-trailing-whitespace t)))
 
 (add-hook 'text-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hl-line-mode)

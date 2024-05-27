@@ -128,6 +128,7 @@ visible. A simple way to remove them is to run the
 
 #+begin_src emacs-lisp :tangle "init.el"
   (add-hook 'prog-mode-hook (lambda() (setq show-trailing-whitespace t)))
+  (add-hook 'text-mode-hook (lambda() (setq show-trailing-whitespace t)))
 #+end_src
 
 ** Current Line Highlighting
