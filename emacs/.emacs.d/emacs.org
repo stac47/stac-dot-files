@@ -273,6 +273,27 @@ that we have some kind of fuzzy search.
           lazy-count-suffix-format nil))
 #+end_src
 
+** Speed Up Grep
+
+The idea is to leverage =ripgrep= program if installed on the system.
+
+=Xref= is already aware of the =rg= command to issue (see
+=xref-search-program-alist=) so we simply have to set the variable
+=xref-search-program= to the symbol ~'ripgrep~.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package grep
+    :ensure nil
+    :commands (grep lgrep rgrep)
+    :config
+    (let* ((executable (or (executable-find "rg") "grep"))
+           (rgp (string-match-p "rg" executable)))
+      (when rgp
+        (setq grep-program executable)
+        (setq grep-template "rg -nH --null -e <R> <F>")
+        (setq xref-search-program 'ripgrep))))
+#+end_src
+
 ** Dired Configuration
 
 *** Move to Trash Instead of Removing a File

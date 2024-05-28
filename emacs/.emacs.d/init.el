@@ -97,6 +97,17 @@
         lazy-count-prefix-format "(%s/%s) "
         lazy-count-suffix-format nil))
 
+(use-package grep
+  :ensure nil
+  :commands (grep lgrep rgrep)
+  :config
+  (let* ((executable (or (executable-find "rg") "grep"))
+         (rgp (string-match-p "rg" executable)))
+    (when rgp
+      (setq grep-program executable)
+      (setq grep-template "rg -nH --null -e <R> <F>")
+      (setq xref-search-program 'ripgrep))))
+
 (use-package dired
   :ensure nil
   :commands (dired)
