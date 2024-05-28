@@ -50,11 +50,15 @@
 (setq custom-file (make-temp-file "emacs-custom-"))
 
 ;; Save history
-(setq history-length 25)
-(savehist-mode 1)
+(use-package savehist
+  :init
+  (setq history-length 25)
+  (savehist-mode))
 
 ;; Remember the last place in a visited file
-(save-place-mode 1)
+(use-package saveplace
+  :init
+  (save-place-mode))
 
 ;; Refresh buffer when underlying file has changed
 (global-auto-revert-mode 1)
