@@ -273,6 +273,20 @@ that we have some kind of fuzzy search.
           lazy-count-suffix-format nil))
 #+end_src
 
+** Xref
+
+By default, =Xref= opens a new buffer when it can find several
+definitions of the same symbol. With this configuration, I leverage
+the minibuffer to make a choice.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package xref
+    :ensure nil
+    :commands (xref-find-definitions xref-go-back)
+    :config
+    (setq xref-show-definitions-function #'xref-show-definitions-completing-read))
+#+end_src
+
 ** Speed Up Grep
 
 The idea is to leverage =ripgrep= program if installed on the system.

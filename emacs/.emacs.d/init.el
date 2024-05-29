@@ -97,6 +97,12 @@
         lazy-count-prefix-format "(%s/%s) "
         lazy-count-suffix-format nil))
 
+(use-package xref
+  :ensure nil
+  :commands (xref-find-definitions xref-go-back)
+  :config
+  (setq xref-show-definitions-function #'xref-show-definitions-completing-read))
+
 (use-package grep
   :ensure nil
   :commands (grep lgrep rgrep)
