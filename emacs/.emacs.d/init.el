@@ -73,6 +73,45 @@
   (setq display-time-interval 60)
   (setq display-time-default-load-average nil))
 
+(defun stac-mode-line-major-mode-name ()
+  "Display the capitalized '-mode' truncated major mode."
+  (capitalize (string-replace "-mode" "" (symbol-name major-mode))))
+
+(defvar stac-mode-line-major-mode
+  '(:eval
+    (concat "(" (stac-mode-line-major-mode-name) ")"))
+  "My display of mode in the mode-line")
+
+(defvar stac-mode-line-misc-info
+  '(:eval
+    (when (mode-line-window-selected-p)
+      mode-line-misc-info))
+  "Only display misc info (like the current time) on the
+currently selected window.")
+
+(dolist (construct '(stac-mode-line-major-mode
+                     stac-mode-line-misc-info))
+  (put construct 'risky-local-variable t))
+
+(setq-default mode-line-format
+      '("%e" mode-line-front-space
+        (:propertize
+         ("" mode-line-mule-info mode-line-client mode-line-modified mode-line-remote)
+         display
+         (min-width
+          (5.0)))
+        mode-line-frame-identification
+        mode-line-buffer-identification
+        "   "
+        mode-line-position
+        (vc-mode vc-mode)
+        "  "
+        stac-mode-line-major-mode
+        " "
+
+        stac-mode-line-misc-info
+        mode-line-end-spaces))
+
 (use-package project
   :init
   (defun stac/project-tags ()
