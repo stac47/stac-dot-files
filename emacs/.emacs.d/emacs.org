@@ -99,6 +99,16 @@ extended to complete with file path, other buffers.
   (global-set-key [remap dabbrev-expand] 'hippie-expand)
 #+end_src
 
+** Cursor Display Configuration
+
+By default, in graphical mode the cursor blinks 10 times then remain
+displayed. I prefer the cursor to blink forever.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  ;; The cursor will blink forever
+  (setq blink-cursor-blinks 0)
+#+end_src
+
 ** Display Cursor Column Number
 
 The minor mode =column-number-mode= will display the current column of

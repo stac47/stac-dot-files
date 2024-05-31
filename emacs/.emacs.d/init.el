@@ -32,6 +32,9 @@
 
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 
+;; The cursor will blink forever
+(setq blink-cursor-blinks 0)
+
 (setq column-number-mode t)
 
 (setq require-final-newline t)
