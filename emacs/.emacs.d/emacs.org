@@ -118,6 +118,16 @@ the cursor next to the line number in the mode line.
   (setq column-number-mode t)
 #+end_src
 
+** Increase the Pulse Timer
+
+When I use Xref to see the results of a search, I find the temporarily
+hightlighted finding in the other buffer vanishes to quickly. The
+default value is =0.03= and turning it to =0.08= is a good compromise.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq pulse-delay 0.08)
+#+end_src
+
 ** Add Newline Character At End Of File
 
 To avoid the terminal prompt to be moved right after the output a ~cat

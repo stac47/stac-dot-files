@@ -37,6 +37,8 @@
 
 (setq column-number-mode t)
 
+(setq pulse-delay 0.08)
+
 (setq require-final-newline t)
 
 (add-hook 'prog-mode-hook (lambda() (setq show-trailing-whitespace t)))
