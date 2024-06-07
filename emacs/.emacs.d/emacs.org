@@ -317,6 +317,25 @@ When a move from one project to another, I don't want to manually call
         (message "No current project"))))
 #+end_src
 
+** Ediff Configuration
+
+When Emacs runs in graphical mode, starting a new =Ediff= session is
+done in a new frame which I don't want. I changed the value of
+=ediff-window-setup-function= to ='ediff-setup-windows-plain= which is
+what happens when Emacs runs in a terminal.
+
+By default, =Ediff= splits the window vertically but I am more used to
+have an horizontal split, so I changed =ediff-split-window-function=
+accordingly.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package ediff
+    :ensure nil
+    :config
+    (setq ediff-split-window-function #'split-window-horizontally)
+    (setq ediff-window-setup-function #'ediff-setup-windows-plain))
+#+end_src
+
 ** Isearch Configuration
 
 We display the number of matches and current match the cursor is on:

@@ -132,6 +132,12 @@ currently selected window.")
             (message "Tags file changed: %s -> %s" old-tags-file new-tags-file)))
       (message "No current project"))))
 
+(use-package ediff
+  :ensure nil
+  :config
+  (setq ediff-split-window-function #'split-window-horizontally)
+  (setq ediff-window-setup-function #'ediff-setup-windows-plain))
+
 (use-package isearch
   :ensure nil
   :demand t
