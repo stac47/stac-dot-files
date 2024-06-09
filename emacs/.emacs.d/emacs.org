@@ -253,6 +253,22 @@ the buffer, we can set the following:
     (setq display-time-default-load-average nil))
 #+end_src
 
+** Display The Battery Status
+
+When working on a laptop, it is generally a good idea to have the
+battery status displayed in the mode line.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package battery
+    :ensure nil
+    :config
+    (when (and battery-status-function
+               (not (string-match-p "N/A"
+                                    (battery-format "%B"
+                                                    (funcall battery-status-function)))))
+      (display-battery-mode 1)))
+#+end_src
+
 ** Mode Line Configuration
 
 #+begin_src emacs-lisp :tangle "init.el"

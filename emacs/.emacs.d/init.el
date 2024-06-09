@@ -78,6 +78,15 @@
   (setq display-time-interval 60)
   (setq display-time-default-load-average nil))
 
+(use-package battery
+  :ensure nil
+  :config
+  (when (and battery-status-function
+             (not (string-match-p "N/A"
+                                  (battery-format "%B"
+                                                  (funcall battery-status-function)))))
+    (display-battery-mode 1)))
+
 (defun stac-mode-line-major-mode-name ()
   "Display the capitalized '-mode' truncated major mode."
   (capitalize (string-replace "-mode" "" (symbol-name major-mode))))
