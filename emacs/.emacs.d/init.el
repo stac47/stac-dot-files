@@ -207,3 +207,7 @@ currently selected window.")
 (use-package dockerfile-mode)
 
 (use-package yaml-mode)
+
+(use-package bongo
+  :config
+  (setq bongo-default-directory "~/Music"))

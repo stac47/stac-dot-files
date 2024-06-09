@@ -4,6 +4,7 @@
 #+language: en
 
 * My Emacs Configuration
+
 ** Default Theme
 
 I like the modus theme that comes with GNU emacs. I start with the
@@ -525,4 +526,12 @@ Facilities to edit YAML files.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package yaml-mode)
+#+end_src
+
+*** Bongo
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package bongo
+    :config
+    (setq bongo-default-directory "~/Music"))
 #+end_src
