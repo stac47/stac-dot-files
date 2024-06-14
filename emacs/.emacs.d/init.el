@@ -145,6 +145,11 @@ currently selected window.")
         mode-line-end-spaces))
 
 (use-package project
+  :config
+  (assq-delete-all 'project-vc-dir project-switch-commands)
+  (add-to-list 'project-switch-commands '(project-switch-to-buffer "Buffer") t))
+
+(use-package project
   :init
   (defun stac/project-tags ()
     "When in a project, visit the tags file at the root of the project."
