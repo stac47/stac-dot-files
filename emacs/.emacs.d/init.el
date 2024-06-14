@@ -16,7 +16,7 @@
 
 (setq stac/monitors
       '(((mm-size 301 195) (font-size 135))
-        ((mm-size 599 329) (font-size 165))))
+        ((mm-size 599 329) (font-size 160))))
 
 (defun stac/adapt-font-size (&optional frame)
   "Adapt the default font size depending on the monitor that FRAME is
