@@ -162,7 +162,10 @@ currently selected window.")
               (message "Tags file not changed: %s" old-tags-file)
             (visit-tags-table new-tags-file)
             (message "Tags file changed: %s -> %s" old-tags-file new-tags-file)))
-      (message "No current project"))))
+      (message "No current project")))
+  :bind
+  (:map project-prefix-map
+        ("t" . stac/project-tags)))
 
 (use-package ediff
   :ensure nil
