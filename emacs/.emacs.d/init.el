@@ -89,6 +89,9 @@ displayed on is used to set the desired font size."
 ;; Refresh other buffer if needed (for instance Dired buffers)
 (setq global-auto-revert-non-file-buffers t)
 
+;; Prompt for passphrase in Emacs
+(setq epg-pinentry-mode 'loopback)
+
 (use-package time
   :ensure nil
   :hook (after-init . display-time-mode)

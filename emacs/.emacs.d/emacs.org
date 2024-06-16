@@ -265,6 +265,36 @@ the buffer, we can set the following:
   (setq global-auto-revert-non-file-buffers t)
 #+end_src
 
+** GnuPG
+
+Generally speaking, your GnuPG keys are protected with a
+passphrase. To allow emacs to ask you directly to enter the key
+passphrase, you must configure the =gpg-agent= to allow pinentry to be
+used as a proxy instead of displaying one of its GUI.
+
+So in your =.gnupg/gpg-agent.conf=, allow the =loopback= mode. At the
+time of writing, I am not sure whether the option
+=allow-emacs-pinentry= is required though.
+
+#+begin_quote
+allow-emacs-pinentry
+allow-loopback-entry
+#+end_quote
+
+(If you change the configuration, don't forget to reload the
+=gpg-agent= to take the changes into account with =gpgconf --reload
+gpg-agent=.)
+
+Then in Emacs:
+
+#+begin_src emacs-lisp :tangle "init.el"
+  ;; Prompt for passphrase in Emacs
+  (setq epg-pinentry-mode 'loopback)
+#+end_src
+
+Now, when you =.authinfo.gpg= needs to be decrypted, Emacs will ask
+you for the used key's passphrase.
+
 ** Display The Current Time In The Mode Line
 
 #+begin_src emacs-lisp :tangle "init.el"
