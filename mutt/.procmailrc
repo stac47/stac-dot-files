@@ -7,7 +7,7 @@ LOGFILE=$HOME/.procmail/procmail.log
 # inserts a blank line between log entries
 LOG="
 "
-MAIL=$HOME/Mail
+MAIL=$HOME/Mail.mbox
 
 #
 # delete stuff the server marks as spam outright

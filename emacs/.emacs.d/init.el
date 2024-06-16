@@ -205,6 +205,55 @@ currently selected window.")
   :config
   (setq delete-by-moving-to-trash t))
 
+(setq user-mail-address "laurent.stacul@gmail.com"
+    user-full-name "Laurent Stacul")
+
+(setq stac/mail-accounts
+      '(("laurent.stacul@gmail.com" . ((smtp-server . "smtp.gmail.com")
+                                       (smtp-port . 465)
+                                       (smtp-stream . ssl)))
+        ("laurent.stacul@protonmail.com" . ((smtp-server . "localhost")
+                                            (smtp-port . 1025)
+                                            (smtp-stream . starttls)))))
+
+(defun stac/setup-mail-account (&optional from)
+  "Set mail account"
+  (interactive
+   (list
+    (completing-read
+     "Select account: "
+     (map-keys stac/mail-accounts))))
+  (let ((config (alist-get from stac/mail-accounts user-mail-address nil #'string=)))
+    (message "Selected %s" (alist-get 'smtp-server config))
+    (setq
+     user-mail-address from
+     smtpmail-smtp-server (alist-get 'smtp-server config)
+     smtpmail-smtp-service (alist-get 'smtp-port config)
+     smtpmail-stream-type (alist-get 'smtp-stream config))))
+
+(use-package gnus
+  :config
+  (setq gnus-select-method '(nnml ""))
+  (add-to-list 'gnus-secondary-select-methods
+               '(nnimap "gmail"
+                        (nnimap-address "imap.gmail.com")
+                        (nnimap-server-port 993)
+                        (nnimap-stream ssl)
+                        (nnir-search-engine imap)
+                        (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
+                        (nnmail-expiry-wait 90)))
+  (add-to-list 'gnus-secondary-select-methods
+               '(nnimap "protonmail"
+                        (nnimap-address "localhost")
+                        (nnimap-server-port 1143)
+                        (nnimap-stream plain)
+                        (nnir-search-engine imap)))
+  (setq gnus-thread-sort-functions
+        '(gnus-thread-sort-by-most-recent-date
+          (not gnus-thread-sort-by-number)))
+  (setq gnus-use-cache t)
+  )
+
 (use-package magit)
 
 (use-package vertico
