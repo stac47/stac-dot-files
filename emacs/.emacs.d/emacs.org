@@ -46,9 +46,22 @@ files are generally useless. And regarding lock files, I generally
 know what I do when using external programs.
 
 #+begin_src emacs-lisp :tangle "init.el"
-(setq make-backup-files nil)
-(setq backup-inhibited nil)
-(setq create-lockfiles nil)
+  (setq make-backup-files nil)
+  (setq backup-inhibited nil)
+  (setq create-lockfiles nil)
+#+end_src
+
+** Default Input Language
+
+To swith to an other keyboard layout within Emacs, we use C-\
+(toggle-input-method). By default, we are prompted to choose the input
+method we want to use. As I generally switch away from English to
+French, I set the following so that I don't have the select the wanted
+layout. If I really want to choose another input method, I can use C-u
+C-\.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq default-input-method "french-postfix")
 #+end_src
 
 ** Display Configuration For MacBook
