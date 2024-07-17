@@ -378,6 +378,23 @@ battery status displayed in the mode line.
           mode-line-end-spaces))
 #+end_src
 
+** Ispell Configuration
+
+Ispell is a wrapper around spell checking tools like Aspell, Ispell or
+Hunspell. Thoses tools are external to Emacs so they have to be
+configured independently and the dictionaries have to be installed
+manually.
+
+I use =Hunspell=. Dictionaries are available in
+=git://anongit.freedesktop.org/libreoffice/dictionaries= GIT
+repository.
+
+On MacOS, I cloned this repository and created symbolic links:
+
+#+begin_src bash
+  ln -s ~/opensource/dictionaries/en/en_US.aff ~/opensource/dictionaries/en/en_US.dic ~/Library/Spelling/
+#+end_src
+
 ** Project
 
 *** Switch Commands
