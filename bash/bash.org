@@ -71,9 +71,6 @@
   alias less='less --quiet -R'
 
   PS1='[\[\033[1;33m\]\D{%F} \t\[\033[0m\]]\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h|\l\[\033[1;36m\](\j)\[\033[0m\]\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[0m\]:\w\n% '
-
-  [[ -x $(command -v direnv) ]] && eval "$(direnv hook bash)"
-  [[ -x ~/.rbenv/bin/rbenv ]] && eval "$(~/.rbenv/bin/rbenv init - bash)"
 #+end_src
 
 ** GNU Readline Configuration
@@ -97,4 +94,34 @@
   set colored-stats on
   set show-all-if-ambiguous on
   set menu-complete-display-prefix on
+#+end_src
+
+** Examples of =.bashrc.local=
+
+*** MacOS
+
+#+begin_src shell
+  [[ -x $(command -v direnv) ]] && eval "$(direnv hook bash)"
+  [[ -x $(command -v kubectl) ]] && source <(kubectl completion bash)
+  source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+  source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
+  chruby 3.3.4
+
+  # Using system git (faster with magit than the one provided by homebrew)
+  source "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
+  source "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+
+  if type brew &>/dev/null
+  then
+      HOMEBREW_PREFIX="$(brew --prefix)"
+      if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+      then
+          source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+      else
+          for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+          do
+              [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+          done
+      fi
+  fi
 #+end_src

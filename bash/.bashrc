@@ -43,6 +43,3 @@ alias mount='mount |column -t'
 alias less='less --quiet -R'
 
 PS1='[\[\033[1;33m\]\D{%F} \t\[\033[0m\]]\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h|\l\[\033[1;36m\](\j)\[\033[0m\]\[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[0m\]:\w\n% '
-
-[[ -x $(command -v direnv) ]] && eval "$(direnv hook bash)"
-[[ -x ~/.rbenv/bin/rbenv ]] && eval "$(~/.rbenv/bin/rbenv init - bash)"
