@@ -399,6 +399,12 @@ On MacOS, I cloned this repository and created symbolic links:
 
 *** Switch Commands
 
+Pressing =C-x p p= and selecting a project provides several
+options. This part configures the proposed options:
+
+- Removes the VC panel
+- Add the option to switch to a buffer of the select project
+
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package project
     :config
@@ -409,7 +415,8 @@ On MacOS, I cloned this repository and created symbolic links:
 *** Project Tags Visiting
 
 When a move from one project to another, I don't want to manually call
-=M-x visit-tags-table=. The following snippet will do the job for me:
+=M-x visit-tags-table=. The following snippet will do the job for me
+by pressing =C-x p t=.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package project
