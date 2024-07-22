@@ -286,10 +286,9 @@ currently selected window.")
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
   (add-hook 'markdown-mode-hook (lambda() (set-fill-column 80))))
 
-(use-package rbenv
-  :config
-  (setq rbenv-show-active-ruby-in-modeline nil)
-  (global-rbenv-mode))
+(use-package chruby)
+
+(use-package inf-ruby)
 
 (use-package ruby-end)
 
