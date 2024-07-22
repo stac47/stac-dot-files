@@ -98,6 +98,21 @@
 
 ** Examples of =.bashrc.local=
 
+*** GNU
+
+#+begin_src shell
+  # Auto-completion
+  source /usr/share/doc/git/contrib/completion/git-prompt.sh
+  source /usr/share/doc/git/contrib/completion/git-completion.bash
+  source /usr/share/bash-completion/bash_completion
+  source $HOME/.local/share/exercism/exercism_completion.bash
+
+  # chruby
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+  chruby 3.3.4
+#+end_src
+
 *** MacOS
 
 #+begin_src shell
