@@ -299,3 +299,12 @@ currently selected window.")
 (use-package bongo
   :config
   (setq bongo-default-directory "~/Music"))
+
+(use-package org
+  :config
+  (setq org-confirm-babel-evaluate nil)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (ruby . t)
+     (python . t))))

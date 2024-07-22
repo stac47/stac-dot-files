@@ -734,3 +734,19 @@ Facilities to edit YAML files.
     :config
     (setq bongo-default-directory "~/Music"))
 #+end_src
+
+*** Org-mode
+
+Disabling confirmation on code execution.
+Activating =ruby= and =python= for evalution in =org-mode= notebooks.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package org
+    :config
+    (setq org-confirm-babel-evaluate nil)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (ruby . t)
+       (python . t))))
+#+end_src
