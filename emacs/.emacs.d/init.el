@@ -43,6 +43,13 @@ displayed on is used to set the desired font size."
              '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(setq package-archive-priorities
+      '(("melpa-stable" . 1)
+        ("gnu" . 1)
+        ("nongnu" . 1)
+        ("melpa" . 0)))
+
 (package-initialize)
 
 (unless package-archive-contents (package-refresh-contents))

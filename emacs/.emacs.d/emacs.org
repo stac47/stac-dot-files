@@ -108,6 +108,13 @@ I add melpa and melpa-stable to the package repositories.
                '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives
                '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+  (setq package-archive-priorities
+        '(("melpa-stable" . 1)
+          ("gnu" . 1)
+          ("nongnu" . 1)
+          ("melpa" . 0)))
+
   (package-initialize)
 #+end_src
 
