@@ -416,7 +416,9 @@ options. This part configures the proposed options:
   (use-package project
     :config
     (assq-delete-all 'project-vc-dir project-switch-commands)
-    (add-to-list 'project-switch-commands '(project-switch-to-buffer "Buffer") t))
+    (assq-delete-all 'project-eshell project-switch-commands)
+    (add-to-list 'project-switch-commands '(project-switch-to-buffer "Buffer") t)
+    (add-to-list 'project-switch-commands '(magit-project-status "Magit") t))
 #+end_src
 
 *** Project Tags Visiting
@@ -442,8 +444,8 @@ by pressing =C-x p t=.
         (message "No current project")))
     :bind
     (:map project-prefix-map
-          ("t" . stac/project-tags)))
-
+          ("t" . stac/project-tags)
+          ("m" . magit-project-status)))
 #+end_src
 
 ** Ediff Configuration

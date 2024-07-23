@@ -159,7 +159,9 @@ currently selected window.")
 (use-package project
   :config
   (assq-delete-all 'project-vc-dir project-switch-commands)
-  (add-to-list 'project-switch-commands '(project-switch-to-buffer "Buffer") t))
+  (assq-delete-all 'project-eshell project-switch-commands)
+  (add-to-list 'project-switch-commands '(project-switch-to-buffer "Buffer") t)
+  (add-to-list 'project-switch-commands '(magit-project-status "Magit") t))
 
 (use-package project
   :init
@@ -177,7 +179,8 @@ currently selected window.")
       (message "No current project")))
   :bind
   (:map project-prefix-map
-        ("t" . stac/project-tags)))
+        ("t" . stac/project-tags)
+        ("m" . magit-project-status)))
 
 (use-package ediff
   :ensure nil
