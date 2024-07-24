@@ -306,10 +306,6 @@ currently selected window.")
 
 (use-package yaml-mode)
 
-(use-package bongo
-  :config
-  (setq bongo-default-directory "~/Music"))
-
 (use-package org
   :config
   (setq org-confirm-babel-evaluate nil)
@@ -318,3 +314,17 @@ currently selected window.")
    '((emacs-lisp . t)
      (ruby . t)
      (python . t))))
+
+(use-package bongo
+  :config
+  (setq bongo-default-directory "~/Music"))
+
+(use-package eradio
+  :config
+  (setq eradio-channels
+        '(("France Inter" . "http://direct.franceinter.fr/live/franceinter-midfi.mp3")
+          ("France Info" . "http://direct.franceinfo.fr/live/franceinfo-midfi.mp3")
+          ("France Culture" . "https://direct.franceculture.fr/live/franceculture-midfi.mp3")
+          ("France Musique" . "https://direct.francemusique.fr/live/francemusique-midfi.mp3")
+          ("FIP" . "http://direct.fipradio.fr/live/fip-midfi.mp3")
+          ("Radio Classique" . "http://icepe6.infomaniak.ch/radioclassique-high.mp3"))))

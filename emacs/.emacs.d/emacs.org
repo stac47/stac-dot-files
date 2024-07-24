@@ -736,14 +736,6 @@ Facilities to edit YAML files.
   (use-package yaml-mode)
 #+end_src
 
-*** Bongo
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package bongo
-    :config
-    (setq bongo-default-directory "~/Music"))
-#+end_src
-
 *** Org-mode
 
 Disabling confirmation on code execution.
@@ -759,3 +751,28 @@ Activating =ruby= and =python= for evalution in =org-mode= notebooks.
        (ruby . t)
        (python . t))))
 #+end_src
+
+*** Entertainment
+
+**** Listening to MP3 : =bongo=
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package bongo
+    :config
+    (setq bongo-default-directory "~/Music"))
+#+end_src
+
+**** Listening to Radio: =eradio=
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package eradio
+    :config
+    (setq eradio-channels
+          '(("France Inter" . "http://direct.franceinter.fr/live/franceinter-midfi.mp3")
+            ("France Info" . "http://direct.franceinfo.fr/live/franceinfo-midfi.mp3")
+            ("France Culture" . "https://direct.franceculture.fr/live/franceculture-midfi.mp3")
+            ("France Musique" . "https://direct.francemusique.fr/live/francemusique-midfi.mp3")
+            ("FIP" . "http://direct.fipradio.fr/live/fip-midfi.mp3")
+            ("Radio Classique" . "http://icepe6.infomaniak.ch/radioclassique-high.mp3"))))
+#+end_src
+
