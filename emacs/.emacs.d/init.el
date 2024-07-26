@@ -57,8 +57,6 @@ displayed on is used to set the desired font size."
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(global-set-key [remap dabbrev-expand] 'hippie-expand)
-
 ;; The cursor will blink forever
 (setq blink-cursor-blinks 0)
 

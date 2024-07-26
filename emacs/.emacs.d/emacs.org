@@ -133,16 +133,6 @@ them. On a new installation, all the packages will hence be installed.
   (setq use-package-always-ensure t)
 #+end_src
 
-** Improve Dabbrev Experience
-
-By default, Dabbrev will only complete a started word with what is
-already written in the current buffer. With Hippie, the feature is
-extended to complete with file path, other buffers.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (global-set-key [remap dabbrev-expand] 'hippie-expand)
-#+end_src
-
 ** Cursor Display Configuration
 
 By default, in graphical mode the cursor blinks 10 times then remain
