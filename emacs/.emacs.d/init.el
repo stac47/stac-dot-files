@@ -313,6 +313,32 @@ currently selected window.")
      (ruby . t)
      (python . t))))
 
+(use-package emacs
+  :ensure nil
+  :demand t
+  :config
+  (setq tab-always-indent 'complete)
+  (setq tab-first-completion 'word-or-paren-or-punct)
+  (setq-default tab-width 4
+                indent-tabs-mode nil))
+
+(use-package dabbrev
+  :ensure nil
+  :config
+  (setq dabbrev-backward-only nil)
+  (setq dabbrev-case-distinction 'case-replace)
+  (setq dabbrev-case-fold-search nil)
+  (setq dabbrev-case-replace 'case-replace)
+  (setq dabbrev-check-other-buffers t)
+  (setq dabbrev-eliminate-newlines t)
+  (setq dabbrev-upcase-means-case-search t)
+  (setq dabbrev-ignored-buffer-modes
+        '(archive-mode image-mode docview-mode pdf-view-mode)))
+
+(use-package corfu
+  :ensure t
+  :hook (after-init . global-corfu-mode))
+
 (use-package bongo
   :config
   (setq bongo-default-directory "~/Music"))

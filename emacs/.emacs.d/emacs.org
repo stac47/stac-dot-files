@@ -742,6 +742,40 @@ Activating =ruby= and =python= for evalution in =org-mode= notebooks.
        (python . t))))
 #+end_src
 
+*** In Buffer Completion with =corfu=
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package emacs
+    :ensure nil
+    :demand t
+    :config
+    (setq tab-always-indent 'complete)
+    (setq tab-first-completion 'word-or-paren-or-punct)
+    (setq-default tab-width 4
+                  indent-tabs-mode nil))
+#+end_src
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package dabbrev
+    :ensure nil
+    :config
+    (setq dabbrev-backward-only nil)
+    (setq dabbrev-case-distinction 'case-replace)
+    (setq dabbrev-case-fold-search nil)
+    (setq dabbrev-case-replace 'case-replace)
+    (setq dabbrev-check-other-buffers t)
+    (setq dabbrev-eliminate-newlines t)
+    (setq dabbrev-upcase-means-case-search t)
+    (setq dabbrev-ignored-buffer-modes
+          '(archive-mode image-mode docview-mode pdf-view-mode)))
+#+end_src
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package corfu
+    :ensure t
+    :hook (after-init . global-corfu-mode))
+#+end_src
+
 *** Entertainment
 
 **** Listening to MP3 : =bongo=
