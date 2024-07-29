@@ -664,9 +664,9 @@ make the line not too long: 80 characters is perfect.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package markdown-mode
-    :config
-    (add-hook 'markdown-mode-hook 'auto-fill-mode)
-    (add-hook 'markdown-mode-hook (lambda() (set-fill-column 80))))
+    :hook
+    ((markdown-mode . auto-fill-mode)
+     (markdown-mode . (lambda() (set-fill-column 80)))))
 #+end_src
 
 *** Ruby

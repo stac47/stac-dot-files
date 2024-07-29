@@ -292,9 +292,9 @@ currently selected window.")
   (setq flycheck-check-syntax-automatically '(save)))
 
 (use-package markdown-mode
-  :config
-  (add-hook 'markdown-mode-hook 'auto-fill-mode)
-  (add-hook 'markdown-mode-hook (lambda() (set-fill-column 80))))
+  :hook
+  ((markdown-mode . auto-fill-mode)
+   (markdown-mode . (lambda() (set-fill-column 80)))))
 
 (use-package chruby)
 
