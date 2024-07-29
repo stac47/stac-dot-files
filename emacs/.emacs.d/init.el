@@ -262,10 +262,12 @@ currently selected window.")
                         (nnimap-stream plain)
                         (nnir-search-engine imap)))
   (setq gnus-thread-sort-functions
-        '(gnus-thread-sort-by-most-recent-date
-          (not gnus-thread-sort-by-number)))
-  (setq gnus-use-cache t)
-  )
+        '(gnus-thread-sort-by-number
+          gnus-thread-sort-by-date))
+  (setq gnus-use-cache nil)
+  (setq gnus-summary-line-format "%U%R%z %D  %-30n  %B%s\n")
+  :hook
+  (gnus-group-mode gnus-topic-mode))
 
 (use-package magit)
 
