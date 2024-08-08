@@ -154,6 +154,17 @@ currently selected window.")
         stac-mode-line-misc-info
         mode-line-end-spaces))
 
+(setq treesit-language-source-alist
+      '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+        (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile.git")
+        (json "https://github.com/tree-sitter/tree-sitter-json")
+        (ruby "https://github.com/tree-sitter/tree-sitter-ruby.git")))
+
+(setq major-mode-remap-alist
+      '((shell-script-mode . bash-ts-mode)
+        (json-mode . json-ts-mode)
+        (ruby-mode . ruby-ts-mode)))
+
 (use-package project
   :config
   (assq-delete-all 'project-vc-dir project-switch-commands)
@@ -301,8 +312,6 @@ currently selected window.")
 (use-package inf-ruby)
 
 (use-package ruby-end)
-
-(use-package dockerfile-mode)
 
 (use-package yaml-mode)
 

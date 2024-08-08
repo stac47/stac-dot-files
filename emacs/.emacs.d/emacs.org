@@ -392,6 +392,23 @@ On MacOS, I cloned this repository and created symbolic links:
   ln -s ~/opensource/dictionaries/en/en_US.aff ~/opensource/dictionaries/en/en_US.dic ~/Library/Spelling/
 #+end_src
 
+** =tree-sitter=
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq treesit-language-source-alist
+        '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+          (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile.git")
+          (json "https://github.com/tree-sitter/tree-sitter-json")
+          (ruby "https://github.com/tree-sitter/tree-sitter-ruby.git")))
+#+end_src
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (setq major-mode-remap-alist
+        '((shell-script-mode . bash-ts-mode)
+          (json-mode . json-ts-mode)
+          (ruby-mode . ruby-ts-mode)))
+#+end_src
+
 ** Project
 
 *** Switch Commands
@@ -710,14 +727,6 @@ class, function or block.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package ruby-end)
-#+end_src
-
-*** Dockerfile
-
-I only installed this package to have the syntax highlighting.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package dockerfile-mode)
 #+end_src
 
 *** YAML
