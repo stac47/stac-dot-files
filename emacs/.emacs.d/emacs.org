@@ -543,69 +543,88 @@ removed forever from the disk.
     (setq delete-by-moving-to-trash t))
 #+end_src
 
-** Mail & News
+** Mails
 
-*** General e-mail Configuration
+*** =SMTP=
+
+Let's always have a buffer named *trace of SMTP session to
+<something>* which shows the data exchanges.
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (setq user-mail-address "laurent.stacul@gmail.com"
-      user-full-name "Laurent Stacul")
+    (setq smtpmail-debug-info t)
 #+end_src
 
-*** SMTP
+*** =mu4e=
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (setq stac/mail-accounts
-        '(("laurent.stacul@gmail.com" . ((smtp-server . "smtp.gmail.com")
-                                         (smtp-port . 465)
-                                         (smtp-stream . ssl)))
-          ("laurent.stacul@protonmail.com" . ((smtp-server . "localhost")
-                                              (smtp-port . 1025)
-                                              (smtp-stream . starttls)))))
-
-  (defun stac/setup-mail-account (&optional from)
-    "Set mail account"
-    (interactive
-     (list
-      (completing-read
-       "Select account: "
-       (map-keys stac/mail-accounts))))
-    (let ((config (alist-get from stac/mail-accounts user-mail-address nil #'string=)))
-      (message "Selected %s" (alist-get 'smtp-server config))
-      (setq
-       user-mail-address from
-       smtpmail-smtp-server (alist-get 'smtp-server config)
-       smtpmail-smtp-service (alist-get 'smtp-port config)
-       smtpmail-stream-type (alist-get 'smtp-stream config))))
-#+end_src
-
-*** Gnus
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package gnus
+  (use-package mu4e
+    :ensure nil
     :config
-    (setq gnus-select-method '(nnml ""))
-    (add-to-list 'gnus-secondary-select-methods
-                 '(nnimap "gmail"
-                          (nnimap-address "imap.gmail.com")
-                          (nnimap-server-port 993)
-                          (nnimap-stream ssl)
-                          (nnir-search-engine imap)
-                          (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
-                          (nnmail-expiry-wait 90)))
-    (add-to-list 'gnus-secondary-select-methods
-                 '(nnimap "protonmail"
-                          (nnimap-address "localhost")
-                          (nnimap-server-port 1143)
-                          (nnimap-stream plain)
-                          (nnir-search-engine imap)))
-    (setq gnus-thread-sort-functions
-          '(gnus-thread-sort-by-number
-            gnus-thread-sort-by-date))
-    (setq gnus-use-cache nil)
-    (setq gnus-summary-line-format "%U%R%z %D  %-30n  %B%s\n")
-    :hook
-    (gnus-group-mode gnus-topic-mode))
+    (setq mu4e-confirm-quit nil)
+    (setq mu4e-hide-index-messages t)
+    (setq mu4e-change-filenames-when-moving t)
+    (setq mu4e-update-interval (* 10 60))
+    (setq mu4e-get-mail-command "mbsync -a")
+    ;; (setq mu4e-update-interval nil)
+    ;; (setq mu4e-get-mail-command "true")
+    (setq mu4e-maildir "~/Mail")
+    (setq mu4e-context-policy 'pick-first)
+    (setq mu4e-headers-fields '((:human-date . 20)
+                                (:flags . 6)
+                                (:mailing-list . 10)
+                                (:from . 22)
+                                (:subject)))
+    (setq mu4e-attachment-dir "~/Downloads")
+
+    (setq mu4e-contexts
+          `(,(make-mu4e-context
+              :name "laurent.stacul@gmail.com"
+              :match-func
+              (lambda (msg)
+                (when msg
+                  (string-prefix-p "/laurent.stacul@gmail.com" (mu4e-message-field msg :maildir))))
+              :vars '((user-mail-address . "laurent.stacul@gmail.com")
+                      (user-full-name    . "Laurent Stacul")
+                      (smtpmail-smtp-server  . "smtp.gmail.com")
+                      (smtpmail-smtp-service . 465)
+                      (smtpmail-stream-type  . ssl)
+                      (mu4e-drafts-folder  . "/laurent.stacul@gmail.com/[Gmail]/Brouillons")
+                      (mu4e-sent-folder  . "/laurent.stacul@gmail.com/[Gmail]/Messages envoy&AOk-s")
+                      (mu4e-refile-folder  . "/laurent.stacul@gmail.com/[Gmail]/Tous les messages")
+                      (mu4e-trash-folder  . "/laurent.stacul@gmail.com/[Gmail]/Corbeille")
+                      (mu4e-maildir-shortcuts . ((:maildir "/laurent.stacul@gmail.com/Inbox" :key ?i)))))
+            ,(make-mu4e-context
+              :name "captain.stac@gmail.com"
+              :match-func
+              (lambda (msg)
+                (when msg
+                  (string-prefix-p "/captain.stac@gmail.com" (mu4e-message-field msg :maildir))))
+              :vars '((user-mail-address . "captain.stac@gmail.com")
+                      (user-full-name    . "Laurent Stacul")
+                      (smtpmail-smtp-server  . "smtp.gmail.com")
+                      (smtpmail-smtp-service . 465)
+                      (smtpmail-stream-type  . ssl)
+                      (mu4e-drafts-folder  . "/captain.stac@gmail.com/[Gmail]/Brouillons")
+                      (mu4e-sent-folder  . "/captain.stac@gmail.com/[Gmail]/Messages envoy&AOk-s")
+                      (mu4e-refile-folder  . "/captain.stac@gmail.com/[Gmail]/Tous les messages")
+                      (mu4e-trash-folder  . "/captain.stac@gmail.com/[Gmail]/Corbeille")
+                      (mu4e-maildir-shortcuts . ((:maildir "/captain.stac@gmail.com/Inbox" :key ?i)))))
+            ,(make-mu4e-context
+              :name "Proton"
+              :match-func
+              (lambda (msg)
+                (when msg
+                  (string-prefix-p "/laurent.stacul@protonmail.com" (mu4e-message-field msg :maildir))))
+              :vars '((user-mail-address . "laurent.stacul@protonmail.com")
+                      (user-full-name    . "Laurent Stacul")
+                      (smtpmail-smtp-server  . "localhost")
+                      (smtpmail-smtp-service . 1025)
+                      (smtpmail-stream-type  . starttls)
+                      (mu4e-drafts-folder  . "/laurent.stacul@protonmail.com/Drafts")
+                      (mu4e-sent-folder  . "/laurent.stacul@protonmail.com/Sent")
+                      (mu4e-refile-folder  . "/laurent.stacul@protonmail.com/Archive")
+                      (mu4e-trash-folder  . "/laurent.stacul@protonmail.com/Trash")
+                      (mu4e-maildir-shortcuts . ((:maildir "/laurent.stacul@protonmail.com/Inbox" :key ?i))))))))
 #+end_src
 
 ** Packages
