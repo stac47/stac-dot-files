@@ -394,6 +394,10 @@ On MacOS, I cloned this repository and created symbolic links:
 
 ** =tree-sitter=
 
+=tree-sitter= is supported by Emacs since version 29. The only thing
+to configure is the location of the grammar. To compile such grammar,
+use the function =treesit-install-language-grammar=.
+
 #+begin_src emacs-lisp :tangle "init.el"
   (setq treesit-language-source-alist
         '((bash "https://github.com/tree-sitter/tree-sitter-bash")
@@ -401,6 +405,9 @@ On MacOS, I cloned this repository and created symbolic links:
           (json "https://github.com/tree-sitter/tree-sitter-json")
           (ruby "https://github.com/tree-sitter/tree-sitter-ruby.git")))
 #+end_src
+
+The following configuration overrides the default major mode in favor
+their =tree-sitter= counterparts.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (setq major-mode-remap-alist
