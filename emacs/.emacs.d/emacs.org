@@ -551,7 +551,11 @@ Let's always have a buffer named *trace of SMTP session to
 <something>* which shows the data exchanges.
 
 #+begin_src emacs-lisp :tangle "init.el"
+  (use-package smtpmail
+    :ensure nil
+    :config
     (setq smtpmail-debug-info t)
+    (setq send-mail-function #'smtpmail-send-it))
 #+end_src
 
 *** =mu4e=

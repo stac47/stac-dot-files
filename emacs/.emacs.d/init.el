@@ -229,7 +229,11 @@ currently selected window.")
   :config
   (setq delete-by-moving-to-trash t))
 
-(setq smtpmail-debug-info t)
+(use-package smtpmail
+  :ensure nil
+  :config
+  (setq smtpmail-debug-info t)
+  (setq send-mail-function #'smtpmail-send-it))
 
 (use-package mu4e
   :ensure nil
