@@ -576,8 +576,6 @@ Let's always have a buffer named *trace of SMTP session to
     (setq mu4e-change-filenames-when-moving t)
     (setq mu4e-update-interval (* 10 60))
     (setq mu4e-get-mail-command "mbsync -a")
-    ;; (setq mu4e-update-interval nil)
-    ;; (setq mu4e-get-mail-command "true")
     (setq mu4e-maildir "~/Mail")
     (setq mu4e-context-policy 'pick-first)
     (setq mu4e-headers-fields '((:human-date . 20)
@@ -603,6 +601,8 @@ Let's always have a buffer named *trace of SMTP session to
                       (mu4e-sent-folder  . "/laurent.stacul@gmail.com/[Gmail]/Messages envoy&AOk-s")
                       (mu4e-refile-folder  . "/laurent.stacul@gmail.com/[Gmail]/Tous les messages")
                       (mu4e-trash-folder  . "/laurent.stacul@gmail.com/[Gmail]/Corbeille")
+                      ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
+                      (mu4e-sent-messages-behavior . 'delete)
                       (mu4e-maildir-shortcuts . ((:maildir "/laurent.stacul@gmail.com/Inbox" :key ?i)))))
             ,(make-mu4e-context
               :name "captain.stac@gmail.com"
@@ -619,6 +619,8 @@ Let's always have a buffer named *trace of SMTP session to
                       (mu4e-sent-folder  . "/captain.stac@gmail.com/[Gmail]/Messages envoy&AOk-s")
                       (mu4e-refile-folder  . "/captain.stac@gmail.com/[Gmail]/Tous les messages")
                       (mu4e-trash-folder  . "/captain.stac@gmail.com/[Gmail]/Corbeille")
+                      ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
+                      (mu4e-sent-messages-behavior . 'delete)
                       (mu4e-maildir-shortcuts . ((:maildir "/captain.stac@gmail.com/Inbox" :key ?i)))))
             ,(make-mu4e-context
               :name "Proton"
