@@ -391,3 +391,5 @@ currently selected window.")
           ("France Musique" . "https://direct.francemusique.fr/live/francemusique-midfi.mp3")
           ("FIP" . "http://direct.fipradio.fr/live/fip-midfi.mp3")
           ("Radio Classique" . "http://icepe6.infomaniak.ch/radioclassique-high.mp3"))))
+
+(use-package simple-httpd)
