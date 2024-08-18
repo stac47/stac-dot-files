@@ -323,6 +323,8 @@ currently selected window.")
   (yas-reload-all)
   :hook (prog-mode . yas-minor-mode))
 
+(use-package yasnippet-snippets)
+
 (use-package flycheck
   :init (global-flycheck-mode)
   :config

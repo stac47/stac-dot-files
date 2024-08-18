@@ -696,6 +696,12 @@ only useful in programming modes.
     :hook (prog-mode . yas-minor-mode))
 #+end_src
 
+There is a project that maintains all sorts of snippets:
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package yasnippet-snippets)
+#+end_src
+
 *** Flycheck
 
 #+begin_src emacs-lisp :tangle "init.el"
