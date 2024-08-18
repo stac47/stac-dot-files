@@ -269,7 +269,7 @@ currently selected window.")
                     (mu4e-refile-folder  . "/laurent.stacul@gmail.com/[Gmail]/Tous les messages")
                     (mu4e-trash-folder  . "/laurent.stacul@gmail.com/[Gmail]/Corbeille")
                     ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
-                    (mu4e-sent-messages-behavior . 'delete)
+                    (mu4e-sent-messages-behavior . delete)
                     (mu4e-maildir-shortcuts . ((:maildir "/laurent.stacul@gmail.com/Inbox" :key ?i)))))
           ,(make-mu4e-context
             :name "captain.stac@gmail.com"
@@ -287,7 +287,7 @@ currently selected window.")
                     (mu4e-refile-folder  . "/captain.stac@gmail.com/[Gmail]/Tous les messages")
                     (mu4e-trash-folder  . "/captain.stac@gmail.com/[Gmail]/Corbeille")
                     ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
-                    (mu4e-sent-messages-behavior . 'delete)
+                    (mu4e-sent-messages-behavior . delete)
                     (mu4e-maildir-shortcuts . ((:maildir "/captain.stac@gmail.com/Inbox" :key ?i)))))
           ,(make-mu4e-context
             :name "Proton"
