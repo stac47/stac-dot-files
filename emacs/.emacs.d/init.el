@@ -237,6 +237,7 @@ currently selected window.")
 
 (use-package mu4e
   :ensure nil
+  :if (locate-library "mu4e.el")
   :config
   (setq mu4e-confirm-quit nil)
   (setq mu4e-hide-index-messages t)
