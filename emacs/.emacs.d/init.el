@@ -254,6 +254,22 @@ currently selected window.")
                               (:from . 22)
                               (:subject)))
   (setq mu4e-attachment-dir "~/Downloads")
+  (setq mu4e-bookmarks
+        '(
+          (
+           :name "Unread messages"
+           :query "flag:unread AND NOT flag:trashed AND NOT flag:list"
+           :key ?u
+           )
+          (
+           :name "From Lists"
+           :query "flag:unread AND NOT flag:trashed AND flag:list"
+           :key ?l
+           )
+          (
+           :name "Today's messages"
+           :query "date:today..now"
+           :key ?t)))
 
   (setq mu4e-contexts
         `(,(make-mu4e-context
