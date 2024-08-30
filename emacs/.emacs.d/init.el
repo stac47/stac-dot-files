@@ -400,3 +400,5 @@ currently selected window.")
           ("Radio Classique" . "http://icepe6.infomaniak.ch/radioclassique-high.mp3"))))
 
 (use-package simple-httpd)
+
+(use-package terraform-mode)

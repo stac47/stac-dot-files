@@ -867,3 +867,9 @@ a directory, use =M-x httpd-serve-directory=.
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package simple-httpd)
 #+end_src
+
+*** Terraform
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package terraform-mode)
+#+end_src
