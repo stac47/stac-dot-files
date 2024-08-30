@@ -328,10 +328,14 @@ currently selected window.")
 
 (use-package yasnippet-snippets)
 
-(use-package flycheck
-  :init (global-flycheck-mode)
+(use-package flymake
+  :hook (prog-mode . flymake-mode)
   :config
-  (setq flycheck-check-syntax-automatically '(save)))
+  (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+  (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
+
+(use-package flymake-collection
+  :hook (after-init . flymake-collection-hook-setup))
 
 (use-package markdown-mode
   :hook
