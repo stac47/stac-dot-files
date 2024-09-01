@@ -254,6 +254,15 @@ currently selected window.")
                               (:from . 22)
                               (:subject)))
   (setq mu4e-attachment-dir "~/Downloads")
+  (setq stac/emacs-mailing-lists
+        (list "help-gnu-emacs.gnu.org"
+              "emacs-devel.gnu.org"
+              "bug-gnu-emacs.gnu.org"))
+  (setq stac/development-mailing-lists
+        (append stac/emacs-mailing-lists))
+  (defun stac/mu4e-bookmark-mailing-list-query (mailing-lists)
+    (format "(%s)"
+            (mapconcat (lambda (s) (format "list:%s" s)) mailing-lists " or ")))
   (setq mu4e-bookmarks
         '(
           (
@@ -262,14 +271,27 @@ currently selected window.")
            :key ?u
            )
           (
-           :name "From Lists"
-           :query "flag:unread AND NOT flag:trashed AND flag:list"
+           :name "From Emacs Lists"
+           :query (lambda () (concat "flag:unread AND "
+                                     "NOT flag:trashed AND "
+                                     "flag:list AND "
+                                     (stac/mu4e-bookmark-mailing-list-query stac/emacs-mailing-lists)))
+           :key ?e
+           )
+          (
+           :name "From Other Lists"
+           :query (lambda () (concat "flag:unread AND "
+                                     "NOT flag:trashed AND "
+                                     "flag:list AND NOT "
+                                     (stac/mu4e-bookmark-mailing-list-query stac/development-mailing-lists)))
            :key ?l
            )
           (
            :name "Today's messages"
            :query "date:today..now"
-           :key ?t)))
+           :key ?t)
+          )
+        )
 
   (setq mu4e-contexts
         `(,(make-mu4e-context
