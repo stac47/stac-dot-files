@@ -380,6 +380,14 @@ currently selected window.")
   ((markdown-mode . auto-fill-mode)
    (markdown-mode . (lambda() (set-fill-column 80)))))
 
+(use-package ruby-mode
+  :config
+  (setq ruby-align-to-stmt-keywords t)
+  (setq ruby-align-chained-calls nil)
+  (setq ruby-method-params-indent nil)
+  (setq ruby-block-indent nil)
+  (setq ruby-method-call-indent nil))
+
 (use-package chruby)
 
 (use-package inf-ruby)

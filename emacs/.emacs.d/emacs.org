@@ -773,6 +773,18 @@ make the line not too long: 80 characters is perfect.
 
 *** Ruby
 
+**** =ruby-mode=
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package ruby-mode
+    :config
+    (setq ruby-align-to-stmt-keywords t)
+    (setq ruby-align-chained-calls nil)
+    (setq ruby-method-params-indent nil)
+    (setq ruby-block-indent nil)
+    (setq ruby-method-call-indent nil))
+#+end_src
+
 **** =rbenv=
 
 This package ensures we run the right ruby interpreter depending on
