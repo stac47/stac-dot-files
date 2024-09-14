@@ -64,3 +64,26 @@ Near :protonmail-local:
 Patterns *
 Create Both
 SyncState *
+
+IMAPAccount laposte
+Host imap.laposte.net
+Port 993
+User laurent.stacul@laposte.net
+PassCmd "pass Email/laurent.stacul@laposte.net"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore laposte-remote
+Account laposte
+
+MaildirStore laposte-local
+Subfolders Verbatim
+Path ~/Mail/laurent.stacul@laposte.net/
+Inbox ~/Mail/laurent.stacul@laposte.net/Inbox
+
+Channel laposte
+Far :laposte-remote:
+Near :laposte-local:
+Patterns *
+Create Both
+SyncState *
