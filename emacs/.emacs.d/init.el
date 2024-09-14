@@ -331,6 +331,22 @@ currently selected window.")
                     (mu4e-sent-messages-behavior . delete)
                     (mu4e-maildir-shortcuts . ((:maildir "/captain.stac@gmail.com/Inbox" :key ?i)))))
           ,(make-mu4e-context
+            :name "La Poste"
+            :match-func
+            (lambda (msg)
+              (when msg
+                (string-prefix-p "/laurent.stacul@laposte.net" (mu4e-message-field msg :maildir))))
+            :vars '((user-mail-address . "laurent.stacul@laposte.net")
+                    (user-full-name    . "Laurent Stacul")
+                    (smtpmail-smtp-server  . "smtp.laposte.net")
+                    (smtpmail-smtp-service . 587)
+                    (smtpmail-stream-type  . ssl)
+                    (mu4e-drafts-folder  . "/laurent.stacul@laposte.net/DRAFT")
+                    (mu4e-sent-folder  . "/laurent.stacul@laposte.net/OUTBOX")
+                    (mu4e-refile-folder  . "/laurent.stacul@laposte.net/Inbox")
+                    (mu4e-trash-folder  . "/laurent.stacul@laposte.net/TRASH")
+                    (mu4e-maildir-shortcuts . ((:maildir "/laurent.stacul@laposte.net/Inbox" :key ?i)))))
+          ,(make-mu4e-context
             :name "Proton"
             :match-func
             (lambda (msg)
