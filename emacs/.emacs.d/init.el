@@ -257,6 +257,7 @@ currently selected window.")
   (setq stac/emacs-mailing-lists
         (list "help-gnu-emacs.gnu.org"
               "emacs-devel.gnu.org"
+              "info-gnu-emacs.gnu.org"
               "bug-gnu-emacs.gnu.org"))
   (setq stac/development-mailing-lists
         (append stac/emacs-mailing-lists))
