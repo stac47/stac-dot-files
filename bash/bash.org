@@ -8,11 +8,11 @@
 ** Login and Non-Interactive Shells
 
 #+begin_src shell :tangle .bash_profile
-  GDBHISTFILE=$HOME/.gdb_history
+  export GDBHISTFILE=$HOME/.gdb_history
 
-  MANPATH="$HOME/.local/share/man:$MANPATH"
-  LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
-  PATH="$HOME/.local/bin:$PATH"
+  export MANPATH="$HOME/.local/share/man:$MANPATH"
+  export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+  export PATH="$HOME/.local/bin:$PATH"
 
   if [[ -e "$HOME/.bash_profile.local" ]]; then
       source "$HOME/.bash_profile.local"
