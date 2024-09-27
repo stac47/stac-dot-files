@@ -17,7 +17,7 @@
 (setq default-input-method "french-postfix")
 
 (setq stac/monitors
-      '(((mm-size 301 195) (font-size 135))
+      '(((mm-size 301 195) (font-size 120))
         ((mm-size 599 329) (font-size 160))))
 
 (defun stac/adapt-font-size (&optional frame)
