@@ -133,6 +133,16 @@ them. On a new installation, all the packages will hence be installed.
   (setq use-package-always-ensure t)
 #+end_src
 
+When we want to update the packages, we can use =M-x
+package-upgrade-all=. Sometimes, we need to recompile al the installed
+plugins. For instance, in the scratch bugger we can run the following:
+
+#+begin_src emacs_lisp
+  (byte-recompile-directory package-user-dir nil 'force)
+#+end_src
+
+Then, we can restart Emacs: =M-x restart-emacs=.
+
 ** Cursor Display Configuration
 
 By default, in graphical mode the cursor blinks 10 times then remain
