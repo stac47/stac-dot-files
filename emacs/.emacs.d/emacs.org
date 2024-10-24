@@ -733,6 +733,21 @@ In any case, =Magit= is running faster with the default =git=.
   (use-package magit)
 #+end_src
 
+*** Man
+
+On MacOS, when issuing =M-x man=, it can take 20 seconds to get the
+list of the available manual pages. To workaround this, we can install
+the =man-db= package and run the command =mandb= after we install a
+new package or update the installed package. Then we set the
+=manual-program= to the GNU version of the man program:
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package man
+    :config
+    (when (eq system-type 'darwin)
+      (setq manual-program "gman")))
+#+end_src
+
 *** Minibuffer Improvements: Vertico & Marginalia
 
 =Vertico= takes care of displaying choices in the minibuffer as a

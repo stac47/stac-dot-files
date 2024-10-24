@@ -366,6 +366,11 @@ currently selected window.")
 
 (use-package magit)
 
+(use-package man
+  :config
+  (when (eq system-type 'darwin)
+    (setq manual-program "gman")))
+
 (use-package vertico
   :init
   (vertico-mode)
