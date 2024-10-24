@@ -253,6 +253,7 @@ currently selected window.")
                               (:mailing-list . 10)
                               (:from . 22)
                               (:subject)))
+  (setq mu4e-headers-date-format "%F")
   (setq mu4e-attachment-dir "~/Downloads")
   (setq stac/emacs-mailing-lists
         (list "help-gnu-emacs.gnu.org"
