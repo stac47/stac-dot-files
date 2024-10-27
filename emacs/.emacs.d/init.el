@@ -14,7 +14,7 @@
 (setq backup-inhibited nil)
 (setq create-lockfiles nil)
 
-(setq default-input-method "french-postfix")
+(setq default-input-method "french-prefix")
 
 (setq stac/monitors
       '(((mm-size 301 195) (font-size 120))
