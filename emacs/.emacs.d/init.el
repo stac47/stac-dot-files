@@ -469,6 +469,8 @@ currently selected window.")
           ("FIP" . "http://direct.fipradio.fr/live/fip-midfi.mp3")
           ("Radio Classique" . "http://icepe6.infomaniak.ch/radioclassique-high.mp3"))))
 
+(use-package org-drill)
+
 (use-package simple-httpd)
 
 (use-package terraform-mode)
