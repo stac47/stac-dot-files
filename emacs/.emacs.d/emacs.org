@@ -83,7 +83,7 @@ map to the desired font size.
 #+begin_src emacs-lisp :tangle "init.el"
   (setq stac/monitors
         '(((mm-size 301 195) (font-size 120))
-          ((mm-size 599 329) (font-size 160))))
+          ((mm-size 599 329) (font-size 150))))
 
   (defun stac/adapt-font-size (&optional frame)
     "Adapt the default font size depending on the monitor that FRAME is
