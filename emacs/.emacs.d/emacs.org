@@ -2,6 +2,7 @@
 #+author: Laurent Stacul
 #+email: laurent.stacul@gmail.com
 #+language: en
+#+startup: content
 
 * My Emacs Configuration
 
@@ -105,7 +106,8 @@ map to the desired font size.
 
 ** Package System Configuration
 
-I add melpa and melpa-stable to the package repositories.
+I add =melpa= and =melpa-stable= to the package repositories with a
+preference to =melpa-stable=.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (require 'package)
@@ -140,11 +142,15 @@ them. On a new installation, all the packages will hence be installed.
 #+end_src
 
 When we want to update the packages, we can use =M-x
-package-upgrade-all=. Sometimes, we need to recompile al the installed
-plugins. For instance, in the scratch bugger we can run the following:
+package-upgrade-all=. Sometimes, we need to recompile all the installed
+plugins. Execute the following interactive command:
 
-#+begin_src emacs_lisp
-  (byte-recompile-directory package-user-dir nil 'force)
+#+begin_src emacs-lisp :tangle "init.el"
+  (defun stac/recompile-packages ()
+    "Recompile all the packages in the user's package directory."
+    (interactive)
+    (byte-recompile-directory package-user-dir nil 'force)
+    (message "Compilation done. Consider restarting emacs."))
 #+end_src
 
 Then, we can restart Emacs: =M-x restart-emacs=.

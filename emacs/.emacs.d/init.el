@@ -57,6 +57,12 @@ displayed on is used to set the desired font size."
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(defun stac/recompile-packages ()
+  "Recompile all the packages in the user's package directory."
+  (interactive)
+  (byte-recompile-directory package-user-dir nil 'force)
+  (message "Compilation done. Consider restarting emacs."))
+
 ;; The cursor will blink forever
 (setq blink-cursor-blinks 0)
 
