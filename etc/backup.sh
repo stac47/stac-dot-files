@@ -16,6 +16,7 @@ SYNC_DIRECTORIES=(
     'Pictures'
     'Videos'
     'fsgt_backup'
+    'Mail'
 )
 
 GIT_REPOSITORIES=(
@@ -29,17 +30,23 @@ EXCLUSIONS=(
     ${GIT_REPOSITORIES[@]}
     '.alacritty.yml'
     '.bundle'
+    '.bash_profile'
+    '.bashrc'
     '.cache'
     '.config'
+    '.emacs.d'
+    '.gem'
     '.gitconfig'
     '.gitignore_global'
     '.irbrc'
     '.local'
     '.mailcap'
+    '.minikube'
     '.mozilla'
     '.mutt'
     '.muttrc'
     '.npm'
+    '.nvm'
     '.procmailrc'
     '.rbenv'
     '.stac-dot-files'
@@ -53,6 +60,7 @@ EXCLUSIONS=(
     '.zshrc'
     'fsgtfiles'
     'opensource'
+    'music_flat'
 )
 
 function backup_tar() {
