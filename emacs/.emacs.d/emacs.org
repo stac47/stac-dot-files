@@ -440,6 +440,18 @@ their =tree-sitter= counterparts.
           (ruby-mode . ruby-ts-mode)))
 #+end_src
 
+I define hereafter an interactive command to install all the grammars
+I am interested in. This one can also be used to update the all
+grammars in one shot.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (defun stac/treesit-install-all-grammars ()
+    "Install the tree-sitter grammars I configured."
+    (interactive)
+    (dolist (grammar treesit-language-source-alist)
+      (treesit-install-language-grammar (car grammar))))
+#+end_src
+
 ** Project
 
 *** Switch Commands

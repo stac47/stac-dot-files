@@ -173,6 +173,12 @@ currently selected window.")
         (yaml-mode . yaml-ts-mode)
         (ruby-mode . ruby-ts-mode)))
 
+(defun stac/treesit-install-all-grammars ()
+  "Install the tree-sitter grammars I configured."
+  (interactive)
+  (dolist (grammar treesit-language-source-alist)
+    (treesit-install-language-grammar (car grammar))))
+
 (use-package project
   :config
   (assq-delete-all 'project-vc-dir project-switch-commands)
