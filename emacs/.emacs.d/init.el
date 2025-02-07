@@ -486,3 +486,6 @@ currently selected window.")
 (use-package simple-httpd)
 
 (use-package terraform-mode)
+
+(use-package kubed
+  :bind-keymap ("C-c k" . kubed-prefix-map))

@@ -983,3 +983,10 @@ a directory, use =M-x httpd-serve-directory=.
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package terraform-mode)
 #+end_src
+
+*** Kubernetes
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package kubed
+    :bind-keymap ("C-c k" . kubed-prefix-map))
+#+end_src
