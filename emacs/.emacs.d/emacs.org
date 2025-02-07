@@ -5,8 +5,8 @@
 #+startup: content
 
 * My Emacs Configuration
-
-** Default Theme
+** General
+*** Default Theme
 
 I like the modus theme that comes with GNU emacs. I start with the
 light theme knowing I can easily change the the dark theme with the
@@ -16,7 +16,7 @@ command =M-x modus-themes-toggle=.
   (load-theme 'modus-operandi t)
 #+end_src
 
-** Turn Off The Bell
+*** Turn Off The Bell
 
 I need silence when I work and the bell sound makes me nervous.
 
@@ -25,7 +25,7 @@ I need silence when I work and the bell sound makes me nervous.
   (setq visible-bell t)
 #+end_src
 
-** Remove All GUI Widgets
+*** Remove All GUI Widgets
 
 When I start emacs, I want it with the minimal view (no buttons, no
 scroll bars, no tooltips) and I want the first show the Lisp scratch
@@ -40,7 +40,7 @@ buffer.
   (setq use-dialog-box nil)
 #+end_src
 
-** Do not create lock and backup files
+*** Do not create lock and backup files
 
 Most of the time, my files are in project managed with git. So, backup
 files are generally useless. And regarding lock files, I generally
@@ -52,7 +52,7 @@ know what I do when using external programs.
   (setq create-lockfiles nil)
 #+end_src
 
-** Default Input Language
+*** Default Input Language
 
 To switch to an other keyboard layout within Emacs, we use =C-\=
 (toggle-input-method). By default, we are prompted to choose the input
@@ -71,7 +71,7 @@ can use the help =C-h I= or =C-h C-\=.
 To insert a single character with a selected input method, we can
 temporarily switch to another method with =C-x \=.
 
-** Display Configuration For MacBook
+*** Display Configuration For MacBook
 
 Display is hard because it depends upon the size of the monitor, its
 definition, whether the user chose a scaled definition at OS level.
@@ -104,7 +104,7 @@ map to the desired font size.
   (stac/adapt-font-size)
 #+end_src
 
-** Package System Configuration
+*** Package System Configuration
 
 I add =melpa= and =melpa-stable= to the package repositories with a
 preference to =melpa-stable=.
@@ -155,7 +155,7 @@ plugins. Execute the following interactive command:
 
 Then, we can restart Emacs: =M-x restart-emacs=.
 
-** Cursor Display Configuration
+*** Cursor Display Configuration
 
 By default, in graphical mode the cursor blinks 10 times then remain
 displayed. I prefer the cursor to blink forever.
@@ -165,7 +165,7 @@ displayed. I prefer the cursor to blink forever.
   (setq blink-cursor-blinks 0)
 #+end_src
 
-** Display Cursor Column Number
+*** Display Cursor Column Number
 
 The minor mode =column-number-mode= will display the current column of
 the cursor next to the line number in the mode line.
@@ -174,7 +174,7 @@ the cursor next to the line number in the mode line.
   (setq column-number-mode t)
 #+end_src
 
-** Increase the Pulse Timer
+*** Increase the Pulse Timer
 
 When I use Xref to see the results of a search, I find the temporarily
 hightlighted finding in the other buffer vanishes to quickly. The
@@ -184,7 +184,7 @@ default value is =0.03= and turning it to =0.08= is a good compromise.
   (setq pulse-delay 0.08)
 #+end_src
 
-** Add Newline Character At End Of File
+*** Add Newline Character At End Of File
 
 To avoid the terminal prompt to be moved right after the output a ~cat
 file~ where =file= does not end with a newline character, it is a good
@@ -195,7 +195,7 @@ when needed.
   (setq require-final-newline t)
 #+end_src
 
-** Show Trailing Whitespace
+*** Show Trailing Whitespace
 
 It is generally prettier to not have trailing white space in source
 code. With the following setting, such trailing white spaces will be
@@ -207,7 +207,7 @@ visible. A simple way to remove them is to run the
   (add-hook 'text-mode-hook (lambda() (setq show-trailing-whitespace t)))
 #+end_src
 
-** Current Line Highlighting
+*** Current Line Highlighting
 
 When editing text or source code, we can have the current line
 highlighted. But this is not useful in other buffers like the shell or
@@ -223,7 +223,7 @@ mode. I enable this in all those derived modes.
   (add-hook 'conf-mode-hook #'hl-line-mode)
 #+end_src
 
-** Line Number
+*** Line Number
 
 When programming, I need the line number to be displayed so that I
 immediately see which line fails when something crash.
@@ -232,7 +232,7 @@ immediately see which line fails when something crash.
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 #+end_src
 
-** Never Indent With Tabs
+*** Never Indent With Tabs
 
 I really dislike indentation with tabs. This will not change the
 behavior when editing file that require indentation to be a TAB (like
@@ -242,7 +242,7 @@ behavior when editing file that require indentation to be a TAB (like
   (setq-default indent-tabs-mode nil)
 #+end_src
 
-** Stop using ~custom-file~
+*** Stop using ~custom-file~
 
 When we install a package via the package manager or we use =M-x
 customize=, emacs writes things at the end of the emacs
@@ -253,30 +253,7 @@ want to commit generated code.
   (setq custom-file (make-temp-file "emacs-custom-"))
 #+end_src
 
-** History
-
-To have the most recent file visited first, we can activate the
-=savehist-mode=.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  ;; Save history
-  (use-package savehist
-    :init
-    (setq history-length 25)
-    (savehist-mode))
-#+end_src
-
-We can even keep track of the position of the cursor in each visited
-files with =save-place-mode=.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  ;; Remember the last place in a visited file
-  (use-package saveplace
-    :init
-    (save-place-mode))
-#+end_src
-
-** Automatic Buffer Update
+*** Automatic Buffer Update
 
 By default, when a file is changed from outside of emacs, it is not
 reflected inside the buffer: we need to manually use =M-x
@@ -297,7 +274,7 @@ the buffer, we can set the following:
   (setq global-auto-revert-non-file-buffers t)
 #+end_src
 
-** GnuPG
+*** GnuPG
 
 Generally speaking, your GnuPG keys are protected with a
 passphrase. To allow emacs to ask you directly to enter the key
@@ -327,34 +304,7 @@ Then in Emacs:
 Now, when you =.authinfo.gpg= needs to be decrypted, Emacs will ask
 you for the used key's passphrase.
 
-** Display The Current Time In The Mode Line
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package time
-    :ensure nil
-    :hook (after-init . display-time-mode)
-    :config
-    (setq display-time-interval 60)
-    (setq display-time-default-load-average nil))
-#+end_src
-
-** Display The Battery Status
-
-When working on a laptop, it is generally a good idea to have the
-battery status displayed in the mode line.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package battery
-    :ensure nil
-    :config
-    (when (and battery-status-function
-               (not (string-match-p "N/A"
-                                    (battery-format "%B"
-                                                    (funcall battery-status-function)))))
-      (display-battery-mode 1)))
-#+end_src
-
-** Mode Line Configuration
+*** Mode Line Configuration
 
 #+begin_src emacs-lisp :tangle "init.el"
   (defun stac-mode-line-major-mode-name ()
@@ -397,7 +347,7 @@ battery status displayed in the mode line.
           mode-line-end-spaces))
 #+end_src
 
-** Ispell Configuration
+*** Ispell Configuration
 
 Ispell is a wrapper around spell checking tools like Aspell, Ispell or
 Hunspell. Thoses tools are external to Emacs so they have to be
@@ -414,7 +364,7 @@ On MacOS, I cloned this repository and created symbolic links:
   ln -s ~/opensource/dictionaries/en/en_US.aff ~/opensource/dictionaries/en/en_US.dic ~/Library/Spelling/
 #+end_src
 
-** =tree-sitter=
+*** Tree Sitter
 
 =tree-sitter= is supported by Emacs since version 29. The only thing
 to configure is the location of the grammar. To compile such grammar,
@@ -452,9 +402,10 @@ grammars in one shot.
       (treesit-install-language-grammar (car grammar))))
 #+end_src
 
-** Project
+** Default Packages
+*** Project
 
-*** Switch Commands
+**** Switch Commands
 
 Pressing =C-x p p= and selecting a project provides several
 options. This part configures the proposed options:
@@ -471,7 +422,7 @@ options. This part configures the proposed options:
     (add-to-list 'project-switch-commands '(magit-project-status "Magit") t))
 #+end_src
 
-*** Project Tags Visiting
+**** Project Tags Visiting
 
 When a move from one project to another, I don't want to manually call
 =M-x visit-tags-table=. The following snippet will do the job for me
@@ -498,7 +449,7 @@ by pressing =C-x p t=.
           ("m" . magit-project-status)))
 #+end_src
 
-** Ediff Configuration
+*** Ediff
 
 When Emacs runs in graphical mode, starting a new =Ediff= session is
 done in a new frame which I don't want. I changed the value of
@@ -517,7 +468,7 @@ accordingly.
     (setq ediff-window-setup-function #'ediff-setup-windows-plain))
 #+end_src
 
-** Isearch Configuration
+*** Isearch
 
 We display the number of matches and current match the cursor is on:
 this will be displayed on the left of the =I-search= prompt.
@@ -536,7 +487,7 @@ that we have some kind of fuzzy search.
           lazy-count-suffix-format nil))
 #+end_src
 
-** Xref
+*** Xref
 
 By default, =Xref= opens a new buffer when it can find several
 definitions of the same symbol. With this configuration, I leverage
@@ -550,9 +501,10 @@ the minibuffer to make a choice.
     (setq xref-show-definitions-function #'xref-show-definitions-completing-read))
 #+end_src
 
-** Speed Up Grep
+*** Grep
 
-The idea is to leverage =ripgrep= program if installed on the system.
+The idea to speed searches up is to leverage =ripgrep= program if
+installed on the system.
 
 =Xref= is already aware of the =rg= command to issue (see
 =xref-search-program-alist=) so we simply have to set the variable
@@ -571,9 +523,24 @@ The idea is to leverage =ripgrep= program if installed on the system.
         (setq xref-search-program 'ripgrep))))
 #+end_src
 
-** Dired Configuration
+*** Man
 
-*** Move to Trash Instead of Removing a File
+On MacOS, when issuing =M-x man=, it can take 20 seconds to get the
+list of the available manual pages. To workaround this, we can install
+the =man-db= package and run the command =mandb= after we install a
+new package or update the installed package. Then we set the
+=manual-program= to the GNU version of the man program:
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package man
+    :config
+    (when (eq system-type 'darwin)
+      (setq manual-program "gman")))
+#+end_src
+
+*** Dired
+
+**** Move to Trash Instead of Removing a File
 
 It is safer that removed files end up into the Trash bin than being
 removed forever from the disk.
@@ -586,9 +553,51 @@ removed forever from the disk.
     (setq delete-by-moving-to-trash t))
 #+end_src
 
-** Mails
+*** Flymake
 
-*** =SMTP=
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package flymake
+    :hook (prog-mode . flymake-mode)
+    :config
+    (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+    (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
+#+end_src
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package flymake-collection
+    :hook (after-init . flymake-collection-hook-setup))
+#+end_src
+
+*** Org-mode
+
+Disabling confirmation on code execution.
+Activating =ruby= and =python= for evalution in =org-mode= notebooks.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package org
+    :config
+    (setq org-confirm-babel-evaluate nil)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (shell . t)
+       (ruby . t)
+       (python . t))))
+#+end_src
+
+*** Ruby Mode
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package ruby-mode
+    :config
+    (setq ruby-align-to-stmt-keywords t)
+    (setq ruby-align-chained-calls nil)
+    (setq ruby-method-params-indent nil)
+    (setq ruby-block-indent nil)
+    (setq ruby-method-call-indent nil))
+#+end_src
+
+*** SMTP
 
 Let's always have a buffer named *trace of SMTP session to
 <something>* which shows the data exchanges.
@@ -601,6 +610,57 @@ Let's always have a buffer named *trace of SMTP session to
     (setq send-mail-function #'smtpmail-send-it))
 #+end_src
 
+*** History
+
+To have the most recent file visited first, we can activate the
+=savehist-mode=.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  ;; Save history
+  (use-package savehist
+    :init
+    (setq history-length 25)
+    (savehist-mode))
+#+end_src
+
+We can even keep track of the position of the cursor in each visited
+files with =save-place-mode=.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  ;; Remember the last place in a visited file
+  (use-package saveplace
+    :init
+    (save-place-mode))
+#+end_src
+
+*** Display The Current Time In The Mode Line
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package time
+    :ensure nil
+    :hook (after-init . display-time-mode)
+    :config
+    (setq display-time-interval 60)
+    (setq display-time-default-load-average nil))
+#+end_src
+
+*** Display The Battery Status
+
+When working on a laptop, it is generally a good idea to have the
+battery status displayed in the mode line.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package battery
+    :ensure nil
+    :config
+    (when (and battery-status-function
+               (not (string-match-p "N/A"
+                                    (battery-format "%B"
+                                                    (funcall battery-status-function)))))
+      (display-battery-mode 1)))
+#+end_src
+
+** External Packages
 *** =mu4e=
 
 #+begin_src emacs-lisp :tangle "init.el"
@@ -733,8 +793,6 @@ Let's always have a buffer named *trace of SMTP session to
                       (mu4e-maildir-shortcuts . ((:maildir "/laurent.stacul@protonmail.com/Inbox" :key ?i))))))))
 #+end_src
 
-** Packages
-
 *** Magit
 
 This is a very good interface to git.
@@ -756,21 +814,6 @@ In any case, =Magit= is running faster with the default =git=.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package magit)
-#+end_src
-
-*** Man
-
-On MacOS, when issuing =M-x man=, it can take 20 seconds to get the
-list of the available manual pages. To workaround this, we can install
-the =man-db= package and run the command =mandb= after we install a
-new package or update the installed package. Then we set the
-=manual-program= to the GNU version of the man program:
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package man
-    :config
-    (when (eq system-type 'darwin)
-      (setq manual-program "gman")))
 #+end_src
 
 *** Minibuffer Improvements: Vertico & Marginalia
@@ -810,21 +853,6 @@ There is a project that maintains all sorts of snippets:
   (use-package yasnippet-snippets)
 #+end_src
 
-*** Flymake
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package flymake
-    :hook (prog-mode . flymake-mode)
-    :config
-    (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
-    (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
-#+end_src
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package flymake-collection
-    :hook (after-init . flymake-collection-hook-setup))
-#+end_src
-
 *** Markdown
 
 Nice display of Markdown files. When editing, as these files are
@@ -839,19 +867,6 @@ make the line not too long: 80 characters is perfect.
 #+end_src
 
 *** Ruby
-
-**** =ruby-mode=
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package ruby-mode
-    :config
-    (setq ruby-align-to-stmt-keywords t)
-    (setq ruby-align-chained-calls nil)
-    (setq ruby-method-params-indent nil)
-    (setq ruby-block-indent nil)
-    (setq ruby-method-call-indent nil))
-#+end_src
-
 **** =chruby=
 
 #+begin_src emacs-lisp :tangle "init.el"
@@ -882,23 +897,6 @@ Facilities to edit YAML files.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package yaml-mode)
-#+end_src
-
-*** Org-mode
-
-Disabling confirmation on code execution.
-Activating =ruby= and =python= for evalution in =org-mode= notebooks.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package org
-    :config
-    (setq org-confirm-babel-evaluate nil)
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       (shell . t)
-       (ruby . t)
-       (python . t))))
 #+end_src
 
 *** In Buffer Completion with =corfu=

@@ -85,17 +85,6 @@ displayed on is used to set the desired font size."
 
 (setq custom-file (make-temp-file "emacs-custom-"))
 
-;; Save history
-(use-package savehist
-  :init
-  (setq history-length 25)
-  (savehist-mode))
-
-;; Remember the last place in a visited file
-(use-package saveplace
-  :init
-  (save-place-mode))
-
 ;; Refresh buffer when underlying file has changed
 (global-auto-revert-mode 1)
 
@@ -104,22 +93,6 @@ displayed on is used to set the desired font size."
 
 ;; Prompt for passphrase in Emacs
 (setq epg-pinentry-mode 'loopback)
-
-(use-package time
-  :ensure nil
-  :hook (after-init . display-time-mode)
-  :config
-  (setq display-time-interval 60)
-  (setq display-time-default-load-average nil))
-
-(use-package battery
-  :ensure nil
-  :config
-  (when (and battery-status-function
-             (not (string-match-p "N/A"
-                                  (battery-format "%B"
-                                                  (funcall battery-status-function)))))
-    (display-battery-mode 1)))
 
 (defun stac-mode-line-major-mode-name ()
   "Display the capitalized '-mode' truncated major mode."
@@ -237,17 +210,76 @@ currently selected window.")
       (setq grep-template "rg -nH --null -e <R> <F>")
       (setq xref-search-program 'ripgrep))))
 
+(use-package man
+  :config
+  (when (eq system-type 'darwin)
+    (setq manual-program "gman")))
+
 (use-package dired
   :ensure nil
   :commands (dired)
   :config
   (setq delete-by-moving-to-trash t))
 
+(use-package flymake
+  :hook (prog-mode . flymake-mode)
+  :config
+  (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+  (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
+
+(use-package flymake-collection
+  :hook (after-init . flymake-collection-hook-setup))
+
+(use-package org
+  :config
+  (setq org-confirm-babel-evaluate nil)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell . t)
+     (ruby . t)
+     (python . t))))
+
+(use-package ruby-mode
+  :config
+  (setq ruby-align-to-stmt-keywords t)
+  (setq ruby-align-chained-calls nil)
+  (setq ruby-method-params-indent nil)
+  (setq ruby-block-indent nil)
+  (setq ruby-method-call-indent nil))
+
 (use-package smtpmail
   :ensure nil
   :config
   (setq smtpmail-debug-info t)
   (setq send-mail-function #'smtpmail-send-it))
+
+;; Save history
+(use-package savehist
+  :init
+  (setq history-length 25)
+  (savehist-mode))
+
+;; Remember the last place in a visited file
+(use-package saveplace
+  :init
+  (save-place-mode))
+
+(use-package time
+  :ensure nil
+  :hook (after-init . display-time-mode)
+  :config
+  (setq display-time-interval 60)
+  (setq display-time-default-load-average nil))
+
+(use-package battery
+  :ensure nil
+  :config
+  (when (and battery-status-function
+             (not (string-match-p "N/A"
+                                  (battery-format "%B"
+                                                  (funcall battery-status-function)))))
+    (display-battery-mode 1)))
 
 (use-package mu4e
   :ensure nil
@@ -379,11 +411,6 @@ currently selected window.")
 
 (use-package magit)
 
-(use-package man
-  :config
-  (when (eq system-type 'darwin)
-    (setq manual-program "gman")))
-
 (use-package vertico
   :init
   (vertico-mode)
@@ -401,27 +428,10 @@ currently selected window.")
 
 (use-package yasnippet-snippets)
 
-(use-package flymake
-  :hook (prog-mode . flymake-mode)
-  :config
-  (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
-  (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
-
-(use-package flymake-collection
-  :hook (after-init . flymake-collection-hook-setup))
-
 (use-package markdown-mode
   :hook
   ((markdown-mode . auto-fill-mode)
    (markdown-mode . (lambda() (set-fill-column 80)))))
-
-(use-package ruby-mode
-  :config
-  (setq ruby-align-to-stmt-keywords t)
-  (setq ruby-align-chained-calls nil)
-  (setq ruby-method-params-indent nil)
-  (setq ruby-block-indent nil)
-  (setq ruby-method-call-indent nil))
 
 (use-package chruby)
 
@@ -430,16 +440,6 @@ currently selected window.")
 (use-package ruby-end)
 
 (use-package yaml-mode)
-
-(use-package org
-  :config
-  (setq org-confirm-babel-evaluate nil)
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (shell . t)
-     (ruby . t)
-     (python . t))))
 
 (use-package emacs
   :ensure nil
