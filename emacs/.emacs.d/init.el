@@ -412,11 +412,14 @@ currently selected window.")
 (use-package magit)
 
 (use-package vertico
+  :custom
+  (setq vertico-cycle t)
   :init
-  (vertico-mode)
-  (setq vertico-cycle t))
+  (vertico-mode))
 
 (use-package marginalia
+  :bind (:map minibuffer-local-map
+              ("M-A" . marginalia-cycle))
   :init
   (marginalia-mode))
 
