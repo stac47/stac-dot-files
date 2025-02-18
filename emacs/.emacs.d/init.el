@@ -467,8 +467,15 @@ currently selected window.")
         '(archive-mode image-mode docview-mode pdf-view-mode)))
 
 (use-package corfu
-  :ensure t
-  :hook (after-init . global-corfu-mode))
+  :hook (after-init . global-corfu-mode)
+  :bind (:map corfu-map ("<tab>" . corfu-complete))
+  :config
+  (setq tab-always-indent 'complete)
+  (setq corfu-preview-current nil)
+  (setq corfu-min-width 20)
+
+  (setq corfu-popupinfo-delay '(1.25 . 0.5))
+  (corfu-popupinfo-mode 1))
 
 (use-package bongo
   :config
