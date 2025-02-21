@@ -106,6 +106,16 @@ map to the desired font size.
 
 *** Package System Configuration
 
+Until Emacs 30 is out, we need a package to be able to use
+=package-vc-install= with =use-package=. This allows to install
+package directly from source rather than for a package repository.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (unless (package-installed-p 'vc-use-package)
+    (package-vc-install "https://github.com/slotThe/vc-use-package"))
+  (require 'vc-use-package)
+#+end_src
+
 I add =melpa= and =melpa-stable= to the package repositories with a
 preference to =melpa-stable=.
 
@@ -873,7 +883,8 @@ make the line not too long: 80 characters is perfect.
 **** =chruby=
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (use-package chruby)
+  (use-package chruby
+    :vc (:fetcher github :repo stac47/chruby.el :rev "main"))
 #+end_src
 
 **** IRB Buffer

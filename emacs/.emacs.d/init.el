@@ -37,6 +37,10 @@ displayed on is used to set the desired font size."
 
 (stac/adapt-font-size)
 
+(unless (package-installed-p 'vc-use-package)
+  (package-vc-install "https://github.com/slotThe/vc-use-package"))
+(require 'vc-use-package)
+
 (require 'package)
 
 (add-to-list 'package-archives
@@ -436,7 +440,8 @@ currently selected window.")
   ((markdown-mode . auto-fill-mode)
    (markdown-mode . (lambda() (set-fill-column 80)))))
 
-(use-package chruby)
+(use-package chruby
+  :vc (:fetcher github :repo stac47/chruby.el :rev "main"))
 
 (use-package inf-ruby)
 
