@@ -156,6 +156,14 @@ currently selected window.")
   (dolist (grammar treesit-language-source-alist)
     (treesit-install-language-grammar (car grammar))))
 
+(setenv "PAGER" "cat")
+
+(use-package eshell
+  :init
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (eshell/alias "ll" "ls -AlohG --color=always"))))
+
 (use-package project
   :config
   (assq-delete-all 'project-vc-dir project-switch-commands)
