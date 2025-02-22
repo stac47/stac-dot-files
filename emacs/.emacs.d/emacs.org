@@ -106,16 +106,6 @@ map to the desired font size.
 
 *** Package System Configuration
 
-Until Emacs 30 is out, we need a package to be able to use
-=package-vc-install= with =use-package=. This allows to install
-package directly from source rather than for a package repository.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (unless (package-installed-p 'vc-use-package)
-    (package-vc-install "https://github.com/slotThe/vc-use-package"))
-  (require 'vc-use-package)
-#+end_src
-
 I add =melpa= and =melpa-stable= to the package repositories with a
 preference to =melpa-stable=.
 
@@ -132,14 +122,13 @@ preference to =melpa-stable=.
           ("gnu" . 1)
           ("nongnu" . 1)
           ("melpa" . 0)))
-
-  (package-initialize)
 #+end_src
 
 In case, I install my configuration on a new machine, I update the
 package index.
 
 #+begin_src emacs-lisp :tangle "init.el"
+  (package-initialize)
   (unless package-archive-contents (package-refresh-contents))
 #+end_src
 
@@ -149,6 +138,16 @@ them. On a new installation, all the packages will hence be installed.
 #+begin_src emacs-lisp :tangle "init.el"
   (require 'use-package)
   (setq use-package-always-ensure t)
+#+end_src
+
+Until Emacs 30 is out, we need a package to be able to use
+=package-vc-install= with =use-package=. This allows to install
+package directly from source rather than for a package repository.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (unless (package-installed-p 'vc-use-package)
+    (package-vc-install "https://github.com/slotThe/vc-use-package"))
+  (require 'vc-use-package)
 #+end_src
 
 When we want to update the packages, we can use =M-x

@@ -37,10 +37,6 @@ displayed on is used to set the desired font size."
 
 (stac/adapt-font-size)
 
-(unless (package-installed-p 'vc-use-package)
-  (package-vc-install "https://github.com/slotThe/vc-use-package"))
-(require 'vc-use-package)
-
 (require 'package)
 
 (add-to-list 'package-archives
@@ -55,11 +51,14 @@ displayed on is used to set the desired font size."
         ("melpa" . 0)))
 
 (package-initialize)
-
 (unless package-archive-contents (package-refresh-contents))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+(unless (package-installed-p 'vc-use-package)
+  (package-vc-install "https://github.com/slotThe/vc-use-package"))
+(require 'vc-use-package)
 
 (defun stac/recompile-packages ()
   "Recompile all the packages in the user's package directory."
