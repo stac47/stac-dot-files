@@ -56,9 +56,10 @@ displayed on is used to set the desired font size."
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(unless (package-installed-p 'vc-use-package)
-  (package-vc-install "https://github.com/slotThe/vc-use-package"))
-(require 'vc-use-package)
+(when (< emacs-major-version 30)
+  (unless (package-installed-p 'vc-use-package)
+    (package-vc-install "https://github.com/slotThe/vc-use-package"))
+  (require 'vc-use-package))
 
 (defun stac/recompile-packages ()
   "Recompile all the packages in the user's package directory."

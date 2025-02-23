@@ -145,9 +145,10 @@ Until Emacs 30 is out, we need a package to be able to use
 package directly from source rather than for a package repository.
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (unless (package-installed-p 'vc-use-package)
-    (package-vc-install "https://github.com/slotThe/vc-use-package"))
-  (require 'vc-use-package)
+  (when (< emacs-major-version 30)
+    (unless (package-installed-p 'vc-use-package)
+      (package-vc-install "https://github.com/slotThe/vc-use-package"))
+    (require 'vc-use-package))
 #+end_src
 
 When we want to update the packages, we can use =M-x
