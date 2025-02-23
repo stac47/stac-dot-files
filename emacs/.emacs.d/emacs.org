@@ -1000,15 +1000,6 @@ Facilities to edit YAML files.
             ("Radio Classique" . "http://icepe6.infomaniak.ch/radioclassique-high.mp3"))))
 #+end_src
 
-**** Spaced repetition
-
-A funny way to learn is to use the spaced repetition technique. A nice
-emacs package is =org-drill=.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package org-drill)
-#+end_src
-
 *** Web Server
 
 It may be useful to start a Web server from a local directory for
