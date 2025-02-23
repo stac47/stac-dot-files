@@ -200,8 +200,7 @@ currently selected window.")
   :ensure nil
   :demand t
   :config
-  (setq search-whitespace-regexp ".*?"
-        isearch-lazy-count t
+  (setq isearch-lazy-count t
         lazy-count-prefix-format "(%s/%s) "
         lazy-count-suffix-format nil))
 
