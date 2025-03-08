@@ -2,7 +2,7 @@ IMAPAccount gmail-main
 Host imap.gmail.com
 User laurent.stacul@gmail.com
 PassCmd "pass Email/mutt_laurent.stacul@gmail.com"
-SSLType IMAPS
+TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore gmail-main-remote
@@ -24,7 +24,7 @@ IMAPAccount gmail-secundary
 Host imap.gmail.com
 User captain.stac@gmail.com
 PassCmd "pass Email/emacs_captain.stac@gmail.com"
-SSLType IMAPS
+TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore gmail-secundary-remote
@@ -47,7 +47,7 @@ Host 127.0.0.1
 Port 1143
 User laurent.stacul@protonmail.com
 PassCmd "pass Email/protonmail-bridge"
-SSLType STARTTLS
+TLSType STARTTLS
 CertificateFile /home/stac/.local/share/protonmail/cert.pem
 
 IMAPStore protonmail-remote
@@ -70,7 +70,7 @@ Host imap.laposte.net
 Port 993
 User laurent.stacul@laposte.net
 PassCmd "pass Email/laurent.stacul@laposte.net"
-SSLType IMAPS
+TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore laposte-remote
