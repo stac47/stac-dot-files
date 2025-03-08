@@ -328,12 +328,28 @@ currently selected window.")
            :key ?u
            )
           (
-           :name "From Emacs Lists"
+           :name "From All Emacs Lists"
            :query (lambda () (concat "flag:unread AND "
                                      "NOT flag:trashed AND "
                                      "flag:list AND "
                                      (stac/mu4e-bookmark-mailing-list-query stac/emacs-mailing-lists)))
            :key ?e
+           )
+          (
+           :name "From Info Emacs Lists"
+           :query (lambda () (concat "flag:unread AND "
+                                     "NOT flag:trashed AND "
+                                     "flag:list AND "
+                                     "list:info-gnu-emacs.gnu.org"))
+           :key ?i
+           )
+          (
+           :name "From Help User Emacs Lists"
+           :query (lambda () (concat "flag:unread AND "
+                                     "NOT flag:trashed AND "
+                                     "flag:list AND "
+                                     "list:help-gnu-emacs.gnu.org"))
+           :key ?h
            )
           (
            :name "From Other Lists"
