@@ -140,17 +140,6 @@ them. On a new installation, all the packages will hence be installed.
   (setq use-package-always-ensure t)
 #+end_src
 
-Until Emacs 30 is out, we need a package to be able to use
-=package-vc-install= with =use-package=. This allows to install
-package directly from source rather than for a package repository.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (when (< emacs-major-version 30)
-    (unless (package-installed-p 'vc-use-package)
-      (package-vc-install "https://github.com/slotThe/vc-use-package"))
-    (require 'vc-use-package))
-#+end_src
-
 When we want to update the packages, we can use =M-x
 package-upgrade-all=. Sometimes, we need to recompile all the installed
 plugins. Execute the following interactive command:
@@ -934,7 +923,7 @@ make the line not too long: 80 characters is perfect.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package chruby
-    :vc (:fetcher github :repo stac47/chruby.el :rev "main"))
+    :vc (:url "https://github.com/stac47/chruby.el.git" :branch "main"))
 #+end_src
 
 **** IRB Buffer

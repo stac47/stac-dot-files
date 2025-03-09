@@ -56,11 +56,6 @@ displayed on is used to set the desired font size."
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(when (< emacs-major-version 30)
-  (unless (package-installed-p 'vc-use-package)
-    (package-vc-install "https://github.com/slotThe/vc-use-package"))
-  (require 'vc-use-package))
-
 (defun stac/recompile-packages ()
   "Recompile all the packages in the user's package directory."
   (interactive)
@@ -465,7 +460,7 @@ currently selected window.")
    (markdown-mode . (lambda() (set-fill-column 80)))))
 
 (use-package chruby
-  :vc (:fetcher github :repo stac47/chruby.el :rev "main"))
+  :vc (:url "https://github.com/stac47/chruby.el.git" :branch "main"))
 
 (use-package inf-ruby)
 
