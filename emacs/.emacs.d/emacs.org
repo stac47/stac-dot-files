@@ -695,10 +695,21 @@ battery status displayed in the mode line.
 ** External Packages
 *** =mu4e=
 
+=mu4e= is a special package because it has a strong dependency on the
+=mu= tool which is used to index the mails. So you need to install it
+either from scratch or from your distribution package.
+
+#+begin_src bash
+  sudo dnf install maildir-utils
+#+end_src
+
+This installs =mu= and also put the Emacs binding =mu4e= into
+=/usr/share/emacs/site-lisp/mu4e=.
+
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package mu4e
     :ensure nil
-    :if (locate-library "mu4e.el")
+    :load-path "/usr/share/emacs/site-lisp/mu4e"
     :config
     (setq mu4e-confirm-quit nil)
     (setq mu4e-hide-index-messages t)

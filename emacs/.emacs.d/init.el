@@ -294,7 +294,7 @@ currently selected window.")
 
 (use-package mu4e
   :ensure nil
-  :if (locate-library "mu4e.el")
+  :load-path "/usr/share/emacs/site-lisp/mu4e"
   :config
   (setq mu4e-confirm-quit nil)
   (setq mu4e-hide-index-messages t)
