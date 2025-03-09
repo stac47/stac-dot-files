@@ -1,0 +1,120 @@
+* Installing Emacs From Source
+
+** Clone the Git Repository
+
+#+begin_src bash
+  git clone git://git.savannah.gnu.org/emacs.git
+#+end_src
+
+Checkout the branch you want if you don't want to build the unstable
+development version.
+
+** Install your System Dependencies
+
+*** Fedora
+
+#+begin_src bash
+  dnf install alsa-lib-devel \
+      atk-devel \
+      autoconf \
+      bzip2 \
+      cairo \
+      cairo-devel \
+      dbus-devel \
+      desktop-file-utils \
+      fontconfig-devel \
+      freetype-devel \
+      gcc \
+      giflib-devel \
+      glibc-devel \
+      gnupg2 \
+      gnutls-devel \
+      gtk3-devel \
+      gzip \
+      harfbuzz-devel \
+      ImageMagick-c++-devel \
+      jansson-devel \
+      libacl-devel \
+      libappstream-glib \
+      libgccjit-devel \
+      libjpeg-turbo \
+      libjpeg-turbo-devel \
+      libotf-devel \
+      libpng-devel \
+      librsvg2-devel \
+      libselinux-devel \
+      libtiff-devel \
+      libtree-sitter-devel \
+      libwebp-devel \
+      libxml2-devel \
+      m17n-lib-devel \
+      make \
+      ncurses-devel \
+      sqlite-devel \
+      systemd-devel \
+      texinfo \
+      zlib-devel \
+      gpm-devel \
+      libX11-devel \
+      libXau-devel \
+      libXdmcp-devel \
+      libXi-devel \
+      libXpm-devel \
+      libXrender-devel \
+      libXt-devel \
+      xorg-x11-proto-devel \
+      util-linux \
+      libgccjit
+#+end_src
+
+** Prepare the autoconf system
+
+#+begin_src bash
+  ./autogen.sh
+#+end_src
+
+** Configure
+
+#+begin_src bash
+  ./configure  \
+      --prefix="$HOME/.local" \
+      --disable-gc-mark-trace \
+      --with-cairo \
+      --with-dbus \
+      --with-gif \
+      --with-gpm=no \
+      --with-gnutls \
+      --with-harfbuzz \
+      --with-imagemagick \
+      --with-jpeg \
+      --with-mailutils \
+      --with-modules \
+      --with-native-compilation=aot \
+      --with-png \
+      --with-rsvg \
+      --with-sqlite3 \
+      --with-tiff \
+      --with-tree-sitter \
+      --with-webp \
+      --with-wide-int \
+      --with-x-toolkit=gtk3 \
+      --with-xinput2 \
+      --with-xpm \
+      --without-pop \
+      CFLAGS="-O2 -pipe -mtune=native -march=native -fomit-frame-pointer"
+#+end_src
+
+** Compile
+
+#+begin_src bash
+  JOBS=`nproc --ignore=2`
+  make -j${JOBS} NATIVE_FULL_AOT=1
+#+end_src
+
+To test at this stage, simply run =src/emacs=.
+
+** Install
+
+#+begin_src bash
+  make install
+#+end_src
