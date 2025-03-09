@@ -361,7 +361,8 @@ currently selected window.")
            )
           (
            :name "Today's messages"
-           :query "date:today..now"
+           :query (lambda () (concat "date:today..now AND NOT"
+                                     (stac/mu4e-bookmark-mailing-list-query stac/development-mailing-lists)))
            :key ?t)
           )
         )
