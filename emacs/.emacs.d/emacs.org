@@ -788,14 +788,14 @@ This installs =mu= and also put the Emacs binding =mu4e= into
               (lambda (msg)
                 (when msg
                   (string-prefix-p "/laurent.stacul@gmail.com" (mu4e-message-field msg :maildir))))
-              :vars '((user-mail-address . "laurent.stacul@gmail.com")
+              :vars `((user-mail-address . "laurent.stacul@gmail.com")
                       (user-full-name . "Laurent Stacul")
                       (smtpmail-smtp-server . "smtp.gmail.com")
                       (smtpmail-smtp-service . 465)
                       (smtpmail-stream-type . ssl)
                       (mu4e-drafts-folder . "/laurent.stacul@gmail.com/[Gmail]/Brouillons")
                       (mu4e-sent-folder . "/laurent.stacul@gmail.com/[Gmail]/Messages envoyés")
-                      (mu4e-refile-folder . "/laurent.stacul@gmail.com/[Gmail]/Tous les messages")
+                      (mu4e-refile-folder . ,(cdr (assoc 'laurent.stacul stac/mu4e-exclude-gmail-refile-folders)))
                       (mu4e-trash-folder . "/laurent.stacul@gmail.com/[Gmail]/Corbeille")
                       ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
                       (mu4e-sent-messages-behavior . delete)
@@ -806,14 +806,14 @@ This installs =mu= and also put the Emacs binding =mu4e= into
               (lambda (msg)
                 (when msg
                   (string-prefix-p "/captain.stac@gmail.com" (mu4e-message-field msg :maildir))))
-              :vars '((user-mail-address . "captain.stac@gmail.com")
+              :vars `((user-mail-address . "captain.stac@gmail.com")
                       (user-full-name . "Laurent Stacul")
                       (smtpmail-smtp-server . "smtp.gmail.com")
                       (smtpmail-smtp-service . 465)
                       (smtpmail-stream-type . ssl)
                       (mu4e-drafts-folder . "/captain.stac@gmail.com/[Gmail]/Brouillons")
                       (mu4e-sent-folder . "/captain.stac@gmail.com/[Gmail]/Messages envoyés")
-                      (mu4e-refile-folder . "/captain.stac@gmail.com/[Gmail]/Tous les messages")
+                      (mu4e-refile-folder . ,(cdr (assoc 'laurent.stacul stac/mu4e-exclude-gmail-refile-folders)))
                       (mu4e-trash-folder . "/captain.stac@gmail.com/[Gmail]/Corbeille")
                       ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
                       (mu4e-sent-messages-behavior . delete)
