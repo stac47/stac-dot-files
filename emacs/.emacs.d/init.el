@@ -316,6 +316,14 @@ currently selected window.")
   (defun stac/mu4e-bookmark-mailing-list-query (mailing-lists)
     (format "(%s)"
             (mapconcat (lambda (s) (format "list:%s" s)) mailing-lists " or ")))
+  (setq stac/mu4e-exclude-gmail-refile-folders
+        '((laurent.stacul . "/laurent.stacul@gmail.com/[Gmail]/Tous les messages")
+          (captain.stac . "/captain.stac@gmail.com/[Gmail]/Tous les messages")))
+  (defun stac/mu4e-gmail-refile-folders-query ()
+    (format "(%s)"
+            (mapconcat (lambda (l) (format "maildir:\"%s\"" (cdr l)))
+                       stac/mu4e-exclude-gmail-refile-folders
+                       " or ")))
   (setq mu4e-bookmarks
         '(
           (
@@ -325,40 +333,41 @@ currently selected window.")
            )
           (
            :name "From All Emacs Lists"
-           :query (lambda () (concat "flag:unread AND "
-                                     "NOT flag:trashed AND "
+           :query (lambda () (concat "NOT flag:trashed AND "
                                      "flag:list AND "
-                                     (stac/mu4e-bookmark-mailing-list-query stac/emacs-mailing-lists)))
+                                     (stac/mu4e-bookmark-mailing-list-query stac/emacs-mailing-lists) " AND "
+                                     "NOT " (stac/mu4e-gmail-refile-folders-query)))
            :key ?e
            )
           (
            :name "From Info Emacs Lists"
-           :query (lambda () (concat "flag:unread AND "
-                                     "NOT flag:trashed AND "
+           :query (lambda () (concat "NOT flag:trashed AND "
                                      "flag:list AND "
-                                     "list:info-gnu-emacs.gnu.org"))
+                                     "list:info-gnu-emacs.gnu.org AND "
+                                     "NOT " (stac/mu4e-gmail-refile-folders-query)))
            :key ?i
            )
           (
            :name "From Help User Emacs Lists"
-           :query (lambda () (concat "flag:unread AND "
-                                     "NOT flag:trashed AND "
+           :query (lambda () (concat "NOT flag:trashed AND "
                                      "flag:list AND "
-                                     "list:help-gnu-emacs.gnu.org"))
+                                     "list:help-gnu-emacs.gnu.org AND "
+                                     "NOT " (stac/mu4e-gmail-refile-folders-query)))
            :key ?h
            )
           (
            :name "From Other Lists"
-           :query (lambda () (concat "flag:unread AND "
-                                     "NOT flag:trashed AND "
-                                     "flag:list AND NOT "
-                                     (stac/mu4e-bookmark-mailing-list-query stac/development-mailing-lists)))
+           :query (lambda () (concat "NOT flag:trashed AND "
+                                     "flag:list AND "
+                                     "NOT " (stac/mu4e-bookmark-mailing-list-query stac/development-mailing-lists) " AND "
+                                     "NOT " (stac/mu4e-gmail-refile-folders-query)))
            :key ?l
            )
           (
            :name "Today's messages"
-           :query (lambda () (concat "date:today..now AND NOT"
-                                     (stac/mu4e-bookmark-mailing-list-query stac/development-mailing-lists)))
+           :query (lambda () (concat "date:today..now AND "
+                                     "NOT " (stac/mu4e-bookmark-mailing-list-query stac/development-mailing-lists) " AND "
+                                     "NOT " (stac/mu4e-gmail-refile-folders-query)))
            :key ?t)
           )
         )
