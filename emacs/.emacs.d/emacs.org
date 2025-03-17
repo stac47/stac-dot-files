@@ -1049,3 +1049,28 @@ a directory, use =M-x httpd-serve-directory=.
   (use-package kubed
     :bind-keymap ("C-c k" . kubed-prefix-map))
 #+end_src
+
+*** Lilypond
+
+=GNU Lilypond= is a tool to write music sheets. It comes with some
+integration with text editors like Emacs and Vim. Such integration
+are embedded in the packages provided by the GNU/Linux
+distribution. For instance, on =Fedora=, the Emacs packages are
+installed in =/usr/share/emacs/site-lisp=.
+
+As I compile Emacs and don't install it in normal directories, when
+Emacs starts up, =/usr/share/emacs/site-lisp= is not in the
+=load-path= preventing the =lilypond-init.el= to be early executed.
+
+The following snippet does the same as the =lilypond-init.el= using
+=use-package=.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package lilypond-mode
+    :ensure nil
+    :load-path "/usr/share/emacs/site-lisp"
+    :if (file-exists-p "/usr/share/emacs/site-lisp/lilypond-mode.el")
+    :mode ("\\.ly\\'" "\\.ily\\'")
+    :config
+    (turn-on-font-lock))
+#+end_src

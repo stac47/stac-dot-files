@@ -531,3 +531,11 @@ currently selected window.")
 
 (use-package kubed
   :bind-keymap ("C-c k" . kubed-prefix-map))
+
+(use-package lilypond-mode
+  :ensure nil
+  :load-path "/usr/share/emacs/site-lisp"
+  :if (file-exists-p "/usr/share/emacs/site-lisp/lilypond-mode.el")
+  :mode ("\\.ly\\'" "\\.ily\\'")
+  :config
+  (turn-on-font-lock))
