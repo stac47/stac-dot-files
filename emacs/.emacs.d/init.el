@@ -539,3 +539,7 @@ currently selected window.")
   :mode ("\\.ly\\'" "\\.ily\\'")
   :config
   (turn-on-font-lock))
+
+(use-package bash-completion
+  :config
+  (bash-completion-setup))

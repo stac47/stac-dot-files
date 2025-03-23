@@ -1074,3 +1074,15 @@ The following snippet does the same as the =lilypond-init.el= using
     :config
     (turn-on-font-lock))
 #+end_src
+
+*** Bash Completion in =shell-mode=
+
+My shell of choice is GNU Bash. To have the same completion mechanism
+in Emacs and in a terminal, there is a package that correctly set the
+Emacs completion mechanisms up.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package bash-completion
+    :config
+    (bash-completion-setup))
+#+end_src
