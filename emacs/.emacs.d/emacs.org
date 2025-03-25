@@ -1086,3 +1086,22 @@ Emacs completion mechanisms up.
     :config
     (bash-completion-setup))
 #+end_src
+
+*** Taking notes
+
+An interesting package to take and structure quick notes is the
+=Denote= package.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package denote
+    :hook (dired-mode . denote-dired-mode)
+    :bind
+    (("C-c n n" . denote)
+     ("C-c n r" . denote-rename-file)
+     ("C-c n l" . denote-link)
+     ("C-c n b" . denote-backlinks)
+     ("C-c n d" . denote-sort-dired))
+    :config
+    (setq denote-directory (expand-file-name "~/Documents/notes/"))
+    (denote-rename-buffer-mode 1))
+#+end_src
