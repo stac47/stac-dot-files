@@ -1,10 +1,38 @@
+#!/usr/bin/env bash
+
+stac_modify_path_like_var() {
+    local var=${1:?'Missing variable name'}
+    local value=${2:?'Missing value'}
+    local modif_type=${3:-prepend}
+    if [[ $modif_type != 'prepend' && $modif_type != 'append' ]]; then
+        echo "Wrong modification type. $modif_type not in [append, prepend]"
+        return
+    fi
+
+    local current_value=$(eval "echo \$$var")
+    case ":${current_value}:" in
+        *":$value:"*) :;;
+        *) echo "Current: $current_value"
+           if [[ -z "${current_value}" ]]; then
+               eval "export $var=$value"
+               echo "Set $var=$value"
+           elif [[ "$modif_type" == 'prepend' ]]; then
+               eval "export $var=$value\${$var:+\":\$$var\"}"
+           else
+               eval "export $var=\${$var:+\"\$$var:\"}$value"
+           fi ;;
+    esac
+}
+
+export -f stac_modify_path_like_var
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export GPG_TTY=$(tty)
-export BROWSER="firefox"
-export EDITOR="emacsclient"
-export BUNDLER_EDITOR="emacsclient -n"
+stac_modify_path_like_var MANPATH "$HOME/.local/share/man"
+stac_modify_path_like_var LD_LIBRARY_PATH "$HOME/.local/lib"
+stac_modify_path_like_var PATH "$HOME/.local/bin"
+
 if [[ -z "${INSIDE_EMACS}" ]]; then
     export PAGER=less
     export MANPAGER=less
@@ -12,6 +40,11 @@ else
     export PAGER=cat
     export MANPAGER=cat
 fi
+export GDBHISTFILE=$HOME/.gdb_history
+export GPG_TTY=$(tty)
+export BROWSER="firefox"
+export EDITOR="emacsclient"
+
 # -F: automatically exits if the entire file can be displayed on one screen
 # -I: causes search to ignore case
 # -R: display ANSI colors
@@ -24,6 +57,7 @@ if [[ -e "$HOME/.bashrc.local" ]]; then
 fi
 
 if ls --version 1>/dev/null 2>&1; then
+    # GNU ls
     LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
     alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
 else
