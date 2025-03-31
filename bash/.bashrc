@@ -9,13 +9,12 @@ stac_modify_path_like_var() {
         return
     fi
 
-    local current_value=$(eval "echo \$$var")
+    local current_value
+    current_value=$(eval "echo \$$var")
     case ":${current_value}:" in
         *":$value:"*) :;;
-        *) echo "Current: $current_value"
-           if [[ -z "${current_value}" ]]; then
+        *) if [[ -z "${current_value}" ]]; then
                eval "export $var=$value"
-               echo "Set $var=$value"
            elif [[ "$modif_type" == 'prepend' ]]; then
                eval "export $var=$value\${$var:+\":\$$var\"}"
            else
@@ -41,9 +40,10 @@ else
     export MANPAGER=cat
 fi
 export GDBHISTFILE=$HOME/.gdb_history
-export GPG_TTY=$(tty)
 export BROWSER="firefox"
 export EDITOR="emacsclient"
+export GPG_TTY
+GPG_TTY=$(tty)
 
 # -F: automatically exits if the entire file can be displayed on one screen
 # -I: causes search to ignore case
@@ -58,10 +58,10 @@ fi
 
 if ls --version 1>/dev/null 2>&1; then
     # GNU ls
-    LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
     alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
 else
-    LSCOLORS='exfxcxdxbxegedabagacad'
+    export LSCOLORS='exfxcxdxbxegedabagacad'
     alias ls='ls -G'
 fi
 
@@ -69,7 +69,7 @@ alias ll="ls -lh"
 alias la='ls -a'
 alias lla='ls -la'
 
-if [[ "$OSTYPE" =~ "^linux.*" ]] || [[ "$OSTYPE" == 'cygwin' ]]; then
+if [[ "$OSTYPE" =~ ^linux.* ]] || [[ "$OSTYPE" == 'cygwin' ]]; then
     alias psall='ps -ef'
     alias psmy='ps wwuxf'
 fi
