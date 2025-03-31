@@ -1105,3 +1105,17 @@ An interesting package to take and structure quick notes is the
     (setq denote-directory (expand-file-name "~/Documents/notes/"))
     (denote-rename-buffer-mode 1))
 #+end_src
+
+*** Environment Variable
+
+In particular on MacOS, Emacs only have a very minimal =PATH=
+value. This package will make sure Emacs has the same values has in a
+shell.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package exec-path-from-shell
+    :config
+    (when (memq window-system '(mac ns x))
+      (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LD_LIBRARY_PATH"))
+      (exec-path-from-shell-initialize)))
+#+end_src
