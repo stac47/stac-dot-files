@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Auto-completion
+source /usr/share/doc/git/contrib/completion/git-prompt.sh
+source /usr/share/doc/git/contrib/completion/git-completion.bash
+source /usr/share/bash-completion/bash_completion
+source $HOME/.local/share/exercism/exercism_completion.bash
+
+# chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+chruby 3.4
+export BUNDLER_EDITOR="emacsclient -n"
+
+# direnv
+eval "$(direnv hook bash)"
+
+# Node
+export NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"
+source "$NVM_DIR/bash_completion"

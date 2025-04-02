@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+source <(/opt/homebrew/bin/brew shellenv)
+
+stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS'
+stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS/bin'
+stac_modify_path_like_var PATH "$(brew --prefix libpq)/bin"
+stac_modify_path_like_var PATH "$(brew --prefix make)/libexec/gnubin"
+stac_modify_path_like_var PATH "$(brew --prefix coreutils)/libexec/gnubin"
+stac_modify_path_like_var PATH "$(brew --prefix grep)/libexec/gnubin"
+
+# stac_modify_path_like_var PATH "$(brew --prefix git)/share/git-core/contrib/diff-highlight"
+
+# For libgccjit
+stac_modify_path_like_var LD_LIBRARY_PATH '/opt/homebrew/lib/gcc/current'
+
+[[ -x $(command -v direnv) ]] && eval "$(direnv hook bash)"
+[[ -x $(command -v kubectl) ]] && source <(kubectl completion bash)
+
+source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
+source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
+chruby 3.4
+
+# Using system git (faster with magit than the one provided by homebrew)
+source "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
+source "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+
+if type brew &>/dev/null
+then
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+  then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+    do
+      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+    done
+  fi
+fi
+
+export NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"
+source "$NVM_DIR/bash_completion"
+
+export VOLTA_HOME="$HOME/.volta"
+stac_modify_path_like_var PATH "${VOLTA_HOME}/bin"
+
+source "/Users/lstacul/Library/Application Support/creds/nexus"

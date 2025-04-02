@@ -141,9 +141,19 @@ update. This is mainly useful when using a shell multiplexer like
 
 ** Examples of =.bashrc.local=
 
-*** GNU
+The following are examples that are symlinked in =HOME= by =stow=. To
+use them as is, just create a symlink like this (from your =HOME=
+directory):
 
 #+begin_src shell
+  ln -s .bashrc.local.home .bashrc.local
+#+end_src
+
+*** GNU
+
+This is what I use at home:
+
+#+begin_src shell :tangle .bashrc.local.home
   #!/usr/bin/env bash
 
   # Auto-completion
@@ -169,13 +179,21 @@ update. This is mainly useful when using a shell multiplexer like
 
 *** MacOS
 
-#+begin_src shell
+This is what I use at my current workplace:
+
+#+begin_src shell :tangle .bashrc.local.work
   #!/usr/bin/env bash
 
   source <(/opt/homebrew/bin/brew shellenv)
 
   stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS'
   stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS/bin'
+  stac_modify_path_like_var PATH "$(brew --prefix libpq)/bin"
+  stac_modify_path_like_var PATH "$(brew --prefix make)/libexec/gnubin"
+  stac_modify_path_like_var PATH "$(brew --prefix coreutils)/libexec/gnubin"
+  stac_modify_path_like_var PATH "$(brew --prefix grep)/libexec/gnubin"
+
+  # stac_modify_path_like_var PATH "$(brew --prefix git)/share/git-core/contrib/diff-highlight"
 
   # For libgccjit
   stac_modify_path_like_var LD_LIBRARY_PATH '/opt/homebrew/lib/gcc/current'
@@ -193,7 +211,6 @@ update. This is mainly useful when using a shell multiplexer like
 
   if type brew &>/dev/null
   then
-    # HOMEBREW_PREFIX="$(brew --prefix)"
     if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
     then
       source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
@@ -208,4 +225,9 @@ update. This is mainly useful when using a shell multiplexer like
   export NVM_DIR="$HOME/.nvm"
   source "$NVM_DIR/nvm.sh"
   source "$NVM_DIR/bash_completion"
+
+  export VOLTA_HOME="$HOME/.volta"
+  stac_modify_path_like_var PATH "${VOLTA_HOME}/bin"
+
+  source "/Users/lstacul/Library/Application Support/creds/nexus"
 #+end_src
