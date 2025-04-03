@@ -565,7 +565,8 @@ new package or update the installed package. Then we set the
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package man
-    :config
+    :commands man
+    :init
     (when (eq system-type 'darwin)
       (setq manual-program "gman")))
 #+end_src

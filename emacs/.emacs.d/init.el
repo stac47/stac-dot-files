@@ -223,7 +223,8 @@ currently selected window.")
       (setq xref-search-program 'ripgrep))))
 
 (use-package man
-  :config
+  :commands man
+  :init
   (when (eq system-type 'darwin)
     (setq manual-program "gman")))
 
