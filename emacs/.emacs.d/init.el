@@ -56,6 +56,12 @@ displayed on is used to set the desired font size."
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(when init-file-debug
+  (setq use-package-verbose t
+        use-package-expand-minimally nil
+        use-package-compute-statistics t
+        debug-on-error t))
+
 (defun stac/recompile-packages ()
   "Recompile all the packages in the user's package directory."
   (interactive)

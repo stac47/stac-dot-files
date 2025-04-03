@@ -140,6 +140,17 @@ them. On a new installation, all the packages will hence be installed.
   (setq use-package-always-ensure t)
 #+end_src
 
+In case I want to debug by boot, I can add some logs when Emacs is
+started with the =--debug-init= option:
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (when init-file-debug
+    (setq use-package-verbose t
+          use-package-expand-minimally nil
+          use-package-compute-statistics t
+          debug-on-error t))
+#+end_src
+
 When we want to update the packages, we can use =M-x
 package-upgrade-all=. Sometimes, we need to recompile all the installed
 plugins. Execute the following interactive command:
