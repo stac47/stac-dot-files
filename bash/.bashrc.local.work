@@ -1,23 +1,5 @@
 #!/usr/bin/env bash
 
-source <(/opt/homebrew/bin/brew shellenv)
-
-stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS'
-stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS/bin'
-
-# Not calling brew for performance reason.
-# stac_modify_path_like_var PATH "$(brew --prefix libpq)/bin"
-stac_modify_path_like_var PATH "$$HOMEBREW_PREFIX/opt/libpq/bin"
-# stac_modify_path_like_var PATH "$(brew --prefix make)/libexec/gnubin"
-stac_modify_path_like_var PATH "$HOMEBREW_PREFIX/opt/make/libexec/gnubin"
-# stac_modify_path_like_var PATH "$(brew --prefix coreutils)/libexec/gnubin"
-stac_modify_path_like_var PATH "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
-# stac_modify_path_like_var PATH "$(brew --prefix grep)/libexec/gnubin"
-stac_modify_path_like_var PATH "$HOMEBREW_PREfix/opt/grep/libexec/gnubin"
-
-# For libgccjit
-stac_modify_path_like_var LD_LIBRARY_PATH '/opt/homebrew/lib/gcc/current'
-
 [[ -x $(command -v direnv) ]] && eval "$(direnv hook bash)"
 [[ -x $(command -v kubectl) ]] && source <(kubectl completion bash)
 
@@ -46,7 +28,7 @@ export NVM_DIR="$HOME/.nvm"
 source "$NVM_DIR/nvm.sh"
 source "$NVM_DIR/bash_completion"
 
-export VOLTA_HOME="$HOME/.volta"
-stac_modify_path_like_var PATH "${VOLTA_HOME}/bin"
+# export VOLTA_HOME="$HOME/.volta"
+# stac_modify_path_like_var PATH "${VOLTA_HOME}/bin"
 
 source "/Users/lstacul/Library/Application Support/creds/nexus"

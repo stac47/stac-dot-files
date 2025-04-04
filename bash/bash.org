@@ -7,28 +7,13 @@
 
 ** Login Shells
 
-#+begin_src shell :tangle .bash_profile
-  #!/usr/bin/env bash
-
-  if [[ -e "$HOME/.bash_profile.local" ]]; then
-      source "$HOME/.bash_profile.local"
-  fi
-
-  if [ -f "${HOME}/.bashrc" ] ; then
-      source "${HOME}/.bashrc"
-  fi
-#+end_src
-
-** Interactive Shells
-
 First I define a function to append/prepend PATH-like environment
 variables (=PATH=, =MANPATH=, =LD_LIBRARY_PATH=) taking of redundant
 update. This is mainly useful when using a shell multiplexer like
-=tmux=. This function is exported to be available from
-=.bashrc.local=.
+=tmux=. This function is exported to be available from rc files.
 
 
-#+begin_src shell :tangle .bashrc
+#+begin_src shell :tangle .bash_profile
   #!/usr/bin/env bash
 
   stac_modify_path_like_var() {
@@ -57,13 +42,29 @@ update. This is mainly useful when using a shell multiplexer like
   export -f stac_modify_path_like_var
 #+end_src
 
-#+begin_src shell :tangle .bashrc
-  export LC_ALL=en_US.UTF-8
-  export LANG=en_US.UTF-8
-  export LANGUAGE=en_US.UTF-8
+
+#+begin_src shell :tangle .bash_profile
   stac_modify_path_like_var MANPATH "$HOME/.local/share/man"
   stac_modify_path_like_var LD_LIBRARY_PATH "$HOME/.local/lib"
   stac_modify_path_like_var PATH "$HOME/.local/bin"
+
+  if [[ -e "$HOME/.bash_profile.local" ]]; then
+      source "$HOME/.bash_profile.local"
+  fi
+#+end_src
+
+** Interactive Shells
+
+#+begin_src shell :tangle .bashrc
+  #!/usr/bin/env bash
+
+  if [[ -e "$HOME/.bash_profile" ]]; then
+      source "$HOME/.bash_profile"
+  fi
+
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+  export LANGUAGE=en_US.UTF-8
 
   if [[ -z "${INSIDE_EMACS}" ]]; then
       export PAGER=less
@@ -139,7 +140,7 @@ update. This is mainly useful when using a shell multiplexer like
   set menu-complete-display-prefix on
 #+end_src
 
-** Examples of =.bashrc.local=
+** Examples of local RC files
 
 The following are examples that are symlinked in =HOME= by =stow=. To
 use them as is, just create a symlink like this (from your =HOME=
@@ -147,6 +148,7 @@ directory):
 
 #+begin_src shell
   ln -s .bashrc.local.home .bashrc.local
+  ln -s .bash_profile.local.home .bash_profile.local
 #+end_src
 
 *** GNU
@@ -181,7 +183,7 @@ This is what I use at home:
 
 This is what I use at my current workplace:
 
-#+begin_src shell :tangle .bashrc.local.work
+#+begin_src shell :tangle .bash_profile.local.work
   #!/usr/bin/env bash
 
   source <(/opt/homebrew/bin/brew shellenv)
@@ -191,16 +193,21 @@ This is what I use at my current workplace:
 
   # Not calling brew for performance reason.
   # stac_modify_path_like_var PATH "$(brew --prefix libpq)/bin"
-  stac_modify_path_like_var PATH "$$HOMEBREW_PREFIX/opt/libpq/bin"
+  stac_modify_path_like_var PATH "$HOMEBREW_PREFIX/opt/libpq/bin"
   # stac_modify_path_like_var PATH "$(brew --prefix make)/libexec/gnubin"
   stac_modify_path_like_var PATH "$HOMEBREW_PREFIX/opt/make/libexec/gnubin"
   # stac_modify_path_like_var PATH "$(brew --prefix coreutils)/libexec/gnubin"
   stac_modify_path_like_var PATH "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
   # stac_modify_path_like_var PATH "$(brew --prefix grep)/libexec/gnubin"
-  stac_modify_path_like_var PATH "$HOMEBREW_PREfix/opt/grep/libexec/gnubin"
+  stac_modify_path_like_var PATH "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
 
   # For libgccjit
-  stac_modify_path_like_var LD_LIBRARY_PATH '/opt/homebrew/lib/gcc/current'
+  stac_modify_path_like_var LD_LIBRARY_PATH "$HOMEBREW_PREFIX/lib/gcc/current"
+#+end_src
+
+
+#+begin_src shell :tangle .bashrc.local.work
+  #!/usr/bin/env bash
 
   [[ -x $(command -v direnv) ]] && eval "$(direnv hook bash)"
   [[ -x $(command -v kubectl) ]] && source <(kubectl completion bash)
@@ -230,8 +237,8 @@ This is what I use at my current workplace:
   source "$NVM_DIR/nvm.sh"
   source "$NVM_DIR/bash_completion"
 
-  export VOLTA_HOME="$HOME/.volta"
-  stac_modify_path_like_var PATH "${VOLTA_HOME}/bin"
+  # export VOLTA_HOME="$HOME/.volta"
+  # stac_modify_path_like_var PATH "${VOLTA_HOME}/bin"
 
   source "/Users/lstacul/Library/Application Support/creds/nexus"
 #+end_src
