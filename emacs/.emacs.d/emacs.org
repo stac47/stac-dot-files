@@ -621,6 +621,8 @@ Activating =ruby= and =python= for evalution in =org-mode= notebooks.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package ruby-mode
+    :mode ("\\.rb\\'" "\\.ru\\'" "\\.rake\\'")
+    :interpreter "ruby"
     :config
     (setq ruby-align-to-stmt-keywords t)
     (setq ruby-align-chained-calls nil)
@@ -945,8 +947,9 @@ make the line not too long: 80 characters is perfect.
 **** =chruby=
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (use-package chruby
-    :vc (:url "https://github.com/stac47/chruby.el.git" :branch "main"))
+    (use-package chruby
+      :vc (:url "https://github.com/stac47/chruby.el.git" :branch "main")
+      :commands (chruby-use))
 #+end_src
 
 **** IRB Buffer
@@ -955,7 +958,8 @@ When using ruby in =org-mode=, we need this package to run blocks with
 =:session=. Moreover, it gives a nice =irb= console within emacs.
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (use-package inf-ruby)
+  (use-package inf-ruby
+    :commands (inf-ruby))
 #+end_src
 
 **** Automatic generation of the ~end~ keyword
@@ -964,7 +968,8 @@ It is quite convenient that emacs generate the ~end~ keyword on new
 class, function or block.
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (use-package ruby-end)
+  (use-package ruby-end
+    :hook ruby-mode)
 #+end_src
 
 *** YAML

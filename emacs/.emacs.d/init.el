@@ -255,6 +255,8 @@ currently selected window.")
      (python . t))))
 
 (use-package ruby-mode
+  :mode ("\\.rb\\'" "\\.ru\\'" "\\.rake\\'")
+  :interpreter "ruby"
   :config
   (setq ruby-align-to-stmt-keywords t)
   (setq ruby-align-chained-calls nil)
@@ -480,11 +482,14 @@ currently selected window.")
    (markdown-mode . (lambda() (set-fill-column 80)))))
 
 (use-package chruby
-  :vc (:url "https://github.com/stac47/chruby.el.git" :branch "main"))
+  :vc (:url "https://github.com/stac47/chruby.el.git" :branch "main")
+  :commands (chruby-use))
 
-(use-package inf-ruby)
+(use-package inf-ruby
+  :commands (inf-ruby))
 
-(use-package ruby-end)
+(use-package ruby-end
+  :hook ruby-mode)
 
 (use-package yaml-mode)
 
