@@ -428,13 +428,12 @@ terminal: Emacs has all I need.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package eshell
+    :commands (eshell)
     :init
     (add-hook 'eshell-mode-hook
               (lambda ()
                 (eshell/alias "ll" "ls -AlohG --color=always"))))
 #+end_src
-
-#+RESULTS:
 
 *** Project
 

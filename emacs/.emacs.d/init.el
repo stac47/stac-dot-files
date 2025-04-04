@@ -160,6 +160,7 @@ currently selected window.")
 (setenv "PAGER" "cat")
 
 (use-package eshell
+  :commands (eshell)
   :init
   (add-hook 'eshell-mode-hook
             (lambda ()
