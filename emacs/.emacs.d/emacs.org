@@ -1029,6 +1029,7 @@ Facilities to edit YAML files.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package bongo
+    :commands (bongo bongo-library)
     :config
     (setq bongo-default-directory "~/Music"))
 #+end_src
@@ -1055,13 +1056,15 @@ instance when we develop some HTML pages. To start serving files from
 a directory, use =M-x httpd-serve-directory=.
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (use-package simple-httpd)
+  (use-package simple-httpd
+    :commands (httpd-serve-directory httpd-start httpd-stop))
 #+end_src
 
 *** Terraform
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (use-package terraform-mode)
+  (use-package terraform-mode
+    :mode ("\\.tf\\'"))
 #+end_src
 
 *** Kubernetes

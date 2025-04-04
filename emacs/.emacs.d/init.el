@@ -529,6 +529,7 @@ currently selected window.")
   (corfu-popupinfo-mode 1))
 
 (use-package bongo
+  :commands (bongo bongo-library)
   :config
   (setq bongo-default-directory "~/Music"))
 
@@ -543,9 +544,11 @@ currently selected window.")
           ("FIP" . "http://direct.fipradio.fr/live/fip-midfi.mp3")
           ("Radio Classique" . "http://icepe6.infomaniak.ch/radioclassique-high.mp3"))))
 
-(use-package simple-httpd)
+(use-package simple-httpd
+  :commands (httpd-serve-directory httpd-start httpd-stop))
 
-(use-package terraform-mode)
+(use-package terraform-mode
+  :mode ("\\.tf\\'"))
 
 (use-package kubed
   :bind-keymap ("C-c k" . kubed-prefix-map))
