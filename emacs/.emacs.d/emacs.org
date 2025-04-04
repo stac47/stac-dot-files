@@ -447,6 +447,8 @@ options. This part configures the proposed options:
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package project
+    :bind
+    (("C-x p p" . project-switch-project))
     :config
     (assq-delete-all 'project-vc-dir project-switch-commands)
     (assq-delete-all 'project-eshell project-switch-commands)
@@ -495,6 +497,7 @@ accordingly.
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package ediff
     :ensure nil
+    :commands (ediff-buffers ediff-files ediff-buffers3 ediff-files3)
     :config
     (setq ediff-split-window-function #'split-window-horizontally)
     (setq ediff-window-setup-function #'ediff-setup-windows-plain))
@@ -886,8 +889,7 @@ In any case, =Magit= is running faster with the default =git=.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package magit
-    :bind (("C-x g" . magit-status)
-           ("C-x C-g" . magit-status)))
+    :bind (("C-x g" . magit-status)))
 #+end_src
 
 *** Minibuffer Improvements: Vertico & Marginalia

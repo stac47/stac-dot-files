@@ -167,6 +167,8 @@ currently selected window.")
               (eshell/alias "ll" "ls -AlohG --color=always"))))
 
 (use-package project
+  :bind
+  (("C-x p p" . project-switch-project))
   :config
   (assq-delete-all 'project-vc-dir project-switch-commands)
   (assq-delete-all 'project-eshell project-switch-commands)
@@ -194,6 +196,7 @@ currently selected window.")
 
 (use-package ediff
   :ensure nil
+  :commands (ediff-buffers ediff-files ediff-buffers3 ediff-files3)
   :config
   (setq ediff-split-window-function #'split-window-horizontally)
   (setq ediff-window-setup-function #'ediff-setup-windows-plain))
@@ -453,8 +456,7 @@ currently selected window.")
                     (mu4e-maildir-shortcuts . ((:maildir "/laurent.stacul@protonmail.com/Inbox" :key ?i))))))))
 
 (use-package magit
-  :bind (("C-x g" . magit-status)
-         ("C-x C-g" . magit-status)))
+  :bind (("C-x g" . magit-status)))
 
 (use-package vertico
   :custom
