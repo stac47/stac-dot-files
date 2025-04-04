@@ -533,6 +533,7 @@ currently selected window.")
   (setq bongo-default-directory "~/Music"))
 
 (use-package eradio
+  :commands (eradio-toggle eradio-play eradio-stop)
   :config
   (setq eradio-channels
         '(("France Inter" . "http://direct.franceinter.fr/live/franceinter-midfi.mp3")

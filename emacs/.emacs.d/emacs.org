@@ -1037,6 +1037,7 @@ Facilities to edit YAML files.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package eradio
+    :commands (eradio-toggle eradio-play eradio-stop)
     :config
     (setq eradio-channels
           '(("France Inter" . "http://direct.franceinter.fr/live/franceinter-midfi.mp3")
