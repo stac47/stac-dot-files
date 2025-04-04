@@ -883,7 +883,9 @@ Hence, there are two solutions:
 In any case, =Magit= is running faster with the default =git=.
 
 #+begin_src emacs-lisp :tangle "init.el"
-  (use-package magit)
+  (use-package magit
+    :bind (("C-x g" . magit-status)
+           ("C-x C-g" . magit-status)))
 #+end_src
 
 *** Minibuffer Improvements: Vertico & Marginalia

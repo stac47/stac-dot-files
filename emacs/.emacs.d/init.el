@@ -450,7 +450,9 @@ currently selected window.")
                     (mu4e-trash-folder . "/laurent.stacul@protonmail.com/Trash")
                     (mu4e-maildir-shortcuts . ((:maildir "/laurent.stacul@protonmail.com/Inbox" :key ?i))))))))
 
-(use-package magit)
+(use-package magit
+  :bind (("C-x g" . magit-status)
+         ("C-x C-g" . magit-status)))
 
 (use-package vertico
   :custom
