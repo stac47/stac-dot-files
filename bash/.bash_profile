@@ -25,10 +25,18 @@ stac_modify_path_like_var() {
 
 export -f stac_modify_path_like_var
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
 stac_modify_path_like_var MANPATH "$HOME/.local/share/man"
+# Append colon to have access to the system manpage (see: man 5 manpath)
+MANPATH="$MANPATH:"
 stac_modify_path_like_var LD_LIBRARY_PATH "$HOME/.local/lib"
 stac_modify_path_like_var PATH "$HOME/.local/bin"
 
 if [[ -e "$HOME/.bash_profile.local" ]]; then
     source "$HOME/.bash_profile.local"
 fi
+
+export STAC_BASH_PROFILE_SOURCED=1

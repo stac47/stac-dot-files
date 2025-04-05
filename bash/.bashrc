@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
-if [[ -e "$HOME/.bash_profile" ]]; then
+if [[ "$STAC_BASH_PROFILE_SOURCED" != '1' ]]; then
     source "$HOME/.bash_profile"
 fi
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
 
 if [[ -z "${INSIDE_EMACS}" ]]; then
     export PAGER=less
