@@ -28,14 +28,21 @@ case on GNU. I prefer having my root shell being a login shell because
 I generally use a terminal multiplexer like =tmux=.
 
 #+begin_src toml
-[terminal.shell]
-program = "bash"
-args = ["--login"]
+  [terminal.shell]
+  program = "bash"
+  args = ["--login"]
 #+end_src
 
 *** MacOS
 
-TODO
+On the latest Mac Book Pro or with Apple Studio screen, the definition
+is so high I need to increase the size of the characters in the
+terminal.
+
+#+begin_src toml
+  [font]
+  size = 16.0
+#+end_src
 
 ** Rest of the Configuration
 #+begin_src toml :tangle .alacritty.toml
