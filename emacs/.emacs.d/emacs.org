@@ -363,14 +363,13 @@ you for the used key's passphrase.
   (defvar stac-mode-line-major-mode
     '(:eval
       (concat "(" (stac-mode-line-major-mode-name) ")"))
-    "My display of mode in the mode-line")
+    "My display of mode in the mode-line.")
 
   (defvar stac-mode-line-misc-info
     '(:eval
       (when (mode-line-window-selected-p)
         mode-line-misc-info))
-    "Only display misc info (like the current time) on the
-  currently selected window.")
+    "Only display misc info on the currently selected window.")
 
   (dolist (construct '(stac-mode-line-major-mode
                        stac-mode-line-misc-info))
