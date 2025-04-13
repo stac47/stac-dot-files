@@ -1,3 +1,37 @@
+;;; init.el --- My config -*- lexical-binding: t -*-
+
+;; Author: Laurent Stacul
+;; Maintainer: Laurent Stacul
+;; Version: version
+;; Package-Requires: (dependencies)
+;; Homepage: https://stac47.github.io
+;; Keywords: config
+
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+;;; Commentary:
+
+;; This is my configuration.
+
+;;; Code:
+
+(provide 'init)
+
 (load-theme 'modus-operandi t)
 
 (setq ring-bell-function 'ignore)
@@ -21,9 +55,10 @@
         ((mm-size 599 329) (font-size 150))))
 
 (defun stac/adapt-font-size (&optional frame)
-  "Adapt the default font size depending on the monitor that FRAME is
-displayed on. If FRAME is nil, the monitor the current frame is
-displayed on is used to set the desired font size."
+  "Adapt the default font size depending on the monitor.
+
+If FRAME is nil, the monitor the current frame is displayed on is used
+to set the desired font size."
   (interactive)
   (let* ((current-monitor (frame-monitor-attributes frame))
          (size (alist-get 'mm-size current-monitor))
@@ -582,3 +617,5 @@ currently selected window.")
   :config
   (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LD_LIBRARY_PATH"))
   (exec-path-from-shell-initialize))
+
+;;; init.el ends here
