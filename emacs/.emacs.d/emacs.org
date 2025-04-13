@@ -4,7 +4,48 @@
 #+language: en
 #+startup: content
 
-* My Emacs Configuration
+* Early Initialization (=early-init.el=)
+
+#+begin_src emacs-lisp :tangle "early-init.el"
+    ;;; early-init.el --- My early-init.el -*- lexical-binding: t -*-
+#+end_src
+
+*** Turn Off The Bell
+
+I need silence when I work and the bell sound makes me nervous.
+
+#+begin_src emacs-lisp :tangle "early-init.el"
+  (setq ring-bell-function 'ignore
+        visible-bell t)
+#+end_src
+
+*** Remove All GUI Widgets
+
+When I start emacs, I want it with the minimal view (no buttons, no
+scroll bars, no tooltips) and I want the first show the Lisp scratch
+buffer.
+
+#+begin_src emacs-lisp :tangle "early-init.el"
+  (setq inhibit-splash-screen t
+        inhibit-x-resources t
+        inhibit-startup-buffer-menu t
+        use-file-dialog nil
+        use-dialog-box nil
+        use-short-answers t)
+
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (tooltip-mode -1)
+  (scroll-bar-mode -1)
+#+end_src
+
+*** Rename The Default Frame
+
+#+begin_src emacs-lisp :tangle "early-init.el"
+  (add-hook 'after-init-hook (lambda () (set-frame-name "home")))
+#+end_src
+
+* Main Configuration (=init.el=)
 ** Package Header
 
 #+begin_src emacs-lisp :tangle "init.el"
@@ -52,30 +93,6 @@ command =M-x modus-themes-toggle=.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (load-theme 'modus-operandi t)
-#+end_src
-
-*** Turn Off The Bell
-
-I need silence when I work and the bell sound makes me nervous.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (setq ring-bell-function 'ignore)
-  (setq visible-bell t)
-#+end_src
-
-*** Remove All GUI Widgets
-
-When I start emacs, I want it with the minimal view (no buttons, no
-scroll bars, no tooltips) and I want the first show the Lisp scratch
-buffer.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (setq inhibit-splash-screen t)
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (tooltip-mode -1)
-  (if (display-graphic-p) (scroll-bar-mode -1))
-  (setq use-dialog-box nil)
 #+end_src
 
 *** Do not create lock and backup files

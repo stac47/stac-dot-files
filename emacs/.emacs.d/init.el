@@ -34,16 +34,6 @@
 
 (load-theme 'modus-operandi t)
 
-(setq ring-bell-function 'ignore)
-(setq visible-bell t)
-
-(setq inhibit-splash-screen t)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(tooltip-mode -1)
-(if (display-graphic-p) (scroll-bar-mode -1))
-(setq use-dialog-box nil)
-
 (setq make-backup-files nil)
 (setq backup-inhibited nil)
 (setq create-lockfiles nil)
