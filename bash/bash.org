@@ -170,8 +170,7 @@ This is what I use at home:
 
   # chruby
   source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-  chruby 3.4
+
   export BUNDLER_EDITOR="emacsclient -n"
 
   # direnv
@@ -217,8 +216,6 @@ This is what I use at my current workplace:
   [[ -x $(command -v kubectl) ]] && source <(kubectl completion bash)
 
   source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
-  source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
-  chruby 3.4
 
   # Using system git (faster with magit than the one provided by homebrew)
   source "/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
