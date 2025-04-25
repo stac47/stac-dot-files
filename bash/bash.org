@@ -184,6 +184,8 @@ This is what I use at home:
 
 *** MacOS
 
+**** Local =.bash_profile=
+
 This is what I use at my current workplace:
 
 #+begin_src shell :tangle .bash_profile.local.work
@@ -193,6 +195,7 @@ This is what I use at my current workplace:
 
   stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS'
   stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS/bin'
+  stac_modify_path_like_var PATH '/Applications/Firefox\ Developer\ Edition.app/Contents/MacOS'
 
   # Not calling brew for performance reason.
   # stac_modify_path_like_var PATH "$(brew --prefix libpq)/bin"

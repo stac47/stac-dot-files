@@ -4,6 +4,7 @@ source <(/opt/homebrew/bin/brew shellenv)
 
 stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS'
 stac_modify_path_like_var PATH '/Applications/Emacs.app/Contents/MacOS/bin'
+stac_modify_path_like_var PATH '/Applications/Firefox\ Developer\ Edition.app/Contents/MacOS'
 
 # Not calling brew for performance reason.
 # stac_modify_path_like_var PATH "$(brew --prefix libpq)/bin"
