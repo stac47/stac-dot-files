@@ -93,8 +93,7 @@ to set the desired font size."
   (byte-recompile-directory package-user-dir nil 'force)
   (message "Compilation done. Consider restarting emacs."))
 
-;; The cursor will blink forever
-(setq blink-cursor-blinks 0)
+(blink-cursor-mode -1)
 
 (setq column-number-mode t)
 

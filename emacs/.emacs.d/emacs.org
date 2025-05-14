@@ -223,12 +223,11 @@ Then, we can restart Emacs: =M-x restart-emacs=.
 
 *** Cursor Display Configuration
 
-By default, in graphical mode the cursor blinks 10 times then remain
-displayed. I prefer the cursor to blink forever.
+The cursor blinking is actually too mush of a distraction: I disable
+this mode.
 
 #+begin_src emacs-lisp :tangle "init.el"
-  ;; The cursor will blink forever
-  (setq blink-cursor-blinks 0)
+  (blink-cursor-mode -1)
 #+end_src
 
 *** Display Cursor Column Number
