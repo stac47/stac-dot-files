@@ -75,6 +75,8 @@ development version.
 
 ** Configure
 
+*** On GNU system
+
 #+begin_src bash
   ./configure  \
       --prefix="$HOME/.local" \
@@ -102,6 +104,30 @@ development version.
       --with-xpm \
       --without-pop \
       CFLAGS="-O2 -pipe -mtune=native -march=native -fomit-frame-pointer"
+#+end_src
+
+*** On MacOS
+
+=giflib= is not detected:
+
+#+begin_src bash
+  export CPATH="$(brew --prefix giflib)/include"
+  LD_LIBRARY_PATH="$(brew --prefix giflib)/lib:$LD_LIBRARY_PATH"
+#+end_src
+
+But it is not enough. I still have:
+
+#+begin_quote
+checking for gif_lib.h... yes
+checking for GifMakeMapObject in -lgif... no
+checking for EGifPutExtensionLast in -lgif... no
+checking for EGifPutExtensionLast in -lungif... no
+#+end_quote
+
+
+#+begin_src bash
+  ./configure  \
+      --with-native-compilation=aot \
 #+end_src
 
 ** Compile

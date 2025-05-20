@@ -12,7 +12,6 @@ else
     export MANPAGER=cat
 fi
 export GDBHISTFILE=$HOME/.gdb_history
-export BROWSER="firefox"
 export EDITOR="emacsclient"
 export GPG_TTY
 GPG_TTY=$(tty)
