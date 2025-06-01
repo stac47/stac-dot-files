@@ -57,6 +57,7 @@ development version.
       gpm-devel \
       libX11-devel \
       libXau-devel \
+      libXaw-devel \
       libXdmcp-devel \
       libXi-devel \
       libXpm-devel \
