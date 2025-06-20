@@ -128,7 +128,7 @@ checking for EGifPutExtensionLast in -lungif... no
 
 #+begin_src bash
   ./configure  \
-      --with-native-compilation=aot \
+      --with-native-compilation=aot
 #+end_src
 
 ** Compile

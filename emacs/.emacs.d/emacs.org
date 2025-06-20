@@ -659,8 +659,8 @@ removed forever from the disk.
 
 *** Org-mode
 
-Disabling confirmation on code execution.
-Activating =ruby= and =python= for evalution in =org-mode= notebooks.
+Disabling confirmation on code execution.  Activating my favorite
+languages for evalution in =org-mode= notebooks.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package org
