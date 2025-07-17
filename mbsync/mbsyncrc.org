@@ -1,3 +1,16 @@
+#+title: mbsync Configuration
+#+author: Laurent Stacul
+#+email: laurent.stacul@gmail.com
+#+language: en
+
+* GMail Accounts
+
+Configure Google Mail to allow lower security application to access
+their service.
+
+** Main Account
+
+#+begin_src config :tangle .mbsyncrc
 IMAPAccount gmail-main
 Host imap.gmail.com
 User laurent.stacul@gmail.com
@@ -19,7 +32,11 @@ Near :gmail-main-local:
 Patterns *
 Create Both
 SyncState *
+#+end_src
 
+** Secundary Account
+
+#+begin_src config :tangle .mbsyncrc
 IMAPAccount gmail-secundary
 Host imap.gmail.com
 User captain.stac@gmail.com
@@ -41,7 +58,28 @@ Near :gmail-secundary-local:
 Patterns *
 Create Both
 SyncState *
+#+end_src
 
+* Protonmail Account
+
+To access a protonmail encrypted account, we need to install locally a
+bridge (named =Proton Bridge=) that acts as an IMAP server.
+
+The password is available from the =Proton Bridge= GUI. But I was not
+yet able to find where the TLS certificate is available.
+
+To get it, I issue the following command which shows me the
+self-signed certification. This is needed because =mbsync= does not
+accept connecting without a known certificate.
+
+#+begin_src shell
+openssl s_client -starttls imap -connect 127.0.0.1:1143 -showcerts
+#+end_src
+
+I store the certificate in the file
+=~/.config/protonmail/bridge-v3/cert.pem=.
+
+#+begin_src config :tangle .mbsyncrc
 IMAPAccount protonmail
 Host 127.0.0.1
 Port 1143
@@ -64,7 +102,11 @@ Near :protonmail-local:
 Patterns *
 Create Both
 SyncState *
+#+end_src
 
+* La Poste Account
+
+#+begin_src config :tangle .mbsyncrc
 IMAPAccount laposte
 Host imap.laposte.net
 Port 993
@@ -87,3 +129,4 @@ Near :laposte-local:
 Patterns *
 Create Both
 SyncState *
+#+end_src
