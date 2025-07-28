@@ -145,3 +145,13 @@ To test at this stage, simply run =src/emacs=.
 #+begin_src bash
   make install
 #+end_src
+
+*** On GNU system
+
+This will install all the files under the prefix directory.
+
+*** On MacOS
+
+It will generate a standard MacOS App that simply needs to be copied
+into the =/Applications= directory.
+
