@@ -707,10 +707,11 @@ To have the most recent file visited first, we can activate the
 
 #+begin_src emacs-lisp :tangle "init.el"
   ;; Save history
-  (use-package savehist
+  (use-package emacs
     :init
     (setq history-length 25)
-    (savehist-mode))
+    :config
+    (savehist-mode 1))
 #+end_src
 
 We can even keep track of the position of the cursor in each visited
@@ -718,8 +719,8 @@ files with =save-place-mode=.
 
 #+begin_src emacs-lisp :tangle "init.el"
   ;; Remember the last place in a visited file
-  (use-package saveplace
-    :init
+  (use-package emacs
+    :config
     (save-place-mode))
 #+end_src
 

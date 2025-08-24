@@ -298,14 +298,15 @@ to set the desired font size."
   (setq send-mail-function #'smtpmail-send-it))
 
 ;; Save history
-(use-package savehist
+(use-package emacs
   :init
   (setq history-length 25)
-  (savehist-mode))
+  :config
+  (savehist-mode 1))
 
 ;; Remember the last place in a visited file
-(use-package saveplace
-  :init
+(use-package emacs
+  :config
   (save-place-mode))
 
 (use-package time
