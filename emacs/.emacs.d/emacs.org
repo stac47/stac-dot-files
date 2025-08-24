@@ -324,19 +324,18 @@ By default, when a file is changed from outside of emacs, it is not
 reflected inside the buffer: we need to manually use =M-x
 revert-buffer=. But, this can be automated with the following.
 
-#+begin_src emacs-lisp :tangle "init.el"
-  ;; Refresh buffer when underlying file has changed
-  (global-auto-revert-mode 1)
-#+end_src
-
 The same behaviour can be enabled for non-file buffers. For instance,
 when we have a =Dired= buffer and we created a new file from outside,
 the buffer does not display the created file. To automatically update
 the buffer, we can set the following:
 
 #+begin_src emacs-lisp :tangle "init.el"
-  ;; Refresh other buffer if needed (for instance Dired buffers)
-  (setq global-auto-revert-non-file-buffers t)
+  ;; Refresh buffer when underlying file has changed
+  (use-package emacs
+    :init
+    (setq global-auto-revert-non-file-buffers t)
+    :config
+    (global-auto-revert-mode))
 #+end_src
 
 *** GnuPG

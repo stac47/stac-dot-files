@@ -115,10 +115,11 @@ to set the desired font size."
 (setq custom-file (make-temp-file "emacs-custom-"))
 
 ;; Refresh buffer when underlying file has changed
-(global-auto-revert-mode 1)
-
-;; Refresh other buffer if needed (for instance Dired buffers)
-(setq global-auto-revert-non-file-buffers t)
+(use-package emacs
+  :init
+  (setq global-auto-revert-non-file-buffers t)
+  :config
+  (global-auto-revert-mode))
 
 ;; Prompt for passphrase in Emacs
 (setq epg-pinentry-mode 'loopback)
