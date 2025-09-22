@@ -109,6 +109,15 @@ development version.
 
 *** On MacOS
 
+#+begin_src bash
+  ./configure  \
+      --with-native-compilation=aot
+#+end_src
+
+**** Caveats
+
+***** =giflib= not usable
+
 =giflib= is not detected:
 
 #+begin_src bash
@@ -125,11 +134,38 @@ checking for EGifPutExtensionLast in -lgif... no
 checking for EGifPutExtensionLast in -lungif... no
 #+end_quote
 
+***** =libgccjit= not working
 
-#+begin_src bash
-  ./configure  \
-      --with-native-compilation=aot
-#+end_src
+With =gcc= and =libgccjit= installed by =brew= and up-to-date I have
+the following warning:
+
+#+begin_quote
+% ./configure
+[...]
+configure: WARNING: Elisp native compiler can't be enabled as libgccjit was not
+found.
+Please try installing libgccjit or a similar package if you want to have it
+enabled.
+checking for libgccjit.h... no
+configure: WARNING: Elisp native compiler can't be enabled as libgccjit header files
+were not found.
+Please try installing libgccjit-dev or a similar package if you want to have it
+enabled.
+#+end_quote
+
+Trying the following:
+
+#+begin_quote
+LD_LIBRARY_PATH="$(brew --prefix libgccjit)/lib/gcc/current/:$LD_LIBRARY_PATH" CPPFLAGS="-I$(brew --prefix libgccjit)/include" ./configure
+#+end_quote
+
+Removes the warning but we fail anyway with the usage of
+=libgccjit=. For the logs, we can see:
+
+#+begin_quote
+Undefined symbols for architecture arm64:
+  "_acl_from_mode", referenced from:
+#+end_quote
 
 ** Compile
 
@@ -155,3 +191,16 @@ This will install all the files under the prefix directory.
 It will generate a standard MacOS App that simply needs to be copied
 into the =/Applications= directory.
 
+** Troubleshooting
+
+If the compilation fails, we can try the =bootstrap= make task.
+
+#+begin_src bash
+  make -j${JOBS} NATIVE_FULL_AOT=1 bootstrap
+#+end_src
+
+If that did not solve the issue, try to clean your workspace with:
+
+#+begin_src bash
+  make extraclean
+#+end_src
