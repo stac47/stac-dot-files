@@ -569,8 +569,6 @@ to set the desired font size."
           ("FIP" . "http://direct.fipradio.fr/live/fip-midfi.mp3")
           ("Radio Classique" . "http://icepe6.infomaniak.ch/radioclassique-high.mp3"))))
 
-(use-package org-drill)
-
 (use-package simple-httpd
   :commands (httpd-serve-directory httpd-start httpd-stop))
 
