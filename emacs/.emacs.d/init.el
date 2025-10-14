@@ -121,6 +121,9 @@ to set the desired font size."
   :config
   (global-auto-revert-mode))
 
+(use-package elec-pair
+  :hook ((prog-mode text-mode) . electric-pair-local-mode))
+
 ;; Prompt for passphrase in Emacs
 (setq epg-pinentry-mode 'loopback)
 

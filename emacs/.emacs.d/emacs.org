@@ -338,6 +338,16 @@ the buffer, we can set the following:
     (global-auto-revert-mode))
 #+end_src
 
+*** Automatic Pairs Completion
+
+When writing code or text, I find it convenient Emacs automatically
+adds the associated closing character.
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package elec-pair
+    :hook ((prog-mode text-mode) . electric-pair-local-mode))
+#+end_src
+
 *** GnuPG
 
 Generally speaking, your GnuPG keys are protected with a
