@@ -2,9 +2,34 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-DESTINATION=${1:?'Missing destination'}
+DESTINATION=
+ONLY_GIT_REPOS=0
+
+for i in "$@"; do
+  case $i in
+    -d=*|--dest=*|--destination=*)
+      DESTINATION="${i#*=}"
+      shift
+      ;;
+    --only-git-repos)
+      ONLY_GIT_REPOS=1
+      shift
+      ;;
+    -*|--*)
+      echo "Unknown option $i"
+      exit 1
+      ;;
+    *)
+      ;;
+  esac
+done
+
+if [[ -z ${DESTINATION} ]]; then
+    echo "Missing --destination option"
+    exit 1
+fi
+
 GIT_DESTINATION="${DESTINATION}/git"
-mkdir -p "${GIT_DESTINATION}"
 BACKUP_DATE=$(date +'%Y_%m_%d_%H_%M_%S_%N')
 BACKUP_FILENAME="/tmp/backup_$BACKUP_DATE.tar.gz"
 GPG_BACKUP_FILENAME="${BACKUP_FILENAME}.gpg"
@@ -103,6 +128,7 @@ function backup_git_bundle() {
 }
 
 function backup_git() {
+    mkdir -p "${GIT_DESTINATION}"
     for git_dir in "${GIT_REPOSITORIES[@]}"; do
         backup_git_bundle "$HOME/$git_dir"
     done
@@ -120,6 +146,12 @@ function backup_sync() {
     set +x
 }
 
+if [[ ${ONLY_GIT_REPOS} == 1 ]]; then
+    backup_git
+    exit 0
+fi
+
+echo "Full backup"
 backup_tar
 backup_sync
 backup_git
