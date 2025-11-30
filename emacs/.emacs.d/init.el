@@ -594,6 +594,7 @@ to set the desired font size."
   (bash-completion-setup))
 
 (use-package denote
+  :ensure t
   :hook (dired-mode . denote-dired-mode)
   :bind
   (("C-c n n" . denote)
@@ -610,5 +611,10 @@ to set the desired font size."
   :config
   (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LD_LIBRARY_PATH"))
   (exec-path-from-shell-initialize))
+
+(use-package auctex
+:ensure t
+:config
+(setq TeX-engine 'xetex))
 
 ;;; init.el ends here

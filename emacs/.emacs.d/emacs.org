@@ -1133,6 +1133,9 @@ a directory, use =M-x httpd-serve-directory=.
 
 *** Kubernetes
 
+=kubed= is an amazing package that uses transcients to navigate into
+and manipulate an =kubernetes= clusters.
+
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package kubed
     :bind-keymap ("C-c k" . kubed-prefix-map))
@@ -1182,6 +1185,7 @@ An interesting package to take and structure quick notes is the
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package denote
+    :ensure t
     :hook (dired-mode . denote-dired-mode)
     :bind
     (("C-c n n" . denote)
@@ -1206,6 +1210,15 @@ shell.
     :config
     (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LD_LIBRARY_PATH"))
     (exec-path-from-shell-initialize))
+#+end_src
+
+*** Writing TeX Documents
+
+#+begin_src emacs-lisp :tangle "init.el"
+      (use-package auctex
+      :ensure t
+      :config
+      (setq TeX-engine 'xetex))
 #+end_src
 
 ** The End
