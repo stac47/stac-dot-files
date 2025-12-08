@@ -292,6 +292,7 @@ to set the desired font size."
   (setq ruby-align-chained-calls nil)
   (setq ruby-method-params-indent nil)
   (setq ruby-block-indent nil)
+  (setq ruby-parenless-call-arguments-indent nil)
   (setq ruby-method-call-indent nil))
 
 (use-package smtpmail
