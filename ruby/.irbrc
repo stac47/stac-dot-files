@@ -1,11 +1,6 @@
-# frozen_string_literal: true
+# frozen_string_literal: true  -*- mode: ruby-ts; -*-
 
-if ENV["INSIDE_EMACS"] then
+if ENV.fetch("INSIDE_EMACS", false)
    puts "Inside Emacs we are.  Simple prompt we need."
-
-   IRB.conf[:USE_MULTILINE] = false
-   IRB.conf[:USE_SINGLELINE] = true
    IRB.conf[:PROMPT_MODE] = :INF_RUBY
-   IRB.conf[:USE_READLINE] = false
-   IRB.conf[:USE_COLORIZE] = true
 end
