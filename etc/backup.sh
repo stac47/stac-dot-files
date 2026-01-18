@@ -15,6 +15,10 @@ for i in "$@"; do
       ONLY_GIT_REPOS=1
       shift
       ;;
+    --no-sync)
+        NO_SYNC=1
+        shift
+        ;;
     -*|--*)
       echo "Unknown option $i"
       exit 1
@@ -52,7 +56,7 @@ GIT_REPOSITORIES=(
 EXCLUSIONS=(
     ${SYNC_DIRECTORIES[@]}
     ${GIT_REPOSITORIES[@]}
-    '.alacritty.yml'
+    '.alacritty.toml'
     '.bundle'
     '.bashrc'
     '.bash_profile'
@@ -67,6 +71,7 @@ EXCLUSIONS=(
     '.gem'
     '.inputrc'
     '.irbrc'
+    '.kde'
     '.kube'
     '.local'
     '.mailcap'
@@ -80,8 +85,11 @@ EXCLUSIONS=(
     '.python_history'
     '.rbenv'
     '.stac-dot-files'
+    '.swt'
+    '.texlive2023'
     '.tmux'
     '.tmux.conf'
+    '.var'
     '.vim'
     '.vimrc'
     '.zlogin'
@@ -91,7 +99,10 @@ EXCLUSIONS=(
     'fsgtfiles'
     'opensource'
     'music_flat'
+    'rmpbuild'
     'scroll_stealer_data'
+    'torrent'
+    'tmp'
     'Mail'
 )
 
@@ -153,5 +164,7 @@ fi
 
 echo "Full backup"
 backup_tar
-backup_sync
+if [[ ${NO_SYNC} != 1 ]]; then
+    backup_sync
+fi
 backup_git
