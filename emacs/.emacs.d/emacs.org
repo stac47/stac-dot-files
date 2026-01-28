@@ -666,6 +666,15 @@ removed forever from the disk.
     :hook (after-init . flymake-collection-hook-setup))
 #+end_src
 
+The following package integrates the =hadolint= =Dockerfile=
+linter. This one must be installed on the system to have =flymake=
+interactively linting =Dockerfile=s:
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (use-package flymake-hadolint
+    :hook (dockerfile-ts-mode . flymake-hadolint-setup))
+#+end_src
+
 *** Org-mode
 
 Disabling confirmation on code execution.  Activating my favorite

@@ -274,6 +274,9 @@ to set the desired font size."
 (use-package flymake-collection
   :hook (after-init . flymake-collection-hook-setup))
 
+(use-package flymake-hadolint
+  :hook (dockerfile-ts-mode . flymake-hadolint-setup))
+
 (use-package org
   :config
   (setq org-confirm-babel-evaluate nil)
