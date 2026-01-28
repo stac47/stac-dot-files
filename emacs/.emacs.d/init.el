@@ -485,7 +485,10 @@ to set the desired font size."
                     (mu4e-maildir-shortcuts . ((:maildir "/laurent.stacul@protonmail.com/Inbox" :key ?i))))))))
 
 (use-package magit
-  :bind (("C-x g" . magit-status)))
+  :bind
+  (("C-x g" . magit-status))
+  :config
+  (setq magit-log-section-commit-count 20))
 
 (use-package vertico
   :custom
