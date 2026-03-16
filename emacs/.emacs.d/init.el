@@ -41,8 +41,15 @@
 (setq default-input-method "french-prefix")
 
 (setq stac/monitors
-      '(((mm-size 301 195) (font-size 120))
-        ((mm-size 599 329) (font-size 150))))
+      '(((monitor-name "MacBook Pro M1")
+         (mm-size 301 195)
+         (font-size 120))
+        ((monitor-name "Apple Studio")
+         (mm-size 599 329)
+         (font-size 150))
+        ((monitor-name "Macbook Pro 2013")
+         (mm-size 330 210)
+         (font-size 95))))
 
 (defun stac/adapt-font-size (&optional frame)
   "Adapt the default font size depending on the monitor.
@@ -55,7 +62,9 @@ to set the desired font size."
          selected-font-size)
     (dolist (my-monitor stac/monitors)
       (when (equal (alist-get 'mm-size my-monitor) size)
-        (setq selected-font-size (car (alist-get 'font-size my-monitor)))))
+        (setq selected-font-size (car (alist-get 'font-size my-monitor)))
+        (message "Font size applied for %s"
+                 (car (alist-get 'monitor-name my-monitor)))))
     (unless selected-font-size
       (setq selected-font-size 100))
     (set-face-attribute 'default nil :height selected-font-size)))
