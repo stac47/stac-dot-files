@@ -297,6 +297,12 @@ mode. I enable this in all those derived modes.
   (add-hook 'conf-mode-hook #'hl-line-mode)
 #+end_src
 
+*** Which Function
+
+#+begin_src emacs-lisp :tangle "init.el"
+  (which-function-mode)
+#+end_src
+
 *** Line Number
 
 When programming, I need the line number to be displayed so that I

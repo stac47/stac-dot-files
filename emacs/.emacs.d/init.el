@@ -117,6 +117,8 @@ to set the desired font size."
 (add-hook 'prog-mode-hook #'hl-line-mode)
 (add-hook 'conf-mode-hook #'hl-line-mode)
 
+(which-function-mode)
+
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (setq-default indent-tabs-mode nil)
