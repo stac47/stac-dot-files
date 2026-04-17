@@ -524,23 +524,6 @@ to set the desired font size."
 
 (use-package yasnippet-snippets)
 
-(use-package markdown-mode
-  :hook
-  ((markdown-mode . auto-fill-mode)
-   (markdown-mode . (lambda() (set-fill-column 80)))))
-
-(use-package chruby
-  :vc (:url "https://github.com/stac47/chruby.el.git" :branch "main")
-  :commands (chruby-use))
-
-(use-package inf-ruby
-  :commands (inf-ruby))
-
-(use-package ruby-end
-  :hook ruby-mode)
-
-(use-package yaml-mode)
-
 (use-package emacs
   :ensure nil
   :demand t
@@ -574,6 +557,28 @@ to set the desired font size."
   (setq corfu-popupinfo-delay '(1.25 . 0.5))
   (corfu-popupinfo-mode 1))
 
+(use-package markdown-mode
+  :hook
+  ((markdown-mode . auto-fill-mode)
+   (markdown-mode . (lambda() (set-fill-column 80)))))
+
+(use-package chruby
+  :vc (:url "https://github.com/stac47/chruby.el.git" :branch "main")
+  :commands (chruby-use))
+
+(use-package inf-ruby
+  :commands (inf-ruby))
+
+(use-package ruby-end
+  :hook ruby-mode)
+
+(use-package yaml-mode)
+
+(use-package terraform-mode
+  :mode ("\\.tf\\'"))
+
+(use-package protobuf-mode)
+
 (use-package bongo
   :commands (bongo bongo-library)
   :config
@@ -592,9 +597,6 @@ to set the desired font size."
 
 (use-package simple-httpd
   :commands (httpd-serve-directory httpd-start httpd-stop))
-
-(use-package terraform-mode
-  :mode ("\\.tf\\'"))
 
 (use-package kubed
   :bind-keymap ("C-c k" . kubed-prefix-map))
