@@ -579,6 +579,23 @@ to set the desired font size."
 
 (use-package protobuf-mode)
 
+(use-package lilypond-mode
+  :ensure nil
+  :load-path "/usr/share/emacs/site-lisp"
+  :if (file-exists-p "/usr/share/emacs/site-lisp/lilypond-mode.el")
+  :mode ("\\.ly\\'" "\\.ily\\'")
+  :config
+  (turn-on-font-lock))
+
+(use-package bash-completion
+  :config
+  (bash-completion-setup))
+
+(use-package auctex
+:ensure t
+:config
+(setq TeX-engine 'xetex))
+
 (use-package bongo
   :commands (bongo bongo-library)
   :config
@@ -601,18 +618,6 @@ to set the desired font size."
 (use-package kubed
   :bind-keymap ("C-c k" . kubed-prefix-map))
 
-(use-package lilypond-mode
-  :ensure nil
-  :load-path "/usr/share/emacs/site-lisp"
-  :if (file-exists-p "/usr/share/emacs/site-lisp/lilypond-mode.el")
-  :mode ("\\.ly\\'" "\\.ily\\'")
-  :config
-  (turn-on-font-lock))
-
-(use-package bash-completion
-  :config
-  (bash-completion-setup))
-
 (use-package denote
   :ensure t
   :hook (dired-mode . denote-dired-mode)
@@ -631,10 +636,5 @@ to set the desired font size."
   :config
   (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LD_LIBRARY_PATH"))
   (exec-path-from-shell-initialize))
-
-(use-package auctex
-:ensure t
-:config
-(setq TeX-engine 'xetex))
 
 ;;; init.el ends here
