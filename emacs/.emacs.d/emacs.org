@@ -636,8 +636,6 @@ new package or update the installed package. Then we set the
 
 *** Dired
 
-**** Move to Trash Instead of Removing a File
-
 It is safer that removed files end up into the Trash bin than being
 removed forever from the disk.
 
