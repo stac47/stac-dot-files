@@ -637,4 +637,8 @@ to set the desired font size."
   (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LD_LIBRARY_PATH"))
   (exec-path-from-shell-initialize))
 
+(use-package nov
+  :init
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
+
 ;;; init.el ends here
