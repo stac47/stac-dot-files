@@ -4,6 +4,7 @@ IFS=$'\n\t'
 
 DESTINATION=
 ONLY_GIT_REPOS=0
+NO_SYNC=0
 
 for i in "$@"; do
   case $i in
