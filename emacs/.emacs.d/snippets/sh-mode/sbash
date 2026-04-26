@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: sbash
-# key: sbash
-# --
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
-
-$0

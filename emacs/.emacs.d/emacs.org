@@ -767,6 +767,74 @@ battery status displayed in the mode line.
       (display-battery-mode 1)))
 #+end_src
 
+*** Tempo
+
+Here is a collection of some snippets to evaluate if I can get rid of
+yasnipet.
+
+#+begin_src elisp :tangle "init.el"
+  (use-package tempo
+    :config
+    (setq tempo-interactive t))
+
+  (tempo-define-template "sbash-header"
+                         '("#!/bin/bash" n "set -euo pipefail" n "IFS=$'\\n\\t'" n n)
+                         nil
+                         "Insert the secure bash header.")
+
+  (tempo-define-template "ruby-frozen"
+                         '("# frozen_string_literal: true")
+                         nil
+                         "Insert the ruby frozen string literals header.")
+
+  (tempo-define-template "ruby-byebug"
+                         '("require \"byebug\"; byebug")
+                         nil
+                         "Insert the ruby byebug breakpoint.")
+
+  (tempo-define-template "ruby-debug"
+                         '("require \"debug\"; debugger")
+                         nil
+                         "Insert the ruby debug breakpoint.")
+
+  (tempo-define-template "elisp-header"
+                         '(";;; " (file-name-nondirectory (or buffer-file-name "")) " --- "
+                           (p "Short Description: ")" -*- lexical-binding: t -*-
+
+  ;; Copyright (C) 2026 Laurent Stacul
+
+  ;; Author: Laurent Stacul <laurent.stacul@gmail.com>
+  ;; Version: 0.1
+  ;; Package-Requires: ((emacs \"30.1\"))
+  ;; Homepage: https://github.com/stac47
+  ;; Keywords:
+
+  ;; This file is NOT part of GNU Emacs
+
+  ;; This file is free software; you can redistribute it and/or modify
+  ;; it under the terms of the GNU General Public License as published by
+  ;; the Free Software Foundation; either version 3, or (at your option)
+  ;; any later version.
+
+  ;; This program is distributed in the hope that it will be useful,
+  ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ;; GNU General Public License for more details.
+
+  ;; For a full copy of the GNU General Public License
+  ;; see <http://www.gnu.org/licenses/>.
+
+  ;;; Commentary:
+
+  ;;; Code:
+
+  (provide '" (file-name-base (or buffer-file-name "")) ")
+
+  ;;; " (buffer-name) " ends here")
+                         nil
+                         "Insert documentation header for a Emacs Lisp file.")
+#+end_src
+
 ** External Packages
 *** =mu4e=
 
@@ -984,25 +1052,6 @@ documentation.
                 ("M-A" . marginalia-cycle))
     :init
     (marginalia-mode))
-#+end_src
-
-*** Yasnippet
-
-This package allows to insert some common snippets. For me, this is
-only useful in programming modes.
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package yasnippet
-    :config
-    (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-    (yas-reload-all)
-    :hook (prog-mode . yas-minor-mode))
-#+end_src
-
-There is a project that maintains all sorts of snippets:
-
-#+begin_src emacs-lisp :tangle "init.el"
-  (use-package yasnippet-snippets)
 #+end_src
 
 *** In Buffer Completion with =corfu=

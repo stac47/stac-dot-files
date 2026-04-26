@@ -343,6 +343,67 @@ to set the desired font size."
                                                   (funcall battery-status-function)))))
     (display-battery-mode 1)))
 
+(use-package tempo
+  :config
+  (setq tempo-interactive t))
+
+(tempo-define-template "sbash-header"
+                       '("#!/bin/bash" n "set -euo pipefail" n "IFS=$'\\n\\t'" n n)
+                       nil
+                       "Insert the secure bash header.")
+
+(tempo-define-template "ruby-frozen"
+                       '("# frozen_string_literal: true")
+                       nil
+                       "Insert the ruby frozen string literals header.")
+
+(tempo-define-template "ruby-byebug"
+                       '("require \"byebug\"; byebug")
+                       nil
+                       "Insert the ruby byebug breakpoint.")
+
+(tempo-define-template "ruby-debug"
+                       '("require \"debug\"; debugger")
+                       nil
+                       "Insert the ruby debug breakpoint.")
+
+(tempo-define-template "elisp-header"
+                       '(";;; " (file-name-nondirectory (or buffer-file-name "")) " --- "
+                         (p "Short Description: ")" -*- lexical-binding: t -*-
+
+;; Copyright (C) 2026 Laurent Stacul
+
+;; Author: Laurent Stacul <laurent.stacul@gmail.com>
+;; Version: 0.1
+;; Package-Requires: ((emacs \"30.1\"))
+;; Homepage: https://github.com/stac47
+;; Keywords:
+
+;; This file is NOT part of GNU Emacs
+
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 3, or (at your option)
+;; any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; For a full copy of the GNU General Public License
+;; see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;;; Code:
+
+(provide '" (file-name-base (or buffer-file-name "")) ")
+
+;;; " (buffer-name) " ends here")
+                       nil
+                       "Insert documentation header for a Emacs Lisp file.")
+
 (use-package mu4e
   :ensure nil
   :load-path "/usr/share/emacs/site-lisp/mu4e"
@@ -515,14 +576,6 @@ to set the desired font size."
               ("M-A" . marginalia-cycle))
   :init
   (marginalia-mode))
-
-(use-package yasnippet
-  :config
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-  (yas-reload-all)
-  :hook (prog-mode . yas-minor-mode))
-
-(use-package yasnippet-snippets)
 
 (use-package emacs
   :ensure nil
