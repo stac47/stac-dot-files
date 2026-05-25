@@ -610,6 +610,15 @@ to set the desired font size."
   (setq corfu-popupinfo-delay '(1.25 . 0.5))
   (corfu-popupinfo-mode 1))
 
+(use-package kubed
+  :bind-keymap ("C-c k" . kubed-prefix-map))
+
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :config
+  (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LD_LIBRARY_PATH"))
+  (exec-path-from-shell-initialize))
+
 (use-package markdown-mode
   :hook
   ((markdown-mode . auto-fill-mode)
@@ -665,11 +674,12 @@ to set the desired font size."
           ("FIP" . "http://direct.fipradio.fr/live/fip-midfi.mp3")
           ("Radio Classique" . "http://icepe6.infomaniak.ch/radioclassique-high.mp3"))))
 
+(use-package nov
+  :init
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
+
 (use-package simple-httpd
   :commands (httpd-serve-directory httpd-start httpd-stop))
-
-(use-package kubed
-  :bind-keymap ("C-c k" . kubed-prefix-map))
 
 (use-package denote
   :ensure t
@@ -683,15 +693,5 @@ to set the desired font size."
   :config
   (setq denote-directory (expand-file-name "~/Documents/notes/"))
   (denote-rename-buffer-mode 1))
-
-(use-package exec-path-from-shell
-  :if (memq window-system '(mac ns x))
-  :config
-  (setq exec-path-from-shell-variables '("PATH" "MANPATH" "LD_LIBRARY_PATH"))
-  (exec-path-from-shell-initialize))
-
-(use-package nov
-  :init
-  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
 
 ;;; init.el ends here
