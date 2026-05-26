@@ -611,7 +611,8 @@ to set the desired font size."
   (corfu-popupinfo-mode 1))
 
 (use-package kubed
-  :bind-keymap ("C-c k" . kubed-prefix-map))
+  :bind-keymap ("C-c k" . kubed-prefix-map)
+  :config (kubed-define-resource configmap))
 
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))

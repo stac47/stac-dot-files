@@ -1102,7 +1102,8 @@ and manipulate an =kubernetes= clusters.
 
 #+begin_src emacs-lisp :tangle "init.el"
   (use-package kubed
-    :bind-keymap ("C-c k" . kubed-prefix-map))
+    :bind-keymap ("C-c k" . kubed-prefix-map)
+    :config (kubed-define-resource configmap))
 #+end_src
 
 *** Environment Variable
